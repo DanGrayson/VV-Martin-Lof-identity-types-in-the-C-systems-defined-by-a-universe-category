@@ -16,7 +16,7 @@
 \headsep = 0.0 in
 \parindent = 0.0in
 
-\renewcommand{\thesubsection}{\arabic{subsection}}
+%\renewcommand{\thesubsection}{\arabic{subsection}}
 %
 %
 \newenvironment{eq}{\begin{equation}}{\end{equation}}
@@ -48,8 +48,8 @@
 %
 %
 %\newcommand{\C}[4]{\left[\begin{array}{rcl}&#1\\#3&\dw\dw&#4\\&#2\end{array}\right]}
-%\newcommand{\llabel}[1]{\label{#1}[{\bf #1}]}
-\newcommand{\llabel}[1]{\label{#1}}
+\newcommand{\llabel}[1]{\label{#1}[{\bf #1}]}
+%\newcommand{\llabel}[1]{\label{#1}}
 \newcommand{\comment}[1]{}
 \newcommand{\sr}{\rightarrow}
 \newcommand{\lr}{\longrightarrow}
@@ -428,7 +428,7 @@ For $X'\stackrel{f}{\sr}X\stackrel{F}{\sr}U$ we let $Q(f,F)$ denote the morphism
 %
 $$(p_{X',f\circ F}\circ f)*Q(f\circ F):(X';f\circ F)\sr (X;F)$$
 %
-As is shown in \cite{fromunivwithPi}, the square
+As is shown in \cite{Cfromauniverse}, the square
 %
 \begin{eq}
 \llabel{2015.04.06.l0.sq}
@@ -524,7 +524,7 @@ be the canonical projections. Let
 $$st=st_p(V):(I_p(V);pr)\sr V$$
 $$st'=st_{p'}(V):(I_{p'}(V);pr')'\sr V$$
 %
-be the morphisms introduced in \cite{fromunivwithPi}. By \cite[Problem 3.8]{fromunivwithPi} we have
+be the morphisms introduced in \cite{fromunivwithPi}. By \cite[Construction 3.9]{fromunivwithPi} we have
 %
 $$\eta^{',!}(g\circ I^f(V))=(g\circ I^f(V)\circ pr', Q'(g\circ I^f(V), pr')\circ st')$$
 %
@@ -550,7 +550,7 @@ Next we have
 %
 $$Q'(g\circ I^f(V), pr')=Q'(g,I^f(V)\circ pr')\circ Q'(I^f(V),pr')=Q'(g,pr)\circ Q'(I^f(V),pr')$$
 %
-by \cite[Lemma 3.2]{fromunivwithPi}. It remains to check that
+by \cite[Lemma 2.5]{Cfromauniverse}. It remains to check that
 %
 $$Q'(I^f(V),pr')\circ st'=pr^*(f)\circ st$$
 %
@@ -799,7 +799,7 @@ This completes the construction.
 %
 \begin{remark}\rm
 \llabel{2015.05.24.rem2}
-It is likely to be relatively easy to generalize the constructions of this  paper to the extended J-structures $eJ_n$ (see Remark \ref{2015.05.24.rem1}). The key to such generalization is \cite[Remark 3.13]{fromunivwithPi}. The structures $eJp_n$ can be defined in the same way as $Jp$ but with the square (\ref{2010.sq1}) replaced by the square
+It is likely to be relatively easy to generalize the constructions of this  paper to the extended J-structures $eJ_n$ (see Remark \ref{2015.05.24.rem1}). The key to such generalization is \cite[Remark 3.12]{fromunivwithPi}. The structures $eJp_n$ can be defined in the same way as $Jp$ but with the square (\ref{2010.sq1}) replaced by the square
 %
 \begin{eq}
 \llabel{2015.05.24.sq1}
@@ -1473,7 +1473,7 @@ $$\phi(\Gamma,T,P,s0)\circ Jp: X\sr I_{pE\wt{U}}(\wt{U})$$
 Consider the element 
 %
 $$(F_1,F_2)=\eta^!_{pE\wt{U}}(\phi(\Gamma,T,P,s0)\circ Jp)\in D_{pE\wt{U}}(X,\wt{U})$$
-%
+%###
 By \cite[Problem 3.8(1)]{fromunivwithPi} we have 
 %
 $$(F_1,F_2\circ p)=D_{pE\wt{U}}(X,p)(F_1,F_2)=\eta^!_{pE\wt{U}}(\phi(\Gamma,T,P,s0)\circ Jp\circ I_{pE\wt{U}}(p))=$$
@@ -2411,7 +2411,7 @@ where the right hand side of the equation makes sense by Lemma \ref{2015.04.06.l
 %
 \label{2015.04.12.sec1}
 %
-Let us first remind that by \cite[Construction 3.3]{Cfromauniverse} any universe category functor ${\bf \Phi}=(\Phi,\phi,\wt{\phi})$ defines a homomorphism of C-systems
+Let us first remind that by \cite[Construction 4.7]{Cfromauniverse} any universe category functor ${\bf \Phi}=(\Phi,\phi,\wt{\phi})$ defines a homomorphism of C-systems
 %
 $$H:CC({\mathcal C},p)\sr CC({\mathcal C}',p')$$
 %
@@ -2829,7 +2829,6 @@ which proves the second equality since $(F',\wt{H}')=\wt{u}_{2,H(\Gamma)}'(H(s0)
 \end{myproof}
 
 
-\def\cprime{$'$}
 
 \bibliography{alggeom}
 \bibliographystyle{plain}
