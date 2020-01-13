@@ -1,7 +1,8 @@
 \documentclass[12pt]{article}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
-\usepackage{amscd, amssymb}
+\usepackage{amsmath, amscd, amssymb}
+\usepackage[pdf,all,2cell]{xy}\SelectTips{cm}{10}\SilentMatrices\UseAllTwocells
 \usepackage{enumerate}
 \usepackage{hyperref}
 % lscape.sty Produce landscape pages in a (mainly) portrait document.
@@ -18,10 +19,11 @@
 
 %\renewcommand{\thesubsection}{\arabic{subsection}}
 %
+\numberwithin{equation}{section}
 %
 \newenvironment{eq}{\begin{equation}}{\end{equation}}
 %
-\newenvironment{myproof}{{\bf Proof}:}{\vskip 5mm }
+\newenvironment{myproof}{{\bf Proof}:}{$\blacksquare$ \vskip 5mm }
 \newenvironment{rem}{{\bf Remark}:}{\vskip 5mm }
 \newenvironment{remarks}{{\bf Remarks}:\begin{enumerate}}{\end{enumerate}}
 \newenvironment{examples}{{\bf Examples}:\begin{enumerate}}{\end{enumerate}}  
@@ -41,9 +43,10 @@
 \newtheorem{cons}[proposition]{Construction}
 %
 \newtheorem{problem}[proposition]{Problem}
-\newtheorem{construction}[proposition]{Construction}
 %
-
+\newtheorem{construction0}[proposition]{Construction}
+%
+\newenvironment{construction}[1]{\begin{construction0}(for Problem \ref{#1})}{$\blacksquare$ \end{construction0}}
 
 %
 %
@@ -59,7 +62,7 @@
 \newcommand{\zz}{{\bf Z\rm}}
 \newcommand{\zq}{{\bf Z}_{qfh}}
 \newcommand{\nn}{{\bf N\rm}}
-\newcommand{\qq}{{\bf Q\rm}}
+%\newcommand{\qq}{{\bf Q\rm}}
 \newcommand{\nq}{{\bf N}_{qfh}}
 \newcommand{\oo}{\otimes}
 \newcommand{\uu}{\underline}
@@ -105,6 +108,29 @@
 
 \newcommand{\JJ}{{\mathcal J}}
 
+\newcommand{\stn}{\mathsf{stn}}
+
+\newcommand{\lng}{\ell}
+\newcommand{\ft}{{\mathsf{ft}}}
+\newcommand{\pt}{{\mathsf{pt}}}
+\newcommand{\pp}{{\mathsf{p}}}
+\newcommand{\qq}{{\mathsf{q}}}
+\newcommand{\sss}{{\mathsf{s}}}
+
+\newcommand{\CS}{{\bf CSys}}
+\newcommand{\LW}{{\bf LW}}
+
+\newcommand{\LC}{LtoC}
+\newcommand{\CL}{CtoL}
+
+\newcommand{\LCF}{{\mathsf \LC}}
+\newcommand{\CLF}{{\mathsf \CL}}
+
+\newcommand{\CC}{{\mathcal C}}
+
+
+
+
 \comment{\pagestyle{fancy}
 
 \renewcommand{\subsectionmark}[1]{\markright{\thesubsection \quad #1}}
@@ -116,9 +142,7 @@
 %
 \parskip = 2mm
 \begin{center}
-{\bf\Large Martin-Lof identity types in the C-systems defined by\\
-\vskip 2mm
- a universe category\footnote{\em 2000 Mathematical Subject Classification: 
+{\bf\Large Martin-Lof identity types in C-systems\footnote{\em 2000 Mathematical Subject Classification: 
 18D99, % Categories with structures, none of the above
 03B15, % higher-order logic and type theory
 18D15 % Closed categories (closed monoidal and Cartesian closed categories, etc.)
@@ -130,7 +154,7 @@
 Princeton NJ, USA. e-mail: vladimir@ias.edu}$^,$\footnote{Work on this paper was supported by NSF grant 1100938.}
 \vspace {3mm}
 
-{May 2015}  
+{July 2017}  
 \end{center}
 %
 %
@@ -218,7 +242,7 @@ In this paper, as in the preceding papers \cite{Cfromauniverse} and \cite{fromun
 
 The methods used in this paper are fully constructive and the paper is written in ``formalization ready'' style with all the proofs provided in enough detail to ensure that there are no hidden difficulties for the formalization of all of the results presented here.
 
-Except for the section that discusses the use of classes $TC$ and $FB$, the methods we use are also completely elementary in the sense that they rely only on the essentially algebraic language of categories with various structures. 
+Except for the section that discusses the use of classes $TC$ and $FB$, the methods we use are also completely elementary in the sense that they rely only on the quasi-algebraic language of categories with various structures. 
 
 The key Definition \ref{2015.03.27.def6} and its relation to the J-structures on categories $CC({\cal C},p)$ first appeared in \cite{CMUtalk}. 
 
@@ -278,7 +302,7 @@ $$IdxT:Ob_1(\Gamma)\sr Ob_3(\Gamma)$$
 such that for $f:\Gamma'\sr \Gamma$ and $T\in Ob_1(\Gamma)$ one has $f^*(IdxT(T))=IdxT(f^*(T))$.
 \end{problem}
 %
-\begin{construction}
+\begin{construction}{2015.03.27.prob1}
 \llabel{2015.03.27.constr1}\rm
 Recall that for $T\in Ob_1(\Gamma)$ we let $\delta(T)$ denote the morphism $T\sr p_T^*(T)$ that can be described equivalently as $s_{Id_T}$ or as the only morphism such that $\delta(T)\circ p_{p_T^*(T)}=Id_T$ and $\delta_T\circ q(p_T,T)=Id_T$. Because of the first equation we have $\delta(T)\in \wt{Ob}(p_T^*(T))$. 
 
@@ -300,11 +324,12 @@ $$\delta(p_T^*(T))\in \wt{Ob}(p_{p_T^*(T)}^*(p_T^*(T)))$$
 and since $ft(p_{p_T^*(T)}^*(p_T^*(T)))=p_T^*(T)$ the $IdxT(T)$ is well defined. The fact that $IdxT(T)\in Ob_3(\Gamma)$ follows now from the fact that $ft^2(p_T^*(T))=ft(T)=\Gamma$. The objects and some of the morphisms involved in this construction can be seen on the diagram: 
 %
 $$
-\begin{CD}
-p_{p_T^*(T)}^*(p_T^*(T)) @>>> p_T^*(T) @>>> T\\
-@VVV @Vp_{p_T^*(T)} VV @VV p_TV\\
-p_T^*(T) @>p_{p_T^*(T)}>> T @>p_T>> \Gamma
-\end{CD}
+\begin{xy}
+          \xymatrix@C=3pc{
+                p_{p_T^*(T)}^*(p_T^*(T)) \ar[r] \ar[d]& p_T^*(T) \ar[r] \ar[d]_{p_{p_T^*(T)}} & T \ar[d]^{p_T}\\
+                p_T^*(T) \ar[r]^{p_{p_T^*(T)}} & T \ar[r]^{p_T} & \Gamma
+                }
+\end{xy}
 $$
 %
 The proof that $IdxT$ is natural in $f:\Gamma'\sr \Gamma$ is straightforward.
@@ -320,7 +345,7 @@ $$rf_T:T\sr IdxT(T)$$
 such that for any $f:\Gamma'\sr \Gamma$ one has $f^*(rf_T)=rf_{f^*(T)}$. 
 \end{problem}
 %
-\begin{construction}
+\begin{construction}{}
 \llabel{2015.03.27.constr2}\rm
 We have:
 %
@@ -332,11 +357,12 @@ where the last equality follows from the fact that $f^*(\delta(T))=s_f$ and for 
 %
 \begin{eq}
 \llabel{2015.03.31.eq3}
-\begin{CD}
-IdT(\delta(T),\delta(T)) @>q(\delta(T),IdxT(T))>> IdxT(T)\\
-@VVV @VVV\\
-T @>\delta(T)>> p_T^*(T)
-\end{CD}
+\begin{xy}
+          \xymatrix@C=7pc{
+                IdT(\delta(T),\delta(T)) \ar[r]^-{q(\delta(T),IdxT(T))} \ar[d] & IdxT(T) \ar[d]\\
+T \ar[r]^{\delta(T)} & p_T^*(T)
+                }
+       \end{xy}
 \end{eq}
 %
 and $refl(\delta(T))$ is a morphism $T\sr IdT(\delta(T),\delta(T))$. We define:
@@ -400,14 +426,17 @@ When one studies J-structures on C-systems that have no $(\Pi,\lambda)$-structur
 
 \subsection{The J-structure on a universe in a category}
 %
-Let $\mathcal C$ be a (pre-)category and $p:\wt{U}\sr U$ a morphism in $\mathcal C$. Recall that a universe structure on $p$ is a choice of pull-back squares of the form
+Let $\mathcal C$ be a (pre-)category and $p:\wt{U}\sr U$ a morphism in $\mathcal C$. Recall that a universe structure on $p$ is a choice of pullback squares of the form
 %
 $$
-\begin{CD}
-(X;F) @>Q(F)>> \wt{U}\\
-@Vp_{X,F} VV @VV p V\\
-X @>F>> U
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 (X;F) \ar[r]^-{Q(F)} \ar[d]_{p_{X,F}} & 
+                 \wt{U} \ar[d]^{p}\\
+		X \ar[r]^{F} &
+		U
+                }
+\end{xy}
 $$
 %
 for all $X$ and all morphisms $F:X\sr U$. A universe in $\mathcal C$ is a morphism with a universe structure on it and a universe category is a category with a universe and a choice of a final object $pt$.  
@@ -428,18 +457,19 @@ For $X'\stackrel{f}{\sr}X\stackrel{F}{\sr}U$ we let $Q(f,F)$ denote the morphism
 %
 $$(p_{X',f\circ F}\circ f)*Q(f\circ F):(X';f\circ F)\sr (X;F)$$
 %
-As is shown in \cite{Cfromauniverse}, the square
+As is shown in \cite{fromunivwithPi}, the square
 %
 \begin{eq}
 \llabel{2015.04.06.l0.sq}
-\begin{CD}
-(X';f\circ F) @>Q(f,F)>> (X;F)\\
-@Vp_{X',f\circ F} VV @VVp_{X,F}V\\
-X' @>f>> X
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                (X';f\circ F) \ar[r]^-{Q(f,F)} \ar[d]_{p_{X',f\circ F}} & (X;F) \ar[d]^{p_{X,F}}\\
+		X' \ar[r]^{f} & X
+                }
+       \end{xy}
 \end{eq}
 %
-is a pull-back square.
+is a pullback square.
 
 Following \cite{fromunivwithPi} we define for any universe $p:\wt{U}\sr U$ and any $V\in {\mathcal C}$ a functor
 %
@@ -474,22 +504,20 @@ $$I^h(V):I_p(V)\sr I_{p'}(V)$$
 In the notations introduced above let $f:V\sr V'$ be a morphism, then the square
 %
 $$
-\begin{CD}
-I_{p'}(V) @>I_{p'}(f)>> I_{p'}(V')\\
-@V{I^h(V)}VV @VV{I^h(V')}V\\
-I_p(V) @>I_p(f)>> I_p(V')
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 I_{p'}(V) \ar[r]^{I_{p'}(f)} \ar[d]_{I^h(V)} & 
+                 I_{p'}(V') \ar[d]^{I^h(V')}\\
+		I_p(V) \ar[r]^{I_p(f)} &
+		I_p(V')
+                }
+\end{xy}
 $$
 \end{lemma}
 %
 \begin{myproof}
 This is a particular case of the commutative square of \cite[Lemma 8.5]{fromunivwithPi}.
 \end{myproof}
-
-
-
-
-
 
 
 %
@@ -499,11 +527,14 @@ This is a particular case of the commutative square of \cite[Lemma 8.5]{fromuniv
 Let $p:\wt{U}\sr U$ and $p':\wt{U}'\sr U$ be two morphisms with universe structures and $f:\wt{U}'\sr \wt{U}$ be a morphism over $U$. For $V\in {\mathcal C}$ let $I^f(V)$ be the corresponding morphism $I_{p'}(V)\sr I_p(V)$. Then for any $X$ the square
 %
 $$
-\begin{CD}
-D_p(X,V) @>\eta_{p,X,V}>> Hom(X, I_p(V))\\
-@V{D^f(X,V)}VV @VV{-\circ I^f(V)} V\\
-D_{p'}(X,V) @>\eta_{p',X.V}>> Hom (X, I_{p'}(V))
-\end{CD}
+\begin{xy}
+          \xymatrix@C=3pc{
+                 D_p(X,V) \ar[r]^-{\eta_{p,X,V}} \ar[d]_{D^f(X,V)} & 
+                 Hom(X, I_p(V)) \ar[d]^{-\circ I^f(V)}\\
+		D_{p'}(X,V) \ar[r]^-{\eta_{p',X.V}} &
+		Hom (X, I_{p'}(V))
+                }
+\end{xy}
 $$
 %
 where the left hand side arrow is of the form 
@@ -524,7 +555,7 @@ be the canonical projections. Let
 $$st=st_p(V):(I_p(V);pr)\sr V$$
 $$st'=st_{p'}(V):(I_{p'}(V);pr')'\sr V$$
 %
-be the morphisms introduced in \cite{fromunivwithPi}. By \cite[Construction 3.9]{fromunivwithPi} we have
+be the morphisms introduced in \cite{fromunivwithPi}. By \cite[Problem 3.8]{fromunivwithPi} we have
 %
 $$\eta^{',!}(g\circ I^f(V))=(g\circ I^f(V)\circ pr', Q'(g\circ I^f(V), pr')\circ st')$$
 %
@@ -550,7 +581,7 @@ Next we have
 %
 $$Q'(g\circ I^f(V), pr')=Q'(g,I^f(V)\circ pr')\circ Q'(I^f(V),pr')=Q'(g,pr)\circ Q'(I^f(V),pr')$$
 %
-by \cite[Lemma 2.5]{Cfromauniverse}. It remains to check that
+by \cite[Lemma 3.2]{fromunivwithPi}. It remains to check that
 %
 $$Q'(I^f(V),pr')\circ st'=pr^*(f)\circ st$$
 %
@@ -561,29 +592,38 @@ $$Q'(I^f(V),pr')\circ \iota'\circ ev'\circ pr_2=pr^*(f)\circ \iota\circ ev\circ 
 We will obtain this equality as a consequence of commutativity of three squares:
 %
 $$
-\begin{CD}
-(I_p(V);pr)' @>Q'(I^f(V),pr)>> (I_{p'}(V);pr')'\\
-@V\iota' VV @V\iota' VV\\
-(I_p(V),pr)\times_U(\wt{U}',p') @>I^f(V)\times Id>> (I_{p'}(V),pr')\times_U(\wt{U}',p')
-\end{CD}
+\begin{xy}
+          \xymatrix@C=5pc{
+                 (I_p(V);pr)' \ar[r]^-{Q'(I^f(V),pr)} \ar[d]_{\iota'} & 
+                 (I_{p'}(V);pr')' \ar[d]^{\iota'}\\
+		(I_p(V),pr)\times_U(\wt{U}',p') \ar[r]^-{I^f(V)\times Id} &
+		(I_{p'}(V),pr')\times_U(\wt{U}',p')
+                }
+\end{xy}
 $$
 %
 $$
-\begin{CD}
-(I_p(V);pr)'  @>pr^*(f)>> (I_p(V);pr)\\
-@V\iota' VV @VV\iota V\\
-(I_p(V),pr)\times_U(\wt{U}',p') @>Id\times f >> (I_p(V),pr)\times_U(\wt{U},p)
-\end{CD}
+\begin{xy}
+          \xymatrix@C=5pc{
+                 (I_p(V);pr)' \ar[r]^-{pr^*(f)} \ar[d]_{\iota'} & 
+                 (I_{p}(V);pr) \ar[d]^{\iota}\\
+		(I_p(V),pr)\times_U(\wt{U}',p') \ar[r]^-{Id\times f} &
+		(I_{p}(V),pr)\times_U(\wt{U},p)
+                }
+\end{xy}
 $$
 %
 and
 %
 $$
-\begin{CD}
-(I_p(V),pr)\times_U(\wt{U}',p') @>I^f(V)\times Id >> (I_{p'}(V),pr')\times_U(\wt{U}',p')\\
-@VId\times f VV @VV {ev'}V\\
-(I_p(V),pr)\times_U(\wt{U},p) @>ev>> U\times V
-\end{CD}
+\begin{xy}
+          \xymatrix@C=5pc{
+                 (I_p(V),pr)\times_U(\wt{U}',p') \ar[r]^-{I^f(V)\times Id} \ar[d]_{Id\times f} & 
+                 (I_{p'}(V),pr')\times_U(\wt{U}',p') \ar[d]^{ev'}\\
+		(I_p(V),pr)\times_U(\wt{U},p) \ar[r]^-{ev} &
+		U\times V
+                }
+\end{xy}
 $$
 %
 The first two squares are particular cases of \cite[Lemma 8.1]{fromunivwithPi}. To obtain the first one one has to set $Z=U$, $b=Id_{\wt{U}'}$, and $a=I^f(V)$. To obtain the second one one has to set $Z=U$, $b=f$ and $a=Id_{I_p(V)}$. The last square is a particular case of \cite[Lemma 8.6]{fromunivwithPi}.
@@ -612,30 +652,39 @@ that we will denote by $pE\wt{U}$.
 To construct a universe structure on $pE\wt{U}$.
 \end{problem}
 %
-\begin{construction}\rm
+\begin{construction}{}\rm
 \llabel{2015.05.08.constr1}
-We have three diagrams with pull-back squares of the form:
+We have three diagrams with pullback squares of the form:
 %
 $$
-%
-\begin{CD}
-(X;F,Q(F)\circ p, Q(Q(F),p)\circ Eq) @>Q(Q(Q(F),p),Eq)>> (\wt{U}; p, Eq)\\
-@VVV @VVV\\
-(X;F,Q(F)\circ p) @>Q(Q(F),p)>> (\wt{U};p)
-\end{CD}
-$$$$
-\begin{CD}
-(X;F,Q(F)\circ p) @>Q(Q(F),p)>> (\wt{U},p)\\
-@VVV @VVp_{\wt{U},p}V\\
-(X,F) @>Q(F)>> \wt{U}
-\end{CD}
-$$$$
-\begin{CD}
-(X;F) @>Q(F)>> \wt{U}\\
-@Vp_{X,F} VV @VVV\\
-X @>F>> U
-\end{CD}
-%
+\begin{xy}
+          \xymatrix@C=7pc{
+                 (X;F,Q(F)\circ p, Q(Q(F),p)\circ Eq) \ar[r]^-{Q(Q(Q(F),p),Eq)} \ar[d] & 
+                 (\wt{U}; p, Eq) \ar[d]^{p_{(\wt{U};p),Eq}}\\
+		(X;F,Q(F)\circ p) \ar[r]^-{Q(Q(F),p)} &
+		(\wt{U};p)
+                }
+\end{xy}
+$$
+$$
+\begin{xy}
+          \xymatrix@C=7pc{
+                 (X;F,Q(F)\circ p) \ar[r]^-{Q(Q(F),p)} \ar[d] & 
+                 (\wt{U},p) \ar[d]^{p_{\wt{U},p}}\\
+		(X,F) \ar[r]^-{Q(F)} &
+		\wt{U}
+                }
+\end{xy}
+$$
+$$
+\begin{xy}
+          \xymatrix@C=4pc{
+                 (X;F) \ar[r]^-{Q(F)} \ar[d]_{p_{X,F}} & 
+                 \wt{U} \ar[d]^{p}\\
+		X \ar[r]^{F} &
+		U
+                }
+\end{xy}
 $$
 %
 and we define the canonical square for $F$ relative to $pE\wt{U}$ to be the square obtained by concatenating these three squares vertically. 
@@ -644,11 +693,14 @@ and we define the canonical square for $F$ relative to $pE\wt{U}$ to be the squa
 Let us denote the components of the canonical squares for $pE\wt{U}$ as follows:
 %
 $$
-\begin{CD}
-(X;F)_{E} @>Q(F)_{E}>> E\wt{U}\\
-@Vp_{X,F}^{E} VV @VVpE\wt{U} V\\
-X @>F>> U
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 (X;F)_{E} \ar[r]^-{Q(F)_{E}} \ar[d]_{p^E_{X,F}} & 
+                 E\wt{U} \ar[d]^{pE\wt{U}}\\
+		X \ar[r]^{F} &
+		U
+                }
+\end{xy}
 $$
 %
 Explicitly we have
@@ -664,11 +716,14 @@ We will also write $Q(f,F)_{E}$ for the canonical morphisms from $(X;f\circ F)_{
 Let $p$ be a universe in $\mathcal C$ and $Eq$ be a J0-structure on $p$. A J1-structure on $p$ over $Eq$ is a morphism $\Omega:\wt{U}\sr \wt{U}$ such that the square
 %
 \begin{eq}\llabel{2015.03.27.sq1}
-\begin{CD}
-\wt{U} @>\Omega>> \wt{U}\\
-@V\Delta VV @VVp V\\
-(\wt{U};p) @>Eq >> U
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 \wt{U} \ar[r]^-{\Omega} \ar[d]_{\Delta} & 
+                 \wt{U} \ar[d]^{p}\\
+		(\wt{U};p) \ar[r]^{Eq} &
+		U
+                }
+\end{xy}
 \end{eq}
 %
 where $\Delta=(Id_{\wt{U}})*(Id_{\wt{U}})$ is the diagonal of $\wt{U}$, commutes.
@@ -684,16 +739,19 @@ The square (\ref{2015.03.27.sq1}) defines a morphism $\wt{U}\sr E\wt{U}$ that we
 
 To define a J2-structure on a universe we will need to assume that $\mathcal C$ is a locally cartesian closed category.  Recall that locally cartesian closed category is a category with the choice of fiber squares based on all pairs of morphisms with a common codomain as well as the choice of relative internal Hom-objects and co-evaluation morphisms for all such pairs. For our notations related to the locally cartesian closed categories as well as for some other notations used below see \cite{fromunivwithPi}. 
 
-When a universe is considered in a locally cartesian closed category we make no assumption about the compatibility of choices of the pull-back squares of the universe structure on $p$ and pull-back squares of the locally cartesian closed structure. 
+When a universe is considered in a locally cartesian closed category we make no assumption about the compatibility of choices of the pullback squares of the universe structure on $p$ and pullback squares of the locally cartesian closed structure. 
 
 Consider the functors $I_{p}$ and $I_{pE\wt{U}}$. We have the following commutative square:
 %
 \begin{eq}\llabel{2010.sq1}
-\begin{CD}
-I_{pE\wt{U}}(\wt{U}) @>I^{\omega}(\wt{U})>> I_p(\wt{U})\\
-@VI_{pE\wt{U}}(p)VV @VVI_p(p)V\\
-I_{pE\wt{U}}(U) @>I^{\omega}(U)>> I_p(U)
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 I_{pE\wt{U}}(\wt{U}) \ar[r]^-{I^{\omega}(\wt{U})} \ar[d]_{I_{pE\wt{U}}(p)} & 
+                I_p(\wt{U}) \ar[d]^{I_p(p)}\\
+		I_{pE\wt{U}}(U) \ar[r]^{I^{\omega}(U)} &
+		I_p(U)
+                }
+\end{xy}
 \end{eq}
 %
 and therefore a morphism
@@ -742,16 +800,38 @@ Let $\mathcal C$ be a category with a locally cartesian closed structure and $Eq
 between the set of J-structures on $p$ over $(Eq,\Omega)$ and the set of morphisms $(Fp,pFp)\times_U(E\wt{U},pE\wt{U})\sr \wt{U}$ that split the following square into two commutative triangles:
 %
 \begin{eq}\llabel{2015.05.22.sq1}
-\begin{CD}
-(Fp,pFp)\times_U(\wt{U},p) @>adj(pr_2)\circ pr_2>> \wt{U}\\
-@VId_{Fp}\times \omega VV @VV p V\\
-(Fp,pFp)\times_U(E\wt{U},pE\wt{U}) @>adj(pr_1)\circ pr_2>> U
-\end{CD}
+\begin{xy}
+          \xymatrix@C=7pc{
+                 (Fp,pFp)\times_U(\wt{U},p) \ar[r]^-{adj(pr_2)\circ pr_2} \ar[d]_{Id_{Fp}\times \omega} & 
+                 \wt{U} \ar[d]^{p}\\
+		(Fp,pFp)\times_U(E\wt{U},pE\wt{U}) \ar[r]^-{adj(pr_1)\circ pr_2} &
+		U
+                }
+\end{xy}
 \end{eq}
 %
 \end{problem}
 %
-\begin{construction}\rm
+\begin{remark}\rm
+If we omit, as is customary done, the explicit functions to the base in the notation of the fiber products the square (\ref{2015.05.22.sq1}) takes the following form:
+%
+\begin{eq}\llabel{2017.08.16.sq1}
+\begin{xy}
+          \xymatrix@C=7pc{
+                 (I_{pE\wt{U}}(U)\times_{I_p(U)} I_p(\wt{U}))\times_U\wt{U} \ar[r]^-{adj(pr_2)\circ pr_2} \ar[d]_{Id_{Fp}\times \omega} & 
+                 \wt{U} \ar[d]^{p}\\
+		(I_{pE\wt{U}}(U)\times_{I_p(U)} I_p(\wt{U}))\times_U E\wt{U} \ar[r]^-{adj(pr_1)\circ pr_2} &
+		U
+                }
+\end{xy}
+\end{eq}
+
+
+
+
+\end{remark}
+%
+\begin{construction}{}\rm
 \llabel{2015.05.22.constr1}
 Observe first that there is a bijection between the set of morphisms 
 %
@@ -764,11 +844,14 @@ $$(Fp,pFp)\times_U(E\wt{U},pE\wt{U})\sr U\times\wt{U}$$
 that split into two commutative triangles the square:
 %
 $$
-\begin{CD}
-(Fp,pFp)\times_U(\wt{U},p) @>adj(pr_2)>> U\times\wt{U}\\
-@VId_{Fp}\times \omega VV @VV Id_U\times p V\\
-(Fp,pFp)\times_U(E\wt{U},pE\wt{U}) @>adj(pr_1)>> U\times U
-\end{CD}
+\begin{xy}
+          \xymatrix@C=7pc{
+                 (Fp,pFp)\times_U(\wt{U},p)  \ar[r]^-{adj(pr_2)} \ar[d]_{Id_{Fp}\times \omega} & 
+                 U\times \wt{U} \ar[d]^{Id_U\times p}\\
+		(Fp,pFp)\times_U(E\wt{U},pE\wt{U}) \ar[r]^-{adj(pr_1)} &
+		U\times U
+                }
+\end{xy}
 $$
 %
 The rule $f\mapsto adj(f)$ gives us a bijection of the form
@@ -799,15 +882,18 @@ This completes the construction.
 %
 \begin{remark}\rm
 \llabel{2015.05.24.rem2}
-It is likely to be relatively easy to generalize the constructions of this  paper to the extended J-structures $eJ_n$ (see Remark \ref{2015.05.24.rem1}). The key to such generalization is \cite[Remark 3.12]{fromunivwithPi}. The structures $eJp_n$ can be defined in the same way as $Jp$ but with the square (\ref{2010.sq1}) replaced by the square
+It is likely to be relatively easy to generalize the constructions of this  paper to the extended J-structures $eJ_n$ (see Remark \ref{2015.05.24.rem1}). The key to such generalization is \cite[Remark 3.13]{fromunivwithPi}. The structures $eJp_n$ can be defined in the same way as $Jp$ but with the square (\ref{2010.sq1}) replaced by the square
 %
 \begin{eq}
 \llabel{2015.05.24.sq1}
-\begin{CD}
-I_{pE\wt{U}}(I_p^n(\wt{U})) @>I^{\omega}(I_p^n(\wt{U}))>> I_p(I_p^n(\wt{U}))\\
-@VI_{pE\wt{U}}(I_p^n(p)) VV @VV I_p(I_p^n(p))V\\
-I_{pE\wt{U}}(I_p^n(U)) @>I^{\omega}(I_p^n(U))>> I_p(I_p^n(U))
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 I_{pE\wt{U}}(I_p^n(\wt{U})) \ar[r]^-{I^{\omega}(I_p^n(\wt{U}))} \ar[d]_{I_{pE\wt{U}}(I_p^n(p))} & 
+                I_p(I_p^n(\wt{U})) \ar[d]^{I_p(I_p^n(p))}\\
+		I_{pE\wt{U}}(I_p^n(U)) \ar[r]^-{I^{\omega}(I_p^n(U))} &
+		I_p(I_p^n(U))
+                }
+\end{xy}
 \end{eq}
 \end{remark}
 %
@@ -817,21 +903,24 @@ I_{pE\wt{U}}(I_p^n(U)) @>I^{\omega}(I_p^n(U))>> I_p(I_p^n(U))
 \subsection{J-structures on universes in categories with two classes of morphisms}
 %
 %
-This is the only part of the paper where we depart from constructions that are conservatively algebraic over the theory of categories, i.e., from constructions that can be expressed in terms of adding new essentially algebraic operations to the theory of categories without adding new sorts to this theory. 
+This is the only part of the paper where we depart from constructions that are conservatively algebraic over the theory of categories, i.e., from constructions that can be expressed in terms of adding new quasi-algebraic operations to the theory of categories without adding new sorts to this theory. 
 
-Considering classes of morphisms in categories can be expressed in the essentially algebraic way but this requires adding new sorts to the theory. 
+Considering classes of morphisms in categories can be expressed in the  quasi-algebraic way but this requires adding new sorts to the theory. 
 
 This is also the only context where we use the concept ``there exists'' in this paper. In all the previous cases the objects that we considered were given (specified). To make the lemmas proved below into constructions and to avoid the use of ``there exists'' one would have to define the collection $FB$ as a collection of pairs of a morphism $p$ together with, for all $i\in TC$, $f_W$ and $f_Z$ such that $f_Z\circ p=i\circ f_W$, a morphism $g$ such that $i\circ g=f_W$ and $g\circ p=f_W$. 
 
 Recall that a collection of morphisms $R$ is said to have the right lifting property for the collection of morphisms $L$ if for any commutative square of the form
 %
-$$
-\begin{CD}
-Z @>f_Z>> E\\
-@Vi VV @VVp V\\
-W @>f_W>> B
-\end{CD}
-$$
+$
+\begin{xy}
+          \xymatrix@C=2pc{
+                 Z \ar[r]^-{f_Z} \ar[d]_{i} & 
+                E \ar[d]^{p}\\
+		W \ar[r]^-{f_W} &
+		B
+                }
+\end{xy}
+$
 %
 such that $i\in L$ and $p\in R$ there exists a morphism $g:W\sr E$ that makes the two triangles into which it splits the square to commute i.e. a morphism $g$ such that $i\circ g=f_Z$ and $g\circ p=f_W$. 
 %
@@ -864,7 +953,7 @@ Then there exists an extension of $(Eq,\Omega)$ to a full J-structure on $p$.
 \end{theorem}
 %
 \begin{myproof}
-Let us apply Construction \ref{2015.05.22.constr1} to $(Eq,\Omega)$. To construct the required morphism it is sufficient to establish that $Id_{Fp}\times\omega$ is in $TC$. It follows from the first of our conditions that $FB$ is closed under pull-backs and compositions. Therefore, $pE\wt{U}$ is in $FB$. It remains to apply the second of our conditions.
+Let us apply Construction \ref{2015.05.22.constr1} to $(Eq,\Omega)$. To construct the required morphism it is sufficient to establish that $Id_{Fp}\times\omega$ is in $TC$. It follows from the first of our conditions that $FB$ is closed under pullbacks and compositions. Therefore, $pE\wt{U}$ is in $FB$. It remains to apply the second of our conditions.
 \end{myproof}
 % 
 
@@ -893,15 +982,18 @@ We will say that $B$ is fibrant if the morphism $B\sr pt$ is in $FB$.
 %
 \begin{lemma}
 \llabel{2015.05.14.l2}
-Let $p:E\sr B$ be in $FB$ and $f:B'\sr B$ be a morphism. Assume in addition that $B$ and $B'$ are fibrant, then for any pull-back square of the form
+Let $p:E\sr B$ be in $FB$ and $f:B'\sr B$ be a morphism. Assume in addition that $B$ and $B'$ are fibrant, then for any pullback square of the form
 %
-$$
-\begin{CD}
-E' @>>> E\\
-@Vp' VV @VV p V\\
-B' @>f>> B
-\end{CD}
-$$
+$
+\begin{xy}
+          \xymatrix@C=2pc{
+                 E' \ar[r] \ar[d]_{p'} & 
+                E \ar[d]^{p}\\
+		B' \ar[r]^-{f} &
+		B
+                }
+\end{xy}
+$
 %
 the morphism $p'$ is in $FB$. 
 \end{lemma}
@@ -930,11 +1022,14 @@ Assume that $U,V$ are fibrant and that $p:\wt{U}\sr U$ is in $FB$. Then the morp
 Since $U$ is fibrant it is sufficient to check that $pr=prI_p(V)$ has the right lifting property for $TC$. Consider a commutative square of the form
 %
 $$
-\begin{CD}
-Z @>f_Z>> \uu{Hom}_U((\wt{U},p),(U\times V,pr_1))\\
-@V i VV @VV pr V\\
-W @>f_W >> U
-\end{CD}
+\begin{xy}
+          \xymatrix@C=2pc{
+                 Z \ar[r]^-{f_Z} \ar[d]_{i} & 
+                 \uu{Hom}_U((\wt{U},p),(U\times V,pr_1)) \ar[d]^{pr}\\
+		W \ar[r]^-{f_W} &
+		U
+                }
+\end{xy}
 $$
 %
 We need to construct a morphism $f:W\sr \uu{Hom}_U((\wt{U},p),(U\times V,pr_1))$ that would make the two triangles commutative. The commutativity of the lower triangle means that $f$ is a morphism over $U$ which is equivalent to the assumption that $f=adj^{-1}(g)$ for some $g:(W,f_W)\times_U (\wt{U},p)\sr U\times V$ over $U$.
@@ -942,11 +1037,14 @@ We need to construct a morphism $f:W\sr \uu{Hom}_U((\wt{U},p),(U\times V,pr_1))$
 Consider the square
 %
 $$
-\begin{CD}
-(Z, i\circ f_W)\times_U (\wt{U},p) @>adj(f_Z)>> U\times V\\
-@V i\times Id_{\wt{U}} VV @VV pr_1 V\\
-(W,f_W)\times_U (\wt{U},p) @> f_W\dd p >> U
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 (Z, i\circ f_W)\times_U (\wt{U},p) \ar[r]^-{adj(f_Z)} \ar[d]_{i\times Id_{\wt{U}}} & 
+                 U\times V \ar[d]^{pr_1}\\
+		(W,f_W)\times_U (\wt{U},p) \ar[r]^-{f_W\dd p} &
+		U
+                }
+\end{xy}
 $$
 %
 By Lemma \ref{2015.05.14.l2} we know that $pr_1$ belongs to $FB$. By our assumptions on $TC$ and $FB$ we know that $i\times Id_{\wt{U}}$ is in $TC$. Therefore there exists a morphism  $g:(W,f_W)\times_U (\wt{U},p) \sr U\times V$ that makes the two triangles commute. 
@@ -963,11 +1061,14 @@ By Lemmas \ref{2015.05.14.l1} and \ref{2015.05.14.l4} we know that $I_p(V)$ is f
 %
 \begin{eq}
 \llabel{2015.05.14.sq1}
-\begin{CD}
-Z @>f_Z>> \uu{Hom}_U((\wt{U},p),(U\times V',pr_1))\\
-@V i VV @VV \uu{Hom}_U((\wt{U},p), Id_U\times r) V\\
-W @>f_W >> \uu{Hom}_U((\wt{U},p), (U\times V, pr_1))
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 Z \ar[r]^-{f_Z} \ar[d]_{i} & 
+                 \uu{Hom}_U((\wt{U},p),(U\times V',pr_1)) \ar[d]^{\uu{Hom}_U((\wt{U},p), Id_U\times r)}\\
+		W \ar[r]^-{f_W} &
+		\uu{Hom}_U((\wt{U},p), (U\times V, pr_1))
+                }
+\end{xy}
 \end{eq}
 %
 The lower right corner is an object over $U$ through the morphism $p\triangle pr_1$. Let $p_W=f_W\circ (p\triangle pr^{U,V}_U)$ and 
@@ -978,11 +1079,14 @@ Consider the square
 %
 \begin{eq}
 \llabel{2015.05.14.sq2}
-\begin{CD}
-(Z,p_Z)\times_U (\wt{U},p) @>adj(f_Z)>> U\times V'\\
-@Vi\times Id_{\wt{U}} VV @VV Id_U\times r V\\
-(W,p_W)\times_U (\wt{U},p) @>adj(f_W)>> U\times V
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 (Z,p_Z)\times_U (\wt{U},p)  \ar[r]^-{adj(f_Z)} \ar[d]_{i\times Id_{\wt{U}}} & 
+                 U\times V' \ar[d]^{Id_U\times r}\\
+		(W,p_W)\times_U (\wt{U},p) \ar[r]^-{adj(f_W)} &
+		U\times V
+                }
+\end{xy}
 \end{eq}
 %
 This square commutes. Indeed,
@@ -1034,11 +1138,14 @@ Then there exists a J-structure $Jp$ extending $(Eq,\Omega)$.
 Let us use the notations of Problem \ref{2015.05.12.l1}. We need to show that under the assumptions of the current theorem there exists a morphism that splits the square of Problem \ref{2015.05.12.l1} into two commutative triangles. Observe first that constructing such a splitting is equivalent to constructing the splitting of the square
 %
 $$
-\begin{CD}
-(\wt{U},p)\times_U (Fp,pFp) @>\sigma\circ adj(pr_2)>> U\times\wt{U}\\
-@V\omega \times Id_{Fp} VV @VV Id_U\times p V\\
-(E\wt{U},pE\wt{U})\times_U (Fp,pFp) @>\sigma'\circ adj(pr_1)>> U\times U
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 (\wt{U},p)\times_U (Fp,pFp)  \ar[r]^-{\sigma\circ adj(pr_2)} \ar[d]_{\omega \times Id_{Fp}} & 
+                 U\times\wt{U} \ar[d]^{Id_U\times p}\\
+		(E\wt{U},pE\wt{U})\times_U (Fp,pFp)  \ar[r]^-{\sigma'\circ adj(pr_1)} &
+		U\times U
+                }
+\end{xy}
 $$
 %
 where
@@ -1052,7 +1159,7 @@ It is easy to show that $U\times U$ is fibrant. Therefore it is sufficient to sh
 %
 $$Fp\stackrel{pr_1}{\sr} I_{pE\wt{U}}(U) \stackrel{prI_{pE\wt{U}}}{\sr} U$$
 %
-The morphism $pE\wt{U}$ is in $FB$ as a composition of pull-backs of $p$ with respect to morphisms with fibrant domains through repeated application of Lemmas \ref{2015.05.14.l2} and \ref{2015.05.14.l4}. Therefore, the morphism $prI_{pE\wt{U}}$ is in $FB$ by Lemma \ref{2015.05.14.l1} and as a corollary we know that $I_{pE\wt{U}}(U)$ is fibrant. Similarly $I_p(U)$ is fibrant and $i_p(p)$ is in $FB$ and applying again Lemma \ref{2015.05.14.l2} we see that $pr_1$ is in $FB$. And again by Lemma \ref{2015.05.14.l4} we see that $pFp$ is in $FB$ which finishes the proof of the theorem.  
+The morphism $pE\wt{U}$ is in $FB$ as a composition of pullbacks of $p$ with respect to morphisms with fibrant domains through repeated application of Lemmas \ref{2015.05.14.l2} and \ref{2015.05.14.l4}. Therefore, the morphism $prI_{pE\wt{U}}$ is in $FB$ by Lemma \ref{2015.05.14.l1} and as a corollary we know that $I_{pE\wt{U}}(U)$ is fibrant. Similarly $I_p(U)$ is fibrant and $i_p(p)$ is in $FB$ and applying again Lemma \ref{2015.05.14.l2} we see that $pr_1$ is in $FB$. And again by Lemma \ref{2015.05.14.l4} we see that $pFp$ is in $FB$ which finishes the proof of the theorem.  
 \end{myproof}
 %
 \begin{cor}
@@ -1066,7 +1173,7 @@ $$Id_{B'}\times i: (B',f)\times_B(E_1,p_1)\sr (B',f)\times_B(E_2,p_2)$$
 %
 is a trivial cofibration,
 %
-\item $U$ is fibrant and the pull-back of a trivial cofibration along a fibration is a trivial cofibration.
+\item $U$ is fibrant and the pullback of a trivial cofibration along a fibration is a trivial cofibration.
 \end{enumerate}
 %
 Then $(Eq,\omega)$ can be extended to a full J-structure on $p$. 
@@ -1081,26 +1188,32 @@ Assume that these coproducts satisfy the following two conditions:
 \item for a sequence of morphisms $f_n:E_n\sr B_n$ the square
 %
 $$
-\begin{CD}
-\amalg_n (E_n,f_n)\times_{B_n}(E_n,f_n) @>\amalg_n pr_2>> \amalg_n E_n\\
-@V \amalg_n pr_1 VV @VV \amalg_n f_n V\\
-\amalg_n E_n @>\amalg_n f_n >> \amalg_n B_n
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 \amalg_n (E_n,f_n)\times_{B_n}(E_n,f_n)  \ar[r]^-{\amalg_n pr_2} \ar[d]_{\amalg_n pr_1} & 
+                 \amalg_n E_n \ar[d]^{\amalg_n f_n}\\
+		\amalg_n E_n  \ar[r]^-{\amalg_n f_n} &
+		\amalg_n B_n
+                }
+\end{xy}
 $$
 %
-is a pull-back square,
+is a pullback square,
 %
 \item for a sequence of morphisms $f_n:E_n\sr B_n$ the square
 %
 $$
-\begin{CD}
-\amalg_n E_{n+1} @> \langle in_{n+1} \rangle_{n} >> \amalg_n E_n\\
-@V\amalg_n f_{n+1} VV @VV \amalg_n f_n V\\
-\amalg_n B_{n+1} @> \langle in_{n+1} \rangle_{n} >> \amalg_n B_n
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 \amalg_n E_{n+1}  \ar[r]^-{\langle in_{n+1} \rangle_{n}} \ar[d]_{\amalg_n f_{n+1}} & 
+                 \amalg_n E_n \ar[d]^{\amalg_n f_n}\\
+		\amalg_n B_{n+1}  \ar[r]^-{\langle in_{n+1} \rangle_{n}} &
+		\amalg_n B_n
+                }
+\end{xy}
 $$
 %
-is a pull-back square. 
+is a pullback square. 
 \end{enumerate}
 %
 %
@@ -1117,7 +1230,7 @@ Let $\cal C$ be as above $FB$ and $TC$ two classes of morphisms satisfying one o
 To construct, for any universe $p: \wt{U}\sr U$ such that $p\in FB$ a sequence of morphisms $p_n:\wt{U}_n\sr U_n$ such that $p_0=p$, $p_n\in FB$ and $\amalg_n p$, with the universe structure defined by the fiber squares of $\cal C$, has a J-structure with $\omega\in TC$.
 \end{problem}
 %
-\begin{construction}\rm\llabel{2015.05.23.constr1}
+\begin{construction}{}\rm\llabel{2015.05.23.constr1}
 Define $p_n:\wt{U}_n\sr U_n$ inductively as follows. For $n=0$ we take $p_0=p$. To define $p_{n+1}$ consider the diagonal $\Delta_n:\wt{U}_n\sr (\wt{U}_n,p_n)\times_{U_n}(\wt{U}_n,p_n)$ and let 
 %
 $$p_{n+1}=q_{\Delta_n}:P(\Delta_n)\sr (\wt{U}_n,p_n)\times_{U_n}(\wt{U}_n,p_n)$$
@@ -1128,17 +1241,24 @@ Let $U_*=\amalg_n U_n$, $\wt{U}_*=\amalg_n\wt{U}_n$ and $p_*=\amalg_n p_n$. Acco
 %
 $$\iota:\amalg_n (\wt{U}_n,p_n)\times_{U_n}(\wt{U}_n,p_n)\sr (\wt{U}_*,p_*)\times_{U_*}(\wt{U}_*,p_*)$$
 %
-is an isomorphism. Together with the second property applied to the right-most square this gives us a diagram with pull-back squares of the form:
+is an isomorphism. Together with the second property applied to the right-most square this gives us a diagram with pullback squares of the form:
 %
 $$
-\begin{CD}
-\amalg_n\wt{U}_{n+1} @>=>> \amalg_n\wt{U}_{n+1} @>=>> \amalg_n\wt{U}_{n+1} @> \langle in_{n+1} \rangle_{n} >> \wt{U}_*\\
-@V r\circ \iota VV @V r VV @V r VV @VV p_* V\\
-(\wt{U}_*,p_*)\times_{U_*}(\wt{U}_*,p_*) @>\iota^{-1}>> \amalg_n (\wt{U}_n,p_n)\times_{U_n}(\wt{U}_n,p_n) @>=>> \amalg_n U_{n+1} @> \langle in_{n+1} \rangle_{n} >> U_*
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 \amalg_n\wt{U}_{n+1}  \ar[r]^-{=} \ar[d]_{r\circ \iota} & 
+                 \amalg_n\wt{U}_{n+1} \ar[r]^-{=} \ar[d]^{r} &
+		 \amalg_n\wt{U}_{n+1} \ar[r]^-{\langle in_{n+1} \rangle_{n}} \ar[d]^{r} &
+		\wt{U}_* \ar[d]^{p_*} \\
+		(\wt{U}_*,p_*)\times_{U_*}(\wt{U}_*,p_*) \ar[r]^-{\iota^{-1}} &
+		\amalg_n (\wt{U}_n,p_n)\times_{U_n}(\wt{U}_n,p_n) \ar[r]^-{=} &
+		\amalg_n U_{n+1} \ar[r]^-{\langle in_{n+1} \rangle_{n}} &
+		U_*
+                }
+\end{xy}
 $$
 %
-where $r=\amalg_n p_{n+1}$. Define $Eq$ as the composition of the lower horizontal arrows of this diagram (up to an isomorphism this is just $\langle in_{n+1}\rangle_{n}$). Since the squares of the diagram are pull-back the natural morphism
+where $r=\amalg_n p_{n+1}$. Define $Eq$ as the composition of the lower horizontal arrows of this diagram (up to an isomorphism this is just $\langle in_{n+1}\rangle_{n}$). Since the squares of the diagram are pullback the natural morphism
 %
 $$\iota':\amalg_n\wt{U}_{n+1}\sr ((\wt{U}_*,p_*)\times_{U_*}(\wt{U}_*,p_*),Eq)_{U_*} (\wt{U}_*,p_*)$$
 %
@@ -1159,7 +1279,7 @@ By our assumptions $\omega\in TC$ and then by Theorem \ref{2015.05.22.th1} if $F
 
 
 
-\subsection{Constructing a J-structure on $CC({\mathcal C},p)$ from a J-structure on $p$}
+\subsection{Constructing a J-structure on $CC({\mathcal C},p)$ from a J-structure on~$p$}
 %
 The construction of a C-system $CC({\mathcal C},p)$ from a category with a universe $p$ and a final object $pt$ was presented in \cite{Cfromauniverse} and summarized in \cite{fromunivwithPi}. Let us recall some facts and notations. The underlying category of $CC({\mathcal C},p)$ is equipped with a functor $int$ to $\mathcal C$. Note that while $int$ is the identity on morphisms by construction of $CC({\mathcal C},p)$, the notations for the same element of $Hom(\Gamma',\Gamma)$ and $Hom(int(\Gamma'),int(\Gamma))$ may differ. In particular for $f:\Gamma'\sr \Gamma$ and $F:\Gamma\sr U$ we have
 %
@@ -1199,9 +1319,9 @@ i.e., with respect to these bijections the function $\partial:\wt{Ob}_1(\Gamma)\
 Let $Eq:(\wt{U};p)\sr U$ be a J0-structure on a universe $p$ in a category $\mathcal C$. To construct a J0-structure on $CC({\mathcal C},p)$.
 \end{problem}
 %
-\begin{construction}\rm
+\begin{construction}{}\rm
 \llabel{2015.03.27.constr3}
-Since the canonical squares are pull-back squares bijections $u_1$ and $\wt{u}_1$ gives us a bijection
+Since the canonical squares are pullback squares bijections $u_1$ and $\wt{u}_1$ gives us a bijection
 %
 $$\wt{uu}:\{o,o'\in\wt{Ob}_1(\Gamma)\,|\,\partial(o)=\partial(o')\} \sr Hom(int(\Gamma),(\wt{U};p))$$
 %
@@ -1260,7 +1380,7 @@ The third equality is a corollary of the equality $Q(F)_{E}=Q(Q(Q(F),p),Eq)$ and
 Let $Eq:(\wt{U};p)\sr U$, $\Omega:\wt{U}\sr \wt{U}$ be a J0-structure and a J1-structures on a universe $p$ in a category $\mathcal C$. To construct a J1-structure $refl(Eq,\Omega)$ over $IdT_{Eq}$ on $CC({\mathcal C},p)$.
 \end{problem}
 %
-\begin{construction}\rm
+\begin{construction}{}\rm
 \llabel{2015.03.27.constr4}
 Due to the natural bijections  (\ref{2015.03.27.eq7a}) the morphism $\Omega$ defines maps
 %
@@ -1313,7 +1433,7 @@ be the morphism constructed in Construction \ref{2015.03.27.constr2}. On the oth
 %
 $$F^*(\omega):(int(\Gamma);F)\sr (int(\Gamma);F)_{E}$$
 %
-is the pull-back of $\omega:\wt{U}\sr E\wt{U}$ with respect to $F=u_1(T)$ i.e. the unique morphism 
+is the pullback of $\omega:\wt{U}\sr E\wt{U}$ with respect to $F=u_1(T)$ i.e. the unique morphism 
 %
 $$(int(\Gamma);F)\sr (int(\Gamma);F)_{E}$$
 %
@@ -1333,15 +1453,21 @@ In view of Lemma \ref{2015.03.27.l1}, both $rf_T$ and $F^*(\omega)$ are morphism
 %
 $$(X;F)_{E}=(Y;Q(Q(F),p)\circ Eq)$$
 %
-and we can see this object as a part of the diagram with two pull-back squares:
+and we can see this object as a part of the diagram with two pullback squares:
 %
 $$
-\begin{CD}
-(Y;Q(Q(F),p)\circ Eq) @>h_1>> E\wt{U} @>h_2>> \wt{U}\\
-@Vp_{Y, Q(Q(F),p)\circ Eq}VV @VVV @VVpV\\
-Y @>Q(Q(F),p)>> (\wt{U},p) @>Eq>> U
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 (Y;Q(Q(F),p)\circ Eq)  \ar[r]^-{h_1} \ar[d]_{p_{Y, Q(Q(F),p)\circ Eq}} & 
+                 E\wt{U} \ar[r]^-{h_2} \ar[d] &
+		\wt{U} \ar[d]^{p} \\
+		Y \ar[r]^-{Q(Q(F),p)} &
+		(\wt{U},p) \ar[r]^-{Eq} &
+		U
+                }
+\end{xy}
 $$
+
 %
 We have two projections
 %
@@ -1379,7 +1505,7 @@ $$refl(\delta(T))\circ Q(Q(F)\circ \Omega\circ p)=Q(F)\circ \Omega$$
 %
 Which proves that $rf_T\circ h=F^*(\omega)\circ h$. 
 
-We have $rf_T\circ v=\delta(T)$ because the square (\ref{2015.03.31.eq3}) commutes.  Both $rf_T\circ v$ and $F^*(\omega)\circ v$ are morphisms $int(T)\sr int(p_T^*(T))$. Since $p_T^*(T)$ is a part of a pull-back square with the projections being $p_{p_T^*(T)}$ and $Q(Q(F)\circ p)$ we need to check that
+We have $rf_T\circ v=\delta(T)$ because the square (\ref{2015.03.31.eq3}) commutes.  Both $rf_T\circ v$ and $F^*(\omega)\circ v$ are morphisms $int(T)\sr int(p_T^*(T))$. Since $p_T^*(T)$ is a part of a pullback square with the projections being $p_{p_T^*(T)}$ and $Q(Q(F)\circ p)$ we need to check that
 %
 $$\delta(T)\circ Q(Q(F)\circ p)=  F^*(\omega)\circ v\circ Q(Q(F)\circ p)=F^*(\omega)\circ h_1\circ pE\wt{U}=$$
 $$Q(F)\circ \omega \circ pE\wt{U}=Q(F)\circ \Delta$$
@@ -1425,7 +1551,7 @@ such that
 %$\psi(F,\wt{G})\in \wt{Ob}_1(IdxT(\Gamma,F))$.
 \end{problem}
 %
-\begin{construction}
+\begin{construction}{}
 \llabel{2015.05.04.constr2}\rm
 Let us construct $\wt{\psi}$.  An element $(F,\wt{G})$ of $D_{pE\wt{U}}(int(\Gamma),\wt{U})$ is a pair where $F:int(\Gamma)\sr U$ and $\wt{G}:(int(\Gamma);F)_{E}\sr \wt{U}$. By Lemma \ref{2015.03.27.l1} we have $(int(\Gamma),F)_{E}=int(IdxT(\Gamma,F))$. Therefore $\wt{u}_{1,IdxT(\Gamma,F)}^{-1}(\wt{G})$ is defined and belongs to 
 $\wt{Ob}_1(IdxT(\Gamma,F))$. We set 
@@ -1446,7 +1572,7 @@ The proof of the relation (\ref{2015.05.04.eq3}) is straightforward.
 Let $(Eq,\Omega,Jp)$ be a J-structure on a universe $p$. To construct for all $\Gamma\in Ob=Ob(CC({\mathcal C},p))$, for all $T\in Ob_1(\Gamma)$, for all $P\in Ob_1(IdxT(T))$, for all $s0\in \wt{Ob}(rf_T^*(P))$, an element $J(\Gamma,T,P,s0)$ of $\wt{Ob}(P)$.
 \end{problem} 
 %
-\begin{construction}\rm
+\begin{construction}{}\rm
 \llabel{2015.04.04.constr1}
 Let $X:=int(\Gamma)$, $F:=u_1(T):X\sr U$. By Lemma \ref{2015.03.27.l1} we have $int(IdxT(T))=int(IdxT(\Gamma,F))=(int(\Gamma);F)_{E}$. Therefore we further have
 $G:=u_1(P):(int(\Gamma);F)_{E}\sr U$ and $\wt{H}:=\wt{u}_1(s0):(X;F)\sr \wt{U}$. 
@@ -1473,7 +1599,7 @@ $$\phi(\Gamma,T,P,s0)\circ Jp: X\sr I_{pE\wt{U}}(\wt{U})$$
 Consider the element 
 %
 $$(F_1,F_2)=\eta^!_{pE\wt{U}}(\phi(\Gamma,T,P,s0)\circ Jp)\in D_{pE\wt{U}}(X,\wt{U})$$
-%###
+%
 By \cite[Problem 3.8(1)]{fromunivwithPi} we have 
 %
 $$(F_1,F_2\circ p)=D_{pE\wt{U}}(X,p)(F_1,F_2)=\eta^!_{pE\wt{U}}(\phi(\Gamma,T,P,s0)\circ Jp\circ I_{pE\wt{U}}(p))=$$
@@ -1502,7 +1628,7 @@ is given by the pair of morphisms $(\eta_{pE\wt{U}}(u_{1,\Gamma}(T), u_{1,IdxT(T
 
 \begin{lemma}
 \llabel{2015.04.04.l4}
-Let $Eq$ be a J0-structure on a universe $p$, $f:\Gamma\sr \Gamma'$ a morphism in $CC({\mathcal C},p)$ and $F:int(\Gamma)\sr U$ a morphism in $\mathcal C$.  Let $q3:int(IdxT(\Gamma',f\circ F))\sr int(IdxT(\Gamma,F))$ be the morphism $q(f,IdxT(\Gamma,F),3)$ defined by $\Gamma$ since $ft^3(IdxT(\Gamma,F))=\Gamma$. Then $q3=Q(f,F)_{E}$.
+Let $Eq$ be a J0-structure on a universe $p$, $f:\Gamma'\sr \Gamma$ a morphism in $CC({\mathcal C},p)$ and $F:int(\Gamma)\sr U$ a morphism in $\mathcal C$.  Let $q3:int(IdxT(\Gamma',f\circ F))\sr int(IdxT(\Gamma,F))$ be the morphism $q(f,IdxT(\Gamma,F),3)$ defined by $\Gamma$ since $ft^3(IdxT(\Gamma,F))=\Gamma$. Then $q3=Q(f,F)_{E}$.
 \end{lemma}
 %
 \begin{myproof}
@@ -1514,19 +1640,32 @@ $$Q(f,F)_{E}\circ p^{E}_{X,F}=p^{E}_{X',f\circ F}\circ f$$
 We will be building the proof using the following diagram
 %
 $$
-\begin{CD}
-(X',f\circ F)_{E} @>Q(Q(Q(f,F),Q(F)\circ p),Q(Q(F),p)\circ Eq)>> (X;F)_{E} @>Q(Q(Q(F),p),Eq)>> E\wt{U} @>Q(Eq)>> \wt{U}\\
-@Vp_3VV @VVV @VVp_1V @VVp V\\
-\BB @>Q(Q(f,F),Q(F)\circ p)>> \BB @>Q(Q(F),p)>> \BB @>Eq>>U\\
-@| @| @|\\
-\BB @>Q(Q(f,F),Q(F)\circ p)>> \BB @>Q(Q(F),p)>> \BB @>Q(p)>> \wt{U}\\
-@VVV @VVV @VVp_2V @VVp V\\
-\BB @>Q(f,F)>> \BB @>Q(F)>> \BB @>p>> U\\
-@| @| @|\\
-\BB @>Q(f,F)>> \BB @>Q(F)>> \wt{U}\\
-@VVV @VVV @VVp V\\
-X' @>f>> X @>F>> U
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 (X',f\circ F)_{E}  \ar[rrr]^-{Q(Q(Q(f,F),Q(F)\circ p),Q(Q(F),p)\circ Eq)} \ar[d]_{p_3} &&& 
+                 (X;F)_{E} \ar[rr]^-{Q(Q(Q(F),p),Eq)} \ar[d] &&
+		E\wt{U} \ar[r]^-{Q(Eq)} \ar[d]^{p_1} &
+		\wt{U} \ar[d]^{p}\\
+		\BB \ar[rrr]^-{Q(Q(f,F),Q(F)\circ p)} \ar[d]^{=} &&&
+		\BB \ar[rr]^-{Q(Q(F),p)} \ar[d]^{=} &&
+		\BB \ar[r]^-{Eq} \ar[d]^{=}&
+		U\\
+		\BB \ar[rrr]^-{Q(Q(f,F),Q(F)\circ p)} \ar[d] &&&
+		\BB \ar[rr]^-{Q(Q(F),p)} \ar[d] &&
+		\BB \ar[r]^-{Q(p)} \ar[d]^{p_2}&
+		\wt{U} \ar[d]^{p}\\
+		\BB \ar[rrr]^-{Q(f,F)} \ar[d]^{=}&&&
+		\BB \ar[rr]^-{Q(F)} \ar[d]^{=} &&
+		\wt{U} \ar[r]^-{p} \ar[d]^{=} &
+		U \\
+		\BB \ar[rrr]^-{Q(f,F)} \ar[d] &&&
+		\BB \ar[rr]^-{Q(F)} \ar[d] &&
+		\BB \ar[d]^{p}\\
+		X' \ar[rrr]^-{f} &&&
+		X \ar[rr]^-{F} &&
+		U	
+                }
+\end{xy}
 $$
 %
 By construction that is seen on this diagram we have:
@@ -1644,7 +1783,7 @@ and using again that both $\eta$ and $\wt{u}_1$ are injective we conclude that $
 Let $(Eq,\Omega,Jp)$ be a J-structure on a universe $p$. To construct a J-structure on $CC({\mathcal C},p)$ relative to $IdT_{Eq}$ and $refl_{\Omega}$.
 \end{problem} 
 %
-\begin{construction}\rm
+\begin{construction}{}\rm
 \llabel{2015.04.04.constr2}
 One has to combine Construction \ref{2015.04.04.constr1} with Lemmas \ref{2015.04.04.l1} and \ref{2015.04.04.l5}.
 \end{construction}
@@ -1660,24 +1799,30 @@ One has to combine Construction \ref{2015.04.04.constr1} with Lemmas \ref{2015.0
 
 
 \subsection{A theorem about functors between categories with two universes}
-\label{twouniv}
+\llabel{twouniv}
 %
 Before we can formulate the definition of what it means for a universe category functor to be compatible with J-structures we need some general results about functors between categories with two universes that we will later apply to the universes $p:\wt{U}\sr U$ and $pE\wt{U}:E\wt{U}\sr U$ in a locally cartesian closed category $\cal C$. 
 
 Given two universes $(p,p_{X,F},Q(F))$ and $(p',p_{X,F}',Q(F)')$ where $p:\wt{U}\sr U$ and $p':\wt{U}'\sr U$ and the canonical squares are of the form
 %
 $$
-\begin{CD}
-(X;F) @>Q(F)>> \wt{U}\\
-@Vp_{X,F} VV @VVp V\\
-X @>F>> U
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 (X;F) \ar[r]^-{Q(F)} \ar[d]_{p_{X,F}} & 
+                 \wt{U} \ar[d]^{p}\\
+		X \ar[r]^{F} &
+		U
+                }
+\end{xy}
 \spc
-\begin{CD}
-(X;F)' @>Q(F)'>> \wt{U}'\\
-@Vp_{X,F}' VV @VVp' V\\
-X @>F>> U
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 (X;F)' \ar[r]^-{Q(F)'} \ar[d]_{p'_{X,F}} & 
+                 \wt{U}' \ar[d]^{p'}\\
+		X \ar[r]^{F} &
+		U
+                }
+\end{xy}
 $$
 %
 and $f:\wt{U}'\sr \wt{U}$ over $U$, we let $F^*(f)$ denote the unique morphism $(X;F)'\sr (X;F)$ such that 
@@ -1703,11 +1848,14 @@ We let $Q'(-)$ and $Q'(-,-)$ denote the morphisms $Q(-)$ and $Q(-,-)$ relative t
 Let $X'\stackrel{g}{\sr}X\stackrel{F}{\sr}U$ be two morphisms. Then the square
 %
 $$
-\begin{CD}
-(X';g\circ F)' @>Q'(g,F)>> (X;F)'\\
-@V(g\circ F)^*(f)VV @VVF^*(f) V\\
-(X';g\circ F) @>Q(g,F)>> (X;F)
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 (X';g\circ F)' \ar[r]^-{Q'(g,F)} \ar[d]_{(g\circ F)^*(f)} & 
+                 (X;F)' \ar[d]^{F^*(f)}\\
+		(X';g\circ F) \ar[r]^{Q(g,F)} &
+		(X';g\circ F)
+                }
+\end{xy}
 $$
 %
 commutes.
@@ -1750,35 +1898,42 @@ and this data is such that:
 \item the square
 %
 $$
-\begin{CD}
-\Phi(\wt{U}_1) @>\wt{\phi}_1>> \wt{U}_1'\\
-@V\Phi(g) VV @VV g'V\\
-\Phi(\wt{U}_2) @>\wt{\phi}_2>> \wt{U}_2'
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 \Phi(\wt{U}_1) \ar[r]^-{\wt{\phi}_1} \ar[d]_{\Phi(g)} & 
+                 \wt{U}_1' \ar[d]^{g'}\\
+		\Phi(\wt{U}_2)  \ar[r]^{\wt{\phi}_2} &
+		\wt{U}_2'
+                }
+\end{xy}
 $$ 
 %
 commutes,
 %
 \item the triples ${\bf\Phi}_i:=(\Phi,\phi,\wt{\phi}_i)$, $i=1,2$ are universe category functors i.e. 
-$\Phi$ takes canonical squares of $p_1$ and $p_2$ to pull-back squares and the squares
+$\Phi$ takes canonical squares of $p_1$ and $p_2$ to pullback squares and the squares
 %
 $$
-\begin{CD}
-\Phi(\wt{U}_1) @>\wt{\phi}_1>> \wt{U}_1'\\
-@V\Phi(p_1) VV @VVp_1' V\\
-\Phi(U) @>>\phi> U
-\end{CD}
-%
+\begin{xy}
+          \xymatrix@C=4pc{
+                 \Phi(\wt{U}_1) \ar[r]^-{\wt{\phi}_1} \ar[d]_{\Phi(p_1)} & 
+                 \wt{U}_1' \ar[d]^{p_1'}\\
+		\Phi(U)   \ar[r]^{\phi} &
+		U
+                }
+\end{xy}
 \spc\spc\spc
+\begin{xy}
+          \xymatrix@C=4pc{
+                 \Phi(\wt{U}_2) \ar[r]^-{\wt{\phi}_2} \ar[d]_{\Phi(p_2)} & 
+                 \wt{U}_2' \ar[d]^{p_2'}\\
+		\Phi(U)   \ar[r]^{\phi} &
+		U
+                }
+\end{xy}
+$$ 
 %
-\begin{CD}
-\Phi(\wt{U}_2) @>\wt{\phi}_2>> \wt{U}_2'\\
-@V\Phi(p_2) VV @VVp_2' V\\
-\Phi(U) @>>\phi> U
-\end{CD}
-$$
-%
-are pull-back squares. 
+are pullback squares. 
 \end{enumerate}
 %
 Let us denote the exchange morphisms
@@ -1792,11 +1947,14 @@ by $\chi_i(V)$. The maps ${\bf\Phi}_i^2$ in the following lemma are constructed 
 Under the previous assumptions and notations the squares
 %
 $$
-\begin{CD}
-D_{p_2}(X,V) @>{\bf\Phi}_2^2>> D_{p_2}(\Phi(X),\Phi(V))\\
-@V{D^g(X,V)} VV @VV {D^{g'}(\Phi(X),\Phi(V))}V\\
-D_{p_1}(X,V) @>{\bf\Phi}_1^2>> D_{p_1'}(\Phi(X),\Phi(V))
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 D_{p_2}(X,V)  \ar[r]^-{{\bf\Phi}_2^2} \ar[d]_{D^g(X,V)} & 
+                 D_{p_2}(\Phi(X),\Phi(V)) \ar[d]^{D^{g'}(\Phi(X),\Phi(V))}\\
+		D_{p_1}(X,V)   \ar[r]^-{{\bf\Phi}_1^2} &
+		D_{p_1'}(\Phi(X),\Phi(V))
+                }
+\end{xy}
 $$
 %
 commute.
@@ -1821,7 +1979,7 @@ For which it is sufficient to check that
 %
 $$(\Phi(F_1)\circ \phi)^*(g')\circ \iota_2=\iota_1\circ \Phi(F_1^*(g))$$
 %
-The codomain of both morphisms is $\Phi((X;F_1)_{p_2})$ and since $\Phi$ takes canonical squares based on $p_2$ to pull-back squares it is sufficient to check that 
+The codomain of both morphisms is $\Phi((X;F_1)_{p_2})$ and since $\Phi$ takes canonical squares based on $p_2$ to pullback squares it is sufficient to check that 
 %
 $$(\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ \Phi(Q_2(F_1))\circ\wt{\phi}_2=\iota_1\circ \Phi(F_1^*(g))\circ \Phi(Q_2(F_1))\circ\wt{\phi}_2$$
 %
@@ -1854,11 +2012,14 @@ This finishes the proof of the lemma.
 Under the previous assumptions and notations the squares
 %
 $$
-\begin{CD}
-\Phi(I_{p_2}(V)) @>\chi_2(V)>> I_{p_2'}(\Phi(V))\\
-@V{\Phi(I^g(V))} VV @VV {I^{g'}(\Phi(V))} V\\
-\Phi(I_{p_1}(V)) @>\chi_1(V)>> I_{p_1'}(\Phi(V))
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 \Phi(I_{p_2}(V)) \ar[r]^-{\chi_2(V)} \ar[d]_{\Phi(I^g(V))} & 
+                 I_{p_2'}(\Phi(V)) \ar[d]^{I^{g'}(\Phi(V))}\\
+		\Phi(I_{p_1}(V))    \ar[r]^{\chi_1(V)} &
+		I_{p_1'}(\Phi(V))
+                }
+\end{xy}
 $$
 %
 commute.
@@ -1924,21 +2085,27 @@ where $\xi$ are the morphisms introduced in \cite{fromunivwithPi} and $\wt{\zeta
 Under the previous assumptions and notations the morphisms $\zeta_1,\zeta_2,\wt{\zeta}_1,\wt{\zeta}_2$ form a morphism from the square
 %
 $$
-\begin{CD}
-\Phi(I_{p_2}(\wt{U}_1)) @>\Phi(I^g(\wt{U}_1))>> \Phi(I_{p_1}(\wt{U}_1))\\
-@V\Phi(I_{p_2}(p_2)) VV @VV \Phi(I_{p_1}(p_2)) V\\
-\Phi(I_{p_2}(U)) @>\Phi(I^g(U))>> \Phi(I_{p_1}(U))
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 \Phi(I_{p_2}(\wt{U}_1))  \ar[r]^-{\Phi(I^g(\wt{U}_1))} \ar[d]_{\Phi(I_{p_2}(p_2))} & 
+                 \Phi(I_{p_1}(\wt{U}_1)) \ar[d]^{\Phi(I_{p_1}(p_2))}\\
+		\Phi(I_{p_2}(U))   \ar[r]^{\Phi(I^g(U))} &
+		\Phi(I_{p_1}(U))
+                }
+\end{xy}
 $$
 %
 to the square
 %
 $$
-\begin{CD}
-I_{p_2'}(\wt{U}_1') @>I^{g'}(\wt{U}_1')>> I_{p_1'}(\wt{U}_1')\\
-@VI_{p_2'}(p_2') VV @VV I_{p_1'}(p_2') V\\
-I_{p_2'}(U') @>I^{g'}(U')>> I_{p_1'}(U')
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc{
+                 I_{p_2'}(\wt{U}_1')   \ar[r]^-{I^{g'}(\wt{U}_1')} \ar[d]_{I_{p_2'}(p_2')} & 
+                 I_{p_1'}(\wt{U}_1') \ar[d]^{I_{p_1'}(p_2')}\\
+		I_{p_2'}(U')   \ar[r]^{I^{g'}(U')} &
+		I_{p_1'}(U')
+                }
+\end{xy}
 $$
 %
 \end{theorem}
@@ -1947,35 +2114,55 @@ $$
 We need to prove commutativity of the outer squares of the following four diagrams:
 %
 $$
-\begin{CD}
-\Phi(I_{p_2}(\wt{U}_1)) @>\chi_2(\wt{U}_1)>> I_{p_2'}(\Phi(\wt{U}_1)) @>I_{p_2'}(\wt{\phi}_1)>> I_{p_2'}(\wt{U}_1')\\
-@V\Phi(I^g(\wt{U}_1))VV @VV I^{g'}(\Phi(\wt{U}_1)) V @VV I^{g'}(\wt{U}_1') V\\
-\Phi(I_{p_1}(\wt{U}_1)) @>\chi_1(\wt{U}_1)>> I_{p_1'}(\Phi(\wt{U}_1)) @>I_{p_1'}(\wt{\phi}_1)>> I_{p_1'}(\wt{U}_1')
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc@R=4pc{
+                 \Phi(I_{p_2}(\wt{U}_1))  \ar[r]^-{\chi_2(\wt{U}_1)} \ar[d]_-{I^{g'}(\Phi(\wt{U}_1))} & 
+                 I_{p_2'}(\Phi(\wt{U}_1)) \ar[r]^-{I_{p_2'}(\wt{\phi}_1)} \ar[d]^-{I^{g'}(\Phi(\wt{U}_1))} &
+		I_{p_2'}(\wt{U}_1') \ar[d]^-{ I^{g'}(\wt{U}_1')} \\
+		\Phi(I_{p_1}(\wt{U}_1))  \ar[r]^-{\chi_1(\wt{U}_1)} &
+		I_{p_1'}(\Phi(\wt{U}_1)) \ar[r]^-{I_{p_1'}(\wt{\phi}_1)} &
+		I_{p_1'}(\wt{U}_1')
+                }
+\end{xy}
 $$
 %
 $$
-\begin{CD}
-\Phi(I_{p_2}(U_1)) @>\chi_2(U_1)>> I_{p_2'}(\Phi(U_1)) @>I_{p_2'}(\wt{\phi}_1)>> I_{p_2'}(U_1')\\
-@V\Phi(I^g(U_1))VV @VV I^{g'}(\Phi(U_1)) V @VV I^{g'}(U_1') V\\
-\Phi(I_{p_1}(U_1)) @>\chi_1(U_1)>> I_{p_1'}(\Phi(U_1)) @>I_{p_1'}(\wt{\phi}_1)>> I_{p_1'}(U_1')
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc@R=4pc{
+                 \Phi(I_{p_2}(U_1)) \ar[r]^-{\chi_2(U_1)} \ar[d]_-{\Phi(I^g(U_1))} & 
+                 I_{p_2'}(\Phi(U_1)) \ar[r]^-{I_{p_2'}(\wt{\phi}_1)} \ar[d]^-{I^{g'}(\Phi(U_1))} &
+		I_{p_2'}(U_1') \ar[d]^-{I^{g'}(U_1')} \\
+		\Phi(I_{p_1}(U_1))  \ar[r]^-{\chi_1(U_1)} &
+		I_{p_1'}(\Phi(U_1)) \ar[r]^-{I_{p_1'}(\wt{\phi}_1)} &
+		I_{p_1'}(U_1')
+                }
+\end{xy}
 $$
 %
 $$
-\begin{CD}
-\Phi(I_{p_2}(\wt{U}_1)) @>\chi_2(\wt{U}_1)>> I_{p_2'}(\Phi(\wt{U}_1)) @>I_{p_2'}(\wt{\phi}_1)>> I_{p_2'}(\wt{U}_1')\\
-@V\Phi(I_{p_2}(p_1)) VV @VV I_{p_2'}(\Phi(p_1)) V @VVI_{p_2'}(p_1') V\\
-\Phi(I_{p_2}(U_1)) @>\chi_2(U_1)>> I_{p_2'}(\Phi(U_1)) @>I_{p_2'}(\wt{\phi}_1)>> I_{p_2'}(U_1')
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc@R=4pc{
+                 \Phi(I_{p_2}(\wt{U}_1))  \ar[r]^-{\chi_2(\wt{U}_1)} \ar[d]_-{\Phi(I_{p_2}(p_1))} & 
+                 I_{p_2'}(\Phi(\wt{U}_1)) \ar[r]^-{I_{p_2'}(\wt{\phi}_1)} \ar[d]^-{I_{p_2'}(\Phi(p_1))} &
+		I_{p_2'}(\wt{U}_1') \ar[d]^-{I_{p_2'}(p_1')} \\
+		\Phi(I_{p_2}(U_1))  \ar[r]^-{\chi_2(U_1)} &
+		I_{p_2'}(\Phi(U_1)) \ar[r]^-{I_{p_2'}(\wt{\phi}_1)} &
+		I_{p_2'}(U_1')
+                }
+\end{xy}
 $$
 %
 $$
-\begin{CD}
-\Phi(I_{p_1}(\wt{U}_1)) @>\chi_1(\wt{U}_1)>> I_{p_1'}(\Phi(\wt{U}_1)) @>I_{p_1'}(\wt{\phi}_1)>> I_{p_2'}(\wt{U}_1')\\
-@V\Phi(I_{p_1}(p_1)) VV @VV I_{p_1'}(\Phi(p_1)) V @VVI_{p_1'}(p_1') V\\
-\Phi(I_{p_1}(U_1)) @>\chi_1(U_1)>> I_{p_1'}(\Phi(U_1)) @>I_{p_1'}(\wt{\phi}_1)>> I_{p_1'}(U_1')
-\end{CD}
+\begin{xy}
+          \xymatrix@C=4pc@R=4pc{
+                 \Phi(I_{p_1}(\wt{U}_1))  \ar[r]^-{\chi_1(\wt{U}_1)} \ar[d]_-{\Phi(I_{p_1}(p_1))} & 
+                 I_{p_1'}(\Phi(\wt{U}_1)) \ar[r]^-{I_{p_1'}(\wt{\phi}_1)} \ar[d]^-{I_{p_1'}(\Phi(p_1))} &
+		I_{p_2'}(\wt{U}_1') \ar[d]^-{I_{p_1'}(p_1')} \\
+		\Phi(I_{p_1}(U_1))  \ar[r]^-{\chi_1(U_1)} &
+		I_{p_1'}(\Phi(U_1)) \ar[r]^-{I_{p_1'}(\wt{\phi}_1)} &
+		I_{p_1'}(U_1')
+                }
+\end{xy}
 $$
 %
 The left squares in the first and the second diagram are commutative by Lemma \ref{2015.04.06.l7}.
@@ -2023,17 +2210,20 @@ Theorem is proved.
 \subsection{Universe category functors compatible with J-structures}
 
 
-Let us define now conditions on functors of universe categories that reflect the idea of compatibility with the J0- J1- and J2-structures on the universes. Recall that for universe categories $({\mathcal C},p,pt)$, $({\mathcal C}',p',pt')$ a functor of universe categories is a triple $(\Phi,\phi,\wt{\phi})$ where $\Phi:{\mathcal C}\sr {\mathcal C}'$ is a functor that takes the canonical squares to pull-back squares and $pt$ to a final object and $\phi:\Phi(U)\sr U'$, $\wt{\phi}:\Phi(\wt{U})\sr \wt{U}'$ are morphisms such that the square
+Let us define now conditions on functors of universe categories that reflect the idea of compatibility with the J0- J1- and J2-structures on the universes. Recall that for universe categories $({\mathcal C},p,pt)$, $({\mathcal C}',p',pt')$ a functor of universe categories is a triple $(\Phi,\phi,\wt{\phi})$ where $\Phi:{\mathcal C}\sr {\mathcal C}'$ is a functor that takes the canonical squares to pullback squares and $pt$ to a final object and $\phi:\Phi(U)\sr U'$, $\wt{\phi}:\Phi(\wt{U})\sr \wt{U}'$ are morphisms such that the square
 %
 \begin{eq}\llabel{2015.04.06.eq10}
-\begin{CD}
-\Phi(\wt{U}) @>\wt{\phi}>> \wt{U}'\\
-@V\Phi(p) VV @Vp' VV\\
-\Phi(U) @>\phi>> U
-\end{CD}
+\begin{xy}
+          \xymatrix@C=3pc{
+                 \Phi(\wt{U}) \ar[r]^-{\wt{\phi}} \ar[d]_{\Phi(p)} & 
+                 \wt{U}' \ar[d]^{p'}\\
+		\Phi(U)   \ar[r]^{\phi} &
+		U
+                }
+\end{xy}
 \end{eq}
 %
-is a pull-back square. For any functor of universe categories and $X\in{\mathcal C}$, $F:X\sr U$ the morphism
+is a pullback square. For any functor of universe categories and $X\in{\mathcal C}$, $F:X\sr U$ the morphism
 %
 $$\Phi(p_{X,F})*(\Phi(Q(F))\circ\wt{\phi}):\Phi((X;F))\sr (\Phi(X);\Phi(F)\circ\phi)$$
 %
@@ -2091,29 +2281,37 @@ The particular case of $\Delta$ follows from the fact that $\Delta=Id_{\wt{U}}*I
 \llabel{2015.04.06.l5}
 The square
 %
-$$
-\begin{CD}
-\Phi((\wt{U};p)) @>\Phi\wt{U}p>> (\wt{U}';p')\\
-@VV \Phi(p_{\wt{U},p}) V @VV p'_{\wt{U}',p'}V\\
-\Phi(\wt{U}) @>\wt{\phi}>> \wt{U}'
-\end{CD}
-$$
+\begin{eq}\llabel{2015.04.06.eq10}
+\begin{xy}
+          \xymatrix@C=3pc{
+                 \Phi((\wt{U};p)) \ar[r]^-{\Phi\wt{U}p} \ar[d]_{ \Phi(p_{\wt{U},p})} & 
+                 (\wt{U}';p') \ar[d]^{p'_{\wt{U}',p'}}\\
+		\Phi(\wt{U})   \ar[r]^{\wt{\phi}} &
+		\wt{U}'
+                }
+\end{xy}
+\end{eq}
 %
-is a pull-back square.
+is a pullback square.
 \end{lemma}
 %
 \begin{myproof}
 This square is equal to the composition of two squares
 %
 $$
-\begin{CD}
-\Phi((\wt{U};p)) @>\Phi_{\wt{U},p}>> (\Phi(\wt{U});\wt{\phi}\circ p') @>Q'(\wt{\phi},p')>> (\wt{U}';p')\\
-@V\Phi(p_{\wt{U},p}) VV @VV p_{\Phi(\wt{U}),\wt{\phi}\circ p'}V @VVp'_{\wt{U}',p'}V\\
-\Phi(\wt{U}) @= \Phi(\wt{U}) @>\wt{\phi}>> \wt{U}'
-\end{CD}
+\begin{xy}
+          \xymatrix@C=3pc{
+                 \Phi((\wt{U};p)) \ar[r]^-{\Phi_{\wt{U},p}}\ar[d]_{ \Phi(p_{\wt{U},p})} & 
+                 (\Phi(\wt{U});\wt{\phi}\circ p') \ar[r]^-{Q'(\wt{\phi},p')}\ar[d]_{p_{\Phi(\wt{U}),\wt{\phi}\circ p'}} & 
+                 (\wt{U}';p') \ar[d]^{p'_{\wt{U}',p'}}\\
+		\Phi(\wt{U})   \ar[r]^{=} &
+		\Phi(\wt{U})   \ar[r]^{\wt{\phi}} &
+		\wt{U}'
+                }
+\end{xy}
 $$
 %
-The right hand side square is a pull-back square (\ref{2015.04.06.l0.sq}). The left hand side square is a pull-back square as a commutative square whose sides are isomorphisms. We conclude that the composition of these two squares is a pull-back square.
+The right hand side square is a pullback square (\ref{2015.04.06.l0.sq}). The left hand side square is a pullback square as a commutative square whose sides are isomorphisms. We conclude that the composition of these two squares is a pullback square.
 \end{myproof}
 %
 \begin{definition}
@@ -2121,11 +2319,14 @@ The right hand side square is a pull-back square (\ref{2015.04.06.l0.sq}). The l
 Let $Eq$ be a J0-structure on $p$ and $Eq'$ a J0-structure on $p'$. A universe category functor $(\Phi,\phi,\wt{\phi})$ is said to be compatible with $Eq$ and $Eq'$ if the square
 %
 \begin{eq}\llabel{2015.04.06.eq6}
-\begin{CD}
-\Phi((\wt{U};p)) @>\Phi(Eq)>> \Phi(U)\\
-@V\Phi\wt{U}p VV @VV\phi V\\
-(\wt{U}';p') @>Eq'>> U'
-\end{CD}
+\begin{xy}
+          \xymatrix@C=3pc{
+                 \Phi((\wt{U};p)) \ar[r]^-{\Phi(Eq)} \ar[d]_{\Phi\wt{U}p} & 
+                 \Phi(U) \ar[d]^{\phi}\\
+		(\wt{U}';p')  \ar[r]^{Eq'} &
+		U'
+                }
+\end{xy}
 \end{eq}
 %
 commutes.
@@ -2142,14 +2343,17 @@ as $(\Phi(p_{(\wt{U};p),Eq})\circ \Phi\wt{U}p)*(\Phi(Q(Eq))\circ \wt{\phi})$.
 Let $Eq$, $Eq'$ be as above. Let $(\Phi,\phi,\wt{\phi})$ be a universe functor compatible with $Eq$, and $Eq'$. Then the square
 %
 $$
-\begin{CD}
-\Phi(E\wt{U}) @>\wt{\phi}_{E}>> E\wt{U}'\\
-@V\Phi(p_{(\wt{U};p),Eq}) VV @VV p_{(\wt{U}';p'),Eq'}V\\
-\Phi((\wt{U};p)) @>\Phi\wt{U}p>> (\wt{U}';p')
-\end{CD}
+\begin{xy}
+          \xymatrix@C=3pc{
+                 \Phi(E\wt{U}) \ar[r]^-{\wt{\phi}_{E}} \ar[d]_{\Phi(p_{(\wt{U};p),Eq})} & 
+                 E\wt{U}' \ar[d]^{p_{(\wt{U}';p'),Eq'}}\\
+		\Phi((\wt{U};p)) \ar[r]^{\Phi\wt{U}p} &
+		(\wt{U}';p')
+                }
+\end{xy}
 $$
 %
-is a pull-back square.
+is a pullback square.
 %
 \end{lemma} 
 %
@@ -2157,24 +2361,34 @@ is a pull-back square.
 Consider the diagram
 %
 \begin{eq}\llabel{2015.04.06.eq8}
-\begin{CD}
-\Phi(E\wt{U}) @>\wt{\phi}_{E}>> E\wt{U}' @>Q(Eq')>> \wt{U}'\\
-@V\Phi(p_{(\wt{U};p),Eq}) VV @VV p_{(\wt{U}';p'),Eq'}V @VVp'V\\
-\Phi((\wt{U};p)) @>\Phi\wt{U}p>> (\wt{U}';p') @>Eq'>> U'
-\end{CD}
+\begin{xy}
+          \xymatrix@C=3pc{
+                 \Phi(E\wt{U}) \ar[r]^-{\wt{\phi}_{E}}\ar[d]_{\Phi(p_{(\wt{U};p),Eq})} & 
+                 E\wt{U}' \ar[r]^-{Q(Eq')}\ar[d]_{p_{(\wt{U}';p'),Eq'}} & 
+                 \wt{U}' \ar[d]^{p'}\\
+		\Phi((\wt{U};p))  \ar[r]^{\Phi\wt{U}p} &
+		(\wt{U}';p')   \ar[r]^{Eq'} &
+		U'
+                }
+\end{xy}
 \end{eq}
 %
 The outer square of this diagram is equal to the outer square of the diagram
 %
 \begin{eq}\llabel{2015.04.06.eq7}
-\begin{CD}
-\Phi(E\wt{U}) @>\Phi(Q(Eq))>> \Phi(\wt{U}) @>\wt{\phi}>> \wt{U}'\\
-@V\Phi(p_{(\wt{U};p),Eq}) VV @VV \Phi(p)V @VVp'V\\
-\Phi((\wt{U};p)) @>\Phi(Eq)>> \Phi(U) @>\phi>> U'
-\end{CD}
+\begin{xy}
+          \xymatrix@C=3pc{
+                 \Phi(E\wt{U}) \ar[r]^-{\Phi(Q(Eq))}\ar[d]_{\Phi(p_{(\wt{U};p),Eq})} & 
+                 \Phi(\wt{U})  \ar[r]^-{\wt{\phi}}\ar[d]_{\Phi(p)} & 
+                 \wt{U}' \ar[d]^{p'}\\
+		\Phi((\wt{U};p))  \ar[r]^{\Phi(Eq)} &
+		 \Phi(U)    \ar[r]^{\phi} &
+		U'
+                }
+\end{xy}
 \end{eq}
 %
-where the equality of the lower horizontal arrows follows from the commutativity of the square (\ref{2015.04.06.eq6}). The left hand side square of this diagram is a pull-back square because $\Phi$ takes canonical squares to pull-back squares. The right hand side square is a pull-back square by definition of a functor of universe categories. Therefore the outer square is a pull-back square. The right hand side square of (\ref{2015.04.06.eq8}) is a canonical square and therefore a pull-back square. We conclude that the left hand square of (\ref{2015.04.06.eq8}) is a pull-back square.
+where the equality of the lower horizontal arrows follows from the commutativity of the square (\ref{2015.04.06.eq6}). The left hand side square of this diagram is a pullback square because $\Phi$ takes canonical squares to pullback squares. The right hand side square is a pullback square by definition of a functor of universe categories. Therefore the outer square is a pullback square. The right hand side square of (\ref{2015.04.06.eq8}) is a canonical square and therefore a pullback square. We conclude that the left hand square of (\ref{2015.04.06.eq8}) is a pullback square.
 \end{myproof}
 %
 \begin{lemma}
@@ -2182,14 +2396,17 @@ where the equality of the lower horizontal arrows follows from the commutativity
 Let $Eq$, $Eq'$ be as above. Let $(\Phi,\phi,\wt{\phi})$ be a functor of universe categories compatible with $Eq$, and $Eq'$. Then the square
 %
 \begin{eq}\llabel{2015.04.06.eq9}
-\begin{CD}
-\Phi(E\wt{U}) @>\wt{\phi}_{E}>> E\wt{U}'\\
-@V\Phi(pE\wt{U})VV @VV pE\wt{U}' V\\
-\Phi(U) @>\phi>> U'
-\end{CD}
+\begin{xy}
+          \xymatrix@C=3pc{
+                 \Phi(E\wt{U}) \ar[r]^-{\wt{\phi}_{E}} \ar[d]_{\Phi(pE\wt{U})} & 
+                 E\wt{U}' \ar[d]^{pE\wt{U}'}\\
+		\Phi(U) \ar[r]^-{\phi} &
+		U'
+                }
+\end{xy}
 \end{eq}
 %
-is a pull-back square.
+is a pullback square.
 %
 \end{lemma} 
 %
@@ -2205,11 +2422,14 @@ squares of Lemmas \ref{2015.04.06.l4} and \ref{2015.04.06.l5} with the square (\
 Let $Eq$, $Eq'$ be as above and let $\Omega$, $\Omega'$ be J1-structures over $Eq$ and $Eq'$ respectively. A universe category functor $(\Phi,\phi,\wt{\phi})$ is said to be compatible with $\Omega$ and $\Omega'$ if the square
 %
 $$
-\begin{CD}
-\Phi(\wt{U}) @>\Phi(\Omega)>> \Phi(\wt{U})\\
-@V\wt{\phi} VV @VV\wt{\phi} V\\
-\wt{U}' @>\Omega'>> \wt{U}'
-\end{CD}
+\begin{xy}
+          \xymatrix@C=3pc{
+                 \Phi(\wt{U}) \ar[r]^-{\Phi(\Omega)} \ar[d]_{\wt{\phi}} & 
+                  \Phi(\wt{U})\ar[d]^{\wt{\phi}}\\
+		\wt{U}'  \ar[r]^-{\Omega'} &
+		\wt{U}'
+                }
+\end{xy}
 $$
 %
 commutes.
@@ -2220,11 +2440,14 @@ commutes.
 Let $Eq,\Omega$ and $Eq',\Omega'$ be as above and let ${\bf\Phi}$ be a universe category functor compatible with $Eq,Eq'$ and $\Omega,\Omega'$. Then the square
 %
 $$
-\begin{CD}
-\Phi(\wt{U}) @>\wt{\phi}>> \wt{U}'\\
-@V\Phi(\omega)VV @VV\omega' V\\
-\Phi(E\wt{U}) @>\wt{\phi}_{E}>> E\wt{U}'
-\end{CD}
+\begin{xy}
+          \xymatrix@C=3pc{
+                 \Phi(\wt{U}) \ar[r]^-{\wt{\phi}} \ar[d]_{\Phi(\omega)} & 
+                 \wt{U}'\ar[d]^-{\omega'}\\
+		\Phi(E\wt{U}) \ar[r]^-{\wt{\phi}_{E}} &
+		E\wt{U}'
+                }
+\end{xy}
 $$
 %
 commutes.
@@ -2265,21 +2488,27 @@ be given by the compositions $\chi_{{\bf\Phi}_{E}}(U)\circ I_{pE\wt{U}'}(\phi)$ 
 Let ${\bf\Phi}$ be a functor of universe categories compatible with the J1-structures $(Eq,\Omega)$ and $(Eq',\Omega')$ on $p$ and $p'$ respectively. Then the morphisms $\xi_{\bf\Phi}, \wt{\xi}_{\bf\Phi}, \zeta_{\bf\Phi}, \wt{\zeta}_{\bf\Phi}$ form a morphism from the square
 %
 $$
-\begin{CD}
-\Phi(I_{pE\wt{U}}(\wt{U})) @>\Phi(I^{\omega}(\wt{U}))>> \Phi(I_p(\wt{U}))\\
-@V\Phi(I_{pE\wt{U}}(p))VV @VV\Phi(I_p(p))V\\
-\Phi(I_{pE\wt{U}}(U)) @>\Phi(I^{\omega}(U))>> \Phi(I_p(U))
-\end{CD}
+\begin{xy}
+          \xymatrix@C=3pc{
+                 \Phi(I_{pE\wt{U}}(\wt{U}))  \ar[r]^-{\Phi(I^{\omega}(\wt{U}))} \ar[d]_{\Phi(I_{pE\wt{U}}(p))} & 
+                 \Phi(I_p(\wt{U}))\ar[d]^-{\Phi(I_p(p))}\\
+		\Phi(I_{pE\wt{U}}(U)) \ar[r]^-{\Phi(I^{\omega}(U))} &
+		\Phi(I_p(U))
+                }
+\end{xy}
 $$
 %
 to the square
 %
 $$
-\begin{CD}
-I_{pE\wt{U}'}(\wt{U}') @>I^{\omega'}(\wt{U}')>> I_{p'}(\wt{U}')\\
-@VI_{pE\wt{U}'}(p')VV @VVI_{p'}(p')V\\
-I_{pE\wt{U}'}(U') @>I^{\omega}(U')>> I_{p'}(U')
-\end{CD}
+\begin{xy}
+          \xymatrix@C=3pc{
+                 I_{pE\wt{U}'}(\wt{U}')  \ar[r]^-{I^{\omega'}(\wt{U}')} \ar[d]_-{I_{pE\wt{U}'}(p')} & 
+                  I_{p'}(\wt{U}')\ar[d]^-{I_{p'}(p')}\\
+		I_{pE\wt{U}'}(U') \ar[r]^-{I^{\omega}(U')} &
+		I_{p'}(U')
+                }
+\end{xy}
 $$
 %
 \end{theorem}
@@ -2296,6 +2525,16 @@ where the second arrow is defined by $\xi_{\bf\Phi}, \wt{\xi}_{\bf\Phi}$ and  $\
 Let $Eq$, $Eq'$, $\Omega$ and $\Omega'$ be as above. Let $Jp$ and $Jp'$ be J2-structures over $(Eq,\Omega)$ and $(Eq',\Omega')$ respectively.  A universe category functor $(\Phi,\phi,\wt{\phi})$ is said to be compatible with $Jp$ and $Jp'$ if it is compatible with $Eq$, $Eq'$ and $\Omega$, $\Omega'$ in the sense of Definitions \ref{2015.04.06.def4} and \ref{2015.04.06.def5} respectively and 
 the square
 %
+$$
+\begin{xy}
+          \xymatrix@C=3pc{
+                 I_{pE\wt{U}'}(\wt{U}')  \ar[r]^-{I^{\omega'}(\wt{U}')} \ar[d]_-{I_{pE\wt{U}'}(p')} & 
+                  I_{p'}(\wt{U}')\ar[d]^-{I_{p'}(p')}\\
+		I_{pE\wt{U}'}(U') \ar[r]^-{I^{\omega}(U')} &
+		I_{p'}(U')
+                }
+\end{xy}
+$$
 $$
 \begin{CD}
 \Phi((I_{pE\wt{U}}(U), I^{\omega}(U))\times_{I_p(U)} (I_p(\wt{U}), I_p(p))) @>R_{\bf\Phi}>> (I_{pE\wt{U}'}(U'),I^{\omega'}(U'))\times_{I_{p'}(U')}(I_{p'}(\wt{U}'),I_{p'}(p'))\\
@@ -2411,7 +2650,7 @@ where the right hand side of the equation makes sense by Lemma \ref{2015.04.06.l
 %
 \label{2015.04.12.sec1}
 %
-Let us first remind that by \cite[Construction 4.7]{Cfromauniverse} any universe category functor ${\bf \Phi}=(\Phi,\phi,\wt{\phi})$ defines a homomorphism of C-systems
+Let us first remind that by \cite[Construction 3.3]{Cfromauniverse} any universe category functor ${\bf \Phi}=(\Phi,\phi,\wt{\phi})$ defines a homomorphism of C-systems
 %
 $$H:CC({\mathcal C},p)\sr CC({\mathcal C}',p')$$
 %
@@ -2701,7 +2940,7 @@ To prove (\ref{2015.05.10.eq2ab}) let us rewrite the left hand side first
 %
 $$\psi_{IdxT(T)}\circ \Phi(Q(F)_E)\circ \Phi(p_{(\wt{U};p),Eq})\circ \Phi(Q(p))\circ \wt{\phi}=$$$$\psi_{IdxT(T)}\circ \Phi(p_{IdxT(T)}\circ Q(Q(F),p))\circ \Phi(Q(p))\circ\wt{\phi}=$$$$p_{H(IdxT(T))}\circ \psi_{ft(IdxT(T))}\circ \Phi(Q(Q(F)\circ p))\circ \wt{\phi}=$$$$p_{H(IdxT(T))}\circ \psi_{(\Gamma,F,Q(F)\circ p)}\circ \Phi(Q(Q(F)\circ p))\circ \wt{\phi}=p_{H(IdxT(T))}\circ Q(u_1(H(ft(IdxT(T)))))$$
 %
-Where the first equality holds in view of the upper square of Construction {2015.05.08.constr1}, the second one is one of the defining equalities of $\phi$ and the third one is from \cite[Lemma 3.2]{fromunivwithPi}. 
+Where the first equality holds in view of the upper square of Construction \ref{2015.05.08.constr1}, the second one is one of the defining equalities of $\phi$ and the third one is from \cite[Lemma 3.2]{fromunivwithPi}. 
 
 Let $F'=u_1(H(T))$. Rewriting the right hand side we get
 %
@@ -2709,7 +2948,7 @@ $$Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \circ p_{(\wt{U}';p'),Eq'}\c
 $$p_{IdxT'(H(T)}\circ Q(Q(F'),p')\circ Q(p')=p_{IdxT'(H(T)}\circ Q(Q(F')\circ p')=$$
 $$p_{IdxT'(H(T)}\circ Q(u_1(ft(IdxT(H(T)))))$$
 %
-Where the second equality is from the upper square of Construction {2015.05.08.constr1} in $\mathcal C'$, the third equality is from \cite[Lemma 3.2]{fromunivwithPi}, and the fourth from the middle square of Construction {2015.05.08.constr1} in $\mathcal C'$. 
+Where the second equality is from the upper square of Construction \ref{2015.05.08.constr1} in $\mathcal C'$, the third equality is from \cite[Lemma 3.2]{fromunivwithPi}, and the fourth from the middle square of Construction \ref{2015.05.08.constr1} in $\mathcal C'$. 
 
 Lemma \ref{2015.05.06.l3} is proved. 
 \end{myproof}
