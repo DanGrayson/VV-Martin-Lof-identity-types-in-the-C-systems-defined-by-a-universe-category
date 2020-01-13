@@ -5,3 +5,6 @@ github commits correspond to the three versions of the file, and subsequent
 commits correspond to attempts by Grayson to take the referee's comments into
 account.  The "make" target "diff" in the Makefile will show the differences
 with the appropriate one of Voevodsky's original files.
+
+In the commit messages, we use the verb "address" to indicate that we address a
+problem identified by the referee.
