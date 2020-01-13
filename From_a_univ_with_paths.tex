@@ -24,111 +24,31 @@
 \newenvironment{eq}{\begin{equation}}{\end{equation}}
 %
 \newenvironment{myproof}{{\bf Proof}:}{$\blacksquare$ \vskip 5mm }
-\newenvironment{rem}{{\bf Remark}:}{\vskip 5mm }
-\newenvironment{remarks}{{\bf Remarks}:\begin{enumerate}}{\end{enumerate}}
-\newenvironment{examples}{{\bf Examples}:\begin{enumerate}}{\end{enumerate}}  
 %
 \newtheorem{proposition}{Proposition}[subsection]
 \newtheorem{lemma}[proposition]{Lemma}
 \newtheorem{definition}[proposition]{Definition}
 \newtheorem{theorem}[proposition]{Theorem}
 \newtheorem{cor}[proposition]{Corollary}
-\newtheorem{conjecture}{Conjecture}
-\newtheorem{pretheorem}[proposition]{Pretheorem}
-\newtheorem{hypothesis}[proposition]{Hypothesis}
-\newtheorem{example}[proposition]{Example}
 \newtheorem{remark}[proposition]{Remark}
-\newtheorem{ex}[proposition]{Exercise}
 \newtheorem{cond}[proposition]{Conditions}
-\newtheorem{cons}[proposition]{Construction}
 %
 \newtheorem{problem}[proposition]{Problem}
 %
 \newtheorem{construction0}[proposition]{Construction}
 %
 \newenvironment{construction}[1]{\begin{construction0}(for Problem \ref{#1})}{$\blacksquare$ \end{construction0}}
-
-%
-%
-%\newcommand{\C}[4]{\left[\begin{array}{rcl}&#1\\#3&\dw\dw&#4\\&#2\end{array}\right]}
-%\newcommand{\llabel}[1]{\label{#1}[{\bf #1}]}
 \newcommand{\llabel}[1]{\label{#1}}
 \newcommand{\comment}[1]{}
 \newcommand{\sr}{\rightarrow}
 \newcommand{\lr}{\longrightarrow}
-\newcommand{\xr}{\xrightarrow}
-\newcommand{\dw}{\downarrow}
-\newcommand{\bdl}{\bar{\Delta}}
-\newcommand{\zz}{{\bf Z\rm}}
-\newcommand{\zq}{{\bf Z}_{qfh}}
-\newcommand{\nn}{{\bf N\rm}}
-%\newcommand{\qq}{{\bf Q\rm}}
-\newcommand{\nq}{{\bf N}_{qfh}}
-\newcommand{\oo}{\otimes}
+\newcommand{\nn}{{\mathbb N\rm}}
 \newcommand{\uu}{\underline}
-\newcommand{\ih}{\uu{Hom}}
-\newcommand{\af}{{\bf A}^1}
 \newcommand{\wt}{\widetilde}
-\newcommand{\gm}{{\bf G}_m}
-\newcommand{\dsr}{\stackrel{\sr}{\scriptstyle\sr}}
-%\newcommand{\PP}{$P_{\infty}$}
-\newcommand{\tp}{\wt{D}}
-\newcommand{\HH}{$H_{\infty}$}
-\newcommand{\ii}{\stackrel{\scriptstyle\sim}{\sr}}
 \newcommand{\BB}{{\bullet}}
-\newcommand{\D}{\Delta}
-\newcommand{\colim}{{\rm co}\hspace{-1mm}\lim}
-\newcommand{\cf}{{\it cf} }
-\newcommand{\msf}{\mathsf }
-\newcommand{\mcal}{\mathcal }
-\newcommand{\ep}{\epsilon}
-\newcommand{\tl}{\widetilde}
-\newcommand{\ub}{\mbox{\rotatebox{90}{$\in$}}}
-\newcommand{\ssp}{\,\,\,\,\,\,\,\,}
-\newcommand{\red}{\twoheadrightarrow}
-\newcommand{\eqg}{\stackrel{\Gamma}{\approx}}
-\newcommand{\alphaeq}{\stackrel{\alpha}{\sim}}
-\newcommand{\rtr}{\triangleright}
 \newcommand{\dd}{\diamond}
-%
-\newcommand{\piece}{\vskip 3mm\noindent\refstepcounter{proposition}{\bf
-\theproposition}\hspace{2mm}}
-\newcommand{\subpiece}{\vskip 3mm\noindent\refstepcounter{equation}{\bf\theequation}
-\hspace{2mm}}{\vskip
-3mm}
-
 \newcommand{\spc}{{\,\,\,\,\,\,\,}}
-\newcommand{\impl}{{\Rightarrow}}
-
-\newcommand{\B}{{\bf B}}
-\newcommand{\FF}{{\bf F}}
-\newcommand{\TT}{{\bf T}}
-\renewcommand{\SS}{{\bf S}}
-\newcommand{\BD}{{\bf BD}}
-
-\newcommand{\JJ}{{\mathcal J}}
-
-\newcommand{\stn}{\mathsf{stn}}
-
-\newcommand{\lng}{\ell}
-\newcommand{\ft}{{\mathsf{ft}}}
-\newcommand{\pt}{{\mathsf{pt}}}
-\newcommand{\pp}{{\mathsf{p}}}
-\newcommand{\qq}{{\mathsf{q}}}
-\newcommand{\sss}{{\mathsf{s}}}
-
-\newcommand{\CS}{{\bf CSys}}
-\newcommand{\LW}{{\bf LW}}
-
-\newcommand{\LC}{LtoC}
-\newcommand{\CL}{CtoL}
-
-\newcommand{\LCF}{{\mathsf \LC}}
-\newcommand{\CLF}{{\mathsf \CL}}
-
 \newcommand{\CC}{{\mathcal C}}
-
-
 \newcommand{\toCC}{CC} % for the construction CC(R,LM) of a C-system from a left module over a monad
 \newcommand{\aCC}{{\mathbb C}}  % for a variable denoting a C-system
 
