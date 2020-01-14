@@ -44,6 +44,7 @@
 \newcommand{\lr}{\longrightarrow}
 \newcommand{\nn}{{\mathbb N\rm}}
 \newcommand{\uu}{\underline}
+\newcommand{\iHom}{\uu{Hom}}
 \newcommand{\wt}{\widetilde}
 \newcommand{\BB}{{\bullet}}
 \newcommand{\dd}{\diamond}
@@ -599,7 +600,7 @@ is a pullback square.
 Following \cite{fromunivwithPi} we define for any universe $p:\wt{\U}\sr \U$ and
 any $V\in {\mathcal C}$ a functor
 %
-$$D_p(-,V):X\mapsto \amalg_{F:X\sr \U}Hom((X;F), V)$$
+$$D_p(-,V):X\mapsto \amalg_{F:X\sr \U}\iHom((X;F), V)$$
 %
 whose action on morphisms is given by
 %
@@ -608,7 +609,7 @@ $$D_p(f,V):(F,a)\mapsto (f\circ F, Q(f,F)\circ a)$$
 When $\mathcal C$ is a locally cartesian closed category any morphism
 $p:\wt{\U}\sr \U$ defines a functor
 %
-$$I_p:V\mapsto \uu{Hom}((\wt{\U},p),(\U\times V,pr_1))$$
+$$I_p:V\mapsto \iHom((\wt{\U},p),(\U\times V,pr_1))$$
 %
 and we have constructed in \cite[Construction 3.9]{fromunivwithPi} a family of
 bijections
@@ -625,7 +626,7 @@ get a functoriality structure on $I_p$
 %
 $$(f:V\sr V')\mapsto (I_p(f):I_p(V)\sr I_p(V'))$$
 %
-Similarly, using the functoriality of $\uu{Hom}$ in the second argument (see
+Similarly, using the functoriality of $\iHom$ in the second argument (see
 e.g. the appendix in \cite{fromunivwithPi}) we obtain, for any $p:\wt{\U}\sr \U$,
 $p':\wt{\U}'\sr \U$ and $h:\wt{\U}'\sr \wt{\U}$ over $\U$ and $V$ a morphism
 %
@@ -1008,8 +1009,8 @@ I^{\omega}(\wt{\U})=pr_2$. This is straightforward.
 
 Next we have
 %
-$$I_{pE\wt{\U}}(p)=\uu{Hom}_\U((E\wt{\U},pE\wt{\U}),Id_\U\times p)$$
-$$I^{\omega}(\wt{\U})=\uu{Hom}_\U(\omega,(\U\times\wt{\U},pr_2))$$
+$$I_{pE\wt{\U}}(p)=\iHom_\U((E\wt{\U},pE\wt{\U}),Id_\U\times p)$$
+$$I^{\omega}(\wt{\U})=\iHom_\U(\omega,(\U\times\wt{\U},pr_2))$$
 %
 Therefore by \cite[Lemma 8.7]{fromunivwithPi} one has
 %
@@ -1210,12 +1211,12 @@ lifting property for $TC$. Consider a commutative square of the form
 $$
 \begin{xy}
           \xymatrix@C=2pc{ Z \ar[r]^-{f_Z} \ar[d]_{i} &
-            \uu{Hom}_\U((\wt{\U},p),(\U\times V,pr_1)) \ar[d]^{pr}\\ W
+            \iHom_\U((\wt{\U},p),(\U\times V,pr_1)) \ar[d]^{pr}\\ W
             \ar[r]^-{f_W} & \U }
 \end{xy}
 $$
 %
-We need to construct a morphism $f:W\sr \uu{Hom}_\U((\wt{\U},p),(\U\times
+We need to construct a morphism $f:W\sr \iHom_\U((\wt{\U},p),(\U\times
 V,pr_1))$ that would make the two triangles commutative. The commutativity of
 the lower triangle means that $f$ is a morphism over $\U$ which is equivalent to
 the assumption that $f=adj^{-1}(g)$ for some $g:(W,f_W)\times_\U (\wt{\U},p)\sr
@@ -1257,9 +1258,9 @@ property for $TC$. Consider a commutative square of the form
 \llabel{2015.05.14.sq1}
 \begin{xy}
           \xymatrix@C=4pc{ Z \ar[r]^-{f_Z} \ar[d]_{i} &
-            \uu{Hom}_\U((\wt{\U},p),(\U\times V',pr_1))
-            \ar[d]^{\uu{Hom}_\U((\wt{\U},p), Id_\U\times r)}\\ W \ar[r]^-{f_W} &
-            \uu{Hom}_\U((\wt{\U},p), (\U\times V, pr_1)) }
+            \iHom_\U((\wt{\U},p),(\U\times V',pr_1))
+            \ar[d]^{\iHom_\U((\wt{\U},p), Id_\U\times r)}\\ W \ar[r]^-{f_W} &
+            \iHom_\U((\wt{\U},p), (\U\times V, pr_1)) }
 \end{xy}
 \end{eq}
 %
@@ -1281,7 +1282,7 @@ Consider the square
 %
 This square commutes. Indeed,
 %
-$$adj(f_Z)\circ (Id_\U\times r )=adj(f_Z\circ \uu{Hom}_\U((\wt{\U},p), Id_\U\times
+$$adj(f_Z)\circ (Id_\U\times r )=adj(f_Z\circ \iHom_\U((\wt{\U},p), Id_\U\times
 r))=$$
 $$adj(i\circ f_W)=(i\times Id_{\wt{\U}})\circ adj (f_W)$$
 %
@@ -1292,16 +1293,16 @@ third by \cite[Lemma 8.7(3)]{fromunivwithPi}. By Lemmas \ref{2015.05.14.l2} and
 there exists a morphism $g:(W,\p_W)\times_\U (\wt{\U},p) \sr \U\times V'$ that
 splits this square into two commutative triangles. Since the lower triangle
 commutes, $g$ is a morphism over $\U$ and in particular $g=adj(f)$ for some
-$f:W\sr \uu{Hom}_\U((\wt{\U},p),(\U\times V',pr_1))$. Let us show that $f$ splits
+$f:W\sr \iHom_\U((\wt{\U},p),(\U\times V',pr_1))$. Let us show that $f$ splits
 the square (\ref{2015.05.14.sq1}) into two commutative triangles i.e. that we
-have $i\circ f= f_Z$ and $f\circ \uu{Hom}_\U((\wt{\U},p), Id_\U\times r)=f_W$.
+have $i\circ f= f_Z$ and $f\circ \iHom_\U((\wt{\U},p), Id_\U\times r)=f_W$.
 
 The first equality is equivalent to $adj(i\circ f)=adj(f_Z)$ which is
 equivalent, by \cite[Lemma 8.7(3)]{fromunivwithPi} to $(i\times
 Id_{\wt{\U}})\circ g=adj(f_Z)$ which is the commutativity of the upper of the
 two triangles into which $g$ splits (\ref{2015.05.14.sq2}).
 
-The second equality is equivalent to $adj(f\circ \uu{Hom}_\U((\wt{\U},p),
+The second equality is equivalent to $adj(f\circ \iHom_\U((\wt{\U},p),
 Id_\U\times r))=adj(f_W)$, which is equivalent by \cite[Lemma
   8.7(1)]{fromunivwithPi} to $g\circ (Id_\U\times r)=adj(f_W)$ which is the
 commutativity of the lower of the two triangles into which $g$ splits
