@@ -57,6 +57,11 @@
 \newcommand{\p}{\mathsf{p}}
 \newcommand{\q}{\mathsf{q}}
 
+% notations for the structures making up a J-system
+\newcommand{\Id}{\mathsf{Id}}
+\newcommand{\refl}{\mathsf{refl}}
+\newcommand{\J}{\mathsf{J}}
+
 \comment{\pagestyle{fancy}
 
 \renewcommand{\subsectionmark}[1]{\markright{\thesubsection \quad #1}}
@@ -167,7 +172,7 @@ into the algebraic notation of C-systems or categories with families requires
 considerable mastery of various conventions connected to the use of dependently
 typed systems. An example of such a translation is the description of an object
 $IdxT(T)$ corresponding to the sequent-like expression
-$(\Gamma, x:T, y:T, e:IdT\, T\, x\, y\,;)$ in Construction \ref{2015.03.27.constr1}.
+$(\Gamma, x:T, y:T, e:\Id\, T\, x\, y\,;)$ in Construction \ref{2015.03.27.constr1}.
 
 Some of the difficulties that arise here can already be seen on the translation
 of the sequent-like expression $(\Gamma, x:T, y:T;)$. Here the same letter $T$
@@ -190,22 +195,22 @@ image of the first $T$ under the map
 $$LM(\{1,\dots,l\})\sr LM(\{1,\dots,l+1\})$$
 %
 defined by the inclusion $\{1,\dots,l\}\subset \{1,\dots,l+1\}$. In this case
-the map does not depend on $T$. We should distinguish between $IdT$ as a
+the map does not depend on $T$. We should distinguish between $\Id$ as a
 structure on the C-system and the corresponding syntactic construction (because
 they have different types). If we denote the syntactic ``identity types'' by
-$IdT^s\, T\, t_1\, t_2$ then for the sequence
+$\Id^s\, T\, t_1\, t_2$ then for the sequence
 %
-$$\Gamma, x:T, y:T, e:IdT^s\,T\,x\,y;$$
+$$\Gamma, x:T, y:T, e:\Id^s\,T\,x\,y;$$
 %
-to define an element of $Ob(\toCC(LM,R))$, the expression $IdT^s\,T\,x\,y$ must
+to define an element of $Ob(\toCC(LM,R))$, the expression $\Id^s\,T\,x\,y$ must
 refer to an element of $LM(\{1,\dots,l+2\})$ and its form shows that we assume
 that there is an operation
 %
-$$IdT^s:LM\times R\times R\sr R$$
+$$\Id^s:LM\times R\times R\sr R$$
 %
 (a natural transformation of functors that is a linear morphism of left
-$R$-modules) and $IdT^s\,T\,x\,y$ is the ``named variables'' notation for
-$IdT^s_{{1,\dots,l+2}}(T,l+1,l+2)$.
+$R$-modules) and $\Id^s\,T\,x\,y$ is the ``named variables'' notation for
+$\Id^s_{{1,\dots,l+2}}(T,l+1,l+2)$.
 
 We do not continue this explanation of how to construct J-structures on
 syntactic C-systems. This will be done in a separate paper. Let us remark
@@ -339,38 +344,38 @@ as notation for the important part of the structure of a C-system.
 To define the J-structure on a C-system we will actually define three
 structures J0-structure, J1-structure over a J0-structure and and J2-structure
 over a J1-structure with the J-structure being the same as a triple
-$(IdT,refl,J)$ where $Idt$ is a J0-structure, $refl$ is a J1-structure over
-$IdT$ and $J$ is a J2-structure over $refl$. For the notations used below see
+$(\Id,\refl,\J)$ where $\Id$ is a J0-structure, $\refl$ is a J1-structure over
+$\Id$ and $\J$ is a J2-structure over $\refl$. For the notations used below see
 \cite{fromunivwithPi}.
 %
 \begin{definition}
 \llabel{2015.03.27.def1}
 A J0-structure on a C-system $\aCC$ is a family of functions 
 %
-$$IdT_{\Gamma}:\{o_1,o_2\in \wt{Ob}_1(\Gamma)\,|\,\partial(o_1)=\partial(o_2)\}\sr Ob_1(\Gamma)$$
+$$\Id_{\Gamma}:\{o_1,o_2\in \wt{Ob}_1(\Gamma)\,|\,\partial(o_1)=\partial(o_2)\}\sr Ob_1(\Gamma)$$
 %
 given for all $\Gamma\in Ob$ that is natural in $\Gamma$ i.e. such that for any
 $f:\Gamma'\sr \Gamma$ and $o,o'\in \wt{Ob}_1(\Gamma)$ with
 $\partial(o)=\partial(o')$, one has
-$f^*(IdT_{\Gamma}(o,o'))=IdT_{\Gamma'}(f^*(o),f^*(o'))$.
+$f^*(\Id_{\Gamma}(o,o'))=\Id_{\Gamma'}(f^*(o),f^*(o'))$.
 \end{definition}
 %
 \begin{definition}
 \llabel{2015.03.27.def2}
-Let $IdT$ be a J0-structure on $\aCC$. A J1-structure over $IdT$ is a family of
+Let $\Id$ be a J0-structure on $\aCC$. A J1-structure over $\Id$ is a family of
 functions
 %
-$$refl:\wt{Ob}_1(\Gamma)\sr \wt{Ob}_1(\Gamma)$$
+$$\refl:\wt{Ob}_1(\Gamma)\sr \wt{Ob}_1(\Gamma)$$
 %
 given for all $\Gamma\in Ob$ such that:
 %
 \begin{enumerate}
-\item $refl$ is natural in $\Gamma$,
+\item $\refl$ is natural in $\Gamma$,
 \item for any $\Gamma$ and $o\in \wt{Ob}_1(\Gamma)$ one has 
 %
 \begin{eq}
 \llabel{2015.03.27.eq8}
-\partial(refl(o))=IdT(o,o)
+\partial(\refl(o))=\Id(o,o)
 \end{eq}
 \end{enumerate}
 \end{definition}
@@ -379,7 +384,7 @@ To define the notion of a J2-structure over a given J1-structure we will need
 to describe two constructions first.
 %
 \begin{problem}
-\llabel{2015.03.27.prob1} Given a J0-structure $IdT$ to construct a family of
+\llabel{2015.03.27.prob1} Given a J0-structure $\Id$ to construct a family of
 functions
 %
 $$IdxT:Ob_1(\Gamma)\sr Ob_3(\Gamma)$$
@@ -399,7 +404,7 @@ We define:
 %
 \begin{eq}
 \llabel{2015.04.06.eq1}
-IdxT(T):=IdT_{\\p_T^*(T)}((\p_{\p_T^*(T)}^*(\delta(T))), \delta(\p_T^*(T)))
+IdxT(T):=\Id_{\\p_T^*(T)}((\p_{\p_T^*(T)}^*(\delta(T))), \delta(\p_T^*(T)))
 \end{eq}
 %
 We have
@@ -428,7 +433,7 @@ The proof that $IdxT$ is natural in $f:\Gamma'\sr \Gamma$ is straightforward.
 %
 %
 \begin{problem}
-\llabel{2015.03.27.prob2} Given a J0-structure $IdT$ and a J1-structure $refl$
+\llabel{2015.03.27.prob2} Given a J0-structure $\Id$ and a J1-structure $\refl$
 over it to construct for all $\Gamma\in Ob$ and $T\in Ob_1(\Gamma)$ a morphism
 %
 $$rf_T:T\sr IdxT(T)$$
@@ -439,9 +444,9 @@ such that for any $f:\Gamma'\sr \Gamma$ one has $f^*(rf_T)=rf_{f^*(T)}$.
 \begin{construction}{2015.03.27.prob2}
 \llabel{2015.03.27.constr2}\rm We have:
 %
-$$\delta(T)^*(IdxT(T))=\delta(T)^*(IdT_{\p_T^*(T)}((\p_{\p_T^*(T)}^*(\delta_T))),\delta(\p_T^*(T)))$$
-$$=IdT_T(\delta(T)^*(\p_{\p_T^*(T)}^*(\delta_T)),\delta(T)^*(\delta(\p_T^*(T))))=$$
-$$=IdT_T(\delta(T),\delta(T))$$
+$$\delta(T)^*(IdxT(T))=\delta(T)^*(\Id_{\p_T^*(T)}((\p_{\p_T^*(T)}^*(\delta_T))),\delta(\p_T^*(T)))$$
+$$=\Id_T(\delta(T)^*(\p_{\p_T^*(T)}^*(\delta_T)),\delta(T)^*(\delta(\p_T^*(T))))=$$
+$$=\Id_T(\delta(T),\delta(T))$$
 %
 where the last equality follows from the fact that $f^*(\delta(T))=s_f$ and for
 any $s\in\wt{Ob}$, $s_s=s$.  This shows that we have a canonical square of the
@@ -450,16 +455,16 @@ form
 \begin{eq}
 \llabel{2015.03.31.eq3}
 \begin{xy}
-          \xymatrix@C=7pc{ IdT(\delta(T),\delta(T))
+          \xymatrix@C=7pc{ \Id(\delta(T),\delta(T))
             \ar[r]^-{\q(\delta(T),IdxT(T))} \ar[d] & IdxT(T) \ar[d]\\ T
             \ar[r]^{\delta(T)} & \p_T^*(T) }
        \end{xy}
 \end{eq}
 %
-and $refl(\delta(T))$ is a morphism $T\sr IdT(\delta(T),\delta(T))$. We define:
+and $\refl(\delta(T))$ is a morphism $T\sr \Id(\delta(T),\delta(T))$. We define:
 %
 \begin{eq}
-\llabel{2015.04.02.eq1} rf_T:=refl(\delta(T))\circ \q(\delta(T),IdxT(T))
+\llabel{2015.04.02.eq1} rf_T:=\refl(\delta(T))\circ \q(\delta(T),IdxT(T))
 \end{eq}
 %
 The proof that for any $f:\Gamma'\sr \Gamma$ one has $f^*(rf_T)=rf_{f^*(T)}$ is
@@ -467,23 +472,23 @@ straightforward.
 \end{construction}
 %
 \begin{definition}
-\llabel{2015.03.27.def3} Let $IdT$ and $refl$ be a J0-structure and a
-J1-structure over it. A J2-structure over $(IdT,refl)$ is data of the form: for
+\llabel{2015.03.27.def3} Let $\Id$ and $\refl$ be a J0-structure and a
+J1-structure over it. A J2-structure over $(\Id,\refl)$ is data of the form: for
 all $\Gamma\in Ob$, for all $T\in Ob_1(\Gamma)$, for all $P\in Ob_1(IdxT(T))$,
-for all $s0\in \wt{Ob}(rf_T^*(P))$, an element $J(\Gamma,T,P,s0)$ of
+for all $s0\in \wt{Ob}(rf_T^*(P))$, an element $\J(\Gamma,T,P,s0)$ of
 $\wt{Ob}(P)$ such that:
 %
 \begin{enumerate}
-\item $J$ is natural in $\Gamma$, i.e., for any $f:\Gamma'\sr \Gamma$ and
+\item $\J$ is natural in $\Gamma$, i.e., for any $f:\Gamma'\sr \Gamma$ and
   $T,P,s0$ as above one has
 %
-$$f^*(J(\Gamma,T,P,s0))=J(\Gamma',f^*(T),f^*(P),f^*(s0))$$
+$$f^*(\J(\Gamma,T,P,s0))=\J(\Gamma',f^*(T),f^*(P),f^*(s0))$$
 %
 where the right hand side of the equation is well-defined because of the
 naturality in $f$ of $IdxT$ and $rf$.
-\item $J$ satisfies the $\iota$-rule. For $\Gamma, T, P, s0$ as above one has
+\item $\J$ satisfies the $\iota$-rule. For $\Gamma, T, P, s0$ as above one has
 %
-$$rf_T^*(J(\Gamma,T,P,s0))=s0$$
+$$rf_T^*(\J(\Gamma,T,P,s0))=s0$$
 %
 \end{enumerate}
 \end{definition}
@@ -516,7 +521,7 @@ the paper.
 no $(\Pi,\lambda)$-structures it is important, as emphasized for example in
 \cite{vandenBergGarner2011}, to consider a more complex structure than the one
 that we consider here. This more complex structure can be seen as a family of
-structures $eJ_n$ where $eJ_0=J2$ and where $eJ_n$ over $(IdT,refl)$ is a
+structures $eJ_n$ where $eJ_0=J2$ and where $eJ_n$ over $(\Id,\refl)$ is a
 collection of data of the form: for all $\Gamma\in Ob$, for all $T\in
 Ob_1(\Gamma)$, for all $\Delta\in Ob_{n}(IdxT(T))$, for all $P\in
 Ob_1(\Delta)$, for all $s0\in \wt{Ob}(rf_T^*(P))$, an element
@@ -1582,16 +1587,16 @@ Hom(int(\Gamma),(\wt{U};p))$$
 %
 where $\wt{uu}(o,o')=\wt{u}_1(o)*\wt{u}_1(o')$. We set:
 %
-$$IdT(o,o')=u_1^{-1}(\wt{uu}(o,o')\circ Eq).$$
+$$\Id(o,o')=u_1^{-1}(\wt{uu}(o,o')\circ Eq).$$
 %
 \end{construction}
 %
-We let $IdT_{Eq}$ denote the J0-structure on $\toCC({\mathcal C},p)$ constructed
+We let $\Id_{Eq}$ denote the J0-structure on $\toCC({\mathcal C},p)$ constructed
 from $Eq$ in Construction \ref{2015.03.27.constr3}. Note that
 %
 \begin{eq}
 \llabel{2015.03.31.eq1}
-int(IdT(o,o'))=(int(\Gamma);(\wt{u}_1(o)*\wt{u}_1(o'))\circ Eq)
+int(\Id(o,o'))=(int(\Gamma);(\wt{u}_1(o)*\wt{u}_1(o'))\circ Eq)
 \end{eq}
 %
 Recall that in \cite{Csubsystems} we let $\p_{\Gamma,n}:\Gamma\sr \ft^n(\Gamma)$
@@ -1612,7 +1617,7 @@ $$Q(F)_{E}\circ Q(Eq)=Q(Q(Q(F)\circ p)\circ Eq)$$
 \begin{myproof}
 Let $T=(\Gamma,F)$. We have:
 %
-$$int(IdxT(T))=int(IdT_{\p_T^*(T)}(o,o'))=(int(\p_T^*(T));(\wt{u}_1(o)*\wt{u}_1(o'))\circ
+$$int(IdxT(T))=int(\Id_{\p_T^*(T)}(o,o'))=(int(\p_T^*(T));(\wt{u}_1(o)*\wt{u}_1(o'))\circ
 Eq)$$
 %
 where
@@ -1640,7 +1645,7 @@ and the equality $Q(f,F)\circ Q(F)=Q(f\circ F)$.
 \begin{problem}
 \llabel{2015.03.27.prob4} Let $Eq:(\wt{U};p)\sr U$, $\Omega:\wt{U}\sr \wt{U}$
 be a J0-structure and a J1-structures on a universe $p$ in a category $\mathcal
-C$. To construct a J1-structure $refl(Eq,\Omega)$ over $IdT_{Eq}$ on
+C$. To construct a J1-structure $\refl(Eq,\Omega)$ over $\Id_{Eq}$ on
 $\toCC({\mathcal C},p)$.
 \end{problem}
 %
@@ -1648,17 +1653,17 @@ $\toCC({\mathcal C},p)$.
 \llabel{2015.03.27.constr4} Due to the natural bijections
 (\ref{2015.03.27.eq7a}) the morphism $\Omega$ defines maps
 %
-$$refl:\wt{Ob}_1(\Gamma)\sr \wt{Ob}_1(\Gamma)$$
+$$\refl:\wt{Ob}_1(\Gamma)\sr \wt{Ob}_1(\Gamma)$$
 %
 by the formula
 %
-$$refl(s)=\wt{u}_1^{-1}(\wt{u}_1(s)\circ \Omega)$$
+$$\refl(s)=\wt{u}_1^{-1}(\wt{u}_1(s)\circ \Omega)$$
 %
 that are natural in $\Gamma$. The equation (\ref{2015.03.27.eq8}) follows from
 the commutativity of the square (\ref{2015.03.27.sq1}).
 \end{construction}
 %
-We let $refl_{\Omega}$ denote the J1-structure constructed from $\Omega$ in
+We let $\refl_{\Omega}$ denote the J1-structure constructed from $\Omega$ in
 Construction \ref{2015.03.27.constr4}.
 %
 The following technical lemma is only needed in the proof of Lemma
@@ -1667,7 +1672,7 @@ The following technical lemma is only needed in the proof of Lemma
 \begin{lemma}
 \llabel{2015.04.02.l3} For $s\in \wt{Ob}_1(\Gamma)$ one has:
 %
-$$refl_{\Omega}(s)\circ Q(s\circ Q(F)\circ \Omega\circ p)=s\circ Q(F)\circ
+$$\refl_{\Omega}(s)\circ Q(s\circ Q(F)\circ \Omega\circ p)=s\circ Q(F)\circ
 \Omega$$
 %
 where $F=u_1(\partial(s))$.
@@ -1676,26 +1681,26 @@ where $F=u_1(\partial(s))$.
 \begin{myproof}
 We have
 %
-$$u_1(\partial(refl_{\Omega}(s)))=\wt{u}_1(refl(s))\circ p=\wt{u}_1(s)\circ
+$$u_1(\partial(\refl_{\Omega}(s)))=\wt{u}_1(\refl(s))\circ p=\wt{u}_1(s)\circ
 \Omega\circ p=s\circ Q(F)\circ \Omega\circ p$$
 %
 therefore
 %
-$$\wt{u}_1(refl_{\Omega}(s))=refl_{\Omega}(s)\circ
-Q(u_1(\partial(refl_{\Omega}(s))))=$$
-$$refl_{\Omega}(s)\circ Q(s\circ Q(F)\circ \Omega\circ p)$$
+$$\wt{u}_1(\refl_{\Omega}(s))=\refl_{\Omega}(s)\circ
+Q(u_1(\partial(\refl_{\Omega}(s))))=$$
+$$\refl_{\Omega}(s)\circ Q(s\circ Q(F)\circ \Omega\circ p)$$
 %
-On the other hand, by definition of $refl_{\Omega}$,
+On the other hand, by definition of $\refl_{\Omega}$,
 %
-$$\wt{u}_1(refl_{\Omega}(s))=\wt{u}_1(s)\circ \Omega=s\circ Q(F)\circ \Omega.$$
+$$\wt{u}_1(\refl_{\Omega}(s))=\wt{u}_1(s)\circ \Omega=s\circ Q(F)\circ \Omega.$$
 %
 \end{myproof}
 
 
 
 \begin{lemma}
-\llabel{2015.03.31.l2} Given $Eq$ and $\Omega$ consider the corresponding $IdT$
-and $refl$. For $T\in Ob_1(\Gamma)$ let %
+\llabel{2015.03.31.l2} Given $Eq$ and $\Omega$ consider the corresponding $\Id$
+and $\refl$. For $T\in Ob_1(\Gamma)$ let %
 $$rf_T:int(T)\sr int(IdxT(T))$$
 %
 be the morphism constructed in Construction \ref{2015.03.27.constr2}. On the
@@ -1749,19 +1754,19 @@ $$rf_T\circ v =F^*(\omega)\circ v$$
 %
 The morphism $rf_T$ is defined in (\ref{2015.04.02.eq1}) as
 %
-$$rf_T=refl(\delta(T))\circ \q(\delta(T),IdxT(T))=refl(\delta(T))\circ
+$$rf_T=\refl(\delta(T))\circ \q(\delta(T),IdxT(T))=\refl(\delta(T))\circ
 Q(\delta(T),Q(Q(F),p)\circ Eq)$$
 %
 where the second equation is from (\ref{2015.04.02.eq2}).
 %
 We have
 %
-$$rf_T\circ h = refl(\delta(T))\circ Q(\delta(T),Q(Q(F),p)\circ Eq)\circ
-h=refl(\delta(T))\circ Q(\delta(T)\circ Q(Q(F),p)\circ
-Eq)=$$$$refl(\delta(T))\circ Q(Q(F)\circ \Delta\circ Eq)=refl(\delta(T))\circ
+$$rf_T\circ h = \refl(\delta(T))\circ Q(\delta(T),Q(Q(F),p)\circ Eq)\circ
+h=\refl(\delta(T))\circ Q(\delta(T)\circ Q(Q(F),p)\circ
+Eq)=$$$$\refl(\delta(T))\circ Q(Q(F)\circ \Delta\circ Eq)=\refl(\delta(T))\circ
 Q(Q(F)\circ (\omega\circ pE\wt{U})\circ Eq)=$$
-$$refl(\delta(T))\circ Q(Q(F)\circ \omega\circ Q(Eq)\circ
-p)=refl(\delta(T))\circ Q(Q(F)\circ \Omega\circ p)$$
+$$\refl(\delta(T))\circ Q(Q(F)\circ \omega\circ Q(Eq)\circ
+p)=\refl(\delta(T))\circ Q(Q(F)\circ \Omega\circ p)$$
 %
 On the other hand
 %
@@ -1776,7 +1781,7 @@ $$\delta(T)\circ \q(\p_T,T)\circ Q(F)=Id_{int(T)}\circ Q(F)=Q(F)$$
 %
 Therefore by Lemma \ref{2015.04.02.l3} we have
 %
-$$refl(\delta(T))\circ Q(Q(F)\circ \Omega\circ p)=Q(F)\circ \Omega$$
+$$\refl(\delta(T))\circ Q(Q(F)\circ \Omega\circ p)=Q(F)\circ \Omega$$
 %
 Which proves that $rf_T\circ h=F^*(\omega)\circ h$.
 
@@ -1857,7 +1862,7 @@ The proof of the relation (\ref{2015.05.04.eq3}) is straightforward.
 \llabel{2015.04.04.prob1} Let $(Eq,\Omega,Jp)$ be a J-structure on a universe
 $p$. To construct for all $\Gamma\in Ob=Ob(\toCC({\mathcal C},p))$, for all $T\in
 Ob_1(\Gamma)$, for all $P\in Ob_1(IdxT(T))$, for all $s0\in
-\wt{Ob}(rf_T^*(P))$, an element $J(\Gamma,T,P,s0)$ of $\wt{Ob}(P)$.
+\wt{Ob}(rf_T^*(P))$, an element $\J(\Gamma,T,P,s0)$ of $\wt{Ob}(P)$.
 \end{problem} 
 %
 \begin{construction}{2015.04.04.prob1}\rm
@@ -1913,10 +1918,10 @@ $\wt{u}_{1,IdxT(T)}(J))$ for some $J$ such that $\partial(J)=P$.
 %
 \begin{remark}\rm
 \llabel{2015.05.08.rem1} Note that the defining property of
-$J=J_{Jp}(\Gamma,T,P,s0)$ is that it is the unique element of
+$\J=\J_{Jp}(\Gamma,T,P,s0)$ is that it is the unique element of
 $\wt{Ob}(\toCC({\mathcal C},p))$ that satisfies the equation
 %
-$$\eta_{pE\wt{U}}(u_{1,\Gamma}(T),\wt{u}_{1,IdxT(T)}(J))=\phi(\Gamma,T,P,s0)\circ
+$$\eta_{pE\wt{U}}(u_{1,\Gamma}(T),\wt{u}_{1,IdxT(T)}(\J))=\phi(\Gamma,T,P,s0)\circ
 Jp$$
 %
 where
@@ -2001,43 +2006,43 @@ $p$. Then the morphisms of Construction \ref{2015.04.04.constr1} are natural in
 $\Gamma$ i.e. for any $f:\Gamma'\sr \Gamma$ one has
 %
 \begin{eq}\llabel{2015.04.04.eq3}
-f^*(J_{Jp}(\Gamma,T,P,s0))=J_{Jp}(\Gamma',f^*(T),f^*(P),f^*(s0))
+f^*(\J_{Jp}(\Gamma,T,P,s0))=\J_{Jp}(\Gamma',f^*(T),f^*(P),f^*(s0))
 \end{eq}
 %
 \end{lemma}
 %
 \begin{myproof}
-Let us write $J$ for $J_{Jp}(\Gamma,T,P,s0)$ and $J'$ for
-$J_{Jp}(\Gamma',f^*(T),f^*(P),f^*(s0))$ and use the notations of Construction
+Let us write $\J$ for $\J_{Jp}(\Gamma,T,P,s0)$ and $J'$ for
+$\J_{Jp}(\Gamma',f^*(T),f^*(P),f^*(s0))$ and use the notations of Construction
 \ref{2015.04.04.constr1}. Recall that for $f:\Gamma'\sr \Gamma$ the operation
 $f^*$ is defined only on $Ob_1(\Gamma)$. In all other uses it is an
 abbreviation for operations such as $X\mapsto f^*(X,i)$ and $s\mapsto f^*(s,i)$
 for various $i$ (see \cite{Csubsystems}). In particular, (\ref{2015.04.04.eq3})
 is an abbreviation for
 %
-$$f^*(J(\Gamma,T,P,s0),4)=J(\Gamma',f^*(T),f^*(P,4),f^*(s0,2))$$
+$$f^*(\J(\Gamma,T,P,s0),4)=\J(\Gamma',f^*(T),f^*(P,4),f^*(s0,2))$$
 %
 which in its turn translates into the equation in $\wt{Ob}_1(IdxT(f^*(T)))$ of
 the form
 %
-$$\q(f,IdxT(T),3)^*(J,1)=J'$$
+$$\q(f,IdxT(T),3)^*(\J,1)=J'$$
 %
 We have:
 %
-$$\eta_{pE\wt{U}}(F,\wt{u}_1(J))=\phi(\Gamma,T,P,s0)\circ Jp$$
+$$\eta_{pE\wt{U}}(F,\wt{u}_1(\J))=\phi(\Gamma,T,P,s0)\circ Jp$$
 $$\eta_{pE\wt{U}}(f\circ F,
 \wt{u}_1(J'))=\phi(\Gamma',f^*(T),f^*(P),f^*(s0))\circ Jp$$
 %
 By naturality of $\eta$ with respect to the first argument we have
 %
-$$f\circ \eta_{pE\wt{U}}(F,\wt{u}_1(J))=\eta_{pE\wt{U}}(f\circ F,
-Q(f,F)_{E}\circ \wt{u}_1(J))$$
+$$f\circ \eta_{pE\wt{U}}(F,\wt{u}_1(\J))=\eta_{pE\wt{U}}(f\circ F,
+Q(f,F)_{E}\circ \wt{u}_1(\J))$$
 %
 Therefore, by Lemma \ref{2015.04.04.l4} we have
 %
-$$f\circ \eta_{pE\wt{U}}(F,\wt{u}_1(J))=\eta_{pE\wt{U}}(f\circ F,
-\wt{u}_1(Q(f,F)_{E}^*(J,1)))=$$
-$$\eta_{pE\wt{U}}(f\circ F, \wt{u}_1(\q(f,IdxT(T),3)^*(J,1)))$$
+$$f\circ \eta_{pE\wt{U}}(F,\wt{u}_1(\J))=\eta_{pE\wt{U}}(f\circ F,
+\wt{u}_1(Q(f,F)_{E}^*(\J,1)))=$$
+$$\eta_{pE\wt{U}}(f\circ F, \wt{u}_1(\q(f,IdxT(T),3)^*(\J,1)))$$
 %
 Since both $\eta_{pE\wt{U}}$ and $\wt{u}_1$ are bijections and in particular
 injections it is sufficient to show that
@@ -2070,25 +2075,25 @@ $p$. Then the morphisms of Construction \ref{2015.04.04.constr1} satisfy the
 second condition of the definition of a J2-structure, i.e., for all $\Gamma$,
 $T$, $P$ and $s0$ as above one has
 %
-$$rf_T^*(J_{Jp}(\Gamma,T,P,s0))=s0$$
+$$rf_T^*(\J_{Jp}(\Gamma,T,P,s0))=s0$$
 %
 \end{lemma}
 %
 \begin{myproof}
-Let $J=J_{Jp}(\Gamma,T,P,s0)$. Then, using the notations of Construction
+Let $\J=\J_{Jp}(\Gamma,T,P,s0)$. Then, using the notations of Construction
 \ref{2015.04.04.constr1} we have:
 %
-$$\eta_{E\wt{U}}(F,\wt{u}_1(J))=\phi\circ Jp$$
+$$\eta_{E\wt{U}}(F,\wt{u}_1(\J))=\phi\circ Jp$$
 %
 Then
 %
-$$\eta_{E\wt{U}}(F,\wt{u}_1(J))\circ
-I^{\omega}(\wt{U})=\eta_p(F,F^*(\omega)\circ \wt{u}_1(J))$$
+$$\eta_{E\wt{U}}(F,\wt{u}_1(\J))\circ
+I^{\omega}(\wt{U})=\eta_p(F,F^*(\omega)\circ \wt{u}_1(\J))$$
 %
 By Lemma \ref{2015.03.31.l2} we have $F^*(\omega)=rf_T$. Therefore,
 %
-$$\eta_{E\wt{U}}(F,\wt{u}_1(J))\circ I^{\omega}(\wt{U})=\eta_p(F,rf_T\circ
-\wt{u}_1(J))=\eta_p(F,\wt{u}_1(rf_T^*(J)))$$
+$$\eta_{E\wt{U}}(F,\wt{u}_1(\J))\circ I^{\omega}(\wt{U})=\eta_p(F,rf_T\circ
+\wt{u}_1(\J))=\eta_p(F,\wt{u}_1(rf_T^*(\J)))$$
 %
 On the other hand
 %
@@ -2097,16 +2102,16 @@ $$\phi\circ Jp\circ I^{\omega}(\wt{U})=\phi\circ prI_p(\wt{U})$$
 by (\ref{2015.04.04.eq1}) which equals, by construction,
 $\eta_p(F,\wt{u}_1(s0))$. Therefore,
 %
-$$\eta_p(F,\wt{u}_1(rf_T^*(J)))=\eta_p(F,\wt{u}_1(s0))$$
+$$\eta_p(F,\wt{u}_1(rf_T^*(\J)))=\eta_p(F,\wt{u}_1(s0))$$
 %
 and using again that both $\eta$ and $\wt{u}_1$ are injective we conclude that
-$rf_T^*(J)=s0$.
+$rf_T^*(\J)=s0$.
 \end{myproof}
 %
 \begin{problem}
 \llabel{2015.04.04.prob2} Let $(Eq,\Omega,Jp)$ be a J-structure on a universe
-$p$. To construct a J-structure on $\toCC({\mathcal C},p)$ relative to $IdT_{Eq}$
-and $refl_{\Omega}$.
+$p$. To construct a J-structure on $\toCC({\mathcal C},p)$ relative to $\Id_{Eq}$
+and $\refl_{\Omega}$.
 \end{problem} 
 %
 \begin{construction}{2015.04.04.prob2}\rm
@@ -2951,34 +2956,34 @@ commutes.
 \llabel{2015.04.06.def1} Let $H:\aCC\sr CC'$ be a homomorphism of C-systems.
 %
 \begin{enumerate}
-\item Let $IdT$, $IdT'$ are J0-structures on $\aCC$ and $CC'$ respectively.  Then
-  $H$ is called a homomorphism of C-systems with J0-structures $(\aCC,IdT)\sr
+\item Let $\Id$, $IdT'$ are J0-structures on $\aCC$ and $CC'$ respectively.  Then
+  $H$ is called a homomorphism of C-systems with J0-structures $(\aCC,\Id)\sr
   (\aCC,IdT')$ if for each $\Gamma\in Ob(\aCC)$ and $o,o'\in\wt{Ob}_1(\Gamma)$ such
   that $\partial(o)=\partial(o')$, one has
 %
-$$H(IdT_{\Gamma}(o,o'))=IdT'_{H(\Gamma)}(H(o),H(o'))$$
+$$H(\Id_{\Gamma}(o,o'))=IdT'_{H(\Gamma)}(H(o),H(o'))$$
 %
 (the right hand side of the equality makes sense because $H$ commutes with
   $\partial$).
 % 
-\item Let $IdT$, $IdT'$ be as above and let $refl$, $refl'$ be J1-structures
-  over $IdT$ and $IdT'$ respectively. A homomorphism of C-systems with
-  J0-structures $H:(\aCC,IdT)\sr (CC',IdT')$ is called a homomorphism of
+\item Let $\Id$, $IdT'$ be as above and let $\refl$, $refl'$ be J1-structures
+  over $\Id$ and $IdT'$ respectively. A homomorphism of C-systems with
+  J0-structures $H:(\aCC,\Id)\sr (CC',IdT')$ is called a homomorphism of
   C-systems with J1-structures
 %
-$$(\aCC,IdT,refl)\sr (CC',IdT',refl')$$
+$$(\aCC,\Id,\refl)\sr (CC',IdT',refl')$$
 %
 if for all $\Gamma\in Ob(\aCC)$ and $o\in \wt{Ob}_1(\Gamma)$ one has
 %
-$$H(refl(o))=refl'(H(o))$$
+$$H(\refl(o))=refl'(H(o))$$
 %
 \end{enumerate}
 \end{definition}
 %
-For a C-system $\aCC$ with a J0-structure $IdT$ and a J1-structure $refl$ over
-$IdT$ define $Jdom(\aCC,IdT,refl)$ as the set of quadruples $(\Gamma,T,P,s0)$
+For a C-system $\aCC$ with a J0-structure $\Id$ and a J1-structure $\refl$ over
+$\Id$ define $Jdom(\aCC,\Id,\refl)$ as the set of quadruples $(\Gamma,T,P,s0)$
 where $\Gamma\in Ob$, $T\in Ob_1(\Gamma)$, $P\in Ob_1(IdxT(T))$ and $s0\in
-\wt{Ob}(rf_T^*(P))$. Equivalently we can say that $Jdom(\aCC,IdT,refl)$ is the
+\wt{Ob}(rf_T^*(P))$. Equivalently we can say that $Jdom(\aCC,\Id,\refl)$ is the
 subset in $Ob\times Ob\times Ob\times \wt{Ob}$ that consists of quadruples
 $(\Gamma,T,P,s0)$ where $\ft(T)=\Gamma$, $\ft(P)=IdxT(T)$ and
 $\partial(s0)=rf_T^*(P)$. Then a J2-structure is defined by a map $Jdom\sr
@@ -3001,13 +3006,13 @@ $H(F)^*(H(f))$.
 %
 %
 \begin{lemma}
-\llabel{2015.04.06.l2} Let $IdT$, $IdT'$, $refl$ and $refl'$ be as in
+\llabel{2015.04.06.l2} Let $\Id$, $IdT'$, $\refl$ and $refl'$ be as in
 Definition \ref{2015.04.06.def1} and let
 %
-$$H:(\aCC,IdT,refl)\sr (CC',IdT',refl')$$
+$$H:(\aCC,\Id,\refl)\sr (CC',IdT',refl')$$
 %
 be a homomorphism of C-systems with J1-structures. Then for all elements
-$(\Gamma,T,P,s0)$ of $Jdom(IdT,refl)$ one has $(H(\Gamma),H(T),H(P),H(s0))\in
+$(\Gamma,T,P,s0)$ of $Jdom(\Id,\refl)$ one has $(H(\Gamma),H(T),H(P),H(s0))\in
 Jdom(IdT',refl')$.
 \end{lemma}
 %
@@ -3024,21 +3029,21 @@ equations (\ref{2015.04.06.eq1}) and (\ref{2015.04.02.eq1}).
 \end{myproof}
 %
 \begin{definition}
-\llabel{2015.04.06.def2} Let $IdT$, $IdT'$, $refl$ and $refl'$ be as in
-Definition \ref{2015.04.06.def1} and let $J$, $J'$ be J2-structures over
-$(IdT,refl)$ and $(IdT',refl')$ respectively. A homomorphism of C-systems with
+\llabel{2015.04.06.def2} Let $\Id$, $IdT'$, $\refl$ and $refl'$ be as in
+Definition \ref{2015.04.06.def1} and let $\J$, $J'$ be J2-structures over
+$(\Id,\refl)$ and $(IdT',refl')$ respectively. A homomorphism of C-systems with
 J1-structures
 %
-$$H:(\aCC,IdT,refl)\sr (CC',IdT',ref')$$
+$$H:(\aCC,\Id,\refl)\sr (CC',IdT',ref')$$
 %
 is called a homomorphism of C-systems with J-structures
 %
-$$(\aCC,IdT,refl,J)\sr (CC',IdT',ref;',J')$$
+$$(\aCC,\Id,\refl,\J)\sr (CC',IdT',ref;',J')$$
 %
 if for all $\Gamma\in Ob(\aCC)$, $T\in Ob_1(\Gamma)$, $P\in Ob_1(IdxT(T))$ and
 $s0\in \wt{Ob}(rf_T^*(P))$ one has
 %
-$$H(J(\Gamma,T,P,s0))=J'(H(\Gamma),H(T),H(P),H(s0))$$
+$$H(\J(\Gamma,T,P,s0))=J'(H(\Gamma),H(T),H(P),H(s0))$$
 %
 where the right hand side of the equation makes sense by Lemma
 \ref{2015.04.06.l2}.
@@ -3055,7 +3060,7 @@ where the right hand side of the equation makes sense by Lemma
 
 
 
-\subsection{Functoriality of the J-structures $(IdT_{Eq},refl_{\Omega},J_{Jp})$}
+\subsection{Functoriality of the J-structures $(\Id_{Eq},\refl_{\Omega},\J_{Jp})$}
 %
 \label{2015.04.12.sec1}
 %
@@ -3101,30 +3106,30 @@ $$H(f)=\psi_{\Gamma}\circ\Phi(f)\circ\psi_{\Gamma'}^{-1}$$
 \llabel{2015.04.12.l1} Let ${\bf\Phi}$ be a universe category functor as above
 that is compatible with the J0-structures $Eq$ and $Eq'$ on $p$ and $p'$
 respectively. Then the homomorphism of C-systems $H=H({\bf\Phi})$ is a
-homomorphism of C-systems with J0-structures relative to $IdT_{Eq}$ and
-$IdT_{Eq'}$.
+homomorphism of C-systems with J0-structures relative to $\Id_{Eq}$ and
+$\Id_{Eq'}$.
 \end{lemma}
 %
 \begin{myproof}
-Let $IdT=IdT_{Eq}$ and $IdT'=IdT_{Eq'}$. We need to check that for all
+Let $\Id=\Id_{Eq}$ and $IdT'=\Id_{Eq'}$. We need to check that for all
 $\Gamma\in Ob(\toCC({\mathcal C},p))$ and $o,o'\in \wt{Ob}_1(\Gamma)$ such that
 $\partial(o)=\partial(o')$ one has
 %
-$$H(IdT(o,o'))=IdT'(H(o),H(o'))$$
+$$H(\Id(o,o'))=IdT'(H(o),H(o'))$$
 %
 Since
 %
-$$\partial(H(IdT(o,o'))=H(\Gamma)$$
+$$\partial(H(\Id(o,o'))=H(\Gamma)$$
 %
 $$\partial(IdT'(H(o),H(o')))=\ft(\partial(H(o)))=H(\ft(\partial(o)))=H(\Gamma)$$
 %
 this is equivalent to
 %
-$$u_1(H(IdT(o,o')))=u_1(IdT'(H(o),H(o')))$$
+$$u_1(H(\Id(o,o')))=u_1(IdT'(H(o),H(o')))$$
 %
 By \cite[Lemma 6.1(1)]{fromunivwithPi} we have
 %
-$$u_1(H(IdT(o,o')))=\psi_{\Gamma}\circ\Phi(u_1(IdT(o,o')))\circ\phi=\psi_{\Gamma}\circ\Phi((\wt{u}_1(o)*\wt{u}_1(o'))\circ
+$$u_1(H(\Id(o,o')))=\psi_{\Gamma}\circ\Phi(u_1(\Id(o,o')))\circ\phi=\psi_{\Gamma}\circ\Phi((\wt{u}_1(o)*\wt{u}_1(o'))\circ
 Eq)\circ\phi=$$
 %
 $$\psi_{\Gamma}\circ\Phi(\wt{u}_1(o)*\wt{u}_1(o'))\circ
@@ -3153,12 +3158,12 @@ Lemma is proved.
 that is compatible with the (J0,J1)-structures $(Eq,\Omega)$ and
 $(Eq',\Omega')$ on $p$ and $p'$ respectively. Then the homomorphism of
 C-systems $H=H({\bf\Phi})$ is a homomorphism of C-systems with
-(J0,J1)-structures relative to $(IdT_{Eq},refl_{\Omega})$ and
-$(IdT_{Eq'},refl_{\Omega'})$.
+(J0,J1)-structures relative to $(\Id_{Eq},\refl_{\Omega})$ and
+$(\Id_{Eq'},\refl_{\Omega'})$.
 \end{lemma}
 %
 \begin{myproof}
-Let $refl=refl_{\Omega}$ and $refl'=refl_{\Omega'}$. The compatibility
+Let $\refl=\refl_{\Omega}$ and $refl'=\refl_{\Omega'}$. The compatibility
 condition is
 %
 $$\Phi(\Omega)\circ\wt{\phi}=\wt{\phi}\circ\Omega'$$
@@ -3166,11 +3171,11 @@ $$\Phi(\Omega)\circ\wt{\phi}=\wt{\phi}\circ\Omega'$$
 We need to check that for $\Gamma\in Ob(\toCC({\mathcal C},p))$ and $s\in
 \wt{Ob}_1(\Gamma)$ one has
 %
-$$H(refl(s))=refl'(H(s))$$
+$$H(\refl(s))=refl'(H(s))$$
 %
 By \cite[Lemma 6.1(2)]{fromunivwithPi} we have
 %
-$$H(refl(s))=H(\wt{u}_1^{-1}(\wt{u}_1(s)\circ\Omega))=\wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s)\circ\Omega)\circ\wt{\phi})=\wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s))\circ\Phi(\Omega)\circ
+$$H(\refl(s))=H(\wt{u}_1^{-1}(\wt{u}_1(s)\circ\Omega))=\wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s)\circ\Omega)\circ\wt{\phi})=\wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s))\circ\Phi(\Omega)\circ
 \wt{\phi})=$$
 $$=\wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s))\circ\wt{\phi}\circ\Omega')=\wt{u}_1^{-1}(\wt{u}_1(H(s))\circ\Omega')=refl'(H(s)).$$
 \end{myproof}
@@ -3463,18 +3468,18 @@ Lemma \ref{2015.05.06.l3} is proved.
 that is compatible with the (J0,J1,J2)-structures $(Eq,\Omega,Jp)$ and
 $(Eq',\Omega',Jp)$ on $p$ and $p'$ respectively. Then the homomorphism of
 C-systems $H=H({\bf\Phi})$ is a homomorphism of C-systems with
-(J0,J1,J2)-structures relative to $(IdT_{Eq},refl_{\Omega},J_{Jp})$ and
-$(IdT_{Eq'},refl_{\Omega'},J_{Jp'})$.
+(J0,J1,J2)-structures relative to $(\Id_{Eq},\refl_{\Omega},\J_{Jp})$ and
+$(\Id_{Eq'},\refl_{\Omega'},\J_{Jp'})$.
 \end{lemma}
 %
 \begin{myproof}
-Let $IdT=IdT_{\Omega}$, $IdT'=IdT_{\Omega'}$, $refl=refl_{\Omega}$,
-$refl'=refl_{\Omega'}$, $J=J_{Jp}$ and $J'=J_{Jp'}$.
+Let $\Id=\Id_{\Omega}$, $IdT'=\Id_{\Omega'}$, $\refl=\refl_{\Omega}$,
+$refl'=\refl_{\Omega'}$, $\J=\J_{Jp}$ and $J'=\J_{Jp'}$.
 
 We need to verify that for all $\Gamma\in Ob(\toCC({\mathcal C},p))$, $T\in
 Ob_1(\Gamma)$, $P\in Ob_1(IdxT(T))$ and $s0\in \wt{Ob}(rf^*_T(P))$ one has
 %
-$$H(J(\Gamma,T,P,s0))=J'(H(\Gamma),H(T),H(P),H(s0))$$
+$$H(\J(\Gamma,T,P,s0))=J'(H(\Gamma),H(T),H(P),H(s0))$$
 %
 
 The defining equation for $J'$ is
@@ -3482,22 +3487,22 @@ The defining equation for $J'$ is
 $$\eta_{pE\wt{U}'}(u'_1(H(T)),\wt{u}'_{1,{IdxT'(H(T)}}(J')))=\phi(H(\Gamma),H(T),H(P),H(s0))\circ
 Jp'$$
 %
-and to prove the lemma we need to show that $H(J)$ satisfies this equation.
+and to prove the lemma we need to show that $H(\J)$ satisfies this equation.
 
 Using Lemma \ref{2015.05.06.l3} we have
 %
-$$\eta_{pE\wt{U}}(u'_1(H(T)),\wt{u}'_{1,{IdxT'(H(T)}}(H(J))))=$$$$\eta_{pE\wt{U}'}(D_{pE\wt{U}'}(\psi_{\Gamma},\_)(D_{pE\wt{U}'}(\_,\wt{\phi})(\Phi_E^2(u_1(T),\wt{u}_{1,IdxT(T)}(J)))))=$$
+$$\eta_{pE\wt{U}}(u'_1(H(T)),\wt{u}'_{1,{IdxT'(H(T)}}(H(\J))))=$$$$\eta_{pE\wt{U}'}(D_{pE\wt{U}'}(\psi_{\Gamma},\_)(D_{pE\wt{U}'}(\_,\wt{\phi})(\Phi_E^2(u_1(T),\wt{u}_{1,IdxT(T)}(\J)))))=$$
 $$\psi_{\Gamma}\circ
-\eta_{pE\wt{U}'}(\Phi_E^2(u_1(T),\wt{u}_{1,IdxT(T)}(J)))\circ
+\eta_{pE\wt{U}'}(\Phi_E^2(u_1(T),\wt{u}_{1,IdxT(T)}(\J)))\circ
 I_{pE\wt{U}'}(\wt{\phi})$$
 %
-By \cite[Lemma 5.8]{fromunivwithPi} and by the defining equation for $J$ we
+By \cite[Lemma 5.8]{fromunivwithPi} and by the defining equation for $\J$ we
 further have
 %
 $$\psi_{\Gamma}\circ
-\eta_{pE\wt{U}'}(\Phi_E^2(u_1(T),\wt{u}_{1,IdxT(T)}(J)))\circ
+\eta_{pE\wt{U}'}(\Phi_E^2(u_1(T),\wt{u}_{1,IdxT(T)}(\J)))\circ
 I_{pE\wt{U}'}(\wt{\phi})=$$$$\psi_{\Gamma}\circ
-\Phi(\eta_{pE\wt{U}}(u_1(T),\wt{u}_{1,IdxT(T)}(J)))\circ
+\Phi(\eta_{pE\wt{U}}(u_1(T),\wt{u}_{1,IdxT(T)}(\J)))\circ
 \chi_{{\bf\Phi}_E}(\wt{U})\circ I_{pE\wt{U}'}(\wt{\phi})=$$
 $$\psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ Jp)\circ
 \chi_{{\bf\Phi}_E}(\wt{U})\circ I_{pE\wt{U}'}(\wt{\phi})=\psi_{\Gamma}\circ
