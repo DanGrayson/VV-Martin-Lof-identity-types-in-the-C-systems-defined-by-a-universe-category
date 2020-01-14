@@ -2012,7 +2012,7 @@ f^*(\J_{Jp}(\Gamma,T,P,s0))=\J_{Jp}(\Gamma',f^*(T),f^*(P),f^*(s0))
 \end{lemma}
 %
 \begin{myproof}
-Let us write $\J$ for $\J_{Jp}(\Gamma,T,P,s0)$ and $J'$ for
+Let us write $\J$ for $\J_{Jp}(\Gamma,T,P,s0)$ and $\J'$ for
 $\J_{Jp}(\Gamma',f^*(T),f^*(P),f^*(s0))$ and use the notations of Construction
 \ref{2015.04.04.constr1}. Recall that for $f:\Gamma'\sr \Gamma$ the operation
 $f^*$ is defined only on $Ob_1(\Gamma)$. In all other uses it is an
@@ -2025,13 +2025,13 @@ $$f^*(\J(\Gamma,T,P,s0),4)=\J(\Gamma',f^*(T),f^*(P,4),f^*(s0,2))$$
 which in its turn translates into the equation in $\wt{Ob}_1(IdxT(f^*(T)))$ of
 the form
 %
-$$\q(f,IdxT(T),3)^*(\J,1)=J'$$
+$$\q(f,IdxT(T),3)^*(\J,1)=\J'$$
 %
 We have:
 %
 $$\eta_{pE\wt{U}}(F,\wt{u}_1(\J))=\phi(\Gamma,T,P,s0)\circ Jp$$
 $$\eta_{pE\wt{U}}(f\circ F,
-\wt{u}_1(J'))=\phi(\Gamma',f^*(T),f^*(P),f^*(s0))\circ Jp$$
+\wt{u}_1(\J'))=\phi(\Gamma',f^*(T),f^*(P),f^*(s0))\circ Jp$$
 %
 By naturality of $\eta$ with respect to the first argument we have
 %
@@ -3030,7 +3030,7 @@ equations (\ref{2015.04.06.eq1}) and (\ref{2015.04.02.eq1}).
 %
 \begin{definition}
 \llabel{2015.04.06.def2} Let $\Id$, $IdT'$, $\refl$ and $refl'$ be as in
-Definition \ref{2015.04.06.def1} and let $\J$, $J'$ be J2-structures over
+Definition \ref{2015.04.06.def1} and let $\J$, $\J'$ be J2-structures over
 $(\Id,\refl)$ and $(IdT',refl')$ respectively. A homomorphism of C-systems with
 J1-structures
 %
@@ -3038,12 +3038,12 @@ $$H:(\aCC,\Id,\refl)\sr (CC',IdT',ref')$$
 %
 is called a homomorphism of C-systems with J-structures
 %
-$$(\aCC,\Id,\refl,\J)\sr (CC',IdT',ref;',J')$$
+$$(\aCC,\Id,\refl,\J)\sr (CC',IdT',ref;',\J')$$
 %
 if for all $\Gamma\in Ob(\aCC)$, $T\in Ob_1(\Gamma)$, $P\in Ob_1(IdxT(T))$ and
 $s0\in \wt{Ob}(rf_T^*(P))$ one has
 %
-$$H(\J(\Gamma,T,P,s0))=J'(H(\Gamma),H(T),H(P),H(s0))$$
+$$H(\J(\Gamma,T,P,s0))=\J'(H(\Gamma),H(T),H(P),H(s0))$$
 %
 where the right hand side of the equation makes sense by Lemma
 \ref{2015.04.06.l2}.
@@ -3474,17 +3474,17 @@ $(\Id_{Eq'},\refl_{\Omega'},\J_{Jp'})$.
 %
 \begin{myproof}
 Let $\Id=\Id_{\Omega}$, $IdT'=\Id_{\Omega'}$, $\refl=\refl_{\Omega}$,
-$refl'=\refl_{\Omega'}$, $\J=\J_{Jp}$ and $J'=\J_{Jp'}$.
+$refl'=\refl_{\Omega'}$, $\J=\J_{Jp}$ and $\J'=\J_{Jp'}$.
 
 We need to verify that for all $\Gamma\in Ob(\toCC({\mathcal C},p))$, $T\in
 Ob_1(\Gamma)$, $P\in Ob_1(IdxT(T))$ and $s0\in \wt{Ob}(rf^*_T(P))$ one has
 %
-$$H(\J(\Gamma,T,P,s0))=J'(H(\Gamma),H(T),H(P),H(s0))$$
+$$H(\J(\Gamma,T,P,s0))=\J'(H(\Gamma),H(T),H(P),H(s0))$$
 %
 
-The defining equation for $J'$ is
+The defining equation for $\J'$ is
 %
-$$\eta_{pE\wt{U}'}(u'_1(H(T)),\wt{u}'_{1,{IdxT'(H(T)}}(J')))=\phi(H(\Gamma),H(T),H(P),H(s0))\circ
+$$\eta_{pE\wt{U}'}(u'_1(H(T)),\wt{u}'_{1,{IdxT'(H(T)}}(\J')))=\phi(H(\Gamma),H(T),H(P),H(s0))\circ
 Jp'$$
 %
 and to prove the lemma we need to show that $H(\J)$ satisfies this equation.
