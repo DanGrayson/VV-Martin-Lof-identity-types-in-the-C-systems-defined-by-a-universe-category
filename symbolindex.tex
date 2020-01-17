@@ -1,0 +1,12 @@
+\usepackage[nomain,section,sort=def]{glossaries}
+\usepackage{glossary-mcols}
+\setglossarystyle{mcolindex}
+\renewcommand{\glspostdescription}{\dotfill}
+\newglossary[op-glg]{operators}{op-gls}{op-glo}{Operators}
+\newglossary[cn-glg]{constants}{cn-gls}{cn-glo}{Constants}
+\makeglossaries
+\newcommand*{\newoperator}[3][]{\newglossaryentry{#2}{type=operators,name={$#3$},text={#3},description={},#1}}
+\newcommand*{\newconstant}[3][]{\newglossaryentry{#2}{type=constants,name={$#3$},text={#3},description={},#1}}
+
+%% put \printglossaries at the end of the latex document
+

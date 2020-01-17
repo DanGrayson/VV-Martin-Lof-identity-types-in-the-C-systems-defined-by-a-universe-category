@@ -8,3 +8,10 @@
 *.bbl
 *.blg
 /From_a_univ_with_paths.pdf
+*.cn-glg
+*.cn-glo
+*.cn-gls
+*.ist
+*.op-glg
+*.op-glo
+*.op-gls
