@@ -425,8 +425,19 @@ such that for $f:\Gamma'\sr \Gamma$ and $T\in Ob_1(\Gamma)$ one has
 $f^*(\Idx(T))=\Idx(f^*(T))$.
 \end{problem}
 %
-\begin{construction}{2015.03.27.prob1}
-\llabel{2015.03.27.constr1}\rm Recall that for $T\in Ob_1(\Gamma)$ we let
+\begin{construction}{2015.03.27.prob1}\llabel{2015.03.27.constr1}\rm
+The objects and some of the morphisms involved
+in this construction can be seen in the following diagram.
+%
+$$
+\begin{xy}
+          \xymatrix@C=5pc{ \p_{\p_T^*(T)}^*(\p_T^*(T)) \ar[r] \ar[d]& \p_T^*(T)
+            \ar[r]^{\q(\p_T,T)} \ar[d]_{\p_{\p_T^*(T)}} & T \ar[d]^{\p_T}\\ \p_T^*(T)
+            \ar[r]^{\p_{\p_T^*(T)}} & T \ar[r]^{\p_T} & \Gamma }
+\end{xy}
+$$
+
+Recall that for $T\in Ob_1(\Gamma)$ we let
 $\delta(T)$ denote the morphism $T\sr \p_T^*(T)$ that can be described
 equivalently as $s_{Id_T}$ or as the only morphism such that $\delta(T)\circ
 \p_{\p_T^*(T)}=Id_T$ and $\delta_T\circ \q(\p_T,T)=Id_T$. Because of the first
@@ -449,17 +460,7 @@ $$\delta(\p_T^*(T))\in \wt{Ob}(\p_{\p_T^*(T)}^*(\p_T^*(T)))$$
 %
 and since $\ft(\p_{\p_T^*(T)}^*(\p_T^*(T)))=\p_T^*(T)$ the $\Idx(T)$ is well
 defined. The fact that $\Idx(T)\in Ob_3(\Gamma)$ follows now from the fact that
-$\ft^2(\p_T^*(T))=\ft(T)=\Gamma$. The objects and some of the morphisms involved
-in this construction can be seen on the diagram:
-%
-$$
-\begin{xy}
-          \xymatrix@C=3pc{ \p_{\p_T^*(T)}^*(\p_T^*(T)) \ar[r] \ar[d]& \p_T^*(T)
-            \ar[r] \ar[d]_{\p_{\p_T^*(T)}} & T \ar[d]^{\p_T}\\ \p_T^*(T)
-            \ar[r]^{\p_{\p_T^*(T)}} & T \ar[r]^{\p_T} & \Gamma }
-\end{xy}
-$$
-%
+$\ft^2(\p_T^*(T))=\ft(T)=\Gamma$.
 The proof that $\Idx$ is natural in $f:\Gamma'\sr \Gamma$ is straightforward.
 \end{construction}
 %
