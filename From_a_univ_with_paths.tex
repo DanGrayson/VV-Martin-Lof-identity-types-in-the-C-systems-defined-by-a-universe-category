@@ -7,6 +7,7 @@
 \usepackage{hyperref}
 % lscape.sty Produce landscape pages in a (mainly) portrait document.
 \usepackage{lscape}
+\input symbolindex.tex
 %
 \textwidth = 6.5 in
 \textheight = 9 in
@@ -49,7 +50,6 @@
 \newcommand{\BB}{{\bullet}}
 \newcommand{\dd}{\diamond}
 \newcommand{\spc}{{\,\,\,\,\,\,\,}}
-\newcommand{\CC}{{\mathcal C}}
 \newcommand{\toCC}{CC} % for the construction CC(R,LM) of a C-system from a left module over a monad
 \newcommand{\aCC}{{\mathbb C}}  % for a variable denoting a C-system
 
@@ -67,10 +67,31 @@
 % notation for universe objects in a category
 \newcommand{\U}{\mathcal{U}}
 
-% persistent notations
+% other notation
 \newcommand{\D}{\mathsf{D}}
 \newcommand{\I}{\mathsf{I}}
 
+% persistent notations to go into symbol index
+%   at definition time, use \gls{foo}
+%   at subsequent uses, use \foo or the actual code
+%   the order here is the order in the index, and is obtained with "sort -f"
+\newoperator{deepartial}{\partial}
+\newoperator{D}{\D}
+\newoperator{etashriek}{\eta^!}
+\newoperator{eta}{\eta}
+\newoperator{ft}{\ft}
+\newoperator{Idx}{\Idx}
+\newoperator{Id}{\Id}
+\newoperator{I}{\I}
+\newoperator{J}{\J}
+\newoperator{Obwt}{\wt{Ob}}
+\newoperator{Ob}{Ob}
+\newoperator{prI}{prI}
+\newoperator{p}{\p}
+\newoperator{q}{\q}
+\newoperator{refl}{\refl}
+
+%% \newoperator{}{\}
 
 \comment{\pagestyle{fancy}
 
@@ -174,17 +195,17 @@ as the J-eliminator we call it the J-structure.
 
 
 We do not use the ``sequent'' notation that is so widespread in the literature
-on type theory for general C-systems restricting its use only to examples where
+on type theory for general C-systems --- we restrict its use only to examples where
 we assume the C-system to be a syntactic one.
 
-The reason for this restriction is that translating the sequent-like notations
+The reason for this restriction is that translating sequent-like notation
 into the algebraic notation of C-systems or categories with families requires
 considerable mastery of various conventions connected to the use of dependently
 typed systems. An example of such a translation is the description of an object
 $\Idx(T)$ corresponding to the sequent-like expression
 $(\Gamma, x:T, y:T, e:\Id\, T\, x\, y\,;)$ in Construction \ref{2015.03.27.constr1}.
 
-Some of the difficulties that arise here can already be seen on the translation
+Some of the difficulties that arise here can already be seen by considering the translation
 of the sequent-like expression $(\Gamma, x:T, y:T;)$. Here the same letter $T$
 is used to refer to objects of two different types - the first $T$ refers to an
 element on $Ob_1(\Gamma)$ and the second $T$ refers to an element in
@@ -314,9 +335,8 @@ appointed as the {\em academic executor}, in order to help arrange for the
 publication of his works.  This paper had been submitted for publication,
 comments had been received twice from the referee, and Voevodsky had started
 rewriting the paper.
-Grayson has edited the paper, which was found
-to be in a rough state.  Much of the work was cosmetic, aimed at improving the
-use of the English language.  Where anything substantively mathematical is
+Grayson has edited the paper, following the advice of the referee, and making
+additional, mostly cosmetic, changes.  Where anything substantively mathematical is
 involved, a footnote from the editor has been appended.\editorfootnote{... such
   as this one.}
 In order to make it possible and convenient for readers to review Grayson's
@@ -340,11 +360,12 @@ will allow the files to be located.
 As in \cite{Csubsystems}, except for the use of a sans-serif font, we use
 $$
   \xymatrix@C=5pc{
-    f^*(X) \ar[r]^{\q(f,X)} \ar[d]_{\p_{f^*(X)}}  & X \ar[d]^{\p_X} \\
-    Y \ar[r]_f & \ft(X)
+    f^*(X) \ar[r]^{\gls q(f,X)} \ar[d]_{\p_{f^*(X)}}  & X \ar[d]^{\gls p_X} \\
+    Y \ar[r]_f & \gls{ft}(X)
   }
 $$
-as notation for the important part of the structure of a C-system.
+as notation for the parts of the pull-back square that is part of the
+structure of a C-system.
 
 
 \subsection{The J-structure on a C-system}
@@ -352,17 +373,18 @@ as notation for the important part of the structure of a C-system.
 
 
 To define the J-structure on a C-system we will actually define three
-structures J0-structure, J1-structure over a J0-structure and and J2-structure
-over a J1-structure with the J-structure being the same as a triple
+structures: J0-structure, J1-structure over a J0-structure, and J2-structure
+over a J1-structure --- then a J-structure will be the same as a triple
 $(\Id,\refl,\J)$, where $\Id$ is a J0-structure, $\refl$ is a J1-structure over
-$\Id$, and $\J$ is a J2-structure over $\refl$. For the notations used below see
-\cite{fromunivwithPi}.
+$\Id$, and $\J$ is a J2-structure over $\refl$.  For the notation used below,
+including ${\gls{Ob}}_n(\Gamma)$ and $\gls{Obwt}_n(\Gamma)$, see
+\cite[\S2]{fromunivwithPi}, as well as \cite[\S3]{Csubsystems} for $\gls{deepartial}(o)$.
 %
 \begin{definition}
 \llabel{2015.03.27.def1}
 A J0-structure on a C-system $\aCC$ is a family of functions 
 %
-$$\Id_{\Gamma}:\{o_1,o_2\in \wt{Ob}_1(\Gamma)\,|\,\partial(o_1)=\partial(o_2)\}\sr Ob_1(\Gamma)$$
+$$\gls{Id}_{\Gamma}:\{o_1,o_2\in \wt{Ob}_1(\Gamma)\,|\,\partial(o_1)=\partial(o_2)\}\sr Ob_1(\Gamma)$$
 %
 given for all $\Gamma\in Ob$ that is natural in $\Gamma$, i.e., such that for any
 $f:\Gamma'\sr \Gamma$ and $o,o'\in \wt{Ob}_1(\Gamma)$ with
@@ -375,7 +397,7 @@ $f^*(\Id_{\Gamma}(o,o'))=\Id_{\Gamma'}(f^*(o),f^*(o'))$.
 Let $\Id$ be a J0-structure on $\aCC$. A J1-structure over $\Id$ is a family of
 functions
 %
-$$\refl:\wt{Ob}_1(\Gamma)\sr \wt{Ob}_1(\Gamma)$$
+$$\gls{refl}:\wt{Ob}_1(\Gamma)\sr \wt{Ob}_1(\Gamma)$$
 %
 given for all $\Gamma\in Ob$ such that:
 %
@@ -397,7 +419,7 @@ to describe two constructions first.
 \llabel{2015.03.27.prob1} Given a J0-structure $\Id$ to construct a family of
 functions
 %
-$$\Idx:Ob_1(\Gamma)\sr Ob_3(\Gamma)$$
+$$\gls{Idx}:Ob_1(\Gamma)\sr Ob_3(\Gamma)$$
 %
 such that for $f:\Gamma'\sr \Gamma$ and $T\in Ob_1(\Gamma)$ one has
 $f^*(\Idx(T))=\Idx(f^*(T))$.
@@ -485,7 +507,7 @@ straightforward.
 \llabel{2015.03.27.def3} Let $\Id$ and $\refl$ be a J0-structure and a
 J1-structure over it. A J2-structure over $(\Id,\refl)$ is data of the form: for
 all $\Gamma\in Ob$, for all $T\in Ob_1(\Gamma)$, for all $P\in Ob_1(\Idx(T))$,
-for all $s0\in \wt{Ob}(rf_T^*(P))$, an element $\J(\Gamma,T,P,s0)$ of
+for all $s0\in \wt{Ob}(rf_T^*(P))$, an element $\gls J(\Gamma,T,P,s0)$ of
 $\wt{Ob}(P)$ such that:
 %
 \begin{enumerate}
@@ -605,7 +627,7 @@ is a pullback square.
 Following \cite{fromunivwithPi} we define for any universe $p:\wt{\U}\sr \U$ and
 any $V\in {\mathcal C}$ a functor
 %
-$$\D_p(-,V):X\mapsto \amalg_{F:X\sr \U}Hom((X;F), V)$$
+$$\gls{D}_p(-,V):X\mapsto \amalg_{F:X\sr \U}Hom((X;F), V)$$
 %
 whose action on morphisms is given by
 %
@@ -614,16 +636,16 @@ $$\D_p(f,V):(F,a)\mapsto (f\circ F, Q(f,F)\circ a)$$
 When $\mathcal C$ is a locally cartesian closed category any morphism
 $p:\wt{\U}\sr \U$ defines a functor
 %
-$$\I_p:V\mapsto \iHom((\wt{\U},p),(\U\times V,pr_1))$$
+$$\gls{I}_p:V\mapsto \iHom((\wt{\U},p),(\U\times V,pr_1))$$
 %
 and we have constructed in \cite[Construction 3.9]{fromunivwithPi} a family of
 bijections
 %
-$$\eta^!_{p,X,V}:Hom(X,\I_p(V))\sr \D_p(X,V)$$
+$$\gls{etashriek}_{p,X,V}:Hom(X,\I_p(V))\sr \D_p(X,V)$$
 %
 that are natural in $X$ and $V$. We let $\eta$ denote the inverse bijections
 %
-$$\eta_{p,X,V}:\D_p(X,V)\sr Hom(X,\I_p(V))$$
+$$\gls{eta}_{p,X,V}:\D_p(X,V)\sr Hom(X,\I_p(V))$$
 %
 Using the functorial structure on the mapping $V\mapsto (\U\times V,pr_1)$
 together with the naturality of internal Hom-objects in the second argument we
@@ -680,10 +702,10 @@ commutes.
 %
 \begin{myproof}
 Since $\eta$ is defined as an inverse to $\eta^!$ it is sufficient to show that
-for any $g\in Hom(X,\I_p(V))$ one has $\eta^{',!}(g\circ
+for any $g\in Hom(X,\I_p(V))$ one has\editorfootnote{$\eta^{',!}$ is undefined here} $\eta^{',!}(g\circ
 I^f(V))=D^f(X,V)(\eta^!(g))$. Let
 %
-$$pr=prI_p(V):\I_p(V)\sr \U$$
+$$pr=\gls{prI}_p(V):\I_p(V)\sr \U$$
 $$pr'=prl_{p'}(V):\I_{p'}(V)\sr \U$$
 %
 be the canonical projections. Let
@@ -2382,7 +2404,7 @@ commute.
 \end{lemma}
 %
 \begin{myproof}
-Let $X=\I_{p_2}(V)$. We have
+Let $X=\I_{p_2}(V)$. We have\editorfootnote{$\eta'$ below is undefined}
 %
 $$\chi_2(V)\circ {I^{g'}(\Phi(V))}=\eta'({\bf\Phi}_2^2(\eta^{-1}(Id_{X})))\circ
 I^{g'}(\Phi(V))$$
@@ -3074,7 +3096,7 @@ where the right hand side of the equation makes sense by Lemma
 %
 \label{2015.04.12.sec1}
 %
-Let us first remind that by \cite[Construction 3.3]{Cfromauniverse} any
+Let us first recall that by \cite[Construction 3.3]{Cfromauniverse} any
 universe category functor ${\bf \Phi}=(\Phi,\phi,\wt{\phi})$ defines a
 homomorphism of C-systems
 %
@@ -3622,9 +3644,13 @@ $(F',\wt{H}')=\wt{u}_{2,H(\Gamma)}'(H(s0))$.
 \end{myproof}
 
 
-
+\section{Bibliography}
 \bibliography{alggeom}
 \bibliographystyle{plain}
+
+\section{Index of symbols}
+\printglossaries
+
 \end{document}
 
 %% Local Variables:
