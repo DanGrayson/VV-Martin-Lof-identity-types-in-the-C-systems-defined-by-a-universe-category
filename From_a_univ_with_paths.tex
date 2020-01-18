@@ -72,6 +72,8 @@
 \newcommand{\D}{\mathsf{D}}
 \newcommand{\I}{\mathsf{I}}
 \newcommand{\rf}{\mathsf{rf}}
+\newcommand{\Fp}{\mathsf{Fp}}
+\newcommand{\pFp}{\mathsf{pFp}}
 
 % persistent notations to go into symbol index
 %   at definition time, use \gls{foo}
@@ -82,6 +84,7 @@
 \newoperator{D}{\D}
 \newoperator{etashriek}{\eta^!}
 \newoperator{eta}{\eta}
+\newoperator{Fp}{\Fp}
 \newoperator{ft}{\ft}
 \newoperator{Idx}{\Idx}
 \newoperator{Id}{\Id}
@@ -92,6 +95,7 @@
 \newoperator{omega}{\omega}
 \newoperator{prI}{prI}
 \newoperator{p}{\p}
+\newoperator{pFp}{\pFp}
 \newoperator{q}{\q}
 \newoperator{refl}{\refl}
 \newoperator{rf}{\rf}
@@ -960,13 +964,13 @@ $\Omega$ is a J1-structure relative to $Eq$, and $Jp$ a J2-structure relative to
 $Eq$ and $\Omega$.
 
 For a J1-structure $(Eq,\Omega)$ on a universe in a category with a locally
-cartesian closed structure let $Fp_{Eq,\Omega}$ denote the fiber product
+cartesian closed structure let $\gls{Fp}_{Eq,\Omega}$ denote the fiber product
 %
 $$(\I_{pE\wt{\U}}(\U), I^{\omega}(\U)) \times_{\I_p(\U)} (\I_p(\wt{\U}), \I_p(p))$$
 %
-and let $pFp_{Eq,\Omega}=I^{\omega}(\U)\dd \I_p(p)$ be the projection
-$Fp_{Eq,\Omega}\sr \U$. Let further $pr_1$ be the projection from $Fp$ to
-$\I_{pE\wt{\U}}(\U)$ and $pr_2$ the projection from $Fp$ to $\I_p(\wt{\U})$.
+and let $\gls{pFp}_{Eq,\Omega}=I^{\omega}(\U)\dd \I_p(p)$ be the projection
+$\Fp_{Eq,\Omega}\sr \U$. Let further $pr_1$ be the projection from $\Fp$ to
+$\I_{pE\wt{\U}}(\U)$ and $pr_2$ the projection from $\Fp$ to $\I_p(\wt{\U})$.
 
 Our solution to the following problem is the key to the construction of
 J-structures over a given J1-structure in categories with weak factorization
@@ -976,14 +980,14 @@ systems in particular in Quillen model categories.
 \llabel{2015.05.12.l1} Let $\mathcal C$ be a category with a locally cartesian
 closed structure and $Eq,\Omega$ be a J1-structure on $({\mathcal C},p)$. To
 construct a bijection between the set of J-structures on $p$ over $(Eq,\Omega)$
-and the set of morphisms $(Fp,pFp)\times_\U(E\wt{\U},pE\wt{\U})\sr \wt{\U}$ that
+and the set of morphisms $(\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U})\sr \wt{\U}$ that
 split the following square into two commutative triangles:
 %
 \begin{eq}\llabel{2015.05.22.sq1}
 \begin{xy}
-          \xymatrix@C=7pc{ (Fp,pFp)\times_\U(\wt{\U},p) \ar[r]^-{adj(pr_2)\circ
-              pr_2} \ar[d]_{Id_{Fp}\times \omega} & \wt{\U}
-            \ar[d]^{p}\\ (Fp,pFp)\times_\U(E\wt{\U},pE\wt{\U})
+          \xymatrix@C=7pc{ (\Fp,\pFp)\times_\U(\wt{\U},p) \ar[r]^-{adj(pr_2)\circ
+              pr_2} \ar[d]_{Id_{\Fp}\times \omega} & \wt{\U}
+            \ar[d]^{p}\\ (\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U})
             \ar[r]^-{adj(pr_1)\circ pr_2} & \U }
 \end{xy}
 \end{eq}
@@ -999,7 +1003,7 @@ following form:
 \begin{xy}
           \xymatrix@C=7pc{ (\I_{pE\wt{\U}}(\U)\times_{\I_p(\U)}
             \I_p(\wt{\U}))\times_\U\wt{\U} \ar[r]^-{adj(pr_2)\circ pr_2}
-            \ar[d]_{Id_{Fp}\times \omega} & \wt{\U}
+            \ar[d]_{Id_{\Fp}\times \omega} & \wt{\U}
             \ar[d]^{p}\\ (\I_{pE\wt{\U}}(\U)\times_{\I_p(\U)} \I_p(\wt{\U}))\times_\U
             E\wt{\U} \ar[r]^-{adj(pr_1)\circ pr_2} & \U }
 \end{xy}
@@ -1014,27 +1018,27 @@ following form:
 \llabel{2015.05.22.constr1} Observe first that there is a bijection between the
 set of morphisms
 %
-$$(Fp,pFp)\times_\U(E\wt{\U},pE\wt{\U})\sr \wt{\U}$$
+$$(\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U})\sr \wt{\U}$$
 %
 that split the square (\ref{2015.05.22.sq1}) into two commutative triangles and
 the set of morphisms
 %
-$$(Fp,pFp)\times_\U(E\wt{\U},pE\wt{\U})\sr \U\times\wt{\U}$$
+$$(\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U})\sr \U\times\wt{\U}$$
 %
 that split into two commutative triangles the square:
 %
 $$
 \begin{xy}
-          \xymatrix@C=7pc{ (Fp,pFp)\times_\U(\wt{\U},p) \ar[r]^-{adj(pr_2)}
-            \ar[d]_{Id_{Fp}\times \omega} & \U\times \wt{\U} \ar[d]^{Id_\U\times
-              p}\\ (Fp,pFp)\times_\U(E\wt{\U},pE\wt{\U}) \ar[r]^-{adj(pr_1)} &
+          \xymatrix@C=7pc{ (\Fp,\pFp)\times_\U(\wt{\U},p) \ar[r]^-{adj(pr_2)}
+            \ar[d]_{Id_{\Fp}\times \omega} & \U\times \wt{\U} \ar[d]^{Id_\U\times
+              p}\\ (\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U}) \ar[r]^-{adj(pr_1)} &
             \U\times \U }
 \end{xy}
 $$
 %
 The rule $f\mapsto adj(f)$ gives us a bijection of the form
 %
-$$Hom_\U((Fp,pFp),(\I_{pE\wt{\U}}(\wt{\U}),\_))\sr Hom_\U((Fp,pFp)\times_\U
+$$Hom_\U((\Fp,\pFp),(\I_{pE\wt{\U}}(\wt{\U}),\_))\sr Hom_\U((\Fp,\pFp)\times_\U
 (E\wt{\U},pE\wt{\U}), (\U\times\wt{\U}, pr_2))$$
 %
 All sections of $coJ$ are automatically morphisms over $\U$. Therefore it
@@ -1042,7 +1046,7 @@ remains to show that this bijection defines a bijection of the subset of
 morphisms that are sections of $coJ$ and morphisms that make the two triangles
 commutative.
 
-One verifies first that a morphism $f:Fp\sr \I_{pE\wt{\U}}(\wt{\U})$ is a section
+One verifies first that a morphism $f:\Fp\sr \I_{pE\wt{\U}}(\wt{\U})$ is a section
 of $coJ$ if and only if $f\circ \I_{pE\wt{\U}}(p)=pr_1$ and $f\circ
 I^{\omega}(\wt{\U})=pr_2$. This is straightforward.
 
@@ -1057,14 +1061,14 @@ Therefore by \cite[Lemma 8.7]{fromunivwithPi} one has
 %
 \begin{align*}
   adj(f\circ \I_{pE\wt{\U}}(p))&=adj(f)\circ (Id_\U\times p) \\
-  adj(f\circ I^{\omega}(\wt{\U}))&=(Id_{Fp}\times_{\U}\omega)\circ adj(f),
+  adj(f\circ I^{\omega}(\wt{\U}))&=(Id_{\Fp}\times_{\U}\omega)\circ adj(f),
 \end{align*}
 %
 and we conclude that $f$ is a section of $coJ$ if and only if
 %
 \begin{align*}
   adj(f)\circ (Id_\U\times p)&=adj(pr_1) \\
-  (Id_{Fp}\times_{\U}\omega)\circ adj(f)&=adj(pr_2).
+  (Id_{\Fp}\times_{\U}\omega)\circ adj(f)&=adj(pr_2).
 \end{align*}
 % 
 This completes the construction.
@@ -1166,7 +1170,7 @@ Then there exists an extension of $(Eq,\Omega)$ to a full J-structure on $p$.
 \begin{myproof}
 Let us apply Construction \ref{2015.05.22.constr1} to $(Eq,\Omega)$. To
 construct the required morphism it is sufficient to establish that
-$Id_{Fp}\times\omega$ is in $TC$. It follows from the first of our conditions
+$Id_{\Fp}\times\omega$ is in $TC$. It follows from the first of our conditions
 that $FB$ is closed under pullbacks and compositions. Therefore, $pE\wt{\U}$ is
 in $FB$. It remains to apply the second of our conditions.
 \end{myproof}
@@ -1399,9 +1403,9 @@ constructing the splitting of the square
 %
 $$
 \begin{xy}
-          \xymatrix@C=4pc{ (\wt{\U},p)\times_\U (Fp,pFp) \ar[r]^-{\sigma\circ
-              adj(pr_2)} \ar[d]_{\omega \times Id_{Fp}} & \U\times\wt{\U}
-            \ar[d]^{Id_\U\times p}\\ (E\wt{\U},pE\wt{\U})\times_\U (Fp,pFp)
+          \xymatrix@C=4pc{ (\wt{\U},p)\times_\U (\Fp,\pFp) \ar[r]^-{\sigma\circ
+              adj(pr_2)} \ar[d]_{\omega \times Id_{\Fp}} & \U\times\wt{\U}
+            \ar[d]^{Id_\U\times p}\\ (E\wt{\U},pE\wt{\U})\times_\U (\Fp,\pFp)
             \ar[r]^-{\sigma'\circ adj(pr_1)} & \U\times \U, }
 \end{xy}
 $$
@@ -1409,21 +1413,21 @@ $$
 where
 %
 \begin{align*}
-  \sigma & :(\wt{\U},p)\times_\U (Fp,pFp)\sr (Fp,pFp)\times_\U (\wt{\U},p) \\
-  \sigma'& :(E\wt{\U},pE\wt{\U})\times_\U (Fp,pFp) \sr (Fp,pFp) \times_\U (E\wt{\U},pE\wt{\U})
+  \sigma & :(\wt{\U},p)\times_\U (\Fp,\pFp)\sr (\Fp,\pFp)\times_\U (\wt{\U},p) \\
+  \sigma'& :(E\wt{\U},pE\wt{\U})\times_\U (\Fp,\pFp) \sr (\Fp,\pFp) \times_\U (E\wt{\U},pE\wt{\U})
 \end{align*}
 %
 are permutations of the factors.
 
 It is easy to show that $\U\times \U$ is fibrant. Therefore it is sufficient to
-show that $Id_\U\times p$ is in $FB$ and $\omega\times_\U Id_{Fp}$ is in
+show that $Id_\U\times p$ is in $FB$ and $\omega\times_\U Id_{\Fp}$ is in
 $TC$. The first fact follows from the assumption that $p$ is in $FB$ and that
 $\U$ is fibrant. The obtain the second fact let us apply condition (3) on the
-classes $FB$ and $TC$ to $B=\U$, $f=pE\wt{\U}$, $i=\omega$ and $p=pFp$.  It
-remains to show that $pFp$ is in $FB$. We can represent $pFp$ as the
+classes $FB$ and $TC$ to $B=\U$, $f=pE\wt{\U}$, $i=\omega$ and $p=\pFp$.  It
+remains to show that $\pFp$ is in $FB$. We can represent $\pFp$ as the
 composition
 %
-$$Fp\stackrel{pr_1}{\sr} \I_{pE\wt{\U}}(\U) \stackrel{prI_{pE\wt{\U}}}{\sr} \U$$
+$$\Fp\stackrel{pr_1}{\sr} \I_{pE\wt{\U}}(\U) \stackrel{prI_{pE\wt{\U}}}{\sr} \U$$
 %
 The morphism $pE\wt{\U}$ is in $FB$ as a composition of pullbacks of $p$ with
 respect to morphisms with fibrant domains through repeated application of
@@ -1431,7 +1435,7 @@ Lemmas \ref{2015.05.14.l2} and \ref{2015.05.14.l4}. Therefore, the morphism
 $prI_{pE\wt{\U}}$ is in $FB$ by Lemma \ref{2015.05.14.l1} and as a corollary we
 know that $\I_{pE\wt{\U}}(\U)$ is fibrant. Similarly $\I_p(\U)$ is fibrant and
 $i_p(p)$ is in $FB$ and applying again Lemma \ref{2015.05.14.l2} we see that
-$pr_1$ is in $FB$. And again by Lemma \ref{2015.05.14.l4} we see that $pFp$ is
+$pr_1$ is in $FB$. And again by Lemma \ref{2015.05.14.l4} we see that $\pFp$ is
 in $FB$ which finishes the proof of the theorem.
 \end{myproof}
 %
