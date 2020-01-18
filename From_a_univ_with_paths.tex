@@ -39,6 +39,7 @@
 \newtheorem{construction0}[proposition]{Construction}
 %
 \newenvironment{construction}[1]{\begin{construction0}(for Problem \ref{#1})}{$\blacksquare$ \end{construction0}}
+\newcommand{\by}[1]{\text{(by #1)}}
 \newcommand{\llabel}[1]{\label{#1}}
 \newcommand{\comment}[1]{}
 \newcommand{\sr}{\rightarrow}
@@ -70,12 +71,14 @@
 % other notation
 \newcommand{\D}{\mathsf{D}}
 \newcommand{\I}{\mathsf{I}}
+\newcommand{\rf}{\mathsf{rf}}
 
 % persistent notations to go into symbol index
 %   at definition time, use \gls{foo}
 %   at subsequent uses, use \foo or the actual code
 %   the order here is the order in the index, and is obtained with "sort -f"
 \newoperator{deepartial}{\partial}
+\newoperator{delta}{\delta}
 \newoperator{D}{\D}
 \newoperator{etashriek}{\eta^!}
 \newoperator{eta}{\eta}
@@ -86,10 +89,13 @@
 \newoperator{J}{\J}
 \newoperator{Obwt}{\wt{Ob}}
 \newoperator{Ob}{Ob}
+\newoperator{omega}{\omega}
 \newoperator{prI}{prI}
 \newoperator{p}{\p}
 \newoperator{q}{\q}
 \newoperator{refl}{\refl}
+\newoperator{rf}{\rf}
+\newoperator{starfg}{f*g}
 
 %% \newoperator{}{\}
 
@@ -438,7 +444,7 @@ $$
 $$
 
 Recall that for $T\in Ob_1(\Gamma)$ we let
-$\delta(T)$ denote the morphism $T\sr \p_T^*(T)$ that can be described
+$\gls{delta}(T)$ denote the morphism $T\sr \p_T^*(T)$ that can be described
 equivalently as $s_{Id_T}$ or as the only morphism such that $\delta(T)\circ
 \p_{\p_T^*(T)}=Id_T$ and $\delta_T\circ \q(\p_T,T)=Id_T$. Because of the first
 equation we have $\delta(T)\in \wt{Ob}(\p_T^*(T))$.
@@ -469,19 +475,21 @@ The proof that $\Idx$ is natural in $f:\Gamma'\sr \Gamma$ is straightforward.
 \llabel{2015.03.27.prob2} Given a J0-structure $\Id$ and a J1-structure $\refl$
 over it to construct for all $\Gamma\in Ob$ and $T\in Ob_1(\Gamma)$ a morphism
 %
-$$rf_T:T\sr \Idx(T)$$
+$$\gls{rf}_T:T\sr \Idx(T)$$
 %
-such that for any $f:\Gamma'\sr \Gamma$ one has $f^*(rf_T)=rf_{f^*(T)}$.
+such that for any $f:\Gamma'\sr \Gamma$ one has $f^*(\rf_T)=\rf_{f^*(T)}$.
 \end{problem}
 %
 \begin{construction}{2015.03.27.prob2}
-\llabel{2015.03.27.constr2}\rm We have:
+\llabel{2015.03.27.constr2}\rm We have the following chain of equations.
 %
-$$\delta(T)^*(\Idx(T))=\delta(T)^*(\Id_{\p_T^*(T)}((\p_{\p_T^*(T)}^*(\delta_T))),\delta(\p_T^*(T)))$$
-$$=\Id_T(\delta(T)^*(\p_{\p_T^*(T)}^*(\delta_T)),\delta(T)^*(\delta(\p_T^*(T))))=$$
-$$=\Id_T(\delta(T),\delta(T)),$$
+\begin{align*}
+  \delta(T)^*(\Idx(T)) & = \delta(T)^*(\Id_{\p_T^*(T)}((\p_{\p_T^*(T)}^*(\delta_T))),\delta(\p_T^*(T)))  & \by{...}\\
+    & = \Id_T(\delta(T)^*(\p_{\p_T^*(T)}^*(\delta_T)),\delta(T)^*(\delta(\p_T^*(T)))) & \by{...}\\
+    & = \Id_T(\delta(T),\delta(T)) & \by{...}
+\end{align*}
 %
-where the last equality follows from the fact that $f^*(\delta(T))=s_f$ and for
+The last equality follows from the fact that $f^*(\delta(T))=s_f$ and that for
 any $s\in\wt{Ob}$, $s_s=s$.  This shows that we have a canonical square of the
 form
 %
@@ -497,10 +505,10 @@ form
 and $\refl(\delta(T))$ is a morphism $T\sr \Id(\delta(T),\delta(T))$. We define:
 %
 \begin{eq}
-\llabel{2015.04.02.eq1} rf_T:=\refl(\delta(T))\circ \q(\delta(T),\Idx(T))
+\llabel{2015.04.02.eq1} \rf_T:=\refl(\delta(T))\circ \q(\delta(T),\Idx(T))
 \end{eq}
 %
-The proof that for any $f:\Gamma'\sr \Gamma$ one has $f^*(rf_T)=rf_{f^*(T)}$ is
+The proof that for any $f:\Gamma'\sr \Gamma$ one has $f^*(\rf_T)=\rf_{f^*(T)}$ is
 straightforward.
 \end{construction}
 %
@@ -508,7 +516,7 @@ straightforward.
 \llabel{2015.03.27.def3} Let $\Id$ and $\refl$ be a J0-structure and a
 J1-structure over it. A J2-structure over $(\Id,\refl)$ is data of the form: for
 all $\Gamma\in Ob$, for all $T\in Ob_1(\Gamma)$, for all $P\in Ob_1(\Idx(T))$,
-for all $s0\in \wt{Ob}(rf_T^*(P))$, an element $\gls J(\Gamma,T,P,s0)$ of
+for all $s0\in \wt{Ob}(\rf_T^*(P))$, an element $\gls J(\Gamma,T,P,s0)$ of
 $\wt{Ob}(P)$ such that:
 %
 \begin{enumerate}
@@ -521,7 +529,7 @@ where the right hand side of the equation is well-defined because of the
 naturality in $f$ of $\Idx$ and $rf$.
 \item $\J$ satisfies the $\iota$-rule. For $\Gamma, T, P, s0$ as above one has
 %
-$$rf_T^*(\J(\Gamma,T,P,s0))=s0$$
+$$\rf_T^*(\J(\Gamma,T,P,s0))=s0$$
 %
 \end{enumerate}
 \end{definition}
@@ -557,7 +565,7 @@ that we consider here. This more complex structure can be seen as a family of
 structures $eJ_n$, where $eJ_0=J2$, and where $eJ_n$ over $(\Id,\refl)$ is a
 collection of data of the form: for all $\Gamma\in Ob$, for all $T\in
 Ob_1(\Gamma)$, for all $\Delta\in Ob_{n}(\Idx(T))$, for all $P\in
-Ob_1(\Delta)$, for all $s0\in \wt{Ob}(rf_T^*(P))$, an element
+Ob_1(\Delta)$, for all $s0\in \wt{Ob}(\rf_T^*(P))$, an element
 $eJ_n(\Gamma,T,\Delta,s0)$ in $\wt{Ob}(P)$ such that $eJ_n$ satisfies the
 obvious analog of $\iota$-rule and such that it is natural in $\Gamma$. See
 also Remark \ref{2015.05.24.rem2}.
@@ -588,11 +596,14 @@ for all $X$ and all morphisms $F:X\sr \U$. A universe in $\mathcal C$ is a
 morphism with a universe structure on it and a universe category is a category
 with a universe and a choice of a final object $pt$.
 
-For $f:W\sr X$ and $g:W\sr \wt{\U}$ we will denote by $f*g$ the unique morphism
+For $f:W\sr X$ and $g:W\sr \wt{\U}$ we will denote by $\gls{starfg}$ the unique morphism
 such that
 %
-$$(f*g)\circ \p_{X,F}=f$$
-$$(f*g)\circ Q(F)=g$$
+\begin{align*}
+  (f*g)\circ \p_{X,F} & =f \\
+  (f*g)\circ Q(F) & =g
+\end{align*}
+
 %
 When we need to distinguish canonical squares of different universes we may
 write $(X;F)_{p}$ and $f*_p g$.
@@ -706,13 +717,17 @@ Since $\eta$ is defined as an inverse to $\eta^!$ it is sufficient to show that
 for any $g\in Hom(X,\I_p(V))$ one has\editorfootnote{$\eta^{',!}$ is undefined here} $\eta^{',!}(g\circ
 I^f(V))=D^f(X,V)(\eta^!(g))$. Let
 %
-$$pr=\gls{prI}_p(V):\I_p(V)\sr \U$$
-$$pr'=prl_{p'}(V):\I_{p'}(V)\sr \U$$
+\begin{align*}
+  pr=\gls{prI}_p(V) & :\I_p(V)\sr \U \\
+  pr'=prl_{p'}(V) & :\I_{p'}(V)\sr \U
+\end{align*}
 %
 be the canonical projections. Let
 %
-$$st=st_p(V):(\I_p(V);pr)\sr V$$
-$$st'=st_{p'}(V):(\I_{p'}(V);pr')'\sr V$$
+\begin{align*}
+  st=st_p(V)&:(\I_p(V);pr)\sr V \\
+  st'=st_{p'}(V)&:(\I_{p'}(V);pr')'\sr V
+\end{align*}
 %
 be the morphisms introduced in \cite{fromunivwithPi}. By \cite[Problem
   3.8]{fromunivwithPi} we have
@@ -857,10 +872,11 @@ $$
 %
 Explicitly we have
 %
-$$(X;F)_{E}=(X;F,Q(F)\circ p, Q(Q(F),p)\circ Eq)$$
-$$Q(F)_{E}=Q(Q(Q(F),p),Eq)$$
-$$\p_{X,F}^E=\p_{(X;F,Q(F)\circ p),Q(Q(F),p)\circ Eq}\circ \p_{(X;F),Q(F)\circ
-  p}\circ \p_{X,F}$$
+\begin{align*}
+  (X;F)_{E}&=(X;F,Q(F)\circ p, Q(Q(F),p)\circ Eq) \\
+  Q(F)_{E}&=Q(Q(Q(F),p),Eq) \\
+  \p_{X,F}^E&=\p_{(X;F,Q(F)\circ p),Q(Q(F),p)\circ Eq}\circ \p_{(X;F),Q(F)\circ p}\circ \p_{X,F}
+\end{align*}
 %
 We will also write $Q(f,F)_{E}$ for the canonical morphisms from $(X;f\circ
 F)_{E}$ to $(X;F)_{E}$.
@@ -882,13 +898,8 @@ commutes.
 \end{definition}
 %
 
-
-
-
 The square (\ref{2015.03.27.sq1}) defines a morphism $\wt{\U}\sr E\wt{\U}$ that
-we will denote by $\omega$.
-
-
+we will denote by $\gls{omega}$.
 
 To define a J2-structure on a universe we will need to assume that $\mathcal C$
 is a locally cartesian closed category.  Recall that locally cartesian closed
@@ -1037,18 +1048,24 @@ I^{\omega}(\wt{\U})=pr_2$. This is straightforward.
 
 Next we have
 %
-$$\I_{pE\wt{\U}}(p)=\iHom_\U((E\wt{\U},pE\wt{\U}),Id_\U\times p)$$
-$$I^{\omega}(\wt{\U})=\iHom_\U(\omega,(\U\times\wt{\U},pr_2))$$
+\begin{align*}
+  \I_{pE\wt{\U}}(p)&=\iHom_\U((E\wt{\U},pE\wt{\U}),Id_\U\times p) \\
+  I^{\omega}(\wt{\U})&=\iHom_\U(\omega,(\U\times\wt{\U},pr_2))
+\end{align*}
 %
 Therefore by \cite[Lemma 8.7]{fromunivwithPi} one has
 %
-$$adj(f\circ \I_{pE\wt{\U}}(p))=adj(f)\circ (Id_\U\times p)$$
-$$adj(f\circ I^{\omega}(\wt{\U}))=(Id_{Fp}\times_{\U}\omega)\circ adj(f)$$
+\begin{align*}
+  adj(f\circ \I_{pE\wt{\U}}(p))&=adj(f)\circ (Id_\U\times p) \\
+  adj(f\circ I^{\omega}(\wt{\U}))&=(Id_{Fp}\times_{\U}\omega)\circ adj(f)
+\end{align*}
 %
 and we conclude that $f$ is a section of $coJ$ iff
 %
-$$adj(f)\circ (Id_\U\times p)=adj(pr_1)$$
-$$(Id_{Fp}\times_{\U}\omega)\circ adj(f)=adj(pr_2)$$
+\begin{align*}
+  adj(f)\circ (Id_\U\times p)&=adj(pr_1) \\
+  (Id_{Fp}\times_{\U}\omega)\circ adj(f)&=adj(pr_2)
+\end{align*}
 % 
 This completes the construction.
 \end{construction}
@@ -1310,9 +1327,12 @@ Consider the square
 %
 This square commutes. Indeed,
 %
-$$adj(f_Z)\circ (Id_\U\times r )=adj(f_Z\circ \iHom_\U((\wt{\U},p), Id_\U\times
-r))=$$
-$$adj(i\circ f_W)=(i\times Id_{\wt{\U}})\circ adj (f_W),$$
+\begin{align*}
+  adj(f_Z)\circ (Id_\U\times r )
+  & = adj(f_Z\circ \iHom_\U((\wt{\U},p), Id_\U\times r)) \\
+  & = adj(i\circ f_W) \\
+  & = (i\times Id_{\wt{\U}})\circ adj (f_W),
+\end{align*}
 %
 where the first equality is by \cite[Lemma 8.7(1)]{fromunivwithPi} and the
 third by \cite[Lemma 8.7(3)]{fromunivwithPi}. By Lemmas \ref{2015.05.14.l2} and
@@ -1390,9 +1410,10 @@ $$
 %
 where
 %
-$$\sigma:(\wt{\U},p)\times_\U (Fp,pFp)\sr (Fp,pFp)\times_\U (\wt{\U},p)$$
-$$\sigma':(E\wt{\U},pE\wt{\U})\times_\U (Fp,pFp) \sr (Fp,pFp) \times_\U
-(E\wt{\U},pE\wt{\U})$$
+\begin{align*}
+  \sigma & :(\wt{\U},p)\times_\U (Fp,pFp)\sr (Fp,pFp)\times_\U (\wt{\U},p) \\
+  \sigma'& :(E\wt{\U},pE\wt{\U})\times_\U (Fp,pFp) \sr (Fp,pFp) \times_\U (E\wt{\U},pE\wt{\U})
+\end{align*}
 %
 are permutations of the factors.
 
@@ -1640,9 +1661,11 @@ denote the composition of $n$ canonical projections $\p_{\Gamma}\circ \dots\circ
 \llabel{2015.03.27.l1} Let $Eq$ be a J0-structure on $p$. Let $\Gamma\in Ob$
 and $F:int(\Gamma)\sr \U$. Then one has:
 %
-$$int(\Idx(\Gamma,F))=(int(\Gamma);F)_{E}$$
-$$\p_{\Idx(T),3} = p^E_{\Gamma,F}$$
-$$Q(F)_{E}\circ Q(Eq)=Q(Q(Q(F)\circ p)\circ Eq)$$
+\begin{align*}
+  int(\Idx(\Gamma,F))&=(int(\Gamma);F)_{E} \\
+  \p_{\Idx(T),3} &= p^E_{\Gamma,F} \\
+  Q(F)_{E}\circ Q(Eq)&=Q(Q(Q(F)\circ p)\circ Eq)
+\end{align*}
 %
 %
 \end{lemma}
@@ -1655,8 +1678,10 @@ Eq),$$
 %
 where
 %
-$$o=\p_{\p_T^*(T)}^*(\delta(T))$$
-$$o'=\delta(\p_T^*(T))$$
+\begin{align*}
+  o &=\p_{\p_T^*(T)}^*(\delta(T)) \\
+  o'&=\delta(\p_T^*(T))
+\end{align*}
 %
 We have
 %
@@ -1664,9 +1689,10 @@ $$int(\p_T^*(T))=(int(\Gamma);F,Q(F)\circ p)$$
 %
 and
 %
-$$\wt{u}_1(\p_{\p_T^*(T)}^*(\delta(T)))=\p_{(int(\Gamma,F, Q(F)\circ p)}\circ
-Q(F)$$
-$$\wt{u}_1(\delta(\p_T^*(T)))=Q(Q(F)\circ p)$$
+\begin{align*}
+  \wt{u}_1(\p_{\p_T^*(T)}^*(\delta(T)))&=\p_{(int(\Gamma,F, Q(F)\circ p)}\circ Q(F) \\
+  \wt{u}_1(\delta(\p_T^*(T)))&=Q(Q(F)\circ p)
+\end{align*}
 %
 which shows that $\wt{u}_1(o)*\wt{u}_1(o')=Q(Q(F),p)$ and completes the proof
 of the first and the second equations.
@@ -1719,9 +1745,11 @@ $$u_1(\partial(\refl_{\Omega}(s)))=\wt{u}_1(\refl(s))\circ p=\wt{u}_1(s)\circ
 %
 therefore
 %
-$$\wt{u}_1(\refl_{\Omega}(s))=\refl_{\Omega}(s)\circ
-Q(u_1(\partial(\refl_{\Omega}(s))))=$$
-$$\refl_{\Omega}(s)\circ Q(s\circ Q(F)\circ \Omega\circ p)$$
+\begin{align*}
+  \wt{u}_1(\refl_{\Omega}(s))
+  & =\refl_{\Omega}(s)\circ Q(u_1(\partial(\refl_{\Omega}(s)))) \\
+  & = \refl_{\Omega}(s)\circ Q(s\circ Q(F)\circ \Omega\circ p)
+\end{align*}
 %
 On the other hand, by definition of $\refl_{\Omega}$,
 %
@@ -1734,7 +1762,7 @@ $$\wt{u}_1(\refl_{\Omega}(s))=\wt{u}_1(s)\circ \Omega=s\circ Q(F)\circ \Omega.$$
 \begin{lemma}
 \llabel{2015.03.31.l2} Given $Eq$ and $\Omega$ consider the corresponding $\Id$
 and $\refl$. For $T\in Ob_1(\Gamma)$ let %
-$$rf_T:int(T)\sr int(\Idx(T))$$
+$$\rf_T:int(T)\sr int(\Idx(T))$$
 %
 be the morphism constructed in Construction \ref{2015.03.27.constr2}. On the
 other hand let
@@ -1748,17 +1776,19 @@ $$(int(\Gamma);F)\sr (int(\Gamma);F)_{E}$$
 %
 such that
 %
-$$F^*(\omega)\circ p^{E}_{int(\Gamma),F}=\p_{T}$$
-$$F^*(\omega)\circ Q(int(\Gamma),F)_{E}=Q(F)\circ \omega$$
+\begin{align*}
+  F^*(\omega)\circ p^{E}_{int(\Gamma),F} & = \p_{T} \\
+  F^*(\omega)\circ Q(int(\Gamma),F)_{E} & = Q(F)\circ \omega
+\end{align*}
 %
 Then
 %
-$$rf_T=F^*(\omega)$$
+$$\rf_T=F^*(\omega)$$
 %
 \end{lemma}
 %
 \begin{myproof}
-In view of Lemma \ref{2015.03.27.l1}, both $rf_T$ and $F^*(\omega)$ are
+In view of Lemma \ref{2015.03.27.l1}, both $\rf_T$ and $F^*(\omega)$ are
 morphisms from $(int(\Gamma);F)$ to $(int(\Gamma);F)_{E}$. Let us denote
 $int(\Gamma)$ by $X$ and $(int(\Gamma);F,Q(F)\circ p)$ by $Y$. We have
 %
@@ -1777,29 +1807,39 @@ $$
 %
 We have two projections
 %
-$$h=h_1\circ h_2=Q(Q(Q(F),p)\circ Eq):(X;F)_{E}\sr \wt{\U}$$
-$$v:\p_{Y,Q(Q(F),p)\circ Eq}:(X;F)_{E} \sr Y$$
+\begin{align*}
+  h := h_1\circ h_2=Q(Q(Q(F),p)\circ Eq)&:(X;F)_{E}\sr \wt{\U} \\
+  v := \p_{Y,Q(Q(F),p)\circ Eq}&:(X;F)_{E} \sr Y
+\end{align*}
 %
-We need to check that
+We need to check the following equations.
 %
-$$rf_T\circ h=F^*(\omega)\circ h$$
-$$rf_T\circ v =F^*(\omega)\circ v$$
+\begin{align*}
+  \rf_T\circ h &=F^*(\omega)\circ h \\
+  \rf_T\circ v &=F^*(\omega)\circ v
+\end{align*}
 %
-The morphism $rf_T$ is defined in (\ref{2015.04.02.eq1}) as
+The morphism $\rf_T$ is defined in (\ref{2015.04.02.eq1}) as
 %
-$$rf_T=\refl(\delta(T))\circ \q(\delta(T),\Idx(T))=\refl(\delta(T))\circ
-Q(\delta(T),Q(Q(F),p)\circ Eq),$$
+\begin{align*}
+  \rf_T
+  & :=\refl(\delta(T))\circ \q(\delta(T),\Idx(T)) \\
+  & = \refl(\delta(T))\circ Q(\delta(T),Q(Q(F),p)\circ Eq),
+\end{align*}
 %
 where the second equation is from (\ref{2015.04.02.eq2}).
 %
 We have
 %
-$$rf_T\circ h = \refl(\delta(T))\circ Q(\delta(T),Q(Q(F),p)\circ Eq)\circ
-h=\refl(\delta(T))\circ Q(\delta(T)\circ Q(Q(F),p)\circ
-Eq)=$$$$\refl(\delta(T))\circ Q(Q(F)\circ \Delta\circ Eq)=\refl(\delta(T))\circ
-Q(Q(F)\circ (\omega\circ pE\wt{\U})\circ Eq)=$$
-$$\refl(\delta(T))\circ Q(Q(F)\circ \omega\circ Q(Eq)\circ
-p)=\refl(\delta(T))\circ Q(Q(F)\circ \Omega\circ p)$$
+\begin{align*}
+  \rf_T \circ h
+  & = \refl(\delta(T))\circ Q(\delta(T),Q(Q(F),p)\circ Eq)\circ h & \by{...}\\
+  & = \refl(\delta(T))\circ Q(\delta(T)\circ Q(Q(F),p)\circ Eq) & \by{...}\\
+  & = \refl(\delta(T))\circ Q(Q(F)\circ \Delta\circ Eq) & \by{...}\\
+  & = \refl(\delta(T))\circ Q(Q(F)\circ (\omega\circ pE\wt{\U})\circ Eq) & \by{...}\\
+  & = \refl(\delta(T))\circ Q(Q(F)\circ \omega\circ Q(Eq)\circ p) & \by{...}\\
+  & = \refl(\delta(T))\circ Q(Q(F)\circ \Omega\circ p) & \by{...}
+\end{align*}
 %
 On the other hand
 %
@@ -1808,24 +1848,33 @@ h_2=Q(F)\circ \omega\circ Q(Eq)=Q(F)\circ \Omega$$
 %
 We have $u_1(\partial(\delta(T)))=Q(F)\circ p$ and
 %
-$$\delta(T)\circ Q(u_1(\partial(\delta(T))))=\delta(T)\circ Q(Q(F)\circ p)=
-\delta(T)\circ Q(\p_T\circ F)=$$
-$$\delta(T)\circ \q(\p_T,T)\circ Q(F)=Id_{int(T)}\circ Q(F)=Q(F)$$
+\begin{align*}
+  \delta(T)\circ Q(u_1(\partial(\delta(T))))
+    & = \delta(T)\circ Q(Q(F)\circ p) \\
+    & =  \delta(T)\circ Q(\p_T\circ F) \\
+    & = \delta(T)\circ \q(\p_T,T)\circ Q(F) \\
+    & = Id_{int(T)}\circ Q(F) \\
+    & = Q(F)
+\end{align*}
 %
 Therefore by Lemma \ref{2015.04.02.l3} we have
 %
 $$\refl(\delta(T))\circ Q(Q(F)\circ \Omega\circ p)=Q(F)\circ \Omega$$
 %
-Which proves that $rf_T\circ h=F^*(\omega)\circ h$.
+Which proves that $\rf_T\circ h=F^*(\omega)\circ h$.
 
-We have $rf_T\circ v=\delta(T)$ because the square (\ref{2015.03.31.eq3})
-commutes.  Both $rf_T\circ v$ and $F^*(\omega)\circ v$ are morphisms $int(T)\sr
+We have $\rf_T\circ v=\delta(T)$ because the square (\ref{2015.03.31.eq3})
+commutes.  Both $\rf_T\circ v$ and $F^*(\omega)\circ v$ are morphisms $int(T)\sr
 int(\p_T^*(T))$. Since $\p_T^*(T)$ is a part of a pullback square with the
 projections being $\p_{\p_T^*(T)}$ and $Q(Q(F)\circ p)$ we need to check that
 %
-$$\delta(T)\circ Q(Q(F)\circ p)= F^*(\omega)\circ v\circ Q(Q(F)\circ
-p)=F^*(\omega)\circ h_1\circ pE\wt{\U}=$$
-$$Q(F)\circ \omega \circ pE\wt{\U}=Q(F)\circ \Delta$$
+\begin{align*}
+  \delta(T)\circ Q(Q(F)\circ p)
+    & = F^*(\omega)\circ v\circ Q(Q(F)\circ p) \\
+    & = F^*(\omega)\circ h_1\circ pE\wt{\U} \\
+    & = Q(F)\circ \omega \circ pE\wt{\U} \\
+    & = Q(F)\circ \Delta
+\end{align*}
 %
 which holds by a simple computation, and
 %
@@ -1843,9 +1892,12 @@ $$\p_T=Id_{int(T)}\circ \p_T=F^*(\omega)\circ v\circ \p_{\p_T^*(T)}\circ \p_T$$
 The second one is the second equality of the two that define $F^*(\omega)$. For
 the first one we have
 %
-$$F^*(\omega)\circ v\circ (\p_{\p_T^*(T)}\circ Q(F))=F^*(\omega)\circ v\circ
-Q(Q(F),p)\circ \p_{\wt{\U},p}=$$
-$$Q(F)\circ \Delta\circ \p_{\wt{\U},p}=Q(F).$$
+\begin{align*}
+  F^*(\omega)\circ v\circ (\p_{\p_T^*(T)}\circ Q(F))
+    & = F^*(\omega)\circ v\circ Q(Q(F),p)\circ \p_{\wt{\U},p} \\
+    & = Q(F)\circ \Delta\circ \p_{\wt{\U},p} \\
+    & = Q(F).
+\end{align*}
 %
 This completes the proof of Lemma \ref{2015.03.31.l2}.
 \end{myproof}
@@ -1858,8 +1910,10 @@ This completes the proof of Lemma \ref{2015.03.31.l2}.
 \llabel{2015.05.04.prob2} Let $Eq$ be a J0-structure on a universe $p$ in $\cal
 C$. To construct, for all objects $\Gamma\in Ob(\toCC({\mathcal C},p))$ two maps
 %
-$$\psi:\D_{pE\wt{\U}}(int(\Gamma),\U)\sr Ob(\toCC({\mathcal C},p))$$
-$$\wt{\psi}:\D_{pE\wt{\U}}(int(\Gamma),\wt{\U})\sr \wt{Ob}(\toCC({\mathcal C},p))$$
+\begin{align*}
+  \psi & :\D_{pE\wt{\U}}(int(\Gamma),\U)\sr Ob(\toCC({\mathcal C},p)) \\
+  \wt{\psi} & :\D_{pE\wt{\U}}(int(\Gamma),\wt{\U})\sr \wt{Ob}(\toCC({\mathcal C},p))
+\end{align*}
 %
 such that
 %
@@ -1895,7 +1949,7 @@ The proof of the relation (\ref{2015.05.04.eq3}) is straightforward.
 \llabel{2015.04.04.prob1} Let $(Eq,\Omega,Jp)$ be a J-structure on a universe
 $p$. To construct for all $\Gamma\in Ob=Ob(\toCC({\mathcal C},p))$, for all $T\in
 Ob_1(\Gamma)$, for all $P\in Ob_1(\Idx(T))$, for all $s0\in
-\wt{Ob}(rf_T^*(P))$, an element $\J(\Gamma,T,P,s0)$ of $\wt{Ob}(P)$.
+\wt{Ob}(\rf_T^*(P))$, an element $\J(\Gamma,T,P,s0)$ of $\wt{Ob}(P)$.
 \end{problem} 
 %
 \begin{construction}{2015.04.04.prob1}\rm
@@ -1911,10 +1965,14 @@ $$\eta_{pE\wt{\U}}(F,G)\circ I^{\omega}(\U)=\eta_p(F,\wt{H})\circ \I_p(p)$$
 %
 Indeed,
 %
-$$\eta_{pE\wt{\U}}(F,G)\circ I^{\omega}(\U)=\eta_p(F,G\circ
-F^*(\omega))=\eta_p(F,rf_T\circ G)=$$
-$$\eta_p(F,s0\circ Q(rf_T\circ G)\circ p)=\eta_p(F,\wt{H}\circ
-p)=\eta_p(F,\wt{H})\circ \I_p(p),$$
+\begin{align*}
+  \eta_{pE\wt{\U}}(F,G)\circ I^{\omega}(\U)
+    & = \eta_p(F,G\circ F^*(\omega)) \\
+    & = \eta_p(F,\rf_T\circ G) \\
+    & = \eta_p(F,s0\circ Q(\rf_T\circ G)\circ p) \\
+    & = \eta_p(F,\wt{H}\circ p) \\
+    & = \eta_p(F,\wt{H})\circ \I_p(p),
+\end{align*}
 %
 where the first equality is from Lemma \ref{2015.04.02.l4}, the second from
 Lemma \ref{2015.03.31.l2}, the third from the commutativity of the canonical
@@ -1982,8 +2040,10 @@ $\Gamma$ since $\ft^3(\Idx(\Gamma,F))=\Gamma$. Then $q3=Q(f,F)_{E}$.
 Let $X:=int(\Gamma)$ and $X':=int(\Gamma')$. By definition, $Q(f,F)_{E}$ is the
 unique morphism such that
 %
-$$Q(f,F)_{E}\circ Q(F)_{E}=Q(f\circ F)_{E}$$
-$$Q(f,F)_{E}\circ p^{E}_{X,F}=p^{E}_{X',f\circ F}\circ f$$
+\begin{align*}
+  Q(f,F)_{E}\circ Q(F)_{E}&=Q(f\circ F)_{E} \\
+  Q(f,F)_{E}\circ p^{E}_{X,F}&=p^{E}_{X',f\circ F}\circ f
+\end{align*}
 %
 We will be building the proof using the following diagram\editorfootnote{The notation $p_3$ is undefined!}
 %
@@ -2006,8 +2066,10 @@ $$
 %
 By construction that is seen on this diagram we have:
 %
-$$q3=Q(Q(Q(f,F),Q(F)\circ p),Q(Q(F),p)\circ Eq)$$
-$$Q(X,F)_{E}=Q(Q(Q(F),p),Eq)$$
+\begin{align*}
+  q3&=Q(Q(Q(f,F),Q(F)\circ p),Q(Q(F),p)\circ Eq) \\
+  Q(X,F)_{E}&=Q(Q(Q(F),p),Eq)
+\end{align*}
 %
 and
 %
@@ -2025,9 +2087,12 @@ $$Q(a_1,a_2\circ A)\circ Q(a_2,A)=Q(a_1\circ a_2, A)$$
 %
 Applying it twice and then the defining rule we get:
 %
-$$Q(Q(Q(f,F),Q(F)\circ p),Q(Q(F),p)\circ Eq)\circ Q(Q(Q(F),p),Eq)=$$
-$$Q(Q(Q(f,F),Q(F)\circ p)\circ Q(Q(F),p), Eq)=$$
-$$Q(Q(Q(f,F)\circ Q(F),p),Eq)=Q(Q(Q(f\circ F),p),Eq)$$
+\begin{align*}
+  Q(Q(Q(f,F),&Q(F)\circ p),Q(Q(F),p)\circ Eq)\circ Q(Q(Q(F),p),Eq) \\
+    & = Q(Q(Q(f,F),Q(F)\circ p)\circ Q(Q(F),p), Eq) \\
+    & = Q(Q(Q(f,F)\circ Q(F),p),Eq) \\
+    & = Q(Q(Q(f\circ F),p),Eq)
+\end{align*}
 %
 which gives us the first equation. The second equation is immediate from the
 commutativity of the three squares that define $q3$.
@@ -2062,9 +2127,10 @@ $$\q(f,\Idx(T),3)^*(\J,1)=\J'$$
 %
 We have:
 %
-$$\eta_{pE\wt{\U}}(F,\wt{u}_1(\J))=\phi(\Gamma,T,P,s0)\circ Jp$$
-$$\eta_{pE\wt{\U}}(f\circ F,
-\wt{u}_1(\J'))=\phi(\Gamma',f^*(T),f^*(P),f^*(s0))\circ Jp$$
+\begin{align*}
+  \eta_{pE\wt{\U}}(F,\wt{u}_1(\J))&=\phi(\Gamma,T,P,s0)\circ Jp \\
+  \eta_{pE\wt{\U}}(f\circ F, \wt{u}_1(\J'))&=\phi(\Gamma',f^*(T),f^*(P),f^*(s0))\circ Jp
+\end{align*}
 %
 By naturality of $\eta$ with respect to the first argument we have
 %
@@ -2073,9 +2139,11 @@ Q(f,F)_{E}\circ \wt{u}_1(\J))$$
 %
 Therefore, by Lemma \ref{2015.04.04.l4} we have
 %
-$$f\circ \eta_{pE\wt{\U}}(F,\wt{u}_1(\J))=\eta_{pE\wt{\U}}(f\circ F,
-\wt{u}_1(Q(f,F)_{E}^*(\J,1)))=$$
-$$\eta_{pE\wt{\U}}(f\circ F, \wt{u}_1(\q(f,\Idx(T),3)^*(\J,1)))$$
+\begin{align*}
+  f\circ \eta_{pE\wt{\U}}(F,\wt{u}_1(\J))
+    & = \eta_{pE\wt{\U}}(f\circ F, \wt{u}_1(Q(f,F)_{E}^*(\J,1))) \\
+    & = \eta_{pE\wt{\U}}(f\circ F, \wt{u}_1(\q(f,\Idx(T),3)^*(\J,1)))
+\end{align*}
 %
 Since both $\eta_{pE\wt{\U}}$ and $\wt{u}_1$ are bijections and in particular
 injections it is sufficient to show that
@@ -2108,7 +2176,7 @@ $p$. Then the morphisms of Construction \ref{2015.04.04.constr1} satisfy the
 second condition of the definition of a J2-structure, i.e., for all $\Gamma$,
 $T$, $P$ and $s0$ as above one has
 %
-$$rf_T^*(\J_{Jp}(\Gamma,T,P,s0))=s0$$
+$$\rf_T^*(\J_{Jp}(\Gamma,T,P,s0))=s0$$
 %
 \end{lemma}
 %
@@ -2123,10 +2191,10 @@ Then
 $$\eta_{E\wt{\U}}(F,\wt{u}_1(\J))\circ
 I^{\omega}(\wt{\U})=\eta_p(F,F^*(\omega)\circ \wt{u}_1(\J))$$
 %
-By Lemma \ref{2015.03.31.l2} we have $F^*(\omega)=rf_T$. Therefore,
+By Lemma \ref{2015.03.31.l2} we have $F^*(\omega)=\rf_T$. Therefore,
 %
-$$\eta_{E\wt{\U}}(F,\wt{u}_1(\J))\circ I^{\omega}(\wt{\U})=\eta_p(F,rf_T\circ
-\wt{u}_1(\J))=\eta_p(F,\wt{u}_1(rf_T^*(\J)))$$
+$$\eta_{E\wt{\U}}(F,\wt{u}_1(\J))\circ I^{\omega}(\wt{\U})=\eta_p(F,\rf_T\circ
+\wt{u}_1(\J))=\eta_p(F,\wt{u}_1(\rf_T^*(\J)))$$
 %
 On the other hand
 %
@@ -2135,10 +2203,10 @@ $$\phi\circ Jp\circ I^{\omega}(\wt{\U})=\phi\circ prI_p(\wt{\U})$$
 by (\ref{2015.04.04.eq1}) which equals, by construction,
 $\eta_p(F,\wt{u}_1(s0))$. Therefore,
 %
-$$\eta_p(F,\wt{u}_1(rf_T^*(\J)))=\eta_p(F,\wt{u}_1(s0))$$
+$$\eta_p(F,\wt{u}_1(\rf_T^*(\J)))=\eta_p(F,\wt{u}_1(s0))$$
 %
 and using again that both $\eta$ and $\wt{u}_1$ are injective we conclude that
-$rf_T^*(\J)=s0$.
+$\rf_T^*(\J)=s0$.
 \end{myproof}
 %
 \begin{problem}
@@ -2326,15 +2394,19 @@ commute.
 \begin{myproof}
 Let $(F_1,F_2)\in \D_{p_2}(X,F)$ then
 %
-$$D^{g'}(\Phi(X),\Phi(V))({\bf\Phi}_2^2(F_1,F_2))=D^{g'}(\Phi(X),\Phi(V))(\Phi(F_1)\circ
-\phi, \iota_2\circ \Phi(F_2))=$$
-$$=(\Phi(F_1)\circ \phi, (\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ
-\Phi(F_2))$$
+\begin{align*}
+  D^{g'}(\Phi(X),\Phi(V))({\bf\Phi}_2^2(F_1,F_2))
+    & = D^{g'}(\Phi(X),\Phi(V))(\Phi(F_1)\circ \phi, \iota_2\circ \Phi(F_2)) \\
+    & = (\Phi(F_1)\circ \phi, (\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ \Phi(F_2))
+\end{align*}
 %
 On the other hand
 %
-$${\bf\Phi}_1^2(D^g(X,V)(F_1,F_2))={\bf\Phi}_1^2(F_1,F_1^*(g)\circ F_2)=$$
-$$(\Phi(F_1)\circ\phi,\iota_1\circ \Phi(F_1^*(g)\circ F_2))$$
+\begin{align*}
+  {\bf\Phi}_1^2(D^g(X,V)(F_1,F_2)) 
+    & = {\bf\Phi}_1^2(F_1,F_1^*(g)\circ F_2) \\
+    & = (\Phi(F_1)\circ\phi,\iota_1\circ \Phi(F_1^*(g)\circ F_2))
+\end{align*}
 %
 It remains to check that
 %
@@ -2368,11 +2440,14 @@ where the first equality is from the definition of $\iota$ in
 \cite[Construction 5.2]{fromunivwithPi} and the second from
 (\ref{2015.04.08.eq3}). On the other hand
 %
-$$\iota_1\circ \Phi(F_1^*(g))\circ
-\Phi(Q_2(F_1))\circ\wt{\phi}_2=\iota_1\circ\Phi(F_1^*(g)\circ Q_2(F_1))\circ
-\wt{\phi}_2=\iota_1\circ \Phi(Q_1(F_1)\circ g)\circ \wt{\phi}_2=$$
-$$\iota_1\circ \Phi(Q_1(F_1))\circ \Phi(g)\circ \wt{\phi}_2=\iota_1\circ
-\Phi(Q_1(F_1))\circ \wt{\phi}_1\circ g'=Q_1(\Phi(F_1)\circ \phi)\circ g'$$
+\begin{align*}
+  \iota_1\circ \Phi(F_1^*(g))\circ \Phi(Q_2(F_1))\circ\wt{\phi}_2
+    & = \iota_1\circ \Phi(F_1^*(g)\circ Q_2(F_1))\circ \wt{\phi}_2 \\
+    & = \iota_1\circ \Phi(Q_1(F_1)\circ g)\circ \wt{\phi}_2 \\
+    & = \iota_1\circ \Phi(Q_1(F_1))\circ \Phi(g)\circ \wt{\phi}_2 \\
+    & = \iota_1\circ \Phi(Q_1(F_1))\circ \wt{\phi}_1\circ g' \\
+    & = Q_1(\Phi(F_1)\circ \phi)\circ g'
+\end{align*}
 %
 This proofs the first equation. For the second equation we have:
 %
@@ -2413,8 +2488,11 @@ I^{g'}(\Phi(V))$$
 by definition of $\chi$ in \cite[Construction 5.6]{fromunivwithPi}. Then by
 Lemma \ref{2015.04.02.l4} and Lemma \ref{2015.04.08.l1} we have:
 %
-$$\eta'({\bf\Phi}_2^2(\eta^{-1}(Id_{X})))\circ
-I^{g'}(\Phi(V))=\eta(D^{g'}(\Phi(X),\Phi(V))({\bf\Phi}_2^2(\eta^{-1}(Id_X))))=$$$$\eta({\bf\Phi}_1^2(D^g(X,V)(\eta^{-1}(Id_X))))$$
+\begin{align*}
+  \eta'({\bf\Phi}_2^2&(\eta^{-1}(Id_{X})))\circ I^{g'}(\Phi(V)) \\
+    & = \eta(D^{g'}(\Phi(X),\Phi(V))({\bf\Phi}_2^2(\eta^{-1}(Id_X)))) \\
+    & = \eta({\bf\Phi}_1^2(D^g(X,V)(\eta^{-1}(Id_X))))
+\end{align*}
 %
 Then, again by Lemma \ref{2015.04.02.l4}, we have
 %
@@ -2431,8 +2509,11 @@ $$\eta({\bf\Phi}_1^2(\eta^{-1}(a)))=\Phi(a)\circ \chi_1(V)$$
 %
 We have
 %
-$$\Phi(a)\circ \chi_1(V)=\Phi(a)\circ
-\eta'({\bf\Phi}^2_1(\eta^{-1}(Id_{\I_{p_1}(V)})))=$$$$\eta'(\D_{\p_1'}(\Phi(a),\Phi(V))({\bf\Phi}^2_1(\eta^{-1}(Id_{\I_{p_1}(V)}))),$$
+\begin{align*}
+  \Phi(a)\circ & \chi_1(V) \\
+    & = \Phi(a)\circ \eta'({\bf\Phi}^2_1(\eta^{-1}(Id_{\I_{p_1}(V)}))) \\
+    & = \eta'(\D_{\p_1'}(\Phi(a),\Phi(V))({\bf\Phi}^2_1(\eta^{-1}(Id_{\I_{p_1}(V)}))),
+\end{align*}
 %
 where the second equality holds because of naturality of $\eta$ in the first
 argument. Then
@@ -2648,9 +2729,13 @@ p'_{\wt{\U}',p'} =\Phi_{\wt{\U},p}\circ \p_{\Phi(\wt{\U}),\wt{\phi}\circ
 where the second equality is by definition of $Q'(-,-)$ and the third equality
 is by definition of $\Phi_{\wt{\U},p}$. Then
 %
-$$\Phi\wt{\U}p\circ Q'(p')=\Phi_{\wt{\U},p}\circ Q'(\wt{\phi},p')\circ
-Q'(p')=\Phi_{\wt{\U},p}\circ Q(\wt{\phi}\circ p')=$$$$\Phi_{\wt{\U},p}\circ
-Q(\Phi(p)\circ \phi)=\Phi(Q(p))\circ \wt{\phi},$$
+\begin{align*}
+  \Phi\wt{\U}p\circ & Q'(p') \\
+    & = \Phi_{\wt{\U},p}\circ Q'(\wt{\phi},p')\circ Q'(p') \\
+    & = \Phi_{\wt{\U},p}\circ Q(\wt{\phi}\circ p') \\
+    & = \Phi_{\wt{\U},p}\circ Q(\Phi(p)\circ \phi) \\
+    & = \Phi(Q(p))\circ \wt{\phi},
+\end{align*}
 %
 where again the second equality is by definition of $Q(-,-)$ and the fourth
 equality is by definition of $\Phi_{\wt{\U},p}$.
@@ -2884,14 +2969,18 @@ and $\omega'$ satisfy the conditions on morphisms $g$ and $g'$ of Section
 
 Let
 %
-$$\xi_{\bf\Phi}:\Phi(\I_p(\U))\sr \I_{p'}(U')$$
-$$\wt{\xi}_{\bf\Phi}:\Phi(\I_p(\wt{\U}))\sr \I_{p'}(\wt{\U}')$$
+\begin{align*}
+  \xi_{\bf\Phi}&:\Phi(\I_p(\U))\sr \I_{p'}(U') \\
+  \wt{\xi}_{\bf\Phi}&:\Phi(\I_p(\wt{\U}))\sr \I_{p'}(\wt{\U}')
+\end{align*}
 %
 denote the compositions $\chi_{\bf\Phi}(\U)\circ \I_{p'}(\phi)$ and
-$\chi_{\bf\Phi}(\wt{\U})\circ \I_{p'}(\wt{\phi})$ and let
+$\chi_{\bf\Phi}(\wt{\U})\circ \I_{p'}(\wt{\phi})$, respectively, and let
 %
-$$\zeta_{\bf\Phi}:\Phi(\I_{pE\wt{\U}}(\U))\sr \I_{pE\wt{\U}'}(U')$$
-$$\wt{\zeta}_{\bf\Phi}:\Phi(\I_{pE\wt{\U}}(\wt{\U}))\sr \I_{pE\wt{\U}'}(\wt{\U}')$$
+\begin{align*}
+  \zeta_{\bf\Phi}&:\Phi(\I_{pE\wt{\U}}(\U))\sr \I_{pE\wt{\U}'}(U') \\
+  \wt{\zeta}_{\bf\Phi}&:\Phi(\I_{pE\wt{\U}}(\wt{\U}))\sr \I_{pE\wt{\U}'}(\wt{\U}')
+\end{align*}
 %
 be given by the compositions $\chi_{{\bf\Phi}_{E}}(\U)\circ \I_{pE\wt{\U}'}(\phi)$
 and $\chi_{{\bf\Phi}_{E}}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi})$. Note that
@@ -2928,12 +3017,13 @@ $$
 %
 \end{theorem}
 %
-Let $R_{\bf\Phi}$ denote the composition
+Let $R_{\bf\Phi}$ denote the composite map
 %
-$$\Phi((\I_{pE\wt{\U}}(\U), I^{\omega}(\U))\times_{\I_p(\U)} (\I_p(\wt{\U}),
-\I_p(p)))\sr \Phi(\I_{pE\wt{\U}}(\U),
-I^{\omega}(\U))\times_{\Phi(\I_p(\U))}\Phi(\I_p(\wt{\U}), \I_p(p))\sr$$
-$$(\I_{pE\wt{\U}'}(U'),I^{\omega'}(U'))\times_{\I_{p'}(U')}(\I_{p'}(\wt{\U}'),\I_{p'}(p')),$$
+\begin{align*}
+  \Phi((\I_{pE\wt{\U}}&(\U), I^{\omega}(\U))\times_{\I_p(\U)} (\I_p(\wt{\U}), \I_p(p))) \\
+      & \sr \Phi(\I_{pE\wt{\U}}(\U), I^{\omega}(\U))\times_{\Phi(\I_p(\U))}\Phi(\I_p(\wt{\U}), \I_p(p)) \\
+      & \sr (\I_{pE\wt{\U}'}(U'),I^{\omega'}(U'))\times_{\I_{p'}(U')}(\I_{p'}(\wt{\U}'),\I_{p'}(p')),
+\end{align*}
 %
 where the second arrow is defined by $\xi_{\bf\Phi}, \wt{\xi}_{\bf\Phi}$ and
 $\zeta_{\bf\Phi}$ in view of Theorem \ref{2015.04.10.th1}.
@@ -2944,7 +3034,7 @@ above. Let $Jp$ and $Jp'$ be J2-structures over $(Eq,\Omega)$ and
 $(Eq',\Omega')$ respectively.  A universe category functor
 $(\Phi,\phi,\wt{\phi})$ is said to be compatible with $Jp$ and $Jp'$ if it is
 compatible with $Eq$, $Eq'$ and $\Omega$, $\Omega'$ in the sense of Definitions
-\ref{2015.04.06.def4} and \ref{2015.04.06.def5} respectively and the square
+\ref{2015.04.06.def4} and \ref{2015.04.06.def5} respectively, the square
 %
 $$
 \begin{xy}
@@ -2954,6 +3044,7 @@ $$
             \ar[r]^-{I^{\omega}(U')} & \I_{p'}(U') }
 \end{xy}
 $$
+commutes, and the square
 $$
 \begin{CD}
 \Phi((\I_{pE\wt{\U}}(\U), I^{\omega}(\U))\times_{\I_p(\U)} (\I_p(\wt{\U}), \I_p(p)))
@@ -3016,10 +3107,10 @@ $$H(\refl(o))=refl'(H(o))$$
 For a C-system $\aCC$ with a J0-structure $\Id$ and a J1-structure $\refl$ over
 $\Id$ define $Jdom(\aCC,\Id,\refl)$ as the set of quadruples $(\Gamma,T,P,s0)$,
 where $\Gamma\in Ob$, $T\in Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and $s0\in
-\wt{Ob}(rf_T^*(P))$. Equivalently we can say that $Jdom(\aCC,\Id,\refl)$ is the
+\wt{Ob}(\rf_T^*(P))$. Equivalently we can say that $Jdom(\aCC,\Id,\refl)$ is the
 subset in $Ob\times Ob\times Ob\times \wt{Ob}$ that consists of quadruples
 $(\Gamma,T,P,s0)$, where $\ft(T)=\Gamma$, $\ft(P)=\Idx(T)$ and
-$\partial(s0)=rf_T^*(P)$. Then a J2-structure is defined by a map $Jdom\sr
+$\partial(s0)=\rf_T^*(P)$. Then a J2-structure is defined by a map $Jdom\sr
 \wt{Ob}$ with some properties.
 %
 \begin{lemma}
@@ -3051,12 +3142,12 @@ Jdom(IdT',refl')$.
 %
 \begin{myproof}
 We have $\ft(H(T))=H(\ft(T))=H(\Gamma)$ and $\ft(H(P))=H(\ft(P))=H(\Idx(T))$. We
-also have $\partial(H(s0))=H(\partial(s0))=H(rf_T^*(P))$. By Lemma
+also have $\partial(H(s0))=H(\partial(s0))=H(\rf_T^*(P))$. By Lemma
 \ref{2015.04.06.l3} we further have
 %
-$$H(rf_T^*(P))=H(rf_T)^*(H(P))$$
+$$H(\rf_T^*(P))=H(\rf_T)^*(H(P))$$
 %
-It remains to show that $H(\Idx(T))=IdxT'(H(T))$ and $H(rf_T)=rf_{H(T)}'$. This
+It remains to show that $H(\Idx(T))=IdxT'(H(T))$ and $H(\rf_T)=\rf_{H(T)}'$. This
 follows by a straightforward but lengthy computation from the defining
 equations (\ref{2015.04.06.eq1}) and (\ref{2015.04.02.eq1}).
 \end{myproof}
@@ -3074,7 +3165,7 @@ is called a homomorphism of C-systems with J-structures
 $$(\aCC,\Id,\refl,\J)\sr (CC',IdT',ref;',\J')$$
 %
 if for all $\Gamma\in Ob(\aCC)$, $T\in Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and
-$s0\in \wt{Ob}(rf_T^*(P))$ one has
+$s0\in \wt{Ob}(\rf_T^*(P))$ one has
 %
 $$H(\J(\Gamma,T,P,s0))=\J'(H(\Gamma),H(T),H(P),H(s0)),$$
 %
@@ -3177,11 +3268,12 @@ Eq'$$
 %
 and \cite[Lemma 6.1(2)]{fromunivwithPi}
 %
-$$\psi_{\Gamma}\circ((\Phi(\wt{u}_1(o))\circ\wt{\phi})*(\Phi(\wt{u}_1(o'))\circ\wt{\phi}))\circ
-Eq'=$$
-$$((\psi_{\Gamma}\circ\Phi(\wt{u}_1(o))\circ\wt{\phi})*(\psi_{\Gamma}\circ\Phi(\wt{u}_1(o'))\circ\wt{\phi}))\circ
-Eq'=$$
-$$(\wt{u}_1(H(o))*\wt{u}_1(H(o')))\circ Eq'=IdT'(H(o),H(o))$$
+\begin{align*}
+  \psi_{\Gamma}\circ((\Phi&(\wt{u}_1(o))\circ\wt{\phi})*(\Phi(\wt{u}_1(o'))\circ\wt{\phi}))\circ Eq' \\
+    & = ((\psi_{\Gamma}\circ\Phi(\wt{u}_1(o))\circ\wt{\phi})*(\psi_{\Gamma}\circ\Phi(\wt{u}_1(o'))\circ\wt{\phi}))\circ Eq' \\
+    & = (\wt{u}_1(H(o))*\wt{u}_1(H(o')))\circ Eq' \\
+    & = IdT'(H(o),H(o))
+\end{align*}
 %
 Lemma is proved.
 \end{myproof}
@@ -3208,9 +3300,15 @@ $$H(\refl(s))=refl'(H(s))$$
 %
 By \cite[Lemma 6.1(2)]{fromunivwithPi} we have
 %
-$$H(\refl(s))=H(\wt{u}_1^{-1}(\wt{u}_1(s)\circ\Omega))=\wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s)\circ\Omega)\circ\wt{\phi})=\wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s))\circ\Phi(\Omega)\circ
-\wt{\phi})=$$
-$$=\wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s))\circ\wt{\phi}\circ\Omega')=\wt{u}_1^{-1}(\wt{u}_1(H(s))\circ\Omega')=refl'(H(s)).$$
+\begin{align*}
+  H(\refl(s))
+    & = H(\wt{u}_1^{-1}(\wt{u}_1(s)\circ\Omega)) \\
+    & = \wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s)\circ\Omega)\circ\wt{\phi}) \\
+    & = \wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s))\circ\Phi(\Omega)\circ \wt{\phi}) \\
+    & = \wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s))\circ\wt{\phi}\circ\Omega') \\
+    & = \wt{u}_1^{-1}(\wt{u}_1(H(s))\circ\Omega') \\
+    & = refl'(H(s)).
+\end{align*}
 \end{myproof}
 %
 
@@ -3262,15 +3360,17 @@ Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and $o\in \wt{Ob}(P)$ one has:
 \item $(u'_{1,H(\Gamma)}(H(T)), u_{1,IdxT'(H(T))}'(H(P)))$ is a well defined
   element of $\D_{pE\wt{\U}'}(\Phi(int(\Gamma)),U')$ and
 %
-$$(u'_{1,H(\Gamma)}(H(T)),
-  u_{1,IdxT'(H(T))}'(H(P)))=$$$$\D_{pE\wt{\U}'}(\psi_{\Gamma},\wt{\U}')(\D_{pE\wt{\U}'}(int(H(\Gamma)),\phi)({\bf\Phi}_{E}^2(u_{1,\Gamma}(T),u_{1,Idx(T)}(P))))$$
-%
+  \begin{align*}
+    (u'_{1,H(\Gamma)}(H(T)), & u_{1,IdxT'(H(T))}'(H(P))) \\
+    & = \D_{pE\wt{\U}'}(\psi_{\Gamma},\wt{\U}')(\D_{pE\wt{\U}'}(int(H(\Gamma)),\phi)({\bf\Phi}_{E}^2(u_{1,\Gamma}(T),u_{1,Idx(T)}(P))))
+  \end{align*}
 \item $(u'_{1,H(\Gamma)}(H(T)), \wt{u}_{1,IdxT'(H(T))}'(H(o)))$ is a well
   defined element of $\D_{pE\wt{\U}'}(\Phi(int(\Gamma)),\wt{\U}')$ and
 %
-$$(u'_{1,H(\Gamma)}(H(T)),
-  \wt{u}_{1,IdxT'(H(T))}'(H(o)))=$$$$\D_{pE\wt{\U}'}(\psi_{\Gamma},\wt{\U}')(\D_{pE\wt{\U}'}(int(H(\Gamma)),\wt{\phi})({\bf\Phi}_{E}^2(u_{1,\Gamma}(T),\wt{u}_{1,Idx(T)}(o))))$$
-%
+  \begin{align*}
+    (u'_{1,H(\Gamma)}(H(T)), & \wt{u}_{1,IdxT'(H(T))}'(H(o))) \\
+    & = \D_{pE\wt{\U}'}(\psi_{\Gamma},\wt{\U}')(\D_{pE\wt{\U}'}(int(H(\Gamma)),\wt{\phi})({\bf\Phi}_{E}^2(u_{1,\Gamma}(T),\wt{u}_{1,Idx(T)}(o))))
+  \end{align*}
 \end{enumerate}
 \end{lemma}
 %
@@ -3301,12 +3401,12 @@ first equation of Lemma \ref{2015.03.27.l1}.
 Let $X=int(\Gamma)$, $F=u_{1,\Gamma}(T)$ and $\wt{G}=\wt{u}_{1,Idx(T)}(o)$. By
 definitions we have
 %
-$$\D_{pE\wt{\U}'}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}'}(\_,\wt{\phi})({\bf\Phi}_{E}^2(F,\wt{G})))=\D_{pE\wt{\U}'}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}'}(\_,\wt{\phi})(\Phi(F)\circ
-\phi, \iota\circ \Phi(\wt{G})))=$$
-$$\D_{pE\wt{\U}'}(\psi_{\Gamma},\_)(\Phi(F)\circ \phi, \iota\circ
-\Phi(\wt{G})\circ\wt{\phi})=(\psi_{\Gamma}\circ\Phi(F)\circ \phi,
-Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota\circ
-\Phi(\wt{G})\circ\wt{\phi}),$$
+\begin{align*}
+  \D_{pE\wt{\U}'}&(\psi_{\Gamma},\_)(\D_{pE\wt{\U}'}(\_,\wt{\phi})({\bf\Phi}_{E}^2(F,\wt{G}))) \\
+    & = \D_{pE\wt{\U}'}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}'}(\_,\wt{\phi})(\Phi(F)\circ \phi, \iota\circ \Phi(\wt{G}))) \\
+    & = \D_{pE\wt{\U}'}(\psi_{\Gamma},\_)(\Phi(F)\circ \phi, \iota\circ \Phi(\wt{G})\circ\wt{\phi}) \\
+    & = (\psi_{\Gamma}\circ\Phi(F)\circ \phi, Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota\circ \Phi(\wt{G})\circ\wt{\phi}),
+\end{align*}
 %
 where
 %
@@ -3315,14 +3415,18 @@ $$\iota:(\Phi(X);\Phi(F)\circ \phi)_{E'}\sr \Phi((X;F)_{E})$$
 is the unique morphism such that
 %
 $$\iota\circ \Phi(p^E_{X,F})=p^{E'}_{\Phi(X),\Phi(F)\circ\phi}$$
-$$\iota\circ \Phi(Q(F)_E)\circ \wt{\phi}_E=Q(\Phi(F)\circ\phi)_{E'}$$
-%
+and
+$$\iota\circ \Phi(Q(F)_E)\circ \wt{\phi}_E=Q(\Phi(F)\circ\phi)_{E'}.$$
 
-On the other hand
+On the other hand,
 %
 $$u_{1,H(\Gamma)}(H(T))=\psi_{\Gamma}\circ \Phi(u_{1,\Gamma}(T))\circ \phi$$
-$$\wt{u}_{1,IdxT'(H(T))}(H(o))=\wt{u}_{1,H(\Idx(T))}(H(o))=\psi_{H(\Idx(T))}\circ
-\Phi(\wt{u}_{1,\Idx(T)}(o))\circ \wt{\phi}$$
+and
+\begin{align*}
+  \wt{u}_{1,IdxT'(H(T))}(H(o))
+    & = \wt{u}_{1,H(\Idx(T))}(H(o)) \\
+    & = \psi_{H(\Idx(T))}\circ \Phi(\wt{u}_{1,\Idx(T)}(o))\circ \wt{\phi}
+\end{align*}
 %
 by \cite[Lemma 6.1(1,2)]{fromunivwithPi}. Therefore, to prove the lemma it is
 sufficient to show that
@@ -3337,11 +3441,12 @@ and since ${\bf\Phi}_E$ is a universe category functor it is sufficient to show
 that the compositions of the two sides with $\Phi(p^E_{X,F})$ and
 $\Phi(Q(F)_E)\circ \wt{\phi}_E$ are the same. Since
 %
-$$Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota\circ
-\Phi(p^E_{X,F})=Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ
-p^{E'}_{\Phi(X),\Phi(F)\circ\phi}=$$
-$$p^{E'}_{int'(H(\Gamma)),\psi_{\Gamma}\circ
-  \Phi(F)\circ\phi}\circ\psi_{\Gamma}=p^{E'}_{int'(H(T))}\circ\psi_{\Gamma}$$
+\begin{align*}
+  Q(\psi_{\Gamma},&\Phi(F)\circ\phi)_{E'}\circ\iota\circ \Phi(p^E_{X,F}) \\
+    & = Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ p^{E'}_{\Phi(X),\Phi(F)\circ\phi} \\
+    & = p^{E'}_{int'(H(\Gamma)),\psi_{\Gamma}\circ \Phi(F)\circ\phi}\circ\psi_{\Gamma} \\
+    & = p^{E'}_{int'(H(T))}\circ\psi_{\Gamma}
+\end{align*}
 %
 the first equation reduces to
 %
@@ -3352,9 +3457,11 @@ the first equation reduces to
 %
 and since
 %
-$$Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota\circ \Phi(Q(F)_E)\circ
-\wt{\phi}_E=Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ
-Q(\Phi(F)\circ\phi)_{E'}=$$$$Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}$$
+\begin{align*}
+  Q(\psi_{\Gamma},\Phi(F)&\circ\phi)_{E'}\circ\iota\circ \Phi(Q(F)_E)\circ \wt{\phi}_E \\
+    & = Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ Q(\Phi(F)\circ\phi)_{E'} \\
+    & = Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}
+\end{align*}
 %
 the second equation reduces to
 %
@@ -3411,11 +3518,12 @@ $$\psi_{\Idx(T)}\circ \Phi(Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ
 \p_{(\wt{\U}';p'),Eq'}\circ Q(p')
 \end{eq}
 %
-To prove (\ref{2015.05.10.eq2b}) observe first two useful equalities
+To prove (\ref{2015.05.10.eq2b}) observe first two useful equalities:
 %
-$$u_1(\Idx(T))=Q(Q(F),p)\circ Eq$$
-%
-$$Q(u_1(\Idx(T)))=Q(F)_{E}\circ Q(Eq),$$
+\begin{align*}
+  u_1(\Idx(T))&=Q(Q(F),p)\circ Eq \\
+  Q(u_1(\Idx(T)))&=Q(F)_{E}\circ Q(Eq),
+\end{align*}
 %
 where the first follows from the proof of Lemma \ref{2015.03.27.l1} and the
 second is the combination of the first with the third equality of the same
@@ -3423,12 +3531,13 @@ lemma.
 
 Now we have:
 %
-$$\psi_{\Idx(T)}\circ \Phi(Q(F)_E)\circ
-\Phi(Q(Eq))\circ\wt{\phi}=\psi_{\Idx(T)}\circ \Phi(Q(F)_E\circ
-Q(Eq))\circ\wt{\phi}=$$
-$$\psi_{\Idx(T)}\circ \Phi(Q(u_1(\Idx(T))))\circ
-\wt{\phi}=Q'(\psi_{\Idx(T)}\circ \Phi(u_1(\Idx(T)))\circ
-\phi)=Q(u_1(H(\Idx(T))))$$
+\begin{align*}
+  \psi_{\Idx(T)}\circ & \Phi(Q(F)_E)\circ \Phi(Q(Eq))\circ\wt{\phi} \\
+    & = \psi_{\Idx(T)}\circ \Phi(Q(F)_E\circ Q(Eq))\circ\wt{\phi} \\
+    & = \psi_{\Idx(T)}\circ \Phi(Q(u_1(\Idx(T))))\circ \wt{\phi} \\
+    & = Q'(\psi_{\Idx(T)}\circ \Phi(u_1(\Idx(T)))\circ \phi) \\
+    & = Q(u_1(H(\Idx(T))))
+\end{align*}
 %
 and
 %
@@ -3464,13 +3573,13 @@ which is the defining equation of $\psi_{(G,F)}$.
 
 To prove (\ref{2015.05.10.eq2ab}) let us rewrite the left hand side first
 %
-$$\psi_{\Idx(T)}\circ \Phi(Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ
-\Phi(Q(p))\circ \wt{\phi}=$$$$\psi_{\Idx(T)}\circ \Phi(\p_{\Idx(T)}\circ
-Q(Q(F),p))\circ \Phi(Q(p))\circ\wt{\phi}=$$$$\p_{H(\Idx(T))}\circ
-\psi_{\ft(\Idx(T))}\circ \Phi(Q(Q(F)\circ p))\circ
-\wt{\phi}=$$$$\p_{H(\Idx(T))}\circ \psi_{(\Gamma,F,Q(F)\circ p)}\circ
-\Phi(Q(Q(F)\circ p))\circ \wt{\phi}=\p_{H(\Idx(T))}\circ
-Q(u_1(H(\ft(\Idx(T)))))$$
+\begin{align*}
+  \psi_{\Idx(T)}\circ & \Phi(Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ \Phi(Q(p))\circ \wt{\phi} \\
+    & = \psi_{\Idx(T)}\circ \Phi(\p_{\Idx(T)}\circ Q(Q(F),p))\circ \Phi(Q(p))\circ\wt{\phi} \\
+    & = \p_{H(\Idx(T))}\circ \psi_{\ft(\Idx(T))}\circ \Phi(Q(Q(F)\circ p))\circ \wt{\phi} \\
+    & = \p_{H(\Idx(T))}\circ \psi_{(\Gamma,F,Q(F)\circ p)}\circ \Phi(Q(Q(F)\circ p))\circ \wt{\phi} \\
+    & = \p_{H(\Idx(T))}\circ   Q(u_1(H(\ft(\Idx(T)))))
+\end{align*}
 %
 Where the first equality holds in view of the upper square of Construction
 \ref{2015.05.08.constr1}, the second one is one of the defining equalities of
@@ -3478,12 +3587,13 @@ $\phi$ and the third one is from \cite[Lemma 3.2]{fromunivwithPi}.
 
 Let $F'=u_1(H(T))$. Rewriting the right hand side we get
 %
-$$Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \circ
-\p_{(\wt{\U}';p'),Eq'}\circ Q(p')=Q(F')_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ
-Q(p')=$$
-$$\p_{IdxT'(H(T)}\circ Q(Q(F'),p')\circ Q(p')=\p_{IdxT'(H(T)}\circ Q(Q(F')\circ
-p')=$$
-$$\p_{IdxT'(H(T)}\circ Q(u_1(\ft(\Idx(H(T)))))$$
+\begin{align*}
+  Q(\psi_{\Gamma}\circ & \Phi(F)\circ \phi)_{E'}\circ \circ \p_{(\wt{\U}';p'),Eq'}\circ Q(p') \\
+    & = Q(F')_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ Q(p') \\
+    & = \p_{IdxT'(H(T)}\circ Q(Q(F'),p')\circ Q(p') \\
+    & = \p_{IdxT'(H(T)}\circ Q(Q(F')\circ p') \\
+    & = \p_{IdxT'(H(T)}\circ Q(u_1(\ft(\Idx(H(T)))))
+\end{align*}
 %
 Where the second equality is from the upper square of Construction
 \ref{2015.05.08.constr1} in $\mathcal C'$, the third equality is from
@@ -3524,22 +3634,21 @@ and to prove the lemma we need to show that $H(\J)$ satisfies this equation.
 
 Using Lemma \ref{2015.05.06.l3} we have
 %
-$$\eta_{pE\wt{\U}}(u'_1(H(T)),\wt{u}'_{1,{IdxT'(H(T)}}(H(\J))))=$$$$\eta_{pE\wt{\U}'}(\D_{pE\wt{\U}'}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}'}(\_,\wt{\phi})(\Phi_E^2(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))))=$$
-$$\psi_{\Gamma}\circ
-\eta_{pE\wt{\U}'}(\Phi_E^2(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ
-\I_{pE\wt{\U}'}(\wt{\phi})$$
+\begin{align*}
+  \eta_{pE\wt{\U}}(&u'_1(H(T)),\wt{u}'_{1,{IdxT'(H(T)}}(H(\J)))) \\
+    & = \eta_{pE\wt{\U}'}(\D_{pE\wt{\U}'}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}'}(\_,\wt{\phi})(\Phi_E^2(u_1(T),\wt{u}_{1,\Idx(T)}(\J))))) \\
+    & = \psi_{\Gamma}\circ \eta_{pE\wt{\U}'}(\Phi_E^2(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ \I_{pE\wt{\U}'}(\wt{\phi})
+\end{align*}
 %
 By \cite[Lemma 5.8]{fromunivwithPi} and by the defining equation for $\J$ we
 further have
 %
-$$\psi_{\Gamma}\circ
-\eta_{pE\wt{\U}'}(\Phi_E^2(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ
-\I_{pE\wt{\U}'}(\wt{\phi})=$$$$\psi_{\Gamma}\circ
-\Phi(\eta_{pE\wt{\U}}(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ
-\chi_{{\bf\Phi}_E}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi})=$$
-$$\psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ Jp)\circ
-\chi_{{\bf\Phi}_E}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi})=\psi_{\Gamma}\circ
-\Phi(\phi(\Gamma,T,P,s0)\circ Jp)\circ \wt{\zeta}_{\bf\Phi}$$
+\begin{align*}
+  \psi_{\Gamma}\circ \eta_{pE\wt{\U}'}&(\Phi_E^2(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ \I_{pE\wt{\U}'}(\wt{\phi}) \\
+    & = \psi_{\Gamma}\circ \Phi(\eta_{pE\wt{\U}}(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ \chi_{{\bf\Phi}_E}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi}) \\
+    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ Jp)\circ \chi_{{\bf\Phi}_E}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi}) \\
+    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ Jp)\circ \wt{\zeta}_{\bf\Phi}
+\end{align*}
 %
 
 It remains to show that
@@ -3555,26 +3664,31 @@ $$\psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ R_{\Phi} =
 %
 Let
 %
-$$pr_1:(\I_{pE\wt{\U}}(\U),I^{\omega})\times_{\I_{p}(\U)}(\I_{p}(\wt{\U}),\I_p(p))\sr
-\I_{pE\wt{\U}}(\U)$$
-$$pr_2:(\I_{pE\wt{\U}}(\U),I^{\omega})\times_{\I_{p}(\U)}(\I_{p}(\wt{\U}),\I_p(p))\sr
-\I_{p}(\wt{\U})$$
+\begin{align*}
+  pr_1 & :(\I_{pE\wt{\U}}(\U),I^{\omega})\times_{\I_{p}(\U)}(\I_{p}(\wt{\U}),\I_p(p))\sr \I_{pE\wt{\U}}(\U) \\
+  pr_2 & :(\I_{pE\wt{\U}}(\U),I^{\omega})\times_{\I_{p}(\U)}(\I_{p}(\wt{\U}),\I_p(p))\sr \I_{p}(\wt{\U})
+\end{align*}
 %
 be the projections and let $pr_1'$, $pr_2'$ be their analogs in $\mathcal
 C'$. Then one has
 %
 $$R_{\Phi}\circ pr_1'=\Phi(pr_1)\circ \zeta_{\Phi}$$
-$$R_{\Phi}\circ pr_2'=\Phi(pr_2)\circ \wt{\xi}_{\Phi}$$
+and
+$$R_{\Phi}\circ pr_2'=\Phi(pr_2)\circ \wt{\xi}_{\Phi}.$$
 %
 On the other hand the defining relations of $\phi(\Gamma,T,P,s0)$ are
 %
 $$\phi(\Gamma,T,P,s0)\circ pr_1=\eta_{pE\wt{\U}}(F,G)$$
+and
 $$\phi(\Gamma,T,P,s0)\circ pr_2=\eta_p(F,\wt{H}),$$
 %
 where
 %
-$$F=u_{1,\Gamma}(T)\spc\spc G=u_{1,\Idx(T)}(P)\spc\spc
-\wt{H}=\wt{u}_{1,T}(s0)$$
+\begin{align*}
+  F&=u_{1,\Gamma}(T) \\
+  G&=u_{1,\Idx(T)}(P)\\
+  \wt{H}&=\wt{u}_{1,T}(s0),
+\end{align*}
 %
 and similarly for $F',G'$ and $\wt{H}'$.
 
@@ -3595,25 +3709,29 @@ R_{\Phi}\circ pr_2' = \phi(H(\Gamma),H(T),H(P),H(s0))\circ pr_2'
 %
 For (\ref{2015.05.10.eq3a}), rewriting the left hand side we get
 %
-$$\psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ R_{\Phi}\circ pr_1' =
-\psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ\Phi(pr_1)\circ
-\zeta_{\Phi}=$$
-$$\psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ pr_1)\circ
-\zeta_{\Phi}=\psi_{\Gamma}\circ \Phi(\eta_{pE\wt{\U}}(F,G))\circ \zeta_{\Phi}$$
+\begin{align*}
+  \psi_{\Gamma}\circ \Phi&(\phi(\Gamma,T,P,s0))\circ R_{\Phi}\circ pr_1'  \\
+    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ\Phi(pr_1)\circ \zeta_{\Phi} \\
+    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ pr_1)\circ \zeta_{\Phi} \\
+    & = \psi_{\Gamma}\circ \Phi(\eta_{pE\wt{\U}}(F,G))\circ \zeta_{\Phi}
+\end{align*}
 %
 Continuing we get
 %
-$$\psi_{\Gamma}\circ \Phi(\eta_{pE\wt{\U}}(F,G))\circ
-\zeta_{\Phi}=\psi_{\Gamma}\circ \Phi(\eta_{pE\wt{\U}}(F,G))\circ \xi_{{\bf
-    \Phi}_E}\circ \I_{pE\wt{\U}'}(\phi)=$$
-$$\psi_{\Gamma}\circ\eta_{pE\wt{\U}'}({\bf\Phi}^2_E(F,G))\circ
-\I_{pE\wt{\U}'}(\phi),$$
+\begin{align*}
+  \psi_{\Gamma}\circ & \Phi(\eta_{pE\wt{\U}}(F,G))\circ \zeta_{\Phi} \\
+    & = \psi_{\Gamma}\circ \Phi(\eta_{pE\wt{\U}}(F,G))\circ \xi_{{\bf \Phi}_E}\circ \I_{pE\wt{\U}'}(\phi) \\
+    & = \psi_{\Gamma}\circ\eta_{pE\wt{\U}'}({\bf\Phi}^2_E(F,G))\circ \I_{pE\wt{\U}'}(\phi),
+\end{align*}
 %
 where the last equality holds by \cite[Lemma 5.8]{fromunivwithPi} applied to
 $X=int(\Gamma)$, $V=\U$ and ${\bf\Phi}={\bf\Phi}_E$. Continuing further we get
 %
-$$\psi_{\Gamma}\circ\eta_{pE\wt{\U}'}({\bf\Phi}^2_E(F,G))\circ
-\I_{pE\wt{\U}'}(\phi)=\eta_{pE\wt{\U}'}(\D_{pE\wt{\U}}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}}(\_,\phi)({\bf\Phi}^2(F,G))))=$$$$\eta_{pE\wt{\U}'}((u_{1,H(\Gamma)}'(H(T)),u_{1,IdxT'(H(T))}(H(P)))),$$
+\begin{align*}
+  \psi_{\Gamma}\circ&\eta_{pE\wt{\U}'}({\bf\Phi}^2_E(F,G))\circ \I_{pE\wt{\U}'}(\phi) \\
+    & = \eta_{pE\wt{\U}'}(\D_{pE\wt{\U}}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}}(\_,\phi)({\bf\Phi}^2(F,G)))) \\
+    & = \eta_{pE\wt{\U}'}((u_{1,H(\Gamma)}'(H(T)),u_{1,IdxT'(H(T))}(H(P)))),
+\end{align*}
 %
 where the last equality holds by Lemma \ref{2015.05.06.l3}(1).
 
@@ -3626,12 +3744,13 @@ shows that the first equality holds.
 
 For (\ref{2015.05.10.eq3b}), rewriting the left hand side we get
 %
-$$\psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ R_{\Phi}\circ pr_2' =
-\psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ \Phi(pr_2)\circ
-\wt{\xi}_{\Phi}=$$
-$$\psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ pr_2)\circ
-\wt{\xi}_{\Phi}=\psi_{\Gamma}\circ \Phi(\eta_p(F,\wt{H}))\circ
-\wt{\xi}_{\Phi}=\eta_{p'}(\wt{u}_{2,H(\Gamma)}'(H(s0))),$$
+\begin{align*}
+  \psi_{\Gamma}\circ & \Phi(\phi(\Gamma,T,P,s0))\circ R_{\Phi}\circ pr_2'  \\
+    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ \Phi(pr_2)\circ \wt{\xi}_{\Phi} \\
+    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ pr_2)\circ \wt{\xi}_{\Phi} \\
+    & = \psi_{\Gamma}\circ \Phi(\eta_p(F,\wt{H}))\circ \wt{\xi}_{\Phi} \\
+    & = \eta_{p'}(\wt{u}_{2,H(\Gamma)}'(H(s0))),
+\end{align*}
 %
 where the last equality holds by \cite[Lemma 6.2(2)]{fromunivwithPi} since
 $(F,\wt{H})=u_{2,\Gamma}(s0)$.
