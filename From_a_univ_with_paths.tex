@@ -74,6 +74,7 @@
 \newcommand{\rf}{\mathsf{rf}}
 \newcommand{\Fp}{\mathsf{Fp}}
 \newcommand{\pFp}{\mathsf{pFp}}
+\newcommand{\Q}{\mathsf{Q}}
 
 % persistent notations to go into symbol index
 %   at definition time, use \gls{foo}
@@ -96,6 +97,7 @@
 \newoperator{prI}{prI}
 \newoperator{p}{\p}
 \newoperator{pFp}{\pFp}
+\newoperator{Q}{\Q}
 \newoperator{q}{\q}
 \newoperator{refl}{\refl}
 \newoperator{rf}{\rf}
@@ -586,7 +588,8 @@ also Remark \ref{2015.05.24.rem2}.
 
 \subsection{The J-structure on a universe in a category}
 %
-Let $\mathcal C$ be a (pre-)category and $p:\wt{\U}\sr \U$ a morphism in
+Let $\mathcal C$ be a category\footnote{In the formalization, the category will not be assumed to be ``univalent''.},
+and let $p:\wt{\U}\sr \U$ be a morphism in
 $\mathcal C$. Recall that a universe structure on $p$ is a choice of pullback
 squares of the form
 %
