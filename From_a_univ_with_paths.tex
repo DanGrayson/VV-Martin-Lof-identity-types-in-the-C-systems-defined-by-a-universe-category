@@ -101,6 +101,7 @@
 \newoperator{q}{\q}
 \newoperator{refl}{\refl}
 \newoperator{rf}{\rf}
+\newoperator{semicolon}{(X;F)}
 \newoperator{starfg}{f*g}
 
 %% \newoperator{}{\}
@@ -595,7 +596,7 @@ squares of the form
 %
 $$
 \begin{xy}
-          \xymatrix@C=4pc{ (X;F) \ar[r]^-{Q(F)} \ar[d]_{\p_{X,F}} & \wt{\U}
+          \xymatrix@C=4pc{ \gls{semicolon} \ar[r]^-{\gls Q(F)} \ar[d]_{\gls p_{X,F}} & \wt{\U}
             \ar[d]^{p}\\ X \ar[r]^{F} & \U }
 \end{xy}
 $$
@@ -609,7 +610,7 @@ such that
 %
 \begin{align*}
   (f*g)\circ \p_{X,F} & =f \\
-  (f*g)\circ Q(F) & =g
+  (f*g)\circ \Q(F) & =g
 \end{align*}
 
 %
@@ -617,7 +618,7 @@ When we need to distinguish canonical squares of different universes we may
 write $(X;F)_{p}$ and $f*_p g$.
 %
 \begin{remark}\rm
-\llabel{2015.03.29.rm1} Note that we made no assumption about $Q(Id_\U)$ being
+\llabel{2015.03.29.rm1} Note that we made no assumption about $\Q(Id_\U)$ being
 equal to $Id_{\wt{\U}}$. In fact, since we want the results of this paper to be
 constructive, we are not allowed to make such an assumption since the question
 of whether or not a given morphism is an identity morphism need not be
@@ -627,17 +628,17 @@ of this observation (in the context of whether a simplex is degenerate or not)
 was emphasized by \cite{BCH}.
 \end{remark}
 %
-For $X'\stackrel{f}{\sr}X\stackrel{F}{\sr}\U$ we let $Q(f,F)$ denote the
+For $X'\stackrel{f}{\sr}X\stackrel{F}{\sr}\U$ we let $\gls Q(f,F)$ denote the
 morphism
 %
-$$(\p_{X',f\circ F}\circ f)*Q(f\circ F):(X';f\circ F)\sr (X;F)$$
+$$(\p_{X',f\circ F}\circ f)*\Q(f\circ F):(X';f\circ F)\sr (X;F)$$
 %
 As is shown in \cite{fromunivwithPi}, the square
 %
 \begin{eq}
 \llabel{2015.04.06.l0.sq}
 \begin{xy}
-          \xymatrix@C=4pc{ (X';f\circ F) \ar[r]^-{Q(f,F)} \ar[d]_{\p_{X',f\circ
+          \xymatrix@C=4pc{ (X';f\circ F) \ar[r]^-{\Q(f,F)} \ar[d]_{\p_{X',f\circ
                 F}} & (X;F) \ar[d]^{\p_{X,F}}\\ X' \ar[r]^{f} & X }
        \end{xy}
 \end{eq}
@@ -651,7 +652,7 @@ $$\gls{D}_p(-,V):X\mapsto \amalg_{F:X\sr \U}Hom((X;F), V)$$
 %
 whose action on morphisms is given by
 %
-$$\D_p(f,V):(F,a)\mapsto (f\circ F, Q(f,F)\circ a)$$
+$$\D_p(f,V):(F,a)\mapsto (f\circ F, \Q(f,F)\circ a)$$
 %
 When $\mathcal C$ is a locally cartesian closed category any morphism
 $p:\wt{\U}\sr \U$ defines a functor
@@ -740,13 +741,13 @@ be the canonical projections. Let
 be the morphisms introduced in \cite{fromunivwithPi}. By \cite[Problem
   3.8]{fromunivwithPi} we have
 %
-$$\eta^{',!}(g\circ I^f(V))=(g\circ I^f(V)\circ pr', Q'(g\circ I^f(V),
+$$\eta^{',!}(g\circ I^f(V))=(g\circ I^f(V)\circ pr', \Q'(g\circ I^f(V),
 pr')\circ st')$$
 %
 and
 %
-$$D^f(X,V)(\eta^!(g))=D^f(X,V)(g\circ pr, Q(g,pr)\circ st)=(g\circ pr, (g\circ
-pr)^*(f)\circ Q(g,pr)\circ st)$$
+$$D^f(X,V)(\eta^!(g))=D^f(X,V)(g\circ pr, \Q(g,pr)\circ st)=(g\circ pr, (g\circ
+pr)^*(f)\circ \Q(g,pr)\circ st)$$
 %
 Therefore it is sufficient to show that
 %
@@ -754,27 +755,27 @@ $$I^f(V)\circ pr'=pr$$
 %
 and
 %
-$$Q'(g\circ I^f(V), pr')\circ st'=(g\circ pr)^*(f)\circ Q(g,pr)\circ st$$
+$$\Q'(g\circ I^f(V), pr')\circ st'=(g\circ pr)^*(f)\circ \Q(g,pr)\circ st$$
 %
 The first equality asserts that $I^f(V)$ is a morphism over $\U$ which follows
 from its construction.
 
 By Lemma \ref{2015.04.20.l1} we have
 %
-$$(g\circ pr, (g\circ pr)^*(f)\circ Q(g,pr)=Q'(g,pr)\circ pr^*(f)$$
+$$(g\circ pr, (g\circ pr)^*(f)\circ \Q(g,pr)=\Q'(g,pr)\circ pr^*(f)$$
 %
 Next we have
 %
-$$Q'(g\circ I^f(V), pr')=Q'(g,I^f(V)\circ pr')\circ
-Q'(I^f(V),pr')=Q'(g,pr)\circ Q'(I^f(V),pr')$$
+$$\Q'(g\circ I^f(V), pr')=\Q'(g,I^f(V)\circ pr')\circ
+\Q'(I^f(V),pr')=\Q'(g,pr)\circ \Q'(I^f(V),pr')$$
 %
 by \cite[Lemma 3.2]{fromunivwithPi}. It remains to check that
 %
-$$Q'(I^f(V),pr')\circ st'=pr^*(f)\circ st$$
+$$\Q'(I^f(V),pr')\circ st'=pr^*(f)\circ st$$
 %
 This requires opening up the definitions of $st$ and $st'$ which gives us
 %
-$$Q'(I^f(V),pr')\circ \iota'\circ ev'\circ pr_2=pr^*(f)\circ \iota\circ ev\circ
+$$\Q'(I^f(V),pr')\circ \iota'\circ ev'\circ pr_2=pr^*(f)\circ \iota\circ ev\circ
 pr_2$$
 %
 We will obtain this equality as a consequence of commutativity of three
@@ -782,7 +783,7 @@ squares:
 %
 $$
 \begin{xy}
-          \xymatrix@C=5pc{ (\I_p(V);pr)' \ar[r]^-{Q'(I^f(V),pr)} \ar[d]_{\iota'}
+          \xymatrix@C=5pc{ (\I_p(V);pr)' \ar[r]^-{\Q'(I^f(V),pr)} \ar[d]_{\iota'}
             & (\I_{p'}(V);pr')'
             \ar[d]^{\iota'}\\ (\I_p(V),pr)\times_\U(\wt{\U}',p')
             \ar[r]^-{I^f(V)\times Id} & (\I_{p'}(V),pr')\times_\U(\wt{\U}',p') }
@@ -845,21 +846,21 @@ form:
 %
 $$
 \begin{xy}
-          \xymatrix@C=7pc{ (X;F,Q(F)\circ p, Q(Q(F),p)\circ Eq)
-            \ar[r]^-{Q(Q(Q(F),p),Eq)} \ar[d] & (\wt{\U}; p, Eq)
-            \ar[d]^{\p_{(\wt{\U};p),Eq}}\\ (X;F,Q(F)\circ p) \ar[r]^-{Q(Q(F),p)}
+          \xymatrix@C=7pc{ (X;F,\Q(F)\circ p, \Q(\Q(F),p)\circ Eq)
+            \ar[r]^-{\Q(\Q(\Q(F),p),Eq)} \ar[d] & (\wt{\U}; p, Eq)
+            \ar[d]^{\p_{(\wt{\U};p),Eq}}\\ (X;F,\Q(F)\circ p) \ar[r]^-{\Q(\Q(F),p)}
             & (\wt{\U};p) }
 \end{xy}
 $$
 $$
 \begin{xy}
-          \xymatrix@C=7pc{ (X;F,Q(F)\circ p) \ar[r]^-{Q(Q(F),p)} \ar[d] &
-            (\wt{\U},p) \ar[d]^{\p_{\wt{\U},p}}\\ (X,F) \ar[r]^-{Q(F)} & \wt{\U} }
+          \xymatrix@C=7pc{ (X;F,\Q(F)\circ p) \ar[r]^-{\Q(\Q(F),p)} \ar[d] &
+            (\wt{\U},p) \ar[d]^{\p_{\wt{\U},p}}\\ (X,F) \ar[r]^-{\Q(F)} & \wt{\U} }
 \end{xy}
 $$
 $$
 \begin{xy}
-          \xymatrix@C=4pc{ (X;F) \ar[r]^-{Q(F)} \ar[d]_{\p_{X,F}} & \wt{\U}
+          \xymatrix@C=4pc{ (X;F) \ar[r]^-{\Q(F)} \ar[d]_{\p_{X,F}} & \wt{\U}
             \ar[d]^{p}\\ X \ar[r]^{F} & \U }
 \end{xy}
 $$
@@ -873,7 +874,7 @@ follows:
 %
 $$
 \begin{xy}
-          \xymatrix@C=4pc{ (X;F)_{E} \ar[r]^-{Q(F)_{E}} \ar[d]_{p^E_{X,F}} &
+          \xymatrix@C=4pc{ (X;F)_{E} \ar[r]^-{\gls Q(F)_{E}} \ar[d]_{\gls p^E_{X,F}} &
             E\wt{\U} \ar[d]^{pE\wt{\U}}\\ X \ar[r]^{F} & \U }
 \end{xy}
 $$
@@ -881,12 +882,12 @@ $$
 Explicitly we have
 %
 \begin{align*}
-  (X;F)_{E}&=(X;F,Q(F)\circ p, Q(Q(F),p)\circ Eq) \\
-  Q(F)_{E}&=Q(Q(Q(F),p),Eq) \\
-  \p_{X,F}^E&=\p_{(X;F,Q(F)\circ p),Q(Q(F),p)\circ Eq}\circ \p_{(X;F),Q(F)\circ p}\circ \p_{X,F}
+  (X;F)_{E}&=(X;F,\Q(F)\circ p, \Q(\Q(F),p)\circ Eq) \\
+  \Q(F)_{E}&=\Q(\Q(\Q(F),p),Eq) \\
+  \p_{X,F}^E&=\p_{(X;F,\Q(F)\circ p),\Q(\Q(F),p)\circ Eq}\circ \p_{(X;F),\Q(F)\circ p}\circ \p_{X,F}
 \end{align*}
 %
-We will also write $Q(f,F)_{E}$ for the canonical morphisms from $(X;f\circ
+We will also write $\Q(f,F)_{E}$ for the canonical morphisms from $(X;f\circ
 F)_{E}$ to $(X;F)_{E}$.
 %
 \begin{definition}
@@ -1603,7 +1604,7 @@ element of $Hom(\Gamma',\Gamma)$ and $Hom(int(\Gamma'),int(\Gamma))$ may
 differ. In particular for $f:\Gamma'\sr \Gamma$ and $F:\Gamma\sr \U$ we have
 %
 \begin{eq}
-\llabel{2015.04.02.eq2} \q(f,int(\Gamma,F))=Q(f,F)
+\llabel{2015.04.02.eq2} \q(f,int(\Gamma,F))=\Q(f,F)
 \end{eq}
 %
 
@@ -1620,12 +1621,12 @@ For each $\Gamma\in Ob(\toCC({\mathcal C},p))$ we have natural bijections
 where $u_1^{-1}(F)=(\Gamma,F)$ and where
 %
 \begin{eq}
-\llabel{2015.03.31.eq5} \wt{u}_1(s)=s\circ Q(u_1(\partial(s))).
+\llabel{2015.03.31.eq5} \wt{u}_1(s)=s\circ \Q(u_1(\partial(s))).
 \end{eq}
 %
 In particular,
 %
-$$\wt{u}_1(s)\circ p=s\circ Q(u_1(\partial(s)))\circ p=s\circ
+$$\wt{u}_1(s)\circ p=s\circ \Q(u_1(\partial(s)))\circ p=s\circ
 \p_{\partial(s)}\circ u_1(\partial(s))=u_1(\partial(s)),$$
 %
 i.e., with respect to these bijections the function
@@ -1669,8 +1670,8 @@ and $F:int(\Gamma)\sr \U$. Then one has:
 %
 \begin{align*}
   int(\Idx(\Gamma,F))&=(int(\Gamma);F)_{E} \\
-  \p_{\Idx(T),3} &= p^E_{\Gamma,F} \\
-  Q(F)_{E}\circ Q(Eq)&=Q(Q(Q(F)\circ p)\circ Eq)
+  \p_{\Idx(T),3} &= \p^E_{\Gamma,F} \\
+  \Q(F)_{E}\circ \Q(Eq)&=\Q(\Q(\Q(F)\circ p)\circ Eq)
 \end{align*}
 %
 %
@@ -1691,20 +1692,20 @@ where
 %
 We have
 %
-$$int(\p_T^*(T))=(int(\Gamma);F,Q(F)\circ p)$$
+$$int(\p_T^*(T))=(int(\Gamma);F,\Q(F)\circ p)$$
 %
 and
 %
 \begin{align*}
-  \wt{u}_1(\p_{\p_T^*(T)}^*(\delta(T)))&=\p_{(int(\Gamma,F, Q(F)\circ p)}\circ Q(F) \\
-  \wt{u}_1(\delta(\p_T^*(T)))&=Q(Q(F)\circ p)
+  \wt{u}_1(\p_{\p_T^*(T)}^*(\delta(T)))&=\p_{(int(\Gamma,F, \Q(F)\circ p)}\circ \Q(F) \\
+  \wt{u}_1(\delta(\p_T^*(T)))&=\Q(\Q(F)\circ p)
 \end{align*}
 %
-which shows that $\wt{u}_1(o)*\wt{u}_1(o')=Q(Q(F),p)$ and completes the proof
+which shows that $\wt{u}_1(o)*\wt{u}_1(o')=\Q(\Q(F),p)$ and completes the proof
 of the first and the second equations.
 
-The third equality is a corollary of the equality $Q(F)_{E}=Q(Q(Q(F),p),Eq)$
-and the equality $Q(f,F)\circ Q(F)=Q(f\circ F)$.
+The third equality is a corollary of the equality $\Q(F)_{E}=\Q(\Q(\Q(F),p),Eq)$
+and the equality $\Q(f,F)\circ \Q(F)=\Q(f\circ F)$.
 \end{myproof}
 %
 \begin{problem}
@@ -1737,7 +1738,7 @@ The following technical lemma is only needed in the proof of Lemma
 \begin{lemma}
 \llabel{2015.04.02.l3} For $s\in \wt{Ob}_1(\Gamma)$ one has:
 %
-$$\refl_{\Omega}(s)\circ Q(s\circ Q(F)\circ \Omega\circ p)=s\circ Q(F)\circ
+$$\refl_{\Omega}(s)\circ \Q(s\circ \Q(F)\circ \Omega\circ p)=s\circ \Q(F)\circ
 \Omega,$$
 %
 where $F=u_1(\partial(s))$.
@@ -1747,19 +1748,19 @@ where $F=u_1(\partial(s))$.
 We have
 %
 $$u_1(\partial(\refl_{\Omega}(s)))=\wt{u}_1(\refl(s))\circ p=\wt{u}_1(s)\circ
-\Omega\circ p=s\circ Q(F)\circ \Omega\circ p$$
+\Omega\circ p=s\circ \Q(F)\circ \Omega\circ p$$
 %
 therefore
 %
 \begin{align*}
   \wt{u}_1(\refl_{\Omega}(s))
-  & =\refl_{\Omega}(s)\circ Q(u_1(\partial(\refl_{\Omega}(s)))) \\
-  & = \refl_{\Omega}(s)\circ Q(s\circ Q(F)\circ \Omega\circ p)
+  & =\refl_{\Omega}(s)\circ \Q(u_1(\partial(\refl_{\Omega}(s)))) \\
+  & = \refl_{\Omega}(s)\circ \Q(s\circ \Q(F)\circ \Omega\circ p)
 \end{align*}
 %
 On the other hand, by definition of $\refl_{\Omega}$,
 %
-$$\wt{u}_1(\refl_{\Omega}(s))=\wt{u}_1(s)\circ \Omega=s\circ Q(F)\circ \Omega.$$
+$$\wt{u}_1(\refl_{\Omega}(s))=\wt{u}_1(s)\circ \Omega=s\circ \Q(F)\circ \Omega.$$
 %
 \end{myproof}
 
@@ -1784,7 +1785,7 @@ such that
 %
 \begin{align*}
   F^*(\omega)\circ p^{E}_{int(\Gamma),F} & = \p_{T} \\
-  F^*(\omega)\circ Q(int(\Gamma),F)_{E} & = Q(F)\circ \omega
+  F^*(\omega)\circ \Q(int(\Gamma),F)_{E} & = \Q(F)\circ \omega
 \end{align*}
 %
 Then
@@ -1796,17 +1797,17 @@ $$\rf_T=F^*(\omega)$$
 \begin{myproof}
 In view of Lemma \ref{2015.03.27.l1}, both $\rf_T$ and $F^*(\omega)$ are
 morphisms from $(int(\Gamma);F)$ to $(int(\Gamma);F)_{E}$. Let us denote
-$int(\Gamma)$ by $X$ and $(int(\Gamma);F,Q(F)\circ p)$ by $Y$. We have
+$int(\Gamma)$ by $X$ and $(int(\Gamma);F,\Q(F)\circ p)$ by $Y$. We have
 %
-$$(X;F)_{E}=(Y;Q(Q(F),p)\circ Eq)$$
+$$(X;F)_{E}=(Y;\Q(\Q(F),p)\circ Eq)$$
 %
 and we can see this object as a part of the diagram with two pullback squares:
 %
 $$
 \begin{xy}
-          \xymatrix@C=4pc{ (Y;Q(Q(F),p)\circ Eq) \ar[r]^-{h_1} \ar[d]_{\p_{Y,
-                Q(Q(F),p)\circ Eq}} & E\wt{\U} \ar[r]^-{h_2} \ar[d] & \wt{\U}
-            \ar[d]^{p} \\ Y \ar[r]^-{Q(Q(F),p)} & (\wt{\U},p) \ar[r]^-{Eq} & \U }
+          \xymatrix@C=4pc{ (Y;\Q(\Q(F),p)\circ Eq) \ar[r]^-{h_1} \ar[d]_{\p_{Y,
+                \Q(\Q(F),p)\circ Eq}} & E\wt{\U} \ar[r]^-{h_2} \ar[d] & \wt{\U}
+            \ar[d]^{p} \\ Y \ar[r]^-{\Q(\Q(F),p)} & (\wt{\U},p) \ar[r]^-{Eq} & \U }
 \end{xy}
 $$
 
@@ -1814,8 +1815,8 @@ $$
 We have two projections
 %
 \begin{align*}
-  h := h_1\circ h_2=Q(Q(Q(F),p)\circ Eq)&:(X;F)_{E}\sr \wt{\U} \\
-  v := \p_{Y,Q(Q(F),p)\circ Eq}&:(X;F)_{E} \sr Y
+  h := h_1\circ h_2=\Q(\Q(\Q(F),p)\circ Eq)&:(X;F)_{E}\sr \wt{\U} \\
+  v := \p_{Y,\Q(\Q(F),p)\circ Eq}&:(X;F)_{E} \sr Y
 \end{align*}
 %
 We need to check the following equations.
@@ -1830,7 +1831,7 @@ The morphism $\rf_T$ is defined in (\ref{2015.04.02.eq1}) as
 \begin{align*}
   \rf_T
   & :=\refl(\delta(T))\circ \q(\delta(T),\Idx(T)) \\
-  & = \refl(\delta(T))\circ Q(\delta(T),Q(Q(F),p)\circ Eq),
+  & = \refl(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)\circ Eq),
 \end{align*}
 %
 where the second equation is from (\ref{2015.04.02.eq2}).
@@ -1839,47 +1840,47 @@ We have
 %
 \begin{align*}
   \rf_T \circ h
-  & = \refl(\delta(T))\circ Q(\delta(T),Q(Q(F),p)\circ Eq)\circ h & \by{...}\\
-  & = \refl(\delta(T))\circ Q(\delta(T)\circ Q(Q(F),p)\circ Eq) & \by{...}\\
-  & = \refl(\delta(T))\circ Q(Q(F)\circ \Delta\circ Eq) & \by{...}\\
-  & = \refl(\delta(T))\circ Q(Q(F)\circ (\omega\circ pE\wt{\U})\circ Eq) & \by{...}\\
-  & = \refl(\delta(T))\circ Q(Q(F)\circ \omega\circ Q(Eq)\circ p) & \by{...}\\
-  & = \refl(\delta(T))\circ Q(Q(F)\circ \Omega\circ p) & \by{...}
+  & = \refl(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)\circ Eq)\circ h & \by{...}\\
+  & = \refl(\delta(T))\circ \Q(\delta(T)\circ \Q(\Q(F),p)\circ Eq) & \by{...}\\
+  & = \refl(\delta(T))\circ \Q(\Q(F)\circ \Delta\circ Eq) & \by{...}\\
+  & = \refl(\delta(T))\circ \Q(\Q(F)\circ (\omega\circ pE\wt{\U})\circ Eq) & \by{...}\\
+  & = \refl(\delta(T))\circ \Q(\Q(F)\circ \omega\circ \Q(Eq)\circ p) & \by{...}\\
+  & = \refl(\delta(T))\circ \Q(\Q(F)\circ \Omega\circ p) & \by{...}
 \end{align*}
 %
 On the other hand
 %
-$$F^*(\omega)\circ h=F^*(\omega)\circ h_1\circ h_2=Q(F)\circ \omega\circ
-h_2=Q(F)\circ \omega\circ Q(Eq)=Q(F)\circ \Omega$$
+$$F^*(\omega)\circ h=F^*(\omega)\circ h_1\circ h_2=\Q(F)\circ \omega\circ
+h_2=\Q(F)\circ \omega\circ \Q(Eq)=\Q(F)\circ \Omega$$
 %
-We have $u_1(\partial(\delta(T)))=Q(F)\circ p$ and
+We have $u_1(\partial(\delta(T)))=\Q(F)\circ p$ and
 %
 \begin{align*}
-  \delta(T)\circ Q(u_1(\partial(\delta(T))))
-    & = \delta(T)\circ Q(Q(F)\circ p) \\
-    & =  \delta(T)\circ Q(\p_T\circ F) \\
-    & = \delta(T)\circ \q(\p_T,T)\circ Q(F) \\
-    & = Id_{int(T)}\circ Q(F) \\
-    & = Q(F)
+  \delta(T)\circ \Q(u_1(\partial(\delta(T))))
+    & = \delta(T)\circ \Q(\Q(F)\circ p) \\
+    & =  \delta(T)\circ \Q(\p_T\circ F) \\
+    & = \delta(T)\circ \q(\p_T,T)\circ \Q(F) \\
+    & = Id_{int(T)}\circ \Q(F) \\
+    & = \Q(F)
 \end{align*}
 %
 Therefore by Lemma \ref{2015.04.02.l3} we have
 %
-$$\refl(\delta(T))\circ Q(Q(F)\circ \Omega\circ p)=Q(F)\circ \Omega$$
+$$\refl(\delta(T))\circ \Q(\Q(F)\circ \Omega\circ p)=\Q(F)\circ \Omega$$
 %
 Which proves that $\rf_T\circ h=F^*(\omega)\circ h$.
 
 We have $\rf_T\circ v=\delta(T)$ because the square (\ref{2015.03.31.eq3})
 commutes.  Both $\rf_T\circ v$ and $F^*(\omega)\circ v$ are morphisms $int(T)\sr
 int(\p_T^*(T))$. Since $\p_T^*(T)$ is a part of a pullback square with the
-projections being $\p_{\p_T^*(T)}$ and $Q(Q(F)\circ p)$ we need to check that
+projections being $\p_{\p_T^*(T)}$ and $\Q(\Q(F)\circ p)$ we need to check that
 %
 \begin{align*}
-  \delta(T)\circ Q(Q(F)\circ p)
-    & = F^*(\omega)\circ v\circ Q(Q(F)\circ p) \\
+  \delta(T)\circ \Q(\Q(F)\circ p)
+    & = F^*(\omega)\circ v\circ \Q(\Q(F)\circ p) \\
     & = F^*(\omega)\circ h_1\circ pE\wt{\U} \\
-    & = Q(F)\circ \omega \circ pE\wt{\U} \\
-    & = Q(F)\circ \Delta
+    & = \Q(F)\circ \omega \circ pE\wt{\U} \\
+    & = \Q(F)\circ \Delta
 \end{align*}
 %
 which holds by a simple computation, and
@@ -1889,7 +1890,7 @@ $$Id_{int(T)}=\delta(T)\circ \p_{\p_T^*(T)}=F^*(\omega)\circ v\circ
 %
 For this equality we need to verify two further equalities
 %
-$$Q(F)=Id_{int(T)}\circ Q(F)=F^*(\omega)\circ v\circ \p_{\p_T^*(T)}\circ Q(F)$$
+$$\Q(F)=Id_{int(T)}\circ \Q(F)=F^*(\omega)\circ v\circ \p_{\p_T^*(T)}\circ \Q(F)$$
 %
 and
 %
@@ -1899,10 +1900,10 @@ The second one is the second equality of the two that define $F^*(\omega)$. For
 the first one we have
 %
 \begin{align*}
-  F^*(\omega)\circ v\circ (\p_{\p_T^*(T)}\circ Q(F))
-    & = F^*(\omega)\circ v\circ Q(Q(F),p)\circ \p_{\wt{\U},p} \\
-    & = Q(F)\circ \Delta\circ \p_{\wt{\U},p} \\
-    & = Q(F).
+  F^*(\omega)\circ v\circ (\p_{\p_T^*(T)}\circ \Q(F))
+    & = F^*(\omega)\circ v\circ \Q(\Q(F),p)\circ \p_{\wt{\U},p} \\
+    & = \Q(F)\circ \Delta\circ \p_{\wt{\U},p} \\
+    & = \Q(F).
 \end{align*}
 %
 This completes the proof of Lemma \ref{2015.03.31.l2}.
@@ -1975,7 +1976,7 @@ Indeed,
   \eta_{pE\wt{\U}}(F,G)\circ I^{\omega}(\U)
     & = \eta_p(F,G\circ F^*(\omega)) \\
     & = \eta_p(F,\rf_T\circ G) \\
-    & = \eta_p(F,s0\circ Q(\rf_T\circ G)\circ p) \\
+    & = \eta_p(F,s0\circ \Q(\rf_T\circ G)\circ p) \\
     & = \eta_p(F,\wt{H}\circ p) \\
     & = \eta_p(F,\wt{H})\circ \I_p(p),
 \end{align*}
@@ -2039,33 +2040,33 @@ u_{1,\Idx(T)}(P)), \eta_p(u_{1,\Gamma}(T),\wt{u}_{1,\Gamma}(s0)))$.
 $f:\Gamma'\sr \Gamma$ a morphism in $\toCC({\mathcal C},p)$ and $F:int(\Gamma)\sr
 \U$ a morphism in $\mathcal C$.  Let $q3:int(\Idx(\Gamma',f\circ F))\sr
 int(\Idx(\Gamma,F))$ be the morphism $\q(f,\Idx(\Gamma,F),3)$ defined by
-$\Gamma$ since $\ft^3(\Idx(\Gamma,F))=\Gamma$. Then $q3=Q(f,F)_{E}$.
+$\Gamma$ since $\ft^3(\Idx(\Gamma,F))=\Gamma$. Then $q3=\Q(f,F)_{E}$.
 \end{lemma}
 %
 \begin{myproof}
-Let $X:=int(\Gamma)$ and $X':=int(\Gamma')$. By definition, $Q(f,F)_{E}$ is the
+Let $X:=int(\Gamma)$ and $X':=int(\Gamma')$. By definition, $\Q(f,F)_{E}$ is the
 unique morphism such that
 %
 \begin{align*}
-  Q(f,F)_{E}\circ Q(F)_{E}&=Q(f\circ F)_{E} \\
-  Q(f,F)_{E}\circ p^{E}_{X,F}&=p^{E}_{X',f\circ F}\circ f
+  \Q(f,F)_{E}\circ \Q(F)_{E}&=\Q(f\circ F)_{E} \\
+  \Q(f,F)_{E}\circ p^{E}_{X,F}&=p^{E}_{X',f\circ F}\circ f
 \end{align*}
 %
 We will be building the proof using the following diagram\editorfootnote{The notation $p_3$ is undefined!}
 %
 $$
 \begin{xy}
-          \xymatrix@C=4pc{ (X',f\circ F)_{E} \ar[rrr]^-{Q(Q(Q(f,F),Q(F)\circ
-              p),Q(Q(F),p)\circ Eq)} \ar[d]_{p_3} &&& (X;F)_{E}
-            \ar[rr]^-{Q(Q(Q(F),p),Eq)} \ar[d] && E\wt{\U} \ar[r]^-{Q(Eq)}
+          \xymatrix@C=4pc{ (X',f\circ F)_{E} \ar[rrr]^-{\Q(\Q(\Q(f,F),\Q(F)\circ
+              p),\Q(\Q(F),p)\circ Eq)} \ar[d]_{p_3} &&& (X;F)_{E}
+            \ar[rr]^-{\Q(\Q(\Q(F),p),Eq)} \ar[d] && E\wt{\U} \ar[r]^-{\Q(Eq)}
             \ar[d]^{p_1} & \wt{\U} \ar[d]^{p}\\ \BB
-            \ar[rrr]^-{Q(Q(f,F),Q(F)\circ p)} \ar[d]^{=} &&& \BB
-            \ar[rr]^-{Q(Q(F),p)} \ar[d]^{=} && \BB \ar[r]^-{Eq} \ar[d]^{=}&
-            \U\\ \BB \ar[rrr]^-{Q(Q(f,F),Q(F)\circ p)} \ar[d] &&& \BB
-            \ar[rr]^-{Q(Q(F),p)} \ar[d] && \BB \ar[r]^-{Q(p)} \ar[d]^{p_2}&
-            \wt{\U} \ar[d]^{p}\\ \BB \ar[rrr]^-{Q(f,F)} \ar[d]^{=}&&& \BB
-            \ar[rr]^-{Q(F)} \ar[d]^{=} && \wt{\U} \ar[r]^-{p} \ar[d]^{=} & \U
-            \\ \BB \ar[rrr]^-{Q(f,F)} \ar[d] &&& \BB \ar[rr]^-{Q(F)} \ar[d] &&
+            \ar[rrr]^-{\Q(\Q(f,F),\Q(F)\circ p)} \ar[d]^{=} &&& \BB
+            \ar[rr]^-{\Q(\Q(F),p)} \ar[d]^{=} && \BB \ar[r]^-{Eq} \ar[d]^{=}&
+            \U\\ \BB \ar[rrr]^-{\Q(\Q(f,F),\Q(F)\circ p)} \ar[d] &&& \BB
+            \ar[rr]^-{\Q(\Q(F),p)} \ar[d] && \BB \ar[r]^-{\Q(p)} \ar[d]^{p_2}&
+            \wt{\U} \ar[d]^{p}\\ \BB \ar[rrr]^-{\Q(f,F)} \ar[d]^{=}&&& \BB
+            \ar[rr]^-{\Q(F)} \ar[d]^{=} && \wt{\U} \ar[r]^-{p} \ar[d]^{=} & \U
+            \\ \BB \ar[rrr]^-{\Q(f,F)} \ar[d] &&& \BB \ar[rr]^-{\Q(F)} \ar[d] &&
             \BB \ar[d]^{p}\\ X' \ar[rrr]^-{f} &&& X \ar[rr]^-{F} && \U }
 \end{xy}
 $$
@@ -2073,31 +2074,31 @@ $$
 By construction that is seen on this diagram we have:
 %
 \begin{align*}
-  q3&=Q(Q(Q(f,F),Q(F)\circ p),Q(Q(F),p)\circ Eq) \\
-  Q(X,F)_{E}&=Q(Q(Q(F),p),Eq)
+  q3&=\Q(\Q(\Q(f,F),\Q(F)\circ p),\Q(\Q(F),p)\circ Eq) \\
+  \Q(X,F)_{E}&=\Q(\Q(\Q(F),p),Eq)
 \end{align*}
 %
 and
 %
-$$Q(X', f\circ F)_{E}=Q(Q(Q(f\circ F),p),Eq)$$
+$$\Q(X', f\circ F)_{E}=\Q(\Q(\Q(f\circ F),p),Eq)$$
 %
 Therefore, the first equation that we need to verify is
 %
-$$Q(Q(Q(f,F),Q(F)\circ p),Q(Q(F),p)\circ Eq)\circ Q(Q(Q(F),p),Eq)=Q(Q(Q(f\circ
+$$\Q(\Q(\Q(f,F),\Q(F)\circ p),\Q(\Q(F),p)\circ Eq)\circ \Q(\Q(\Q(F),p),Eq)=\Q(\Q(\Q(f\circ
 F),p),Eq)$$
 %
 By \cite[Lemma 3.2]{fromunivwithPi} we have, together with the defining rule
-$Q(a,A)\circ Q(A)=Q(a\circ A)$, also the rule:
+$\Q(a,A)\circ \Q(A)=\Q(a\circ A)$, also the rule:
 %
-$$Q(a_1,a_2\circ A)\circ Q(a_2,A)=Q(a_1\circ a_2, A)$$
+$$\Q(a_1,a_2\circ A)\circ \Q(a_2,A)=\Q(a_1\circ a_2, A)$$
 %
 Applying it twice and then the defining rule we get:
 %
 \begin{align*}
-  Q(Q(Q(f,F),&Q(F)\circ p),Q(Q(F),p)\circ Eq)\circ Q(Q(Q(F),p),Eq) \\
-    & = Q(Q(Q(f,F),Q(F)\circ p)\circ Q(Q(F),p), Eq) \\
-    & = Q(Q(Q(f,F)\circ Q(F),p),Eq) \\
-    & = Q(Q(Q(f\circ F),p),Eq)
+  \Q(\Q(\Q(f,F),&\Q(F)\circ p),\Q(\Q(F),p)\circ Eq)\circ \Q(\Q(\Q(F),p),Eq) \\
+    & = \Q(\Q(\Q(f,F),\Q(F)\circ p)\circ \Q(\Q(F),p), Eq) \\
+    & = \Q(\Q(\Q(f,F)\circ \Q(F),p),Eq) \\
+    & = \Q(\Q(\Q(f\circ F),p),Eq)
 \end{align*}
 %
 which gives us the first equation. The second equation is immediate from the
@@ -2141,13 +2142,13 @@ We have:
 By naturality of $\eta$ with respect to the first argument we have
 %
 $$f\circ \eta_{pE\wt{\U}}(F,\wt{u}_1(\J))=\eta_{pE\wt{\U}}(f\circ F,
-Q(f,F)_{E}\circ \wt{u}_1(\J))$$
+\Q(f,F)_{E}\circ \wt{u}_1(\J))$$
 %
 Therefore, by Lemma \ref{2015.04.04.l4} we have
 %
 \begin{align*}
   f\circ \eta_{pE\wt{\U}}(F,\wt{u}_1(\J))
-    & = \eta_{pE\wt{\U}}(f\circ F, \wt{u}_1(Q(f,F)_{E}^*(\J,1))) \\
+    & = \eta_{pE\wt{\U}}(f\circ F, \wt{u}_1(\Q(f,F)_{E}^*(\J,1))) \\
     & = \eta_{pE\wt{\U}}(f\circ F, \wt{u}_1(\q(f,\Idx(T),3)^*(\J,1)))
 \end{align*}
 %
@@ -2246,17 +2247,17 @@ functors between categories with two universes that we will later apply to the
 universes $p:\wt{\U}\sr \U$ and $pE\wt{\U}:E\wt{\U}\sr \U$ in a locally cartesian
 closed category $\cal C$.
 
-Given two universes $(p,\p_{X,F},Q(F))$ and $(p',\p_{X,F}',Q(F)')$, where
+Given two universes $(p,\p_{X,F},\Q(F))$ and $(p',\p_{X,F}',\Q(F)')$, where
 $p:\wt{\U}\sr \U$ and $p':\wt{\U}'\sr \U$, and the canonical squares are of the form
 %
 $$
 \begin{xy}
-          \xymatrix@C=4pc{ (X;F) \ar[r]^-{Q(F)} \ar[d]_{\p_{X,F}} & \wt{\U}
+          \xymatrix@C=4pc{ (X;F) \ar[r]^-{\Q(F)} \ar[d]_{\p_{X,F}} & \wt{\U}
             \ar[d]^{p}\\ X \ar[r]^{F} & \U }
 \end{xy}
 \spc
 \begin{xy}
-          \xymatrix@C=4pc{ (X;F)' \ar[r]^-{Q(F)'} \ar[d]_{p'_{X,F}} & \wt{\U}'
+          \xymatrix@C=4pc{ (X;F)' \ar[r]^-{\Q(F)'} \ar[d]_{p'_{X,F}} & \wt{\U}'
             \ar[d]^{p'}\\ X \ar[r]^{F} & \U }
 \end{xy}
 $$
@@ -2265,7 +2266,7 @@ and $f:\wt{\U}'\sr \wt{\U}$ over $\U$, we let $F^*(f)$ denote the unique morphis
 $(X;F)'\sr (X;F)$ such that
 %
 \begin{eq}\llabel{2015.04.08.eq3}
-F^*(f)\circ Q(F)=Q(F)'\circ f
+F^*(f)\circ \Q(F)=\Q(F)'\circ f
 \end{eq}
 %
 \begin{eq}\llabel{2015.04.08.eq4}
@@ -2274,16 +2275,16 @@ F^*(f)\circ \p_{X,F}=\p_{X,F}'
 %
 Note that $F^*(f)$ depends on the universe structures on $p$ and $p'$. Even
 when two universe structures give the same choices of the objects $(X;F)$ and
-$(X;F)'$ the difference in the choice of some of the morphisms, e.g., $Q(F)$
+$(X;F)'$ the difference in the choice of some of the morphisms, e.g., $\Q(F)$
 will affect morphisms $F^*(f)$. We will need the following lemma about these
 morphisms.
 
-For $X'\stackrel{f}{\sr}X \stackrel{F}{\sr}\U$ we let $Q(f,F)$ denote the
+For $X'\stackrel{f}{\sr}X \stackrel{F}{\sr}\U$ we let $\Q(f,F)$ denote the
 morphism
 %
-$$(\p_{X',f\circ F}\circ f)*Q(f\circ F):(X';f\circ F)\sr (X;F)$$
+$$(\p_{X',f\circ F}\circ f)*\Q(f\circ F):(X';f\circ F)\sr (X;F)$$
 %
-We let $Q'(-)$ and $Q'(-,-)$ denote the morphisms $Q(-)$ and $Q(-,-)$ relative
+We let $\Q'(-)$ and $\Q'(-,-)$ denote the morphisms $\Q(-)$ and $\Q(-,-)$ relative
 to the universe $p'$.
 %
 \begin{lemma}
@@ -2292,8 +2293,8 @@ morphisms. Then the square
 %
 $$
 \begin{xy}
-          \xymatrix@C=4pc{ (X';g\circ F)' \ar[r]^-{Q'(g,F)} \ar[d]_{(g\circ
-              F)^*(f)} & (X;F)' \ar[d]^{F^*(f)}\\ (X';g\circ F) \ar[r]^{Q(g,F)}
+          \xymatrix@C=4pc{ (X';g\circ F)' \ar[r]^-{\Q'(g,F)} \ar[d]_{(g\circ
+              F)^*(f)} & (X;F)' \ar[d]^{F^*(f)}\\ (X';g\circ F) \ar[r]^{\Q(g,F)}
             & (X';g\circ F) }
 \end{xy}
 $$
@@ -2304,15 +2305,15 @@ commutes.
 %
 \begin{myproof}
 Since $(X;F)$ is a fiber product relative to the projections $\p_{X,F}$ and
-$Q(F)$ it is sufficient to verify that
+$\Q(F)$ it is sufficient to verify that
 %
-$$Q'(g,F)\circ F^*(f)\circ Q(F)=(g\circ F)^*(f) \circ Q(g,F)\circ Q(F)$$
+$$\Q'(g,F)\circ F^*(f)\circ \Q(F)=(g\circ F)^*(f) \circ \Q(g,F)\circ \Q(F)$$
 %
 and
 %
-$$Q'(g,F)\circ F^*(f)\circ \p_{X,F}=(g\circ F)^*(f) \circ Q(g,F)\circ \p_{X,F}$$
+$$\Q'(g,F)\circ F^*(f)\circ \p_{X,F}=(g\circ F)^*(f) \circ \Q(g,F)\circ \p_{X,F}$$
 %
-which easily follows from the defining equations for $Q(-,-)$ and $(-)^*$.
+which easily follows from the defining equations for $\Q(-,-)$ and $(-)^*$.
 \end{myproof}
 
 Let $({\mathcal C},p,pt)$, $({\mathcal C}',p',pt')$ be two universe categories
@@ -2428,8 +2429,8 @@ canonical squares based on $p_2$ to pullback squares it is sufficient to check
 that
 %
 $$(\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ
-\Phi(Q_2(F_1))\circ\wt{\phi}_2=\iota_1\circ \Phi(F_1^*(g))\circ
-\Phi(Q_2(F_1))\circ\wt{\phi}_2$$
+\Phi(\Q_2(F_1))\circ\wt{\phi}_2=\iota_1\circ \Phi(F_1^*(g))\circ
+\Phi(\Q_2(F_1))\circ\wt{\phi}_2$$
 %
 and
 %
@@ -2439,20 +2440,20 @@ $$(\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ \Phi(\p_{X,F_1,2})=\iota_1\circ
 For the first equation we have
 %
 $$(\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ
-\Phi(Q_2(F_1))\circ\wt{\phi}_2=(\Phi(F_1)\circ \phi)^*(g')\circ
-Q_2(\Phi(F_1)\circ \phi)=Q_1(\Phi(F_1)\circ\phi)\circ g',$$
+\Phi(\Q_2(F_1))\circ\wt{\phi}_2=(\Phi(F_1)\circ \phi)^*(g')\circ
+\Q_2(\Phi(F_1)\circ \phi)=\Q_1(\Phi(F_1)\circ\phi)\circ g',$$
 %
 where the first equality is from the definition of $\iota$ in
 \cite[Construction 5.2]{fromunivwithPi} and the second from
 (\ref{2015.04.08.eq3}). On the other hand
 %
 \begin{align*}
-  \iota_1\circ \Phi(F_1^*(g))\circ \Phi(Q_2(F_1))\circ\wt{\phi}_2
-    & = \iota_1\circ \Phi(F_1^*(g)\circ Q_2(F_1))\circ \wt{\phi}_2 \\
-    & = \iota_1\circ \Phi(Q_1(F_1)\circ g)\circ \wt{\phi}_2 \\
-    & = \iota_1\circ \Phi(Q_1(F_1))\circ \Phi(g)\circ \wt{\phi}_2 \\
-    & = \iota_1\circ \Phi(Q_1(F_1))\circ \wt{\phi}_1\circ g' \\
-    & = Q_1(\Phi(F_1)\circ \phi)\circ g'
+  \iota_1\circ \Phi(F_1^*(g))\circ \Phi(\Q_2(F_1))\circ\wt{\phi}_2
+    & = \iota_1\circ \Phi(F_1^*(g)\circ \Q_2(F_1))\circ \wt{\phi}_2 \\
+    & = \iota_1\circ \Phi(\Q_1(F_1)\circ g)\circ \wt{\phi}_2 \\
+    & = \iota_1\circ \Phi(\Q_1(F_1))\circ \Phi(g)\circ \wt{\phi}_2 \\
+    & = \iota_1\circ \Phi(\Q_1(F_1))\circ \wt{\phi}_1\circ g' \\
+    & = \Q_1(\Phi(F_1)\circ \phi)\circ g'
 \end{align*}
 %
 This proofs the first equation. For the second equation we have:
@@ -2704,14 +2705,14 @@ such that the square
 is a pullback square. For any functor of universe categories and $X\in{\mathcal
   C}$, $F:X\sr \U$ the morphism
 %
-$$\Phi(\p_{X,F})*(\Phi(Q(F))\circ\wt{\phi}):\Phi((X;F))\sr
+$$\Phi(\p_{X,F})*(\Phi(\Q(F))\circ\wt{\phi}):\Phi((X;F))\sr
 (\Phi(X);\Phi(F)\circ\phi)$$
 %
 is an isomorphism and we will denote it $\Phi_{X,F}$. Let $\Phi\wt{\U}p$ be the
 composition
 %
 $$\Phi((\wt{\U};p)) \stackrel{\Phi_{\wt{\U},p}}{\lr} (\Phi(\wt{\U});\Phi(p)\circ
-\phi)=(\Phi(\wt{\U});\wt{\phi}\circ p')\stackrel{Q'(\wt{\phi},p')}{\lr}
+\phi)=(\Phi(\wt{\U});\wt{\phi}\circ p')\stackrel{\Q'(\wt{\phi},p')}{\lr}
 (\wt{\U}';p')$$
 %
 We also have another description of this morphism given by the following lemma.
@@ -2719,29 +2720,29 @@ We also have another description of this morphism given by the following lemma.
 \begin{lemma}
 \llabel{2015.04.10.l5} One has:
 %
-$$\Phi\wt{\U}p=(\Phi(\p_{\wt{\U},p})\circ\wt{\phi})*(\Phi(Q(p))\circ\wt{\phi})$$
+$$\Phi\wt{\U}p=(\Phi(\p_{\wt{\U},p})\circ\wt{\phi})*(\Phi(\Q(p))\circ\wt{\phi})$$
 %
 \end{lemma}
 %
 \begin{myproof}
 One has
 %
-$$\Phi\wt{\U}p\circ p'_{\wt{\U}',p'}=\Phi_{\wt{\U},p}\circ Q'(\wt{\phi},p')\circ
+$$\Phi\wt{\U}p\circ p'_{\wt{\U}',p'}=\Phi_{\wt{\U},p}\circ \Q'(\wt{\phi},p')\circ
 p'_{\wt{\U}',p'} =\Phi_{\wt{\U},p}\circ \p_{\Phi(\wt{\U}),\wt{\phi}\circ
   p'}\circ\wt{\phi}=\Phi(\p_{\wt{\U},p})\circ \wt{\phi},$$
 %
-where the second equality is by definition of $Q'(-,-)$ and the third equality
+where the second equality is by definition of $\Q'(-,-)$ and the third equality
 is by definition of $\Phi_{\wt{\U},p}$. Then
 %
 \begin{align*}
-  \Phi\wt{\U}p\circ & Q'(p') \\
-    & = \Phi_{\wt{\U},p}\circ Q'(\wt{\phi},p')\circ Q'(p') \\
-    & = \Phi_{\wt{\U},p}\circ Q(\wt{\phi}\circ p') \\
-    & = \Phi_{\wt{\U},p}\circ Q(\Phi(p)\circ \phi) \\
-    & = \Phi(Q(p))\circ \wt{\phi},
+  \Phi\wt{\U}p\circ & \Q'(p') \\
+    & = \Phi_{\wt{\U},p}\circ \Q'(\wt{\phi},p')\circ \Q'(p') \\
+    & = \Phi_{\wt{\U},p}\circ \Q(\wt{\phi}\circ p') \\
+    & = \Phi_{\wt{\U},p}\circ \Q(\Phi(p)\circ \phi) \\
+    & = \Phi(\Q(p))\circ \wt{\phi},
 \end{align*}
 %
-where again the second equality is by definition of $Q(-,-)$ and the fourth
+where again the second equality is by definition of $\Q(-,-)$ and the fourth
 equality is by definition of $\Phi_{\wt{\U},p}$.
 \end{myproof}
 %
@@ -2766,7 +2767,7 @@ p'_{\wt{\U}',p'}=\Phi(s*s')\circ\Phi(\p_{\wt{\U},p})\circ\wt{\phi}=s\circ
 %
 and
 %
-$$\Phi(s*s')\circ \Phi\wt{\U}p\circ Q'(p')=\Phi(s*s')\circ \Phi(Q(p))\circ
+$$\Phi(s*s')\circ \Phi\wt{\U}p\circ \Q'(p')=\Phi(s*s')\circ \Phi(\Q(p))\circ
 \wt{\phi}=s'\circ\wt{\phi}$$
 %
 The particular case of $\Delta$ follows from the fact that
@@ -2795,7 +2796,7 @@ $$
 \begin{xy}
           \xymatrix@C=3pc{ \Phi((\wt{\U};p)) \ar[r]^-{\Phi_{\wt{\U},p}}\ar[d]_{
               \Phi(\p_{\wt{\U},p})} & (\Phi(\wt{\U});\wt{\phi}\circ p')
-            \ar[r]^-{Q'(\wt{\phi},p')}\ar[d]_{\p_{\Phi(\wt{\U}),\wt{\phi}\circ
+            \ar[r]^-{\Q'(\wt{\phi},p')}\ar[d]_{\p_{\Phi(\wt{\U}),\wt{\phi}\circ
                 p'}} & (\wt{\U}';p') \ar[d]^{p'_{\wt{\U}',p'}}\\ \Phi(\wt{\U})
             \ar[r]^{=} & \Phi(\wt{\U}) \ar[r]^{\wt{\phi}} & \wt{\U}' }
 \end{xy}
@@ -2828,7 +2829,7 @@ compatible with $Eq$, and $Eq'$. Define a morphism
 %
 $$\wt{\phi}_{E}:\Phi(E\wt{\U})\sr E\wt{\U}'=((\wt{\U}';p'),Eq')$$
 %
-as $(\Phi(\p_{(\wt{\U};p),Eq})\circ \Phi\wt{\U}p)*(\Phi(Q(Eq))\circ \wt{\phi})$.
+as $(\Phi(\p_{(\wt{\U};p),Eq})\circ \Phi\wt{\U}p)*(\Phi(\Q(Eq))\circ \wt{\phi})$.
 %
 \begin{lemma}
 \llabel{2015.04.06.l4} Let $Eq$, $Eq'$ be as above. Let $(\Phi,\phi,\wt{\phi})$
@@ -2854,7 +2855,7 @@ Consider the diagram
 \begin{xy}
           \xymatrix@C=3pc{ \Phi(E\wt{\U})
             \ar[r]^-{\wt{\phi}_{E}}\ar[d]_{\Phi(\p_{(\wt{\U};p),Eq})} & E\wt{\U}'
-            \ar[r]^-{Q(Eq')}\ar[d]_{\p_{(\wt{\U}';p'),Eq'}} & \wt{\U}'
+            \ar[r]^-{\Q(Eq')}\ar[d]_{\p_{(\wt{\U}';p'),Eq'}} & \wt{\U}'
             \ar[d]^{p'}\\ \Phi((\wt{\U};p)) \ar[r]^{\Phi\wt{\U}p} & (\wt{\U}';p')
             \ar[r]^{Eq'} & U' }
 \end{xy}
@@ -2865,7 +2866,7 @@ The outer square of this diagram is equal to the outer square of the diagram
 \begin{eq}\llabel{2015.04.06.eq7}
 \begin{xy}
           \xymatrix@C=3pc{ \Phi(E\wt{\U})
-            \ar[r]^-{\Phi(Q(Eq))}\ar[d]_{\Phi(\p_{(\wt{\U};p),Eq})} &
+            \ar[r]^-{\Phi(\Q(Eq))}\ar[d]_{\Phi(\p_{(\wt{\U};p),Eq})} &
             \Phi(\wt{\U}) \ar[r]^-{\wt{\phi}}\ar[d]_{\Phi(p)} & \wt{\U}'
             \ar[d]^{p'}\\ \Phi((\wt{\U};p)) \ar[r]^{\Phi(Eq)} & \Phi(\U)
             \ar[r]^{\phi} & U', }
@@ -2943,14 +2944,14 @@ commutes.
 \begin{myproof}
 Since $E\wt{\U}'=((\wt{\U}';p');Eq')$ it is sufficient to verify that the
 compositions of the two paths in the square with $\p_{(\wt{\U}';p'),Eq'}$ and
-$Q(Eq')$ coincide. We have:
+$\Q(Eq')$ coincide. We have:
 %
-$$\wt{\phi}\circ\omega'\circ Q(Eq')=\wt{\phi}\circ\Omega'$$
+$$\wt{\phi}\circ\omega'\circ \Q(Eq')=\wt{\phi}\circ\Omega'$$
 %
 by definition of $\omega'$. On the other hand
 %
-$$\Phi(\omega)\circ \wt{\phi}_{E}\circ Q(Eq')=\Phi(\omega)\circ
-\Phi(Q(Eq))\circ \wt{\phi}=\Phi(\Omega)\circ\wt{\phi},$$
+$$\Phi(\omega)\circ \wt{\phi}_{E}\circ \Q(Eq')=\Phi(\omega)\circ
+\Phi(\Q(Eq))\circ \wt{\phi}=\Phi(\Omega)\circ\wt{\phi},$$
 %
 where the first equation holds by definition of $\wt{\phi}_{E}$. The proof
 follows now from the assumption that ${\bf\Phi}$ is compatible with $\Omega$
@@ -3214,7 +3215,7 @@ and $\psi_{(\Gamma,F)}$ is the unique morphisms $int'(H(\Gamma,F))\sr
 \Phi(int(\Gamma,F))$ such that
 %
 $$\psi_{(\Gamma,F)}\circ
-\Phi(Q(F))\circ\wt{\phi}=Q'(\psi_{\Gamma}\circ\Phi(F)\circ\phi)$$
+\Phi(\Q(F))\circ\wt{\phi}=\Q'(\psi_{\Gamma}\circ\Phi(F)\circ\phi)$$
 %
 and
 %
@@ -3407,7 +3408,7 @@ definitions we have
   \D_{pE\wt{\U}'}&(\psi_{\Gamma},\_)(\D_{pE\wt{\U}'}(\_,\wt{\phi})({\bf\Phi}_{E}^2(F,\wt{G}))) \\
     & = \D_{pE\wt{\U}'}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}'}(\_,\wt{\phi})(\Phi(F)\circ \phi, \iota\circ \Phi(\wt{G}))) \\
     & = \D_{pE\wt{\U}'}(\psi_{\Gamma},\_)(\Phi(F)\circ \phi, \iota\circ \Phi(\wt{G})\circ\wt{\phi}) \\
-    & = (\psi_{\Gamma}\circ\Phi(F)\circ \phi, Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota\circ \Phi(\wt{G})\circ\wt{\phi}),
+    & = (\psi_{\Gamma}\circ\Phi(F)\circ \phi, \Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota\circ \Phi(\wt{G})\circ\wt{\phi}),
 \end{align*}
 %
 where
@@ -3416,9 +3417,9 @@ $$\iota:(\Phi(X);\Phi(F)\circ \phi)_{E'}\sr \Phi((X;F)_{E})$$
 %
 is the unique morphism such that
 %
-$$\iota\circ \Phi(p^E_{X,F})=p^{E'}_{\Phi(X),\Phi(F)\circ\phi}$$
+$$\iota\circ \Phi(\p^E_{X,F})=p^{E'}_{\Phi(X),\Phi(F)\circ\phi}$$
 and
-$$\iota\circ \Phi(Q(F)_E)\circ \wt{\phi}_E=Q(\Phi(F)\circ\phi)_{E'}.$$
+$$\iota\circ \Phi(\Q(F)_E)\circ \wt{\phi}_E=\Q(\Phi(F)\circ\phi)_{E'}.$$
 
 On the other hand,
 %
@@ -3433,19 +3434,19 @@ and
 by \cite[Lemma 6.1(1,2)]{fromunivwithPi}. Therefore, to prove the lemma it is
 sufficient to show that
 %
-$$\psi_{\Idx(T)}=Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota$$
+$$\psi_{\Idx(T)}=\Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota$$
 %
 Both sides are morphisms with the codomain
 %
 $$\Phi(int(\Idx(T)))=\Phi((X;F)_E)$$
 %
 and since ${\bf\Phi}_E$ is a universe category functor it is sufficient to show
-that the compositions of the two sides with $\Phi(p^E_{X,F})$ and
-$\Phi(Q(F)_E)\circ \wt{\phi}_E$ are the same. Since
+that the compositions of the two sides with $\Phi(\p^E_{X,F})$ and
+$\Phi(\Q(F)_E)\circ \wt{\phi}_E$ are the same. Since
 %
 \begin{align*}
-  Q(\psi_{\Gamma},&\Phi(F)\circ\phi)_{E'}\circ\iota\circ \Phi(p^E_{X,F}) \\
-    & = Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ p^{E'}_{\Phi(X),\Phi(F)\circ\phi} \\
+  \Q(\psi_{\Gamma},&\Phi(F)\circ\phi)_{E'}\circ\iota\circ \Phi(\p^E_{X,F}) \\
+    & = \Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ p^{E'}_{\Phi(X),\Phi(F)\circ\phi} \\
     & = p^{E'}_{int'(H(\Gamma)),\psi_{\Gamma}\circ \Phi(F)\circ\phi}\circ\psi_{\Gamma} \\
     & = p^{E'}_{int'(H(T))}\circ\psi_{\Gamma}
 \end{align*}
@@ -3454,22 +3455,22 @@ the first equation reduces to
 %
 \begin{eq}
 \llabel{2015.05.10.eq1} \psi_{\Idx(T)}\circ
-\Phi(p^E_{T})=p^{E'}_{int'(H(T))}\circ\psi_{\Gamma}
+\Phi(\p^E_{T})=p^{E'}_{int'(H(T))}\circ\psi_{\Gamma}
 \end{eq}
 %
 and since
 %
 \begin{align*}
-  Q(\psi_{\Gamma},\Phi(F)&\circ\phi)_{E'}\circ\iota\circ \Phi(Q(F)_E)\circ \wt{\phi}_E \\
-    & = Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ Q(\Phi(F)\circ\phi)_{E'} \\
-    & = Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}
+  \Q(\psi_{\Gamma},\Phi(F)&\circ\phi)_{E'}\circ\iota\circ \Phi(\Q(F)_E)\circ \wt{\phi}_E \\
+    & = \Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ \Q(\Phi(F)\circ\phi)_{E'} \\
+    & = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}
 \end{align*}
 %
 the second equation reduces to
 %
 \begin{eq}
-\llabel{2015.05.10.eq2.0} \psi_{\Idx(T)}\circ \Phi(Q(F)_E)\circ
-\wt{\phi}_E=Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}
+\llabel{2015.05.10.eq2.0} \psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ
+\wt{\phi}_E=\Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}
 \end{eq}
 %
 Equation (\ref{2015.05.10.eq1}) follows immediately from Lemma
@@ -3478,53 +3479,53 @@ Equation (\ref{2015.05.10.eq1}) follows immediately from Lemma
 We have
 %
 $$\wt{\phi}_E=(\Phi(\p_{(\wt{\U};p),Eq})\circ
-\Phi\wt{\U}p)*(\Phi(Q(Eq))\circ\wt{\phi})$$
+\Phi\wt{\U}p)*(\Phi(\Q(Eq))\circ\wt{\phi})$$
 %
 Therefore (\ref{2015.05.10.eq2.0}) is equivalent to two equations:
 %
-$$\psi_{\Idx(T)}\circ \Phi(Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ
+$$\psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ
 \Phi\wt{\U}p=$$
 \begin{eq}
 \label{2015.05.10.eq2a}
-Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \p_{(\wt{\U}';p'),Eq'}
+\Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \p_{(\wt{\U}';p'),Eq'}
 \end{eq}
 %
 and
 %
-$$\psi_{\Idx(T)}\circ \Phi(Q(F)_E)\circ \Phi(Q(Eq))\circ\wt{\phi}=$$
+$$\psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\Q(Eq))\circ\wt{\phi}=$$
 \begin{eq}
 \label{2015.05.10.eq2b}
-Q'(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ Q(Eq')
+\Q'(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \Q(Eq')
 \end{eq}
 %
 The first equality we will have to decompose further into two using the fact
 that by Lemma \ref{2015.04.10.l5} we have
 %
-$$\Phi\wt{\U}p=(\Phi(\p_{\wt{\U},p})\circ\wt{\phi})*(\Phi(Q(p))\circ \wt{\phi})$$
+$$\Phi\wt{\U}p=(\Phi(\p_{\wt{\U},p})\circ\wt{\phi})*(\Phi(\Q(p))\circ \wt{\phi})$$
 %
 Therefore (\ref{2015.05.10.eq2a}) is equivalent to two equations
 %
-$$\psi_{\Idx(T)}\circ \Phi(Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ
+$$\psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ
 \Phi(\p_{\wt{\U},p})\circ\wt{\phi}=$$
 \begin{eq}
-\llabel{2015.05.10.eq2aa} Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ
+\llabel{2015.05.10.eq2aa} \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ
 \p_{(\wt{\U}';p'),Eq'}\circ \p_{\wt{\U}',p'}
 \end{eq}
 %
 and
 %
-$$\psi_{\Idx(T)}\circ \Phi(Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ
-\Phi(Q(p))\circ\wt{\phi}=$$
+$$\psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ
+\Phi(\Q(p))\circ\wt{\phi}=$$
 \begin{eq}
-\llabel{2015.05.10.eq2ab} Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ
-\p_{(\wt{\U}';p'),Eq'}\circ Q(p')
+\llabel{2015.05.10.eq2ab} \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ
+\p_{(\wt{\U}';p'),Eq'}\circ \Q(p')
 \end{eq}
 %
 To prove (\ref{2015.05.10.eq2b}) observe first two useful equalities:
 %
 \begin{align*}
-  u_1(\Idx(T))&=Q(Q(F),p)\circ Eq \\
-  Q(u_1(\Idx(T)))&=Q(F)_{E}\circ Q(Eq),
+  u_1(\Idx(T))&=\Q(\Q(F),p)\circ Eq \\
+  \Q(u_1(\Idx(T)))&=\Q(F)_{E}\circ \Q(Eq),
 \end{align*}
 %
 where the first follows from the proof of Lemma \ref{2015.03.27.l1} and the
@@ -3534,53 +3535,53 @@ lemma.
 Now we have:
 %
 \begin{align*}
-  \psi_{\Idx(T)}\circ & \Phi(Q(F)_E)\circ \Phi(Q(Eq))\circ\wt{\phi} \\
-    & = \psi_{\Idx(T)}\circ \Phi(Q(F)_E\circ Q(Eq))\circ\wt{\phi} \\
-    & = \psi_{\Idx(T)}\circ \Phi(Q(u_1(\Idx(T))))\circ \wt{\phi} \\
-    & = Q'(\psi_{\Idx(T)}\circ \Phi(u_1(\Idx(T)))\circ \phi) \\
-    & = Q(u_1(H(\Idx(T))))
+  \psi_{\Idx(T)}\circ & \Phi(\Q(F)_E)\circ \Phi(\Q(Eq))\circ\wt{\phi} \\
+    & = \psi_{\Idx(T)}\circ \Phi(\Q(F)_E\circ \Q(Eq))\circ\wt{\phi} \\
+    & = \psi_{\Idx(T)}\circ \Phi(\Q(u_1(\Idx(T))))\circ \wt{\phi} \\
+    & = \Q'(\psi_{\Idx(T)}\circ \Phi(u_1(\Idx(T)))\circ \phi) \\
+    & = \Q(u_1(H(\Idx(T))))
 \end{align*}
 %
 and
 %
-$$Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ
-Q(Eq')=Q'(u_1(H(T)))_{E'}\circ Q(Eq')=Q'(u_1(H(\Idx(T))))$$
+$$\Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ
+\Q(Eq')=\Q'(u_1(H(T)))_{E'}\circ \Q(Eq')=\Q'(u_1(H(\Idx(T))))$$
 %
 The equality (\ref{2015.05.10.eq2b}) is proved.
 
 To prove (\ref{2015.05.10.eq2aa}) observe two equalities:
 %
-$$Q(F)_E\circ \p_{(\wt{\U};p),Eq}=\p_{\Idx(T)}\circ Q(Q(F),p)$$
+$$\Q(F)_E\circ \p_{(\wt{\U};p),Eq}=\p_{\Idx(T)}\circ \Q(\Q(F),p)$$
 %
-$$Q(Q(F),p)\circ \p_{\wt{\U},p}=\p_{\ft(\Idx(T)}\circ Q(F)$$
+$$\Q(\Q(F),p)\circ \p_{\wt{\U},p}=\p_{\ft(\Idx(T)}\circ \Q(F)$$
 %
 The same equalities hold for $F'=\psi_{\Gamma}\circ\Phi(F)\circ
 \phi=u_1'(H(T))$ and the equation (\ref{2015.05.10.eq2aa}) becomes
 %
 $$\psi_{\Idx(T)}\circ \Phi(\p_{\Idx(T)})\circ \Phi(\p_{\ft(\Idx(T))})\circ
-\Phi(Q(F))\circ \wt{\phi}=\p_{IdxT'(H(T))}\circ \p_{\ft(IdxT'(H(T)))}\circ Q(F')$$
+\Phi(\Q(F))\circ \wt{\phi}=\p_{IdxT'(H(T))}\circ \p_{\ft(IdxT'(H(T)))}\circ \Q(F')$$
 %
 Using the defining equations for $\psi$ we rewrite the left hand side as
 %
 $$\psi_{\Idx(T)}\circ \Phi(\p_{\Idx(T)})\circ \Phi(\p_{\ft(\Idx(T))})\circ
-\Phi(Q(F))\circ \wt{\phi}=\p_{H(Idx(T))}\circ \p_{\ft(H(\Idx(T)))}\circ
-\psi_{T}\circ \Phi(Q(F))\circ \wt{\phi}$$
+\Phi(\Q(F))\circ \wt{\phi}=\p_{H(Idx(T))}\circ \p_{\ft(H(\Idx(T)))}\circ
+\psi_{T}\circ \Phi(\Q(F))\circ \wt{\phi}$$
 %
 It remains to show that
 %
-$$Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)=\psi_{(\Gamma,F)}\circ
-\Phi(Q(F))\circ \wt{\phi}$$
+$$\Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)=\psi_{(\Gamma,F)}\circ
+\Phi(\Q(F))\circ \wt{\phi}$$
 %
 which is the defining equation of $\psi_{(G,F)}$.
 
 To prove (\ref{2015.05.10.eq2ab}) let us rewrite the left hand side first
 %
 \begin{align*}
-  \psi_{\Idx(T)}\circ & \Phi(Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ \Phi(Q(p))\circ \wt{\phi} \\
-    & = \psi_{\Idx(T)}\circ \Phi(\p_{\Idx(T)}\circ Q(Q(F),p))\circ \Phi(Q(p))\circ\wt{\phi} \\
-    & = \p_{H(\Idx(T))}\circ \psi_{\ft(\Idx(T))}\circ \Phi(Q(Q(F)\circ p))\circ \wt{\phi} \\
-    & = \p_{H(\Idx(T))}\circ \psi_{(\Gamma,F,Q(F)\circ p)}\circ \Phi(Q(Q(F)\circ p))\circ \wt{\phi} \\
-    & = \p_{H(\Idx(T))}\circ   Q(u_1(H(\ft(\Idx(T)))))
+  \psi_{\Idx(T)}\circ & \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ \Phi(\Q(p))\circ \wt{\phi} \\
+    & = \psi_{\Idx(T)}\circ \Phi(\p_{\Idx(T)}\circ \Q(\Q(F),p))\circ \Phi(\Q(p))\circ\wt{\phi} \\
+    & = \p_{H(\Idx(T))}\circ \psi_{\ft(\Idx(T))}\circ \Phi(\Q(\Q(F)\circ p))\circ \wt{\phi} \\
+    & = \p_{H(\Idx(T))}\circ \psi_{(\Gamma,F,\Q(F)\circ p)}\circ \Phi(\Q(\Q(F)\circ p))\circ \wt{\phi} \\
+    & = \p_{H(\Idx(T))}\circ   \Q(u_1(H(\ft(\Idx(T)))))
 \end{align*}
 %
 Where the first equality holds in view of the upper square of Construction
@@ -3590,11 +3591,11 @@ $\phi$ and the third one is from \cite[Lemma 3.2]{fromunivwithPi}.
 Let $F'=u_1(H(T))$. Rewriting the right hand side we get
 %
 \begin{align*}
-  Q(\psi_{\Gamma}\circ & \Phi(F)\circ \phi)_{E'}\circ \circ \p_{(\wt{\U}';p'),Eq'}\circ Q(p') \\
-    & = Q(F')_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ Q(p') \\
-    & = \p_{IdxT'(H(T)}\circ Q(Q(F'),p')\circ Q(p') \\
-    & = \p_{IdxT'(H(T)}\circ Q(Q(F')\circ p') \\
-    & = \p_{IdxT'(H(T)}\circ Q(u_1(\ft(\Idx(H(T)))))
+  \Q(\psi_{\Gamma}\circ & \Phi(F)\circ \phi)_{E'}\circ \circ \p_{(\wt{\U}';p'),Eq'}\circ \Q(p') \\
+    & = \Q(F')_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ \Q(p') \\
+    & = \p_{IdxT'(H(T)}\circ \Q(\Q(F'),p')\circ \Q(p') \\
+    & = \p_{IdxT'(H(T)}\circ \Q(\Q(F')\circ p') \\
+    & = \p_{IdxT'(H(T)}\circ \Q(u_1(\ft(\Idx(H(T)))))
 \end{align*}
 %
 Where the second equality is from the upper square of Construction
