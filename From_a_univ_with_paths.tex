@@ -75,6 +75,8 @@
 \newcommand{\Fp}{\mathsf{Fp}}
 \newcommand{\pFp}{\mathsf{pFp}}
 \newcommand{\Q}{\mathsf{Q}}
+\newcommand{\etashriek}{\eta^!}
+\newcommand{\etaunshriek}{{\etashriek}^{-1}}
 
 % persistent notations to go into symbol index
 %   at definition time, use \gls{foo}
@@ -83,8 +85,8 @@
 \newoperator{deepartial}{\partial}
 \newoperator{delta}{\delta}
 \newoperator{D}{\D}
-\newoperator{etashriek}{\eta^!}
-\newoperator{eta}{\eta}
+\newoperator{etashriek}{\etashriek}
+\newoperator{etaunshriek}{\etaunshriek}
 \newoperator{Fp}{\Fp}
 \newoperator{ft}{\ft}
 \newoperator{Idx}{\Idx}
@@ -605,7 +607,7 @@ for all $X$ and all morphisms $F:X\sr \U$. A universe in $\mathcal C$ is a
 morphism with a universe structure on it and a universe category is a category
 with a universe and a choice of a final object $pt$.
 
-For $f:W\sr X$ and $g:W\sr \wt{\U}$ we will denote by $\gls{starfg}$ the unique morphism
+For $f:W\sr X$ and $g:W\sr \wt{\U}$ satisfying $f\circ F = g \circ p$ we will denote by $\gls{starfg} : W \sr (X;F)$ the unique morphism
 such that
 %
 \begin{align}
@@ -646,27 +648,29 @@ As is shown in \cite{fromunivwithPi}, the square
 is a pullback square.
 
 Following \cite{fromunivwithPi} we define for any universe $p:\wt{\U}\sr \U$ and
-any $V\in {\mathcal C}$ a functor
+any $V\in {\mathcal C}$ a functor from $\mathcal C$ to the category of sets,
 %
-$$\gls{D}_p(-,V):X\mapsto \amalg_{F:X\sr \U}Hom((X;F), V)$$
+$$\gls{D}_p(-,V):X\mapsto \amalg_{F:X\sr \U}Hom((X;F), V),$$
 %
 whose action on morphisms is given by
 %
 $$\D_p(f,V):(F,a)\mapsto (f\circ F, \Q(f,F)\circ a)$$
 %
 When $\mathcal C$ is a locally cartesian closed category any morphism
-$p:\wt{\U}\sr \U$ defines a functor
+$p:\wt{\U}\sr \U$ defines a functor\editorfootnote{Here $(\wt{\U},p)$ and
+  $(\U\times V,pr_1)$ are objects in the category of objects over $\U$, and
+  $\iHom$ denotes the internal Hom in that category.}
 %
-$$\gls{I}_p:V\mapsto \iHom((\wt{\U},p),(\U\times V,pr_1))$$
+$$\gls{I}_p:V\mapsto \iHom((\wt{\U},p),(\U\times V,pr_1)),$$
 %
 and we have constructed in \cite[Construction 3.9]{fromunivwithPi} a family of
-bijections
+bijections\editorfootnote{since $\I_p(V)$ is an object over $\U$, one may wonder what $Hom(X,\I_p(V))$ means here}
 %
 $$\gls{etashriek}_{p,X,V}:Hom(X,\I_p(V))\sr \D_p(X,V)$$
 %
-that are natural in $X$ and $V$. We let $\eta$ denote the inverse bijections
+that are natural in $X$ and $V$. We let $\etaunshriek$ denote the inverse bijections
 %
-$$\gls{eta}_{p,X,V}:\D_p(X,V)\sr Hom(X,\I_p(V))$$
+$$\gls{etaunshriek}_{p,X,V}:\D_p(X,V)\sr Hom(X,\I_p(V)).$$
 %
 Using the functorial structure on the mapping $V\mapsto (\U\times V,pr_1)$
 together with the naturality of internal Hom-objects in the second argument we
@@ -708,9 +712,9 @@ $\I_{p'}(V)\sr \I_p(V)$. Then for any $X$ the square
 %
 $$
 \begin{xy}
-          \xymatrix@C=3pc{ \D_p(X,V) \ar[r]^-{\eta_{p,X,V}} \ar[d]_{D^f(X,V)} &
+          \xymatrix@C=3pc{ \D_p(X,V) \ar[r]^-{\etaunshriek_{p,X,V}} \ar[d]_{D^f(X,V)} &
             Hom(X, \I_p(V)) \ar[d]^{-\circ I^f(V)}\\ \D_{p'}(X,V)
-            \ar[r]^-{\eta_{p',X.V}} & Hom (X, \I_{p'}(V)), }
+            \ar[r]^-{\etaunshriek_{p',X.V}} & Hom (X, \I_{p'}(V)), }
 \end{xy}
 $$
 %
@@ -722,9 +726,9 @@ commutes.
 \end{lemma}
 %
 \begin{myproof}
-Since $\eta$ is defined as an inverse to $\eta^!$ it is sufficient to show that
+Since $\etaunshriek$ is defined as an inverse to $\etashriek$ it is sufficient to show that
 for any $g\in Hom(X,\I_p(V))$ one has\editorfootnote{$\eta^{',!}$ is undefined here} $\eta^{',!}(g\circ
-I^f(V))=D^f(X,V)(\eta^!(g))$. Let
+I^f(V))=D^f(X,V)(\etashriek(g))$. Let
 %
 \begin{align*}
   pr=\gls{prI}_p(V) & :\I_p(V)\sr \U \\
@@ -746,7 +750,7 @@ pr')\circ st')$$
 %
 and
 %
-$$D^f(X,V)(\eta^!(g))=D^f(X,V)(g\circ pr, \Q(g,pr)\circ st)=(g\circ pr, (g\circ
+$$D^f(X,V)(\etashriek(g))=D^f(X,V)(g\circ pr, \Q(g,pr)\circ st)=(g\circ pr, (g\circ
 pr)^*(f)\circ \Q(g,pr)\circ st)$$
 %
 Therefore it is sufficient to show that
@@ -825,17 +829,14 @@ $\mathcal C$ is a morphism $Eq:(\wt{\U};p)\sr \U$.
 \end{definition}
 %
 
-Let $Eq$ be a J0-structure on $p$. Consider the object
-%
+Let $Eq$ be a J0-structure on $p$. Consider the object\editorfootnote{$(\wt{\U};p,Eq)$ is
+  notation for $((\wt{\U};p);Eq)$.}
 $$E\wt{\U}:=(\wt{\U};p,Eq)$$
-%
-as an object over $\U$ relative to the composition of projections
-%
+of $\mathcal C$ together with the composite
 $$E\wt{\U}\stackrel{\p_{(\wt{\U};p),Eq}}{\lr}(\wt{\U};p)\stackrel{\p_{\wt{\U},p}}{\lr}
 \wt{\U}\stackrel{p}{\sr} \U$$
-%
-that we will denote by $pE\wt{\U}$.
-%
+of projections as an object over $\U$, and let $pE\wt{\U}$ denote it.
+
 \begin{problem}
 \llabel{2015.05.08.prob1} To construct a universe structure on $pE\wt{\U}$.
 \end{problem}
@@ -1966,27 +1967,27 @@ $int(\Idx(T))=int(\Idx(\Gamma,F))=(int(\Gamma);F)_{E}$. Therefore we further
 have $G:=u_1(P):(int(\Gamma);F)_{E}\sr \U$ and $\wt{H}:=\wt{u}_1(s0):(X;F)\sr
 \wt{\U}$.
 
-Let us show first that
+Let us show first that\editorfootnote{$\etaunshriek_p$ and $\etaunshriek_{pE\wt{\U}}$ are undefined here, and they occur later, too.}
 %
-$$\eta_{pE\wt{\U}}(F,G)\circ I^{\omega}(\U)=\eta_p(F,\wt{H})\circ \I_p(p)$$
+$$\etaunshriek_{pE\wt{\U}}(F,G)\circ I^{\omega}(\U)=\etaunshriek_p(F,\wt{H})\circ \I_p(p)$$
 %
 Indeed,
 %
 \begin{align*}
-  \eta_{pE\wt{\U}}(F,G)\circ I^{\omega}(\U)
-    & = \eta_p(F,G\circ F^*(\omega)) \\
-    & = \eta_p(F,\rf_T\circ G) \\
-    & = \eta_p(F,s0\circ \Q(\rf_T\circ G)\circ p) \\
-    & = \eta_p(F,\wt{H}\circ p) \\
-    & = \eta_p(F,\wt{H})\circ \I_p(p),
+  \etaunshriek_{pE\wt{\U}}(F,G)\circ I^{\omega}(\U)
+    & = \etaunshriek_p(F,G\circ F^*(\omega)) \\
+    & = \etaunshriek_p(F,\rf_T\circ G) \\
+    & = \etaunshriek_p(F,s0\circ \Q(\rf_T\circ G)\circ p) \\
+    & = \etaunshriek_p(F,\wt{H}\circ p) \\
+    & = \etaunshriek_p(F,\wt{H})\circ \I_p(p),
 \end{align*}
 %
 where the first equality is from Lemma \ref{2015.04.02.l4}, the second from
 Lemma \ref{2015.03.31.l2}, the third from the commutativity of the canonical
 square and the fact that $s0$ is a section, the fourth from
-(\ref{2015.03.31.eq5}) and the fifth from naturality of $\eta_{p,X,V}$ in $V$.
+(\ref{2015.03.31.eq5}) and the fifth from naturality of $\etaunshriek_{p,X,V}$ in $V$.
 
-Therefore the pair $(\eta_{pE\wt{\U}}(F,G),\eta_p(F,\wt{H}))$ gives us a
+Therefore the pair $(\etaunshriek_{pE\wt{\U}}(F,G),\etaunshriek_p(F,\wt{H}))$ gives us a
 morphism
 %
 $$\phi(\Gamma,T,P,s0):X\sr (\I_{pE\wt{\U}}(\U), I^{\omega}(\U)) \times_{\I_p(\U)}
@@ -1997,18 +1998,18 @@ morphism
 %
 $$\phi(\Gamma,T,P,s0)\circ Jp: X\sr \I_{pE\wt{\U}}(\wt{\U})$$
 %
-Consider the element
+Consider the element\editorfootnote{$\etashriek_{pE\wt{\U}}$ is undefined here}
 %
-$$(F_1,F_2)=\eta^!_{pE\wt{\U}}(\phi(\Gamma,T,P,s0)\circ Jp)\in
+$$(F_1,F_2)=\etashriek_{pE\wt{\U}}(\phi(\Gamma,T,P,s0)\circ Jp)\in
 \D_{pE\wt{\U}}(X,\wt{\U})$$
 %
 By \cite[Problem 3.8(1)]{fromunivwithPi} we have
 %
 $$(F_1,F_2\circ
-p)=\D_{pE\wt{\U}}(X,p)(F_1,F_2)=\eta^!_{pE\wt{\U}}(\phi(\Gamma,T,P,s0)\circ
+p)=\D_{pE\wt{\U}}(X,p)(F_1,F_2)=\etashriek_{pE\wt{\U}}(\phi(\Gamma,T,P,s0)\circ
 Jp\circ \I_{pE\wt{\U}}(p))=$$
 %
-$$\eta^!_{pE\wt{\U}}(\eta_{pE\wt{\U}}(F,G))=(F,G)$$
+$$\etashriek_{pE\wt{\U}}(\etaunshriek_{pE\wt{\U}}(F,G))=(F,G)$$
 %
 Therefore, $F_2$ is of the form $(X;F)_E\sr \wt{\U}$, i.e., of the form
 $\wt{u}_{1,\Idx(T)}(J))$ for some $J$ such that $\partial(J)=P$.
@@ -2019,7 +2020,7 @@ $\wt{u}_{1,\Idx(T)}(J))$ for some $J$ such that $\partial(J)=P$.
 $\J=\J_{Jp}(\Gamma,T,P,s0)$ is that it is the unique element of
 $\wt{Ob}(\toCC({\mathcal C},p))$ that satisfies the equation
 %
-$$\eta_{pE\wt{\U}}(u_{1,\Gamma}(T),\wt{u}_{1,\Idx(T)}(\J))=\phi(\Gamma,T,P,s0)\circ
+$$\etaunshriek_{pE\wt{\U}}(u_{1,\Gamma}(T),\wt{u}_{1,\Idx(T)}(\J))=\phi(\Gamma,T,P,s0)\circ
 Jp,$$
 %
 where
@@ -2027,8 +2028,8 @@ where
 $$\phi(\Gamma,T,P,s0):int(\Gamma)\sr
 (\I_{pE\wt{\U}}(\U),I^{\omega}(\U))\times_{\I_p(\U)}(\I_p(\wt{\U}),\I_p(p))$$
 %
-is given by the pair of morphisms $(\eta_{pE\wt{\U}}(u_{1,\Gamma}(T),
-u_{1,\Idx(T)}(P)), \eta_p(u_{1,\Gamma}(T),\wt{u}_{1,\Gamma}(s0)))$.
+is given by the pair of morphisms $(\etaunshriek_{pE\wt{\U}}(u_{1,\Gamma}(T),
+u_{1,\Idx(T)}(P)), \etaunshriek_p(u_{1,\Gamma}(T),\wt{u}_{1,\Gamma}(s0)))$.
 \end{remark}
 %
 
@@ -2135,24 +2136,24 @@ $$\q(f,\Idx(T),3)^*(\J,1)=\J'$$
 We have:
 %
 \begin{align*}
-  \eta_{pE\wt{\U}}(F,\wt{u}_1(\J))&=\phi(\Gamma,T,P,s0)\circ Jp \\
-  \eta_{pE\wt{\U}}(f\circ F, \wt{u}_1(\J'))&=\phi(\Gamma',f^*(T),f^*(P),f^*(s0))\circ Jp
+  \etaunshriek_{pE\wt{\U}}(F,\wt{u}_1(\J))&=\phi(\Gamma,T,P,s0)\circ Jp \\
+  \etaunshriek_{pE\wt{\U}}(f\circ F, \wt{u}_1(\J'))&=\phi(\Gamma',f^*(T),f^*(P),f^*(s0))\circ Jp
 \end{align*}
 %
-By naturality of $\eta$ with respect to the first argument we have
+By naturality of $\etaunshriek$ with respect to the first argument we have
 %
-$$f\circ \eta_{pE\wt{\U}}(F,\wt{u}_1(\J))=\eta_{pE\wt{\U}}(f\circ F,
+$$f\circ \etaunshriek_{pE\wt{\U}}(F,\wt{u}_1(\J))=\etaunshriek_{pE\wt{\U}}(f\circ F,
 \Q(f,F)_{E}\circ \wt{u}_1(\J))$$
 %
 Therefore, by Lemma \ref{2015.04.04.l4} we have
 %
 \begin{align*}
-  f\circ \eta_{pE\wt{\U}}(F,\wt{u}_1(\J))
-    & = \eta_{pE\wt{\U}}(f\circ F, \wt{u}_1(\Q(f,F)_{E}^*(\J,1))) \\
-    & = \eta_{pE\wt{\U}}(f\circ F, \wt{u}_1(\q(f,\Idx(T),3)^*(\J,1)))
+  f\circ \etaunshriek_{pE\wt{\U}}(F,\wt{u}_1(\J))
+    & = \etaunshriek_{pE\wt{\U}}(f\circ F, \wt{u}_1(\Q(f,F)_{E}^*(\J,1))) \\
+    & = \etaunshriek_{pE\wt{\U}}(f\circ F, \wt{u}_1(\q(f,\Idx(T),3)^*(\J,1)))
 \end{align*}
 %
-Since both $\eta_{pE\wt{\U}}$ and $\wt{u}_1$ are bijections and in particular
+Since both $\etaunshriek_{pE\wt{\U}}$ and $\wt{u}_1$ are bijections and in particular
 injections it is sufficient to show that
 %
 $$f\circ \phi(\Gamma,T,P,s0)\circ Jp = \phi(\Gamma',f^*(T),f^*(P),f^*(s0))\circ
@@ -2166,15 +2167,15 @@ Since both $\phi$ expressions are morphism into a product this amounts to two
 equations that, taking into account the definition of $\phi$ in Construction
 \ref{2015.04.04.constr1} are:
 %
-$$f\circ \eta_{pE\wt{\U}}(F,G)=\eta_{pE\wt{\U}}(f\circ F, u_1(f^*(P)))$$
+$$f\circ \etaunshriek_{pE\wt{\U}}(F,G)=\etaunshriek_{pE\wt{\U}}(f\circ F, u_1(f^*(P)))$$
 %
 and
 %
-$$f\circ \eta_p(F,\wt{H})=\eta_p(f\circ F, \wt{u}_1(f^*(s0)))$$
+$$f\circ \etaunshriek_p(F,\wt{H})=\etaunshriek_p(f\circ F, \wt{u}_1(f^*(s0)))$$
 %
-The first equality follows naturality of $\eta$ and Lemma
+The first equality follows naturality of $\etaunshriek$ and Lemma
 \ref{2015.04.04.l4}. The second equality follows from naturality of
-$\eta$. This finished the proof of Lemma \ref{2015.04.04.l1}.
+$\etaunshriek$. This finished the proof of Lemma \ref{2015.04.04.l1}.
 \end{myproof}
 %
 \begin{lemma}
@@ -2189,30 +2190,30 @@ $$\rf_T^*(\J_{Jp}(\Gamma,T,P,s0))=s0$$
 %
 \begin{myproof}
 Let $\J=\J_{Jp}(\Gamma,T,P,s0)$. Then, using the notations of Construction
-\ref{2015.04.04.constr1} we have:
+\ref{2015.04.04.constr1} we have\editorfootnote{$\etaunshriek_{E\wt{\U}}$ is undefined here}:
 %
-$$\eta_{E\wt{\U}}(F,\wt{u}_1(\J))=\phi\circ Jp$$
+$$\etaunshriek_{E\wt{\U}}(F,\wt{u}_1(\J))=\phi\circ Jp$$
 %
 Then
 %
-$$\eta_{E\wt{\U}}(F,\wt{u}_1(\J))\circ
-I^{\omega}(\wt{\U})=\eta_p(F,F^*(\omega)\circ \wt{u}_1(\J))$$
+$$\etaunshriek_{E\wt{\U}}(F,\wt{u}_1(\J))\circ
+I^{\omega}(\wt{\U})=\etaunshriek_p(F,F^*(\omega)\circ \wt{u}_1(\J))$$
 %
 By Lemma \ref{2015.03.31.l2} we have $F^*(\omega)=\rf_T$. Therefore,
 %
-$$\eta_{E\wt{\U}}(F,\wt{u}_1(\J))\circ I^{\omega}(\wt{\U})=\eta_p(F,\rf_T\circ
-\wt{u}_1(\J))=\eta_p(F,\wt{u}_1(\rf_T^*(\J)))$$
+$$\etaunshriek_{E\wt{\U}}(F,\wt{u}_1(\J))\circ I^{\omega}(\wt{\U})=\etaunshriek_p(F,\rf_T\circ
+\wt{u}_1(\J))=\etaunshriek_p(F,\wt{u}_1(\rf_T^*(\J)))$$
 %
 On the other hand
 %
 $$\phi\circ Jp\circ I^{\omega}(\wt{\U})=\phi\circ prI_p(\wt{\U})$$
 %
 by (\ref{2015.04.04.eq1}) which equals, by construction,
-$\eta_p(F,\wt{u}_1(s0))$. Therefore,
+$\etaunshriek_p(F,\wt{u}_1(s0))$. Therefore,
 %
-$$\eta_p(F,\wt{u}_1(\rf_T^*(\J)))=\eta_p(F,\wt{u}_1(s0))$$
+$$\etaunshriek_p(F,\wt{u}_1(\rf_T^*(\J)))=\etaunshriek_p(F,\wt{u}_1(s0))$$
 %
-and using again that both $\eta$ and $\wt{u}_1$ are injective we conclude that
+and using again that both $\etaunshriek$ and $\wt{u}_1$ are injective we conclude that
 $\rf_T^*(\J)=s0$.
 \end{myproof}
 %
@@ -2489,50 +2490,50 @@ commute.
 \begin{myproof}
 Let $X=\I_{p_2}(V)$. We have\editorfootnote{$\eta'$ below is undefined}
 %
-$$\chi_2(V)\circ {I^{g'}(\Phi(V))}=\eta'({\bf\Phi}_2^2(\eta^{-1}(Id_{X})))\circ
+$$\chi_2(V)\circ {I^{g'}(\Phi(V))}=\eta'({\bf\Phi}_2^2((\etaunshriek)^{-1}(Id_{X})))\circ
 I^{g'}(\Phi(V))$$
 %
 by definition of $\chi$ in \cite[Construction 5.6]{fromunivwithPi}. Then by
 Lemma \ref{2015.04.02.l4} and Lemma \ref{2015.04.08.l1} we have:
 %
 \begin{align*}
-  \eta'({\bf\Phi}_2^2&(\eta^{-1}(Id_{X})))\circ I^{g'}(\Phi(V)) \\
-    & = \eta(D^{g'}(\Phi(X),\Phi(V))({\bf\Phi}_2^2(\eta^{-1}(Id_X)))) \\
-    & = \eta({\bf\Phi}_1^2(D^g(X,V)(\eta^{-1}(Id_X))))
+  \eta'({\bf\Phi}_2^2&((\etaunshriek)^{-1}(Id_{X})))\circ I^{g'}(\Phi(V)) \\
+    & = \etaunshriek(D^{g'}(\Phi(X),\Phi(V))({\bf\Phi}_2^2((\etaunshriek)^{-1}(Id_X)))) \\
+    & = \etaunshriek({\bf\Phi}_1^2(D^g(X,V)((\etaunshriek)^{-1}(Id_X))))
 \end{align*}
 %
 Then, again by Lemma \ref{2015.04.02.l4}, we have
 %
-$$\eta({\bf\Phi}_1^2(D^g(X,V)(\eta^{-1}(Id_X))))=\eta({\bf\Phi}_1^2(\eta^{-1}(Id_X\circ
-I^g(V)))=\eta({\bf\Phi}_1^2(\eta^{-1}(I^g(V))))$$
+$$\etaunshriek({\bf\Phi}_1^2(D^g(X,V)((\etaunshriek)^{-1}(Id_X))))=\etaunshriek({\bf\Phi}_1^2((\etaunshriek)^{-1}(Id_X\circ
+I^g(V)))=\etaunshriek({\bf\Phi}_1^2((\etaunshriek)^{-1}(I^g(V))))$$
 %
 It remains to show that
 %
-$$\eta({\bf\Phi}_1^2(\eta^{-1}(I^g(V))))=\Phi(I^g(V))\circ \chi_1(V)$$
+$$\etaunshriek({\bf\Phi}_1^2((\etaunshriek)^{-1}(I^g(V))))=\Phi(I^g(V))\circ \chi_1(V)$$
 %
 Let $a$ be any element of $Hom(\I_{p_2}(V),\I_{p_1}(V))$. Let us show that
 %
-$$\eta({\bf\Phi}_1^2(\eta^{-1}(a)))=\Phi(a)\circ \chi_1(V)$$
+$$\etaunshriek({\bf\Phi}_1^2((\etaunshriek)^{-1}(a)))=\Phi(a)\circ \chi_1(V)$$
 %
 We have
 %
 \begin{align*}
   \Phi(a)\circ & \chi_1(V) \\
-    & = \Phi(a)\circ \eta'({\bf\Phi}^2_1(\eta^{-1}(Id_{\I_{p_1}(V)}))) \\
-    & = \eta'(\D_{\p_1'}(\Phi(a),\Phi(V))({\bf\Phi}^2_1(\eta^{-1}(Id_{\I_{p_1}(V)}))),
+    & = \Phi(a)\circ \eta'({\bf\Phi}^2_1((\etaunshriek)^{-1}(Id_{\I_{p_1}(V)}))) \\
+    & = \eta'(\D_{\p_1'}(\Phi(a),\Phi(V))({\bf\Phi}^2_1((\etaunshriek)^{-1}(Id_{\I_{p_1}(V)}))),
 \end{align*}
 %
-where the second equality holds because of naturality of $\eta$ in the first
+where the second equality holds because of naturality of $\etaunshriek$ in the first
 argument. Then
 %
-$$\eta'(\D_{\p_1'}(\Phi(a),\Phi(V))({\bf\Phi}^2_1(\eta^{-1}(Id_{\I_{p_1}(V)})))=\eta'({\bf\Phi}^2_1(\D_{p_1}(a,V)(\eta^{-1}(\I_{p_1}(V))))$$
+$$\eta'(\D_{\p_1'}(\Phi(a),\Phi(V))({\bf\Phi}^2_1((\etaunshriek)^{-1}(Id_{\I_{p_1}(V)})))=\eta'({\bf\Phi}^2_1(\D_{p_1}(a,V)((\etaunshriek)^{-1}(\I_{p_1}(V))))$$
 %
 by \cite[Lemma 5.4]{fromunivwithPi} and
 %
-$$\eta'({\bf\Phi}^2_1(\D_{p_1}(a,V)(\eta^{-1}(\I_{p_1}(V))))=\eta'({\bf\Phi}^2_1(\eta^{-1}(a\circ
-Id_{p_1}(V))))=\eta'({\bf\Phi}_1^2(\eta^{-1}(a)))$$
+$$\eta'({\bf\Phi}^2_1(\D_{p_1}(a,V)((\etaunshriek)^{-1}(\I_{p_1}(V))))=\eta'({\bf\Phi}^2_1((\etaunshriek)^{-1}(a\circ
+Id_{p_1}(V))))=\eta'({\bf\Phi}_1^2((\etaunshriek)^{-1}(a)))$$
 %
-again by naturality of $\eta$ in the first argument. This finishes the proof of
+again by naturality of $\etaunshriek$ in the first argument. This finishes the proof of
 Lemma \ref{2015.04.06.l7}.
 \end{myproof}
 
@@ -3628,7 +3629,7 @@ $$H(\J(\Gamma,T,P,s0))=\J'(H(\Gamma),H(T),H(P),H(s0))$$
 
 The defining equation for $\J'$ is
 %
-$$\eta_{pE\wt{\U}'}(u'_1(H(T)),\wt{u}'_{1,{IdxT'(H(T)}}(\J')))=\phi(H(\Gamma),H(T),H(P),H(s0))\circ
+$$\etaunshriek_{pE\wt{\U}'}(u'_1(H(T)),\wt{u}'_{1,{IdxT'(H(T)}}(\J')))=\phi(H(\Gamma),H(T),H(P),H(s0))\circ
 Jp'$$
 %
 and to prove the lemma we need to show that $H(\J)$ satisfies this equation.
@@ -3636,17 +3637,17 @@ and to prove the lemma we need to show that $H(\J)$ satisfies this equation.
 Using Lemma \ref{2015.05.06.l3} we have
 %
 \begin{align*}
-  \eta_{pE\wt{\U}}(&u'_1(H(T)),\wt{u}'_{1,{IdxT'(H(T)}}(H(\J)))) \\
-    & = \eta_{pE\wt{\U}'}(\D_{pE\wt{\U}'}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}'}(\_,\wt{\phi})(\Phi_E^2(u_1(T),\wt{u}_{1,\Idx(T)}(\J))))) \\
-    & = \psi_{\Gamma}\circ \eta_{pE\wt{\U}'}(\Phi_E^2(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ \I_{pE\wt{\U}'}(\wt{\phi})
+  \etaunshriek_{pE\wt{\U}}(&u'_1(H(T)),\wt{u}'_{1,{IdxT'(H(T)}}(H(\J)))) \\
+    & = \etaunshriek_{pE\wt{\U}'}(\D_{pE\wt{\U}'}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}'}(\_,\wt{\phi})(\Phi_E^2(u_1(T),\wt{u}_{1,\Idx(T)}(\J))))) \\
+    & = \psi_{\Gamma}\circ \etaunshriek_{pE\wt{\U}'}(\Phi_E^2(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ \I_{pE\wt{\U}'}(\wt{\phi})
 \end{align*}
 %
 By \cite[Lemma 5.8]{fromunivwithPi} and by the defining equation for $\J$ we
 further have
 %
 \begin{align*}
-  \psi_{\Gamma}\circ \eta_{pE\wt{\U}'}&(\Phi_E^2(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ \I_{pE\wt{\U}'}(\wt{\phi}) \\
-    & = \psi_{\Gamma}\circ \Phi(\eta_{pE\wt{\U}}(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ \chi_{{\bf\Phi}_E}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi}) \\
+  \psi_{\Gamma}\circ \etaunshriek_{pE\wt{\U}'}&(\Phi_E^2(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ \I_{pE\wt{\U}'}(\wt{\phi}) \\
+    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_{pE\wt{\U}}(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ \chi_{{\bf\Phi}_E}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi}) \\
     & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ Jp)\circ \chi_{{\bf\Phi}_E}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi}) \\
     & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ Jp)\circ \wt{\zeta}_{\bf\Phi}
 \end{align*}
@@ -3679,9 +3680,9 @@ $$R_{\Phi}\circ pr_2'=\Phi(pr_2)\circ \wt{\xi}_{\Phi}.$$
 %
 On the other hand the defining relations of $\phi(\Gamma,T,P,s0)$ are
 %
-$$\phi(\Gamma,T,P,s0)\circ pr_1=\eta_{pE\wt{\U}}(F,G)$$
+$$\phi(\Gamma,T,P,s0)\circ pr_1=\etaunshriek_{pE\wt{\U}}(F,G)$$
 and
-$$\phi(\Gamma,T,P,s0)\circ pr_2=\eta_p(F,\wt{H}),$$
+$$\phi(\Gamma,T,P,s0)\circ pr_2=\etaunshriek_p(F,\wt{H}),$$
 %
 where
 %
@@ -3714,31 +3715,31 @@ For (\ref{2015.05.10.eq3a}), rewriting the left hand side we get
   \psi_{\Gamma}\circ \Phi&(\phi(\Gamma,T,P,s0))\circ R_{\Phi}\circ pr_1'  \\
     & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ\Phi(pr_1)\circ \zeta_{\Phi} \\
     & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ pr_1)\circ \zeta_{\Phi} \\
-    & = \psi_{\Gamma}\circ \Phi(\eta_{pE\wt{\U}}(F,G))\circ \zeta_{\Phi}
+    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_{pE\wt{\U}}(F,G))\circ \zeta_{\Phi}
 \end{align*}
 %
 Continuing we get
 %
 \begin{align*}
-  \psi_{\Gamma}\circ & \Phi(\eta_{pE\wt{\U}}(F,G))\circ \zeta_{\Phi} \\
-    & = \psi_{\Gamma}\circ \Phi(\eta_{pE\wt{\U}}(F,G))\circ \xi_{{\bf \Phi}_E}\circ \I_{pE\wt{\U}'}(\phi) \\
-    & = \psi_{\Gamma}\circ\eta_{pE\wt{\U}'}({\bf\Phi}^2_E(F,G))\circ \I_{pE\wt{\U}'}(\phi),
+  \psi_{\Gamma}\circ & \Phi(\etaunshriek_{pE\wt{\U}}(F,G))\circ \zeta_{\Phi} \\
+    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_{pE\wt{\U}}(F,G))\circ \xi_{{\bf \Phi}_E}\circ \I_{pE\wt{\U}'}(\phi) \\
+    & = \psi_{\Gamma}\circ\etaunshriek_{pE\wt{\U}'}({\bf\Phi}^2_E(F,G))\circ \I_{pE\wt{\U}'}(\phi),
 \end{align*}
 %
 where the last equality holds by \cite[Lemma 5.8]{fromunivwithPi} applied to
 $X=int(\Gamma)$, $V=\U$ and ${\bf\Phi}={\bf\Phi}_E$. Continuing further we get
 %
 \begin{align*}
-  \psi_{\Gamma}\circ&\eta_{pE\wt{\U}'}({\bf\Phi}^2_E(F,G))\circ \I_{pE\wt{\U}'}(\phi) \\
-    & = \eta_{pE\wt{\U}'}(\D_{pE\wt{\U}}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}}(\_,\phi)({\bf\Phi}^2(F,G)))) \\
-    & = \eta_{pE\wt{\U}'}((u_{1,H(\Gamma)}'(H(T)),u_{1,IdxT'(H(T))}(H(P)))),
+  \psi_{\Gamma}\circ&\etaunshriek_{pE\wt{\U}'}({\bf\Phi}^2_E(F,G))\circ \I_{pE\wt{\U}'}(\phi) \\
+    & = \etaunshriek_{pE\wt{\U}'}(\D_{pE\wt{\U}}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}}(\_,\phi)({\bf\Phi}^2(F,G)))) \\
+    & = \etaunshriek_{pE\wt{\U}'}((u_{1,H(\Gamma)}'(H(T)),u_{1,IdxT'(H(T))}(H(P)))),
 \end{align*}
 %
 where the last equality holds by Lemma \ref{2015.05.06.l3}(1).
 
 Rewriting the right hand side we get
 %
-$$\phi(H(\Gamma),H(T),H(P),H(s0))\circ pr_1'=\eta_{pE\wt{\U}'}(F',G'),$$
+$$\phi(H(\Gamma),H(T),H(P),H(s0))\circ pr_1'=\etaunshriek_{pE\wt{\U}'}(F',G'),$$
 %
 where $F'=u_{1,H(\Gamma)}(H(T))$ and $G'=u_{1,IdxT'(H(\Gamma))}(H(P))$.  This
 shows that the first equality holds.
@@ -3749,8 +3750,8 @@ For (\ref{2015.05.10.eq3b}), rewriting the left hand side we get
   \psi_{\Gamma}\circ & \Phi(\phi(\Gamma,T,P,s0))\circ R_{\Phi}\circ pr_2'  \\
     & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ \Phi(pr_2)\circ \wt{\xi}_{\Phi} \\
     & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ pr_2)\circ \wt{\xi}_{\Phi} \\
-    & = \psi_{\Gamma}\circ \Phi(\eta_p(F,\wt{H}))\circ \wt{\xi}_{\Phi} \\
-    & = \eta_{p'}(\wt{u}_{2,H(\Gamma)}'(H(s0))),
+    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_p(F,\wt{H}))\circ \wt{\xi}_{\Phi} \\
+    & = \etaunshriek_{p'}(\wt{u}_{2,H(\Gamma)}'(H(s0))),
 \end{align*}
 %
 where the last equality holds by \cite[Lemma 6.2(2)]{fromunivwithPi} since
@@ -3758,7 +3759,7 @@ $(F,\wt{H})=u_{2,\Gamma}(s0)$.
 
 Rewriting the right hand side we get
 %
-$$\phi(H(\Gamma),H(T),H(P),H(s0))\circ pr_2'=\eta_{p'}(F',\wt{H}')$$
+$$\phi(H(\Gamma),H(T),H(P),H(s0))\circ pr_2'=\etaunshriek_{p'}(F',\wt{H}')$$
 %
 which proves the second equality since
 $(F',\wt{H}')=\wt{u}_{2,H(\Gamma)}'(H(s0))$.
