@@ -104,6 +104,7 @@
 \newoperator{refl}{\refl}
 \newoperator{rf}{\rf}
 \newoperator{semicolon}{(X;F)}
+\newoperator{multisemicolon}{(X;F_1,\dots,F_n)}
 \newoperator{starfg}{f*g}
 
 %% \newoperator{}{\}
@@ -607,6 +608,8 @@ for all $X$ and all morphisms $F:X\sr \U$. A universe in $\mathcal C$ is a
 morphism with a universe structure on it and a universe category is a category
 with a universe and a choice of a final object $pt$.
 
+We may use the notation $\gls{multisemicolon}$ for $(\dots(X;F_1);\dots;F_n)$.
+
 For $f:W\sr X$ and $g:W\sr \wt{\U}$ satisfying $f\circ F = g \circ p$ we will denote by $\gls{starfg} : W \sr (X;F)$ the unique morphism
 such that
 %
@@ -654,8 +657,10 @@ $$\gls{D}_p(-,V):X\mapsto \amalg_{F:X\sr \U}Hom((X;F), V),$$
 %
 whose action on morphisms is given by
 %
-$$\D_p(f,V):(F,a)\mapsto (f\circ F, \Q(f,F)\circ a)$$
-%
+$$\D_p(f,V):(F,a)\mapsto (f\circ F, \Q(f,F)\circ a).$$
+For $F:X\sr \U$ and $G : (X;F) \sr V$, the corresponding element of
+$\D_p(X,V)$ will be written as the pair $(F,G)$.
+
 When $\mathcal C$ is a locally cartesian closed category any morphism
 $p:\wt{\U}\sr \U$ defines a functor\editorfootnote{Here $(\wt{\U},p)$ and
   $(\U\times V,pr_1)$ are objects in the category of objects over $\U$, and
@@ -664,14 +669,21 @@ $p:\wt{\U}\sr \U$ defines a functor\editorfootnote{Here $(\wt{\U},p)$ and
 $$\gls{I}_p:V\mapsto \iHom((\wt{\U},p),(\U\times V,pr_1)),$$
 %
 and we have constructed in \cite[Construction 3.9]{fromunivwithPi} a family of
-bijections\editorfootnote{since $\I_p(V)$ is an object over $\U$, one may wonder what $Hom(X,\I_p(V))$ means here}
+bijections\editorfootnote{Since $\I_p(V)$ is an object over $\U$, one may infer
+  that formation of $Hom(X,\I_p(V))$ involves forgetting the structure map
+  $\I_p(V) \sr \U$.}
 %
 $$\gls{etashriek}_{p,X,V}:Hom(X,\I_p(V))\sr \D_p(X,V)$$
 %
 that are natural in $X$ and $V$. We let $\etaunshriek$ denote the inverse bijections
 %
 $$\gls{etaunshriek}_{p,X,V}:\D_p(X,V)\sr Hom(X,\I_p(V)).$$
-%
+For $F:X\sr \U$ and $G : (X;F) \sr V$, we will abbreviate
+$\etaunshriek_{p,X,V}(F,G)$ to $\etaunshriek_p(F,G)$; this should cause no
+confusion, because $X$ and $V$ are determined by $F$ and $G$.
+Similarly, for $H : X \sr \I_p(V)$, we will abbreviate $\etashriek_{p,X,V}(H)$
+to $\etashriek_p(H)$, provided that $X$ and $V$ can be determined from the context.
+
 Using the functorial structure on the mapping $V\mapsto (\U\times V,pr_1)$
 together with the naturality of internal Hom-objects in the second argument we
 get a functoriality structure on $\I_p$
@@ -680,12 +692,12 @@ $$(f:V\sr V')\mapsto (\I_p(f):\I_p(V)\sr \I_p(V'))$$
 %
 Similarly, using the functoriality of $\iHom$ in the second argument (see,
 e.g., the appendix in \cite{fromunivwithPi}) we obtain, for any $p:\wt{\U}\sr \U$,
-$p':\wt{\U}'\sr \U$ and $h:\wt{\U}'\sr \wt{\U}$ over $\U$ and $V$ a morphism
+$p':\wt{\U}'\sr \U$, $h:\wt{\U}'\sr \wt{\U}$ over $\U$, and $V$, a morphism
 %
 $$I^h(V):\I_p(V)\sr \I_{p'}(V)$$
 %
 \begin{lemma}
-\llabel{2015.04.10.l2} In the notations introduced above let $f:V\sr V'$ be a
+\llabel{2015.04.10.l2} In the notation introduced above let $f:V\sr V'$ be a
 morphism, then the square
 %
 $$
@@ -829,8 +841,8 @@ $\mathcal C$ is a morphism $Eq:(\wt{\U};p)\sr \U$.
 \end{definition}
 %
 
-Let $Eq$ be a J0-structure on $p$. Consider the object\editorfootnote{$(\wt{\U};p,Eq)$ is
-  notation for $((\wt{\U};p);Eq)$.}
+Let $Eq$ be a J0-structure on $p$. Consider the object\editorfootnote{As
+  mentioned above, $(\wt{\U};p,Eq)$ is notation for $((\wt{\U};p);Eq)$.}
 $$E\wt{\U}:=(\wt{\U};p,Eq)$$
 of $\mathcal C$ together with the composite
 $$E\wt{\U}\stackrel{\p_{(\wt{\U};p),Eq}}{\lr}(\wt{\U};p)\stackrel{\p_{\wt{\U},p}}{\lr}
@@ -915,7 +927,7 @@ To define a J2-structure on a universe we will need to assume that $\mathcal C$
 is a locally cartesian closed category.  Recall that locally cartesian closed
 category is a category with the choice of fiber squares based on all pairs of
 morphisms with a common codomain as well as the choice of relative internal
-Hom-objects and co-evaluation morphisms for all such pairs. For our notations
+Hom-objects and co-evaluation morphisms for all such pairs. For our notation
 related to the locally cartesian closed categories as well as for some other
 notations used below see \cite{fromunivwithPi}.
 
@@ -1401,7 +1413,7 @@ Then there exists a J-structure $Jp$ extending $(Eq,\Omega)$.
 \end{theorem}
 %
 \begin{myproof}
-Let us use the notations of Problem \ref{2015.05.12.l1}. We need to show that
+Let us use the notation of Problem \ref{2015.05.12.l1}. We need to show that
 under the assumptions of the current theorem there exists a morphism that
 splits the square of Problem \ref{2015.05.12.l1} into two commutative
 triangles. Observe first that constructing such a splitting is equivalent to
@@ -1598,7 +1610,7 @@ J-structure on $\p_*$.
 The construction of a C-system $\toCC({\mathcal C},p)$ from a category with a
 universe $p$ and a final object $pt$ was presented in \cite{Cfromauniverse} and
 summarized in \cite{fromunivwithPi}. Let us recall some facts and
-notations. The underlying category of $\toCC({\mathcal C},p)$ is equipped with a
+notation. The underlying category of $\toCC({\mathcal C},p)$ is equipped with a
 functor $int$ to $\mathcal C$. Note that while $int$ is the identity on
 morphisms by construction of $\toCC({\mathcal C},p)$, the notations for the same
 element of $Hom(\Gamma',\Gamma)$ and $Hom(int(\Gamma'),int(\Gamma))$ may
@@ -1967,7 +1979,7 @@ $int(\Idx(T))=int(\Idx(\Gamma,F))=(int(\Gamma);F)_{E}$. Therefore we further
 have $G:=u_1(P):(int(\Gamma);F)_{E}\sr \U$ and $\wt{H}:=\wt{u}_1(s0):(X;F)\sr
 \wt{\U}$.
 
-Let us show first that\editorfootnote{$\etaunshriek_p$ and $\etaunshriek_{pE\wt{\U}}$ are undefined here, and they occur later, too.}
+Let us show first that
 %
 $$\etaunshriek_{pE\wt{\U}}(F,G)\circ I^{\omega}(\U)=\etaunshriek_p(F,\wt{H})\circ \I_p(p)$$
 %
@@ -1998,7 +2010,7 @@ morphism
 %
 $$\phi(\Gamma,T,P,s0)\circ Jp: X\sr \I_{pE\wt{\U}}(\wt{\U})$$
 %
-Consider the element\editorfootnote{$\etashriek_{pE\wt{\U}}$ is undefined here}
+Consider the element
 %
 $$(F_1,F_2)=\etashriek_{pE\wt{\U}}(\phi(\Gamma,T,P,s0)\circ Jp)\in
 \D_{pE\wt{\U}}(X,\wt{\U})$$
@@ -2119,7 +2131,7 @@ f^*(\J_{Jp}(\Gamma,T,P,s0))=\J_{Jp}(\Gamma',f^*(T),f^*(P),f^*(s0))
 %
 \begin{myproof}
 Let us write $\J$ for $\J_{Jp}(\Gamma,T,P,s0)$ and $\J'$ for
-$\J_{Jp}(\Gamma',f^*(T),f^*(P),f^*(s0))$ and use the notations of Construction
+$\J_{Jp}(\Gamma',f^*(T),f^*(P),f^*(s0))$ and use the notation of Construction
 \ref{2015.04.04.constr1}. Recall that for $f:\Gamma'\sr \Gamma$ the operation
 $f^*$ is defined only on $Ob_1(\Gamma)$. In all other uses it is an
 abbreviation for operations such as $X\mapsto f^*(X,i)$ and $s\mapsto f^*(s,i)$
@@ -2189,8 +2201,8 @@ $$\rf_T^*(\J_{Jp}(\Gamma,T,P,s0))=s0$$
 \end{lemma}
 %
 \begin{myproof}
-Let $\J=\J_{Jp}(\Gamma,T,P,s0)$. Then, using the notations of Construction
-\ref{2015.04.04.constr1} we have\editorfootnote{$\etaunshriek_{E\wt{\U}}$ is undefined here}:
+Let $\J=\J_{Jp}(\Gamma,T,P,s0)$. Then, using the notation of Construction
+\ref{2015.04.04.constr1} we have
 %
 $$\etaunshriek_{E\wt{\U}}(F,\wt{u}_1(\J))=\phi\circ Jp$$
 %
@@ -2385,7 +2397,7 @@ by $\chi_i(V)$. The maps ${\bf\Phi}_i^2$ in the following lemma are constructed
 in \cite[Construction 5.2]{fromunivwithPi}.
 %
 \begin{lemma}
-\llabel{2015.04.08.l1} Under the previous assumptions and notations the squares
+\llabel{2015.04.08.l1} Under the previous assumptions and notation the squares
 %
 $$
 \begin{xy}
@@ -2473,7 +2485,7 @@ This finishes the proof of the lemma.
 \end{myproof}
 %
 \begin{lemma}
-\llabel{2015.04.06.l7} Under the previous assumptions and notations the squares
+\llabel{2015.04.06.l7} Under the previous assumptions and notation the squares
 %
 $$
 \begin{xy}
@@ -2559,7 +2571,7 @@ $\wt{\zeta}_1=\xi_{(\Phi,\phi,\wt{\phi}_1)}$ but $\wt{\zeta}_2\ne
 
 %
 \begin{theorem}
-\llabel{2015.04.10.th3} Under the previous assumptions and notations the
+\llabel{2015.04.10.th3} Under the previous assumptions and notation the
 morphisms $\zeta_1,\zeta_2,\wt{\zeta}_1,\wt{\zeta}_2$ form a morphism from the
 square
 %
