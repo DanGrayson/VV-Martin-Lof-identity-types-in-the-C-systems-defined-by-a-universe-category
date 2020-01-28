@@ -77,12 +77,14 @@
 \newcommand{\Q}{\mathsf{Q}}
 \newcommand{\etashriek}{\eta^!}
 \newcommand{\etaunshriek}{{\etashriek}^{-1}}
+\newcommand{\Ob}{Ob}
+\newcommand{\Obwt}{\wt{Ob}}
 
 % persistent notations to go into symbol index
 %   at definition time, use \gls{foo}
 %   at subsequent uses, use \foo or the actual code
 %   the order here is the order in the index, and is obtained with "sort -f"
-\newoperator{deepartial}{\partial}
+\newoperator{partial}{\partial}
 \newoperator{delta}{\delta}
 \newoperator{D}{\D}
 \newoperator{etashriek}{\etashriek}
@@ -93,7 +95,7 @@
 \newoperator{Id}{\Id}
 \newoperator{I}{\I}
 \newoperator{J}{\J}
-\newoperator{Obwt}{\wt{Ob}}
+\newoperator{Obwt}{\Obwt}
 \newoperator{Ob}{Ob}
 \newoperator{omega}{\omega}
 \newoperator{prI}{prI}
@@ -389,14 +391,20 @@ structure of a C-system.
 %
 
 
-To define the J-structure on a C-system we will actually define three
+To define the J-structure on a C-system $\aCC$ we will actually define three
 structures: J0-structure, J1-structure over a J0-structure, and J2-structure
 over a J1-structure --- then a J-structure will be the same as a triple
 $(\Id,\refl,\J)$, where $\Id$ is a J0-structure, $\refl$ is a J1-structure over
 $\Id$, and $\J$ is a J2-structure over $\refl$.  For the notation used below,
 including ${\gls{Ob}}_n(\Gamma)$ and $\gls{Obwt}_n(\Gamma)$, see
-\cite[\S2]{fromunivwithPi}, as well as \cite[\S3]{Csubsystems} for $\gls{deepartial}(o)$.
-%
+\cite[\S 3]{fromunivwithPiI}, as well as \cite[\S 3]{Csubsystems} for
+$\gls{partial}(o)$.  We recall that $\Ob_n(\Gamma)$ is the set of objects
+$\Delta$ of $\aCC$ such that $\ft^n(\Delta) = \Gamma$, and that
+$\Obwt_n(\Gamma)$ denotes the set of morphisms of the form
+$o : \ft(\Delta) \sr \Delta$ for some $\Delta \in \Ob_n(\Gamma)$ that are
+sections of the corresponding canonical projection, i.e., where
+$o \circ p_\Delta$ is an identity morphism; in that case $\partial(o)$ denotes $\Delta$.
+
 \begin{definition}
 \llabel{2015.03.27.def1}
 A J0-structure on a C-system $\aCC$ is a family of functions 
