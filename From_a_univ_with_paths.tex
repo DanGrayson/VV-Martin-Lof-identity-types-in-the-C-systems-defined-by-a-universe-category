@@ -38,7 +38,7 @@
 %
 \newtheorem{construction0}[proposition]{Construction}
 %
-\newenvironment{construction}[1]{\begin{construction0}(for Problem \ref{#1})}{$\blacksquare$ \end{construction0}}
+\newenvironment{construction}[1]{\begin{construction0}(for Problem \ref{#1})\ }{$\blacksquare$ \end{construction0}}
 \newcommand{\by}[1]{\text{(by #1)}}
 \newcommand{\llabel}[1]{\label{#1}}
 \newcommand{\comment}[1]{}
@@ -279,7 +279,7 @@ categories with families and the underlying category there was the category of
 groupoids.
 
 The construction of Hofmann and Streicher was substantially extended and
-generalized in the Ph.D. thesis of Michael Warren
+generalized in the Ph.D.{} thesis of Michael Warren
 \cite{WarrenThesisProsp,WarrenThesis} and his subsequent papers such as
 \cite{Warreninfty}.
 
@@ -432,7 +432,7 @@ given for all $\Gamma\in Ob$ such that:
 \begin{eq}
 \llabel{2015.03.27.eq8}
 \partial(\refl(o))=\Id(o,o)
-\end{eq}
+\end{eq}%
 \end{enumerate}
 \end{definition}
 %
@@ -472,7 +472,7 @@ We define:
 \begin{eq}
 \llabel{2015.04.06.eq1}
 \Idx(T):=\Id_{\\p_T^*(T)}((\p_{\p_T^*(T)}^*(\delta(T))), \delta(\p_T^*(T)))
-\end{eq}
+\end{eq}%
 %
 We have
 %
@@ -518,13 +518,13 @@ form
             \ar[r]^-{\q(\delta(T),\Idx(T))} \ar[d] & \Idx(T) \ar[d]\\ T
             \ar[r]^{\delta(T)} & \p_T^*(T) }
        \end{xy}
-\end{eq}
+\end{eq}%
 %
 and $\refl(\delta(T))$ is a morphism $T\sr \Id(\delta(T),\delta(T))$. We define:
 %
 \begin{eq}
 \llabel{2015.04.02.eq1} \rf_T:=\refl(\delta(T))\circ \q(\delta(T),\Idx(T))
-\end{eq}
+\end{eq}%
 %
 The proof that for any $f:\Gamma'\sr \Gamma$ one has $f^*(\rf_T)=\rf_{f^*(T)}$ is
 straightforward.
@@ -654,7 +654,7 @@ As is shown in \cite{fromunivwithPi}, the square
           \xymatrix@C=4pc{ (X';f\circ F) \ar[r]^-{\Q(f,F)} \ar[d]_{\p_{X',f\circ
                 F}} & (X;F) \ar[d]^{\p_{X,F}}\\ X' \ar[r]^{f} & X }
        \end{xy}
-\end{eq}
+\end{eq}%
 %
 is a pullback square.
 
@@ -921,7 +921,7 @@ $\Omega:\wt{\U}\sr \wt{\U}$ such that the square
           \xymatrix@C=4pc{ \wt{\U} \ar[r]^-{\Omega} \ar[d]_{\Delta} & \wt{\U}
             \ar[d]^{p}\\ (\wt{\U};p) \ar[r]^{Eq} & \U, }
 \end{xy}
-\end{eq}
+\end{eq}%
 %
 where $\Delta=(Id_{\wt{\U}})*(Id_{\wt{\U}})$ is the diagonal of $\wt{\U}$,
 commutes.
@@ -953,7 +953,7 @@ commutative square:
             \ar[d]_{\I_{pE\wt{\U}}(p)} & \I_p(\wt{\U})
             \ar[d]^{\I_p(p)}\\ \I_{pE\wt{\U}}(\U) \ar[r]^{I^{\omega}(\U)} & \I_p(\U) }
 \end{xy}
-\end{eq}
+\end{eq}%
 %
 and therefore a morphism
 %
@@ -976,12 +976,12 @@ Note that we have:
 \begin{eq}
 \llabel{2015.04.04.eq1} J\circ I^{\omega}(\wt{\U})=J\circ coJ\circ
 prI_p(\wt{\U})=prI_{p}(\wt{\U})
-\end{eq}
+\end{eq}%
 %
 \begin{eq}
 \llabel{2015.04.04.eq2} J\circ \I_{pE\wt{\U}}(p)=J\circ coJ\circ
 prI_{pE\wt{\U}}(\U)=prI_{pE\wt{\U}}(\U),
-\end{eq}
+\end{eq}%
 %
 where $prI_p(V)$ is the canonical morphism $\I_p(V)\sr \U$.
 
@@ -1016,7 +1016,7 @@ split the following square into two commutative triangles:
             \ar[d]^{p}\\ (\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U})
             \ar[r]^-{adj(pr_1)\circ pr_2} & \U }
 \end{xy}
-\end{eq}
+\end{eq}%
 %
 \end{problem}
 %
@@ -1033,7 +1033,7 @@ following form:
             \ar[d]^{p}\\ (\I_{pE\wt{\U}}(\U)\times_{\I_p(\U)} \I_p(\wt{\U}))\times_\U
             E\wt{\U} \ar[r]^-{adj(pr_1)\circ pr_2} & \U }
 \end{xy}
-\end{eq}
+\end{eq}%
 
 
 
@@ -1116,7 +1116,7 @@ as $Jp$ but with the square (\ref{2010.sq1}) replaced by the square
             \ar[d]^{\I_p(\I_p^n(p))}\\ \I_{pE\wt{\U}}(\I_p^n(\U))
             \ar[r]^-{I^{\omega}(\I_p^n(\U))} & \I_p(\I_p^n(\U)) }
 \end{xy}
-\end{eq}
+\end{eq}%
 \end{remark}
 %
 
@@ -1337,7 +1337,7 @@ property for $TC$. Consider a commutative square of the form
             \ar[d]^{\iHom_\U((\wt{\U},p), Id_\U\times r)}\\ W \ar[r]^-{f_W} &
             \iHom_\U((\wt{\U},p), (\U\times V, pr_1)) }
 \end{xy}
-\end{eq}
+\end{eq}%
 %
 The lower right corner is an object over $\U$ through the morphism $p\triangle
 pr_1$. Let $\p_W=f_W\circ (p\triangle pr^{\U,V}_\U)$ and
@@ -1353,7 +1353,7 @@ Consider the square
             \ar[d]_{i\times Id_{\wt{\U}}} & \U\times V' \ar[d]^{Id_\U\times
               r}\\ (W,\p_W)\times_\U (\wt{\U},p) \ar[r]^-{adj(f_W)} & \U\times V }
 \end{xy}
-\end{eq}
+\end{eq}%
 %
 This square commutes. Indeed,
 %
@@ -1626,24 +1626,24 @@ differ. In particular for $f:\Gamma'\sr \Gamma$ and $F:\Gamma\sr \U$ we have
 %
 \begin{eq}
 \llabel{2015.04.02.eq2} \q(f,int(\Gamma,F))=\Q(f,F)
-\end{eq}
+\end{eq}%
 %
 
 For each $\Gamma\in Ob(\toCC({\mathcal C},p))$ we have natural bijections
 %
 \begin{eq}
 \llabel{2015.03.27.eq7b} u_1:Ob_1(\Gamma)\sr Hom(int(\Gamma),\U)
-\end{eq}
+\end{eq}%
 %
 \begin{eq}
 \llabel{2015.03.27.eq7a} \wt{u}_1:\wt{Ob}_1(\Gamma)\sr Hom(int(\Gamma),\wt{\U}),
-\end{eq}
+\end{eq}%
 %
 where $u_1^{-1}(F)=(\Gamma,F)$ and where
 %
 \begin{eq}
 \llabel{2015.03.31.eq5} \wt{u}_1(s)=s\circ \Q(u_1(\partial(s))).
-\end{eq}
+\end{eq}%
 %
 In particular,
 %
@@ -1679,7 +1679,7 @@ from $Eq$ in Construction \ref{2015.03.27.constr3}. Note that
 \begin{eq}
 \llabel{2015.03.31.eq1}
 int(\Id(o,o'))=(int(\Gamma);(\wt{u}_1(o)*\wt{u}_1(o'))\circ Eq)
-\end{eq}
+\end{eq}%
 %
 Recall that in \cite{Csubsystems} we let $\p_{\Gamma,n}:\Gamma\sr \ft^n(\Gamma)$
 denote the composition of $n$ canonical projections $\p_{\Gamma}\circ \dots\circ
@@ -1731,9 +1731,8 @@ and the equality $\Q(f,F)\circ \Q(F)=\Q(f\circ F)$.
 %
 \begin{problem}
 \llabel{2015.03.27.prob4} Let $Eq:(\wt{\U};p)\sr \U$, $\Omega:\wt{\U}\sr \wt{\U}$
-be a J0-structure and a J1-structures on a universe $p$ in a category $\mathcal
-C$. To construct a J1-structure $\refl(Eq,\Omega)$ over $\Id_{Eq}$ on
-$\toCC({\mathcal C},p)$.
+be a J0-structure and a J1-structure on a universe $p$ in a category $\mathcal C$.
+To construct a J1-structure $\refl(Eq,\Omega)$ over $\Id_{Eq}$ on $\toCC({\mathcal C},p)$.
 \end{problem}
 %
 \begin{construction}{2015.03.27.prob4}\rm
@@ -1948,7 +1947,7 @@ such that
 \begin{eq}
 \llabel{2015.05.04.eq3}
 \partial(\wt{\psi}(d))=\psi(\D_{pE\wt{\U}}(int(\Gamma),p)(d))
-\end{eq}
+\end{eq}%
 %
 %$\psi(F,\wt{G})\in \wt{Ob}_1(\Idx(\Gamma,F))$.
 \end{problem}
@@ -2133,7 +2132,7 @@ $\Gamma$, i.e., for any $f:\Gamma'\sr \Gamma$ one has
 %
 \begin{eq}\llabel{2015.04.04.eq3}
 f^*(\J_{Jp}(\Gamma,T,P,s0))=\J_{Jp}(\Gamma',f^*(T),f^*(P),f^*(s0))
-\end{eq}
+\end{eq}%
 %
 \end{lemma}
 %
@@ -2288,11 +2287,11 @@ $(X;F)'\sr (X;F)$ such that
 %
 \begin{eq}\llabel{2015.04.08.eq3}
 F^*(f)\circ \Q(F)=\Q(F)'\circ f
-\end{eq}
+\end{eq}%
 %
 \begin{eq}\llabel{2015.04.08.eq4}
 F^*(f)\circ \p_{X,F}=\p_{X,F}'
-\end{eq}
+\end{eq}%
 %
 Note that $F^*(f)$ depends on the universe structures on $p$ and $p'$. Even
 when two universe structures give the same choices of the objects $(X;F)$ and
@@ -2721,7 +2720,7 @@ such that the square
           \xymatrix@C=3pc{ \Phi(\wt{\U}) \ar[r]^-{\wt{\phi}} \ar[d]_{\Phi(p)} &
             \wt{\U}' \ar[d]^{p'}\\ \Phi(\U) \ar[r]^{\phi} & \U }
 \end{xy}
-\end{eq}
+\end{eq}%
 %
 is a pullback square. For any functor of universe categories and $X\in{\mathcal
   C}$, $F:X\sr \U$ the morphism
@@ -2805,7 +2804,7 @@ $\Delta=Id_{\wt{\U}}*Id_{\wt{\U}}$.
             \ar[d]^{p'_{\wt{\U}',p'}}\\ \Phi(\wt{\U}) \ar[r]^{\wt{\phi}} &
             \wt{\U}' }
 \end{xy}
-\end{eq}
+\end{eq}%
 %
 is a pullback square.
 \end{lemma}
@@ -2840,7 +2839,7 @@ said to be compatible with $Eq$ and $Eq'$ if the square
             \ar[d]_{\Phi\wt{\U}p} & \Phi(\U) \ar[d]^{\phi}\\ (\wt{\U}';p')
             \ar[r]^{Eq'} & U' }
 \end{xy}
-\end{eq}
+\end{eq}%
 %
 commutes.
 \end{definition}
@@ -2880,7 +2879,7 @@ Consider the diagram
             \ar[d]^{p'}\\ \Phi((\wt{\U};p)) \ar[r]^{\Phi\wt{\U}p} & (\wt{\U}';p')
             \ar[r]^{Eq'} & U' }
 \end{xy}
-\end{eq}
+\end{eq}%
 %
 The outer square of this diagram is equal to the outer square of the diagram
 %
@@ -2892,7 +2891,7 @@ The outer square of this diagram is equal to the outer square of the diagram
             \ar[d]^{p'}\\ \Phi((\wt{\U};p)) \ar[r]^{\Phi(Eq)} & \Phi(\U)
             \ar[r]^{\phi} & U', }
 \end{xy}
-\end{eq}
+\end{eq}%
 %
 where the equality of the lower horizontal arrows follows from the
 commutativity of the square (\ref{2015.04.06.eq6}). The left hand side square
@@ -2915,7 +2914,7 @@ square
             \ar[d]_{\Phi(pE\wt{\U})} & E\wt{\U}' \ar[d]^{pE\wt{\U}'}\\ \Phi(\U)
             \ar[r]^-{\phi} & U' }
 \end{xy}
-\end{eq}
+\end{eq}%
 %
 is a pullback square.
 %
@@ -3477,7 +3476,7 @@ the first equation reduces to
 \begin{eq}
 \llabel{2015.05.10.eq1} \psi_{\Idx(T)}\circ
 \Phi(\p^E_{T})=p^{E'}_{int'(H(T))}\circ\psi_{\Gamma}
-\end{eq}
+\end{eq}%
 %
 and since
 %
@@ -3492,7 +3491,7 @@ the second equation reduces to
 \begin{eq}
 \llabel{2015.05.10.eq2.0} \psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ
 \wt{\phi}_E=\Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}
-\end{eq}
+\end{eq}%
 %
 Equation (\ref{2015.05.10.eq1}) follows immediately from Lemma
 \ref{2015.05.10.l1} and the second equation of Lemma \ref{2015.03.27.l1}.
@@ -3509,7 +3508,7 @@ $$\psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ
 \begin{eq}
 \label{2015.05.10.eq2a}
 \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \p_{(\wt{\U}';p'),Eq'}
-\end{eq}
+\end{eq}%
 %
 and
 %
@@ -3517,7 +3516,7 @@ $$\psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\Q(Eq))\circ\wt{\phi}=$$
 \begin{eq}
 \label{2015.05.10.eq2b}
 \Q'(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \Q(Eq')
-\end{eq}
+\end{eq}%
 %
 The first equality we will have to decompose further into two using the fact
 that by Lemma \ref{2015.04.10.l5} we have
@@ -3531,7 +3530,7 @@ $$\psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ
 \begin{eq}
 \llabel{2015.05.10.eq2aa} \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ
 \p_{(\wt{\U}';p'),Eq'}\circ \p_{\wt{\U}',p'}
-\end{eq}
+\end{eq}%
 %
 and
 %
@@ -3540,7 +3539,7 @@ $$\psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ
 \begin{eq}
 \llabel{2015.05.10.eq2ab} \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ
 \p_{(\wt{\U}';p'),Eq'}\circ \Q(p')
-\end{eq}
+\end{eq}%
 %
 To prove (\ref{2015.05.10.eq2b}) observe first two useful equalities:
 %
@@ -3719,7 +3718,7 @@ We need to prove
 \begin{eq}
 \llabel{2015.05.10.eq3a} \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ
 R_{\Phi}\circ pr_1' = \phi(H(\Gamma),H(T),H(P),H(s0))\circ pr_1'
-\end{eq}
+\end{eq}%
 %
 and
 %
@@ -3727,7 +3726,7 @@ and
 \begin{eq}
 \llabel{2015.05.10.eq3b} \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ
 R_{\Phi}\circ pr_2' = \phi(H(\Gamma),H(T),H(P),H(s0))\circ pr_2'
-\end{eq}
+\end{eq}%
 %
 For (\ref{2015.05.10.eq3a}), rewriting the left hand side we get
 %
