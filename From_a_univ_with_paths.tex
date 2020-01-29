@@ -381,6 +381,8 @@ will allow the files to be located.
 \section{J-structures on C-systems and on universe categories}
 
 \begin{remark}
+  We recall some notation for use with a C-system $\aCC$.
+
   As in \cite{Csubsystems}, except for the use of a sans-serif font, we use
   $$
     \xymatrix@C=5pc{
@@ -389,22 +391,24 @@ will allow the files to be located.
     }
   $$
   as notation for the parts of the pull-back square that is part of the
-  structure of a C-system.
+  structure of a C-system on $\aCC$.
 
-  For use below, we recall some notation from ${\gls{Ob}}_n(\Gamma)$ and
-  $\gls{Obwt}_n(\Gamma)$ from \cite[\S 3]{fromunivwithPiI}, as well as
-  $\gls{partial}(o)$ from \cite[\S 3]{Csubsystems}.  Let $\Gamma$ be an object
-  in $\aCC$.  The set $\Ob_n(\Gamma)$ is the set of objects $\Delta$ of $\aCC$
-  such that $l(\Delta)-n = \Gamma$ and $\ft^n(\Delta) = \Gamma$.
+  For a map $g : Y \sr X$ such that $g \circ p_X = f$, we will let
+  $\gls{s}_g : Y \sr f^*(X)$ denote the unique section of
+  $p_{f^*(X)}$ such that $\s_g \circ q(f,X) = g$.
+
+  We also recall the notations ${\gls{Ob}}_n(\Gamma)$ and
+  $\gls{Obwt}_n(\Gamma)$ from \cite[\S 3]{fromunivwithPiI}, as well as the
+  notation $\gls{partial}(o)$ from \cite[\S 3]{Csubsystems}.
+
+  Let $\Gamma$ be an object in $\aCC$.  The set $\Ob_n(\Gamma)$ is the set of
+  objects $\Delta$ of $\aCC$ such that $l(\Delta)-n = \Gamma$ and
+  $\ft^n(\Delta) = \Gamma$.
 
   The set $\Obwt_n(\Gamma)$ is the set of morphisms of the form $o :
   \ft(\Delta) \sr \Delta$ for some $\Delta \in \Ob_n(\Gamma)$ that are sections
   of the corresponding canonical projection, i.e., where $o \circ p_\Delta = \id$
   is an identity morphism; in that case $\partial(o)$ denotes $\Delta$.
-
-  Finally, for a map $g : Y \sr X$ such that $g \circ p_X = f$, we will let
-  $\gls{s}_g : Y \sr f^*(X)$ denote the unique section of
-  $p_{f^*(X)}$ such that $\s_g \circ q(f,X) = g$.
 \end{remark}
 
 \subsection{The J-structure on a C-system}
