@@ -54,10 +54,14 @@
 \newcommand{\toCC}{CC} % for the construction CC(R,LM) of a C-system from a left module over a monad
 \newcommand{\aCC}{{\mathbb C}}  % for a variable denoting a C-system
 
+% notations for structures making up a category
+\newcommand{\id}{1}            % identity arrow
+
 % notations for the structures making up a C-system
 \newcommand{\ft}{\mathsf{ft}}
 \newcommand{\p}{\mathsf{p}}
 \newcommand{\q}{\mathsf{q}}
+\newcommand{\s}{\mathsf{s}}     % making a section from a lifting
 
 % notations for the structures making up a J-system
 \newcommand{\Id}{\mathsf{Id}} % originally was "IdT"
@@ -105,6 +109,7 @@
 \newoperator{q}{\q}
 \newoperator{refl}{\refl}
 \newoperator{rf}{\rf}
+\newoperator{s}{\s}
 \newoperator{semicolon}{(X;F)}
 \newoperator{multisemicolon}{(X;F_1,\dots,F_n)}
 \newoperator{starfg}{f*g}
@@ -375,35 +380,42 @@ will allow the files to be located.
 
 \section{J-structures on C-systems and on universe categories}
 
+\begin{remark}
+  As in \cite{Csubsystems}, except for the use of a sans-serif font, we use
+  $$
+    \xymatrix@C=5pc{
+      f^*(X) \ar[r]^{\gls q(f,X)} \ar[d]_{\p_{f^*(X)}}  & X \ar[d]^{\gls p_X} \\
+      Y \ar[r]_f & \gls{ft}(X)
+    }
+  $$
+  as notation for the parts of the pull-back square that is part of the
+  structure of a C-system.
 
-As in \cite{Csubsystems}, except for the use of a sans-serif font, we use
-$$
-  \xymatrix@C=5pc{
-    f^*(X) \ar[r]^{\gls q(f,X)} \ar[d]_{\p_{f^*(X)}}  & X \ar[d]^{\gls p_X} \\
-    Y \ar[r]_f & \gls{ft}(X)
-  }
-$$
-as notation for the parts of the pull-back square that is part of the
-structure of a C-system.
+  For use below, we recall some notation from ${\gls{Ob}}_n(\Gamma)$ and
+  $\gls{Obwt}_n(\Gamma)$ from \cite[\S 3]{fromunivwithPiI}, as well as
+  $\gls{partial}(o)$ from \cite[\S 3]{Csubsystems}.  Let $\Gamma$ be an object
+  in $\aCC$.  The set $\Ob_n(\Gamma)$ is the set of objects $\Delta$ of $\aCC$
+  such that $l(\Delta)-n = \Gamma$ and $\ft^n(\Delta) = \Gamma$.
 
+  The set $\Obwt_n(\Gamma)$ is the set of morphisms of the form $o :
+  \ft(\Delta) \sr \Delta$ for some $\Delta \in \Ob_n(\Gamma)$ that are sections
+  of the corresponding canonical projection, i.e., where $o \circ p_\Delta = \id$
+  is an identity morphism; in that case $\partial(o)$ denotes $\Delta$.
+
+  Finally, for a map $g : Y \sr X$ such that $g \circ p_X = f$, we will let
+  $\gls{s}_g : Y \sr f^*(X)$ denote the unique section of
+  $p_{f^*(X)}$ such that $\s_g \circ q(f,X) = g$.
+\end{remark}
 
 \subsection{The J-structure on a C-system}
 %
 
 
-To define the J-structure on a C-system $\aCC$ we will actually define three
+To define the notion of ``J-structure'' on a C-system $\aCC$ we will actually define three
 structures: J0-structure, J1-structure over a J0-structure, and J2-structure
 over a J1-structure --- then a J-structure will be the same as a triple
 $(\Id,\refl,\J)$, where $\Id$ is a J0-structure, $\refl$ is a J1-structure over
-$\Id$, and $\J$ is a J2-structure over $\refl$.  For the notation used below,
-including ${\gls{Ob}}_n(\Gamma)$ and $\gls{Obwt}_n(\Gamma)$, see
-\cite[\S 3]{fromunivwithPiI}, as well as \cite[\S 3]{Csubsystems} for
-$\gls{partial}(o)$.  We recall that $\Ob_n(\Gamma)$ is the set of objects
-$\Delta$ of $\aCC$ such that $l(\Delta)-n = \Gamma$ and $\ft^n(\Delta) = \Gamma$, and that
-$\Obwt_n(\Gamma)$ denotes the set of morphisms of the form
-$o : \ft(\Delta) \sr \Delta$ for some $\Delta \in \Ob_n(\Gamma)$ that are
-sections of the corresponding canonical projection, i.e., where
-$o \circ p_\Delta$ is an identity morphism; in that case $\partial(o)$ denotes $\Delta$.
+$\Id$, and $\J$ is a J2-structure over $\refl$.
 
 \begin{definition}
 \llabel{2015.03.27.def1}
@@ -415,7 +427,9 @@ given for all $\Gamma\in Ob$, that is natural in $\Gamma$, i.e., such that for a
 $f:\Gamma'\sr \Gamma$, one has the identity
 $f^*(\Id_{\Gamma}(o_1,o_2))=\Id_{\Gamma'}(f^*(o_1),f^*(o_2))$.
 \end{definition}
-%
+
+When there is no risk of ambiguity, we will write $\Id(o_1,o_2)$ for $\Id_{\Gamma}(o_1,o_2)$.
+
 \begin{definition}
 \llabel{2015.03.27.def2}
 Let $\Id$ be a J0-structure on $\aCC$. A J1-structure over $\Id$ is a family of
@@ -431,16 +445,25 @@ given for all $\Gamma\in Ob$ such that:
 %
 \begin{eq}
 \llabel{2015.03.27.eq8}
-\partial(\refl(o))=\Id(o,o)
+\partial(\refl(o))=\Id_\Gamma(o,o)
 \end{eq}%
 \end{enumerate}
 \end{definition}
 %
 To define the notion of a J2-structure over a given J1-structure we will need
 to describe two constructions first.
+
+\begin{remark}
+  For $T\in Ob_1(\Gamma)$ we let $\gls{delta}(T)$ denote the
+  morphism $T\sr \p_T^*(T)$, described equivalently\editorfootnote{The
+    notation $\s_{\id_T}$, used here, is undefined.} as $\s_{\id_T}$ or
+  as the only morphism such that $\delta(T)\circ \p_{\p_T^*(T)}=\id_T$ and
+  $\delta(T)\circ \q(\p_T,T)=\id_T$.
+\end{remark}
+
 %
 \begin{problem}
-\llabel{2015.03.27.prob1} Given a J0-structure $\Id$ to construct a family of
+\llabel{2015.03.27.prob1} Given a J0-structure $\Id$, to construct a family of
 functions
 %
 $$\gls{Idx}:Ob_1(\Gamma)\sr Ob_3(\Gamma)$$
@@ -461,11 +484,7 @@ $$
 \end{xy}
 $$
 
-Recall that for $T\in Ob_1(\Gamma)$ we let
-$\gls{delta}(T)$ denote the morphism $T\sr \p_T^*(T)$ that can be described
-equivalently as $s_{Id_T}$ or as the only morphism such that $\delta(T)\circ
-\p_{\p_T^*(T)}=Id_T$ and $\delta_T\circ \q(\p_T,T)=Id_T$. Because of the first
-equation we have $\delta(T)\in \wt{Ob}(\p_T^*(T))$.
+Because of the first equation we have $\delta(T)\in \wt{Ob}(\p_T^*(T))$.
 
 We define:
 %
@@ -476,13 +495,13 @@ We define:
 %
 We have
 %
-$$\p_{\p_T^*(T)}^*(\delta_T)\in \wt{Ob}(\p_{\p_T^*(T)}^*(\p_T^*(T)))$$
+$$\p_{\p_T^*(T)}^*(\delta(T))\in \wt{Ob}(\p_{\p_T^*(T)}^*(\p_T^*(T)))$$
 %
 and
 %
-$$\delta(\p_T^*(T))\in \wt{Ob}(\p_{\p_T^*(T)}^*(\p_T^*(T)))$$
+$$\delta(\p_T^*(T))\in \wt{Ob}(\p_{\p_T^*(T)}^*(\p_T^*(T))),$$
 %
-and since $\ft(\p_{\p_T^*(T)}^*(\p_T^*(T)))=\p_T^*(T)$ the $\Idx(T)$ is well
+and since $\ft(\p_{\p_T^*(T)}^*(\p_T^*(T)))=\p_T^*(T)$ we see that $\Idx(T)$ is well
 defined. The fact that $\Idx(T)\in Ob_3(\Gamma)$ follows now from the fact that
 $\ft^2(\p_T^*(T))=\ft(T)=\Gamma$.
 The proof that $\Idx$ is natural in $f:\Gamma'\sr \Gamma$ is straightforward.
@@ -491,7 +510,7 @@ The proof that $\Idx$ is natural in $f:\Gamma'\sr \Gamma$ is straightforward.
 %
 \begin{problem}
 \llabel{2015.03.27.prob2} Given a J0-structure $\Id$ and a J1-structure $\refl$
-over it to construct for all $\Gamma\in Ob$ and $T\in Ob_1(\Gamma)$ a morphism
+over it, to construct for all $\Gamma\in Ob$ and $T\in Ob_1(\Gamma)$ a morphism
 %
 $$\gls{rf}_T:T\sr \Idx(T)$$
 %
@@ -502,13 +521,13 @@ such that for any $f:\Gamma'\sr \Gamma$ one has $f^*(\rf_T)=\rf_{f^*(T)}$.
 \llabel{2015.03.27.constr2}\rm We have the following chain of equations.
 %
 \begin{align*}
-  \delta(T)^*(\Idx(T)) & = \delta(T)^*(\Id_{\p_T^*(T)}((\p_{\p_T^*(T)}^*(\delta_T))),\delta(\p_T^*(T)))  & \by{...}\\
-    & = \Id_T(\delta(T)^*(\p_{\p_T^*(T)}^*(\delta_T)),\delta(T)^*(\delta(\p_T^*(T)))) & \by{...}\\
+  \delta(T)^*(\Idx(T)) & = \delta(T)^*(\Id_{\p_T^*(T)}((\p_{\p_T^*(T)}^*(\delta(T)))),\delta(\p_T^*(T)))  & \by{...}\\
+    & = \Id_T(\delta(T)^*(\p_{\p_T^*(T)}^*(\delta(T))),\delta(T)^*(\delta(\p_T^*(T)))) & \by{...}\\
     & = \Id_T(\delta(T),\delta(T)) & \by{...}
 \end{align*}
 %
-The last equality follows from the fact that $f^*(\delta(T))=s_f$ and that for
-any $s\in\wt{Ob}$, $s_s=s$.  This shows that we have a canonical square of the
+The last equality follows from the fact that $f^*(\delta(T))=\s_f$ and that for
+any $s\in\wt{Ob}$, $\s_s=s$.  This shows that we have a canonical square of the
 form
 %
 \begin{eq}
@@ -631,8 +650,8 @@ When we need to distinguish canonical squares of different universes we may
 write $(X;F)_{p}$ and $f*_p g$.
 %
 \begin{remark}\rm
-\llabel{2015.03.29.rm1} Note that we made no assumption about $\Q(Id_\U)$ being
-equal to $Id_{\wt{\U}}$. In fact, since we want the results of this paper to be
+\llabel{2015.03.29.rm1} Note that we made no assumption about $\Q(\id_\U)$ being
+equal to $\id_{\wt{\U}}$. In fact, since we want the results of this paper to be
 constructive, we are not allowed to make such an assumption since the question
 of whether or not a given morphism is an identity morphism need not be
 decidable and therefore we can not ``normalize'' our constructions by doing a
@@ -810,7 +829,7 @@ $$
           \xymatrix@C=5pc{ (\I_p(V);pr)' \ar[r]^-{\Q'(I^f(V),pr)} \ar[d]_{\iota'}
             & (\I_{p'}(V);pr')'
             \ar[d]^{\iota'}\\ (\I_p(V),pr)\times_\U(\wt{\U}',p')
-            \ar[r]^-{I^f(V)\times Id} & (\I_{p'}(V),pr')\times_\U(\wt{\U}',p') }
+            \ar[r]^-{I^f(V)\times \id} & (\I_{p'}(V),pr')\times_\U(\wt{\U}',p') }
 \end{xy}
 $$
 %
@@ -818,7 +837,7 @@ $$
 \begin{xy}
           \xymatrix@C=5pc{ (\I_p(V);pr)' \ar[r]^-{pr^*(f)} \ar[d]_{\iota'} &
             (\I_{p}(V);pr) \ar[d]^{\iota}\\ (\I_p(V),pr)\times_\U(\wt{\U}',p')
-            \ar[r]^-{Id\times f} & (\I_{p}(V),pr)\times_\U(\wt{\U},p) }
+            \ar[r]^-{\id\times f} & (\I_{p}(V),pr)\times_\U(\wt{\U},p) }
 \end{xy}
 $$
 %
@@ -827,7 +846,7 @@ and
 $$
 \begin{xy}
           \xymatrix@C=5pc{ (\I_p(V),pr)\times_\U(\wt{\U}',p')
-            \ar[r]^-{I^f(V)\times Id} \ar[d]_{Id\times f} &
+            \ar[r]^-{I^f(V)\times \id} \ar[d]_{\id\times f} &
             (\I_{p'}(V),pr')\times_\U(\wt{\U}',p')
             \ar[d]^{ev'}\\ (\I_p(V),pr)\times_\U(\wt{\U},p) \ar[r]^-{ev} & \U\times
             V }
@@ -836,8 +855,8 @@ $$
 %
 The first two squares are particular cases of \cite[Lemma
   8.1]{fromunivwithPi}. To obtain the first one one has to set $Z=\U$,
-$b=Id_{\wt{\U}'}$, and $a=I^f(V)$. To obtain the second one one has to set
-$Z=\U$, $b=f$ and $a=Id_{\I_p(V)}$. The last square is a particular case of
+$b=\id_{\wt{\U}'}$, and $a=I^f(V)$. To obtain the second one one has to set
+$Z=\U$, $b=f$ and $a=\id_{\I_p(V)}$. The last square is a particular case of
 \cite[Lemma 8.6]{fromunivwithPi}.
 %
 % This is a lengthy but straightforward computation that applies to any locally cartesian closed category.
@@ -923,7 +942,7 @@ $\Omega:\wt{\U}\sr \wt{\U}$ such that the square
 \end{xy}
 \end{eq}%
 %
-where $\Delta=(Id_{\wt{\U}})*(Id_{\wt{\U}})$ is the diagonal of $\wt{\U}$,
+where $\Delta=(\id_{\wt{\U}})*(\id_{\wt{\U}})$ is the diagonal of $\wt{\U}$,
 commutes.
 \end{definition}
 %
@@ -968,7 +987,7 @@ and J1-structure $\Omega$, is a morphism
 $$ Jp:( \I_{pE\wt{\U}}(\U), I^{\omega}(\U))\times_{\I_p(\U)} (\I_p(\wt{\U}), \I_p(p))\sr
 \I_{pE\wt{\U}}(\wt{\U}) $$
 %
-such that $Jp\circ coJ = Id$.
+such that $Jp\circ coJ = \id$.
 \end{definition}
 %
 Note that we have:
@@ -1012,7 +1031,7 @@ split the following square into two commutative triangles:
 \begin{eq}\llabel{2015.05.22.sq1}
 \begin{xy}
           \xymatrix@C=7pc{ (\Fp,\pFp)\times_\U(\wt{\U},p) \ar[r]^-{adj(pr_2)\circ
-              pr_2} \ar[d]_{Id_{\Fp}\times \omega} & \wt{\U}
+              pr_2} \ar[d]_{\id_{\Fp}\times \omega} & \wt{\U}
             \ar[d]^{p}\\ (\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U})
             \ar[r]^-{adj(pr_1)\circ pr_2} & \U }
 \end{xy}
@@ -1029,7 +1048,7 @@ following form:
 \begin{xy}
           \xymatrix@C=7pc{ (\I_{pE\wt{\U}}(\U)\times_{\I_p(\U)}
             \I_p(\wt{\U}))\times_\U\wt{\U} \ar[r]^-{adj(pr_2)\circ pr_2}
-            \ar[d]_{Id_{\Fp}\times \omega} & \wt{\U}
+            \ar[d]_{\id_{\Fp}\times \omega} & \wt{\U}
             \ar[d]^{p}\\ (\I_{pE\wt{\U}}(\U)\times_{\I_p(\U)} \I_p(\wt{\U}))\times_\U
             E\wt{\U} \ar[r]^-{adj(pr_1)\circ pr_2} & \U }
 \end{xy}
@@ -1056,7 +1075,7 @@ that split into two commutative triangles the square:
 $$
 \begin{xy}
           \xymatrix@C=7pc{ (\Fp,\pFp)\times_\U(\wt{\U},p) \ar[r]^-{adj(pr_2)}
-            \ar[d]_{Id_{\Fp}\times \omega} & \U\times \wt{\U} \ar[d]^{Id_\U\times
+            \ar[d]_{\id_{\Fp}\times \omega} & \U\times \wt{\U} \ar[d]^{\id_\U\times
               p}\\ (\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U}) \ar[r]^-{adj(pr_1)} &
             \U\times \U }
 \end{xy}
@@ -1079,22 +1098,22 @@ I^{\omega}(\wt{\U})=pr_2$. This is straightforward.
 Next we have
 %
 \begin{align*}
-  \I_{pE\wt{\U}}(p)&=\iHom_\U((E\wt{\U},pE\wt{\U}),Id_\U\times p) \\
+  \I_{pE\wt{\U}}(p)&=\iHom_\U((E\wt{\U},pE\wt{\U}),\id_\U\times p) \\
   I^{\omega}(\wt{\U})&=\iHom_\U(\omega,(\U\times\wt{\U},pr_2))
 \end{align*}
 %
 Therefore by \cite[Lemma 8.7]{fromunivwithPi} one has
 %
 \begin{align*}
-  adj(f\circ \I_{pE\wt{\U}}(p))&=adj(f)\circ (Id_\U\times p) \\
-  adj(f\circ I^{\omega}(\wt{\U}))&=(Id_{\Fp}\times_{\U}\omega)\circ adj(f),
+  adj(f\circ \I_{pE\wt{\U}}(p))&=adj(f)\circ (\id_\U\times p) \\
+  adj(f\circ I^{\omega}(\wt{\U}))&=(\id_{\Fp}\times_{\U}\omega)\circ adj(f),
 \end{align*}
 %
 and we conclude that $f$ is a section of $coJ$ if and only if
 %
 \begin{align*}
-  adj(f)\circ (Id_\U\times p)&=adj(pr_1) \\
-  (Id_{\Fp}\times_{\U}\omega)\circ adj(f)&=adj(pr_2).
+  adj(f)\circ (\id_\U\times p)&=adj(pr_1) \\
+  (\id_{\Fp}\times_{\U}\omega)\circ adj(f)&=adj(pr_2).
 \end{align*}
 % 
 This completes the construction.
@@ -1173,7 +1192,7 @@ Our first set of conditions is as follows:
 \item consider morphisms $f: B'\sr B$, $p_1:E_1\sr B$, $p_2:E_2\sr B$ and
   $i:E_1\sr E_2$ such that $p_1,p_2\in FB$ and $i\in TC$. Then the morphism
 %
-$$Id_{B'}\times i: (B',f)\times_B(E_1,p_1)\sr (B',f)\times_B(E_2,p_2)$$
+$$\id_{B'}\times i: (B',f)\times_B(E_1,p_1)\sr (B',f)\times_B(E_2,p_2)$$
 %
 is in $TC$.
 \end{enumerate}
@@ -1196,7 +1215,7 @@ Then there exists an extension of $(Eq,\Omega)$ to a full J-structure on $p$.
 \begin{myproof}
 Let us apply Construction \ref{2015.05.22.constr1} to $(Eq,\Omega)$. To
 construct the required morphism it is sufficient to establish that
-$Id_{\Fp}\times\omega$ is in $TC$. It follows from the first of our conditions
+$\id_{\Fp}\times\omega$ is in $TC$. It follows from the first of our conditions
 that $FB$ is closed under pullbacks and compositions. Therefore, $pE\wt{\U}$ is
 in $FB$. It remains to apply the second of our conditions.
 \end{myproof}
@@ -1217,14 +1236,14 @@ example of such situation is considered in \cite[Section 3.3]{SRF}.
 \begin{cond}\llabel{2015.05.22.cond1}
 %
 \begin{enumerate}
-\item $Id_{pt}$ is in $FB$,
+\item $\id_{pt}$ is in $FB$,
 \item let $B$ be such that the morphism $B\sr pt$ is in $FB$ then a morphism
   $p:E\sr B$ is in $FB$ if and only if it has the right lifting property for
   $TC$,
 \item if $p:E\sr B$ and $B\sr pt$ are in $FB$, $i:Z\sr W$ is in $TC$ and
   $f:W\sr B$ is an arbitrary morphism then
 %
-$$(i\times_\U Id_E):(Z,i\circ f)\times_B (E,p)\sr (W,f)\times_B (E,p)$$
+$$(i\times_\U \id_E):(Z,i\circ f)\times_B (E,p)\sr (W,f)\times_B (E,p)$$
 %
 is in $TC$.
 %
@@ -1302,20 +1321,20 @@ Consider the square
 $$
 \begin{xy}
           \xymatrix@C=4pc{ (Z, i\circ f_W)\times_\U (\wt{\U},p)
-            \ar[r]^-{adj(f_Z)} \ar[d]_{i\times Id_{\wt{\U}}} & \U\times V
+            \ar[r]^-{adj(f_Z)} \ar[d]_{i\times \id_{\wt{\U}}} & \U\times V
             \ar[d]^{pr_1}\\ (W,f_W)\times_\U (\wt{\U},p) \ar[r]^-{f_W\dd p} & \U }
 \end{xy}
 $$
 %
 By Lemma \ref{2015.05.14.l2} we know that $pr_1$ belongs to $FB$. By our
-assumptions on $TC$ and $FB$ we know that $i\times Id_{\wt{\U}}$ is in
+assumptions on $TC$ and $FB$ we know that $i\times \id_{\wt{\U}}$ is in
 $TC$. Therefore there exists a morphism $g:(W,f_W)\times_\U (\wt{\U},p) \sr
 \U\times V$ that makes the two triangles commute.  The commutativity of the
 lower triangle means that this is a morphism over $\U$. Therefore $adj^{-1}(g)$
 is defined. Set $f=adj^{-1}(g)$. It remains to check that $i\circ f=f_Z$. This
 is equivalent to $adj(i\circ f)=adj(f_Z)$. Since $adj(i\circ f)=(i\times
-Id_{\wt{\U}})\circ adj(f)$ by \cite[Lemma 8.7(3)]{fromunivwithPi}, this is
-equivalent to $(i\times Id_{\wt{\U}})\circ g=adj(f_Z)$ which is the
+\id_{\wt{\U}})\circ adj(f)$ by \cite[Lemma 8.7(3)]{fromunivwithPi}, this is
+equivalent to $(i\times \id_{\wt{\U}})\circ g=adj(f_Z)$ which is the
 commutativity of the upper triangle.
 \end{myproof}
 %
@@ -1334,7 +1353,7 @@ property for $TC$. Consider a commutative square of the form
 \begin{xy}
           \xymatrix@C=4pc{ Z \ar[r]^-{f_Z} \ar[d]_{i} &
             \iHom_\U((\wt{\U},p),(\U\times V',pr_1))
-            \ar[d]^{\iHom_\U((\wt{\U},p), Id_\U\times r)}\\ W \ar[r]^-{f_W} &
+            \ar[d]^{\iHom_\U((\wt{\U},p), \id_\U\times r)}\\ W \ar[r]^-{f_W} &
             \iHom_\U((\wt{\U},p), (\U\times V, pr_1)) }
 \end{xy}
 \end{eq}%
@@ -1350,7 +1369,7 @@ Consider the square
 \llabel{2015.05.14.sq2}
 \begin{xy}
           \xymatrix@C=4pc{ (Z,\p_Z)\times_\U (\wt{\U},p) \ar[r]^-{adj(f_Z)}
-            \ar[d]_{i\times Id_{\wt{\U}}} & \U\times V' \ar[d]^{Id_\U\times
+            \ar[d]_{i\times \id_{\wt{\U}}} & \U\times V' \ar[d]^{\id_\U\times
               r}\\ (W,\p_W)\times_\U (\wt{\U},p) \ar[r]^-{adj(f_W)} & \U\times V }
 \end{xy}
 \end{eq}%
@@ -1358,31 +1377,31 @@ Consider the square
 This square commutes. Indeed,
 %
 \begin{align*}
-  adj(f_Z)\circ (Id_\U\times r )
-  & = adj(f_Z\circ \iHom_\U((\wt{\U},p), Id_\U\times r)) \\
+  adj(f_Z)\circ (\id_\U\times r )
+  & = adj(f_Z\circ \iHom_\U((\wt{\U},p), \id_\U\times r)) \\
   & = adj(i\circ f_W) \\
-  & = (i\times Id_{\wt{\U}})\circ adj (f_W),
+  & = (i\times \id_{\wt{\U}})\circ adj (f_W),
 \end{align*}
 %
 where the first equality is by \cite[Lemma 8.7(1)]{fromunivwithPi} and the
 third by \cite[Lemma 8.7(3)]{fromunivwithPi}. By Lemmas \ref{2015.05.14.l2} and
-\ref{2015.05.14.l4} we know that $Id_\U\times r$ is in $FB$. By our assumption
-(3) on $FB$ and $TC$ we know that $i\times Id_{\wt{\U}}$ is in $TC$. Therefore,
+\ref{2015.05.14.l4} we know that $\id_\U\times r$ is in $FB$. By our assumption
+(3) on $FB$ and $TC$ we know that $i\times \id_{\wt{\U}}$ is in $TC$. Therefore,
 there exists a morphism $g:(W,\p_W)\times_\U (\wt{\U},p) \sr \U\times V'$ that
 splits this square into two commutative triangles. Since the lower triangle
 commutes, $g$ is a morphism over $\U$ and in particular $g=adj(f)$ for some
 $f:W\sr \iHom_\U((\wt{\U},p),(\U\times V',pr_1))$. Let us show that $f$ splits
 the square (\ref{2015.05.14.sq1}) into two commutative triangles, i.e., that we
-have $i\circ f= f_Z$ and $f\circ \iHom_\U((\wt{\U},p), Id_\U\times r)=f_W$.
+have $i\circ f= f_Z$ and $f\circ \iHom_\U((\wt{\U},p), \id_\U\times r)=f_W$.
 
 The first equality is equivalent to $adj(i\circ f)=adj(f_Z)$ which is
 equivalent, by \cite[Lemma 8.7(3)]{fromunivwithPi} to $(i\times
-Id_{\wt{\U}})\circ g=adj(f_Z)$ which is the commutativity of the upper of the
+\id_{\wt{\U}})\circ g=adj(f_Z)$ which is the commutativity of the upper of the
 two triangles into which $g$ splits (\ref{2015.05.14.sq2}).
 
 The second equality is equivalent to $adj(f\circ \iHom_\U((\wt{\U},p),
-Id_\U\times r))=adj(f_W)$, which is equivalent by \cite[Lemma
-  8.7(1)]{fromunivwithPi} to $g\circ (Id_\U\times r)=adj(f_W)$ which is the
+\id_\U\times r))=adj(f_W)$, which is equivalent by \cite[Lemma
+  8.7(1)]{fromunivwithPi} to $g\circ (\id_\U\times r)=adj(f_W)$ which is the
 commutativity of the lower of the two triangles into which $g$ splits
 (\ref{2015.05.14.sq2}).
 \end{myproof}
@@ -1430,8 +1449,8 @@ constructing the splitting of the square
 $$
 \begin{xy}
           \xymatrix@C=4pc{ (\wt{\U},p)\times_\U (\Fp,\pFp) \ar[r]^-{\sigma\circ
-              adj(pr_2)} \ar[d]_{\omega \times Id_{\Fp}} & \U\times\wt{\U}
-            \ar[d]^{Id_\U\times p}\\ (E\wt{\U},pE\wt{\U})\times_\U (\Fp,\pFp)
+              adj(pr_2)} \ar[d]_{\omega \times \id_{\Fp}} & \U\times\wt{\U}
+            \ar[d]^{\id_\U\times p}\\ (E\wt{\U},pE\wt{\U})\times_\U (\Fp,\pFp)
             \ar[r]^-{\sigma'\circ adj(pr_1)} & \U\times \U, }
 \end{xy}
 $$
@@ -1446,7 +1465,7 @@ where
 are permutations of the factors.
 
 It is easy to show that $\U\times \U$ is fibrant. Therefore it is sufficient to
-show that $Id_\U\times p$ is in $FB$ and $\omega\times_\U Id_{\Fp}$ is in
+show that $\id_\U\times p$ is in $FB$ and $\omega\times_\U \id_{\Fp}$ is in
 $TC$. The first fact follows from the assumption that $p$ is in $FB$ and that
 $\U$ is fibrant. The obtain the second fact let us apply condition (3) on the
 classes $FB$ and $TC$ to $B=\U$, $f=pE\wt{\U}$, $i=\omega$ and $p=\pFp$.  It
@@ -1477,7 +1496,7 @@ holds:
   $i:E_1\sr E_2$ such that $p_1,p_2$ are fibrations and $i$ a trivial
   cofibration. Then the morphism
 %
-$$Id_{B'}\times i: (B',f)\times_B(E_1,p_1)\sr (B',f)\times_B(E_2,p_2)$$
+$$\id_{B'}\times i: (B',f)\times_B(E_1,p_1)\sr (B',f)\times_B(E_2,p_2)$$
 %
 is a trivial cofibration,
 %
@@ -1880,7 +1899,7 @@ We have $u_1(\partial(\delta(T)))=\Q(F)\circ p$ and
     & = \delta(T)\circ \Q(\Q(F)\circ p) \\
     & =  \delta(T)\circ \Q(\p_T\circ F) \\
     & = \delta(T)\circ \q(\p_T,T)\circ \Q(F) \\
-    & = Id_{int(T)}\circ \Q(F) \\
+    & = \id_{int(T)}\circ \Q(F) \\
     & = \Q(F)
 \end{align*}
 %
@@ -1905,16 +1924,16 @@ projections being $\p_{\p_T^*(T)}$ and $\Q(\Q(F)\circ p)$ we need to check that
 %
 which holds by a simple computation, and
 %
-$$Id_{int(T)}=\delta(T)\circ \p_{\p_T^*(T)}=F^*(\omega)\circ v\circ
+$$\id_{int(T)}=\delta(T)\circ \p_{\p_T^*(T)}=F^*(\omega)\circ v\circ
 \p_{\p_T^*(T)}$$
 %
 For this equality we need to verify two further equalities
 %
-$$\Q(F)=Id_{int(T)}\circ \Q(F)=F^*(\omega)\circ v\circ \p_{\p_T^*(T)}\circ \Q(F)$$
+$$\Q(F)=\id_{int(T)}\circ \Q(F)=F^*(\omega)\circ v\circ \p_{\p_T^*(T)}\circ \Q(F)$$
 %
 and
 %
-$$\p_T=Id_{int(T)}\circ \p_T=F^*(\omega)\circ v\circ \p_{\p_T^*(T)}\circ \p_T$$
+$$\p_T=\id_{int(T)}\circ \p_T=F^*(\omega)\circ v\circ \p_{\p_T^*(T)}\circ \p_T$$
 %
 The second one is the second equality of the two that define $F^*(\omega)$. For
 the first one we have
@@ -2509,21 +2528,21 @@ commute.
 \begin{myproof}
 Let $X=\I_{p_2}(V)$. We have\editorfootnote{$\eta'$ below is undefined}
 %
-$$\chi_2(V)\circ {I^{g'}(\Phi(V))}=\eta'({\bf\Phi}_2^2((\etaunshriek)^{-1}(Id_{X})))\circ
+$$\chi_2(V)\circ {I^{g'}(\Phi(V))}=\eta'({\bf\Phi}_2^2((\etaunshriek)^{-1}(\id_{X})))\circ
 I^{g'}(\Phi(V))$$
 %
 by definition of $\chi$ in \cite[Construction 5.6]{fromunivwithPi}. Then by
 Lemma \ref{2015.04.02.l4} and Lemma \ref{2015.04.08.l1} we have:
 %
 \begin{align*}
-  \eta'({\bf\Phi}_2^2&((\etaunshriek)^{-1}(Id_{X})))\circ I^{g'}(\Phi(V)) \\
-    & = \etaunshriek(D^{g'}(\Phi(X),\Phi(V))({\bf\Phi}_2^2((\etaunshriek)^{-1}(Id_X)))) \\
-    & = \etaunshriek({\bf\Phi}_1^2(D^g(X,V)((\etaunshriek)^{-1}(Id_X))))
+  \eta'({\bf\Phi}_2^2&((\etaunshriek)^{-1}(\id_{X})))\circ I^{g'}(\Phi(V)) \\
+    & = \etaunshriek(D^{g'}(\Phi(X),\Phi(V))({\bf\Phi}_2^2((\etaunshriek)^{-1}(\id_X)))) \\
+    & = \etaunshriek({\bf\Phi}_1^2(D^g(X,V)((\etaunshriek)^{-1}(\id_X))))
 \end{align*}
 %
 Then, again by Lemma \ref{2015.04.02.l4}, we have
 %
-$$\etaunshriek({\bf\Phi}_1^2(D^g(X,V)((\etaunshriek)^{-1}(Id_X))))=\etaunshriek({\bf\Phi}_1^2((\etaunshriek)^{-1}(Id_X\circ
+$$\etaunshriek({\bf\Phi}_1^2(D^g(X,V)((\etaunshriek)^{-1}(\id_X))))=\etaunshriek({\bf\Phi}_1^2((\etaunshriek)^{-1}(\id_X\circ
 I^g(V)))=\etaunshriek({\bf\Phi}_1^2((\etaunshriek)^{-1}(I^g(V))))$$
 %
 It remains to show that
@@ -2538,19 +2557,19 @@ We have
 %
 \begin{align*}
   \Phi(a)\circ & \chi_1(V) \\
-    & = \Phi(a)\circ \eta'({\bf\Phi}^2_1((\etaunshriek)^{-1}(Id_{\I_{p_1}(V)}))) \\
-    & = \eta'(\D_{\p_1'}(\Phi(a),\Phi(V))({\bf\Phi}^2_1((\etaunshriek)^{-1}(Id_{\I_{p_1}(V)}))),
+    & = \Phi(a)\circ \eta'({\bf\Phi}^2_1((\etaunshriek)^{-1}(\id_{\I_{p_1}(V)}))) \\
+    & = \eta'(\D_{\p_1'}(\Phi(a),\Phi(V))({\bf\Phi}^2_1((\etaunshriek)^{-1}(\id_{\I_{p_1}(V)}))),
 \end{align*}
 %
 where the second equality holds because of naturality of $\etaunshriek$ in the first
 argument. Then
 %
-$$\eta'(\D_{\p_1'}(\Phi(a),\Phi(V))({\bf\Phi}^2_1((\etaunshriek)^{-1}(Id_{\I_{p_1}(V)})))=\eta'({\bf\Phi}^2_1(\D_{p_1}(a,V)((\etaunshriek)^{-1}(\I_{p_1}(V))))$$
+$$\eta'(\D_{\p_1'}(\Phi(a),\Phi(V))({\bf\Phi}^2_1((\etaunshriek)^{-1}(\id_{\I_{p_1}(V)})))=\eta'({\bf\Phi}^2_1(\D_{p_1}(a,V)((\etaunshriek)^{-1}(\I_{p_1}(V))))$$
 %
 by \cite[Lemma 5.4]{fromunivwithPi} and
 %
 $$\eta'({\bf\Phi}^2_1(\D_{p_1}(a,V)((\etaunshriek)^{-1}(\I_{p_1}(V))))=\eta'({\bf\Phi}^2_1((\etaunshriek)^{-1}(a\circ
-Id_{p_1}(V))))=\eta'({\bf\Phi}_1^2((\etaunshriek)^{-1}(a)))$$
+\id_{p_1}(V))))=\eta'({\bf\Phi}_1^2((\etaunshriek)^{-1}(a)))$$
 %
 again by naturality of $\etaunshriek$ in the first argument. This finishes the proof of
 Lemma \ref{2015.04.06.l7}.
@@ -2791,7 +2810,7 @@ $$\Phi(s*s')\circ \Phi\wt{\U}p\circ \Q'(p')=\Phi(s*s')\circ \Phi(\Q(p))\circ
 \wt{\phi}=s'\circ\wt{\phi}$$
 %
 The particular case of $\Delta$ follows from the fact that
-$\Delta=Id_{\wt{\U}}*Id_{\wt{\U}}$.
+$\Delta=\id_{\wt{\U}}*\id_{\wt{\U}}$.
 \end{myproof}
 %
 \begin{lemma}
@@ -3784,13 +3803,12 @@ which proves the second equality since
 $(F',\wt{H}')=\wt{u}_{2,H(\Gamma)}'(H(s0))$.
 \end{myproof}
 
+\section{Index of symbols}
+\printglossaries
 
 \section{Bibliography}
 \bibliography{alggeom}
 \bibliographystyle{plain}
-
-\section{Index of symbols}
-\printglossaries
 
 \end{document}
 
