@@ -52,7 +52,8 @@
 \newcommand{\dd}{\diamond}
 \newcommand{\spc}{{\,\,\,\,\,\,\,}}
 \newcommand{\toCC}{CC} % for the construction CC(R,LM) of a C-system from a left module over a monad
-\newcommand{\aCC}{{\mathbb C}}  % for a variable denoting a C-system
+\newcommand{\CC}{{\mathbb C}}  % for a variable denoting a C-system
+\newcommand{\C}{{\mathcal C}}  % for a category
 
 % notations for structures making up a category
 \newcommand{\id}{1}            % identity arrow
@@ -239,7 +240,7 @@ $(\Gamma, x:T, y:T, e:\Id\, T\, x\, y\,;)$ in Construction \ref{2015.03.27.const
 %% can refer to.
 
 For the syntactic C-systems we are allowed to use the sequent notation for the
-following reason. First, since $\aCC$ in this case is a sub-quotient of
+following reason. First, since $\CC$ in this case is a sub-quotient of
 $\toCC(R,LM)$ our notation only needs to provide a reference to elements of sets
 associated with $\toCC(R,LM)$ itself.  There, the first $T$ refers to an element
 of $LM(\{1,\dots,l\})$, where $l$ is the length of $\Gamma$ and $LM(X)$ is the
@@ -312,7 +313,7 @@ Construction \ref{2015.05.22.constr1} provides a simple way of extending a
 J1-structure on a universe $p$ in a category $\cal C$ to a full J-structure.
 
 Construction \ref{2015.04.04.constr2} provides a method of constructing a
-J-structure on the C-system $\toCC({\mathcal C},p)$ from a J-structure on $p$.
+J-structure on the C-system $\toCC({\C},p)$ from a J-structure on $p$.
 
 Combined together they provide a method of constructing a J-structure on
 $\toCC({\cal C},p)$ from a J1-structure on $p$.
@@ -381,7 +382,7 @@ will allow the files to be located.
 \section{J-structures on C-systems and on universe categories}
 
 \begin{remark}
-  We recall some notation for use with a C-system $\aCC$.
+  We recall some notation for use with a C-system $\CC$.
 
   As in \cite[Def.~2.1 and Prop.~2.4]{Csubsystems}, except for the use of a sans-serif font, we use
   $$
@@ -417,8 +418,8 @@ will allow the files to be located.
   $\gls{Obwt}_n(\Gamma)$ from \cite[\S 3]{fromunivwithPiI}, as well as the
   notation $\gls{partial}(o)$ from \cite[\S 3]{Csubsystems}.
 
-  Let $\Gamma$ be an object in $\aCC$.  The set $\Ob_n(\Gamma)$ is the set of
-  objects $\Delta$ of $\aCC$ such that $l(\Delta)-n = \Gamma$ and
+  Let $\Gamma$ be an object in $\CC$.  The set $\Ob_n(\Gamma)$ is the set of
+  objects $\Delta$ of $\CC$ such that $l(\Delta)-n = \Gamma$ and
   $\ft^n(\Delta) = \Gamma$.
 
   The set $\Obwt_n(\Gamma)$ is the set of morphisms of the form $o :
@@ -431,7 +432,7 @@ will allow the files to be located.
 %
 
 
-To define the notion of ``J-structure'' on a C-system $\aCC$ we will actually define three
+To define the notion of ``J-structure'' on a C-system $\CC$ we will actually define three
 structures: J0-structure, J1-structure over a J0-structure, and J2-structure
 over a J1-structure --- then a J-structure will be the same as a triple
 $(\Id,\refl,\J)$, where $\Id$ is a J0-structure, $\refl$ is a J1-structure over
@@ -439,7 +440,7 @@ $\Id$, and $\J$ is a J2-structure over $\refl$.
 
 \begin{definition}
 \llabel{2015.03.27.def1}
-A J0-structure on a C-system $\aCC$ is a family of functions 
+A J0-structure on a C-system $\CC$ is a family of functions 
 %
 $$\gls{Id}_{\Gamma}:\{(o_1,o_2)\,|\,o_1, o_2 \in \wt{Ob}_1(\Gamma), \partial(o_1)=\partial(o_2)\}\sr Ob_1(\Gamma),$$
 %
@@ -452,7 +453,7 @@ When there is no risk of ambiguity, we will write $\Id(o_1,o_2)$ for $\Id_{\Gamm
 
 \begin{definition}
 \llabel{2015.03.27.def2}
-Let $\Id$ be a J0-structure on $\aCC$. A J1-structure over $\Id$ is a family of
+Let $\Id$ be a J0-structure on $\CC$. A J1-structure over $\Id$ is a family of
 functions
 %
 $$\gls{refl}:\wt{Ob}_1(\Gamma)\sr \wt{Ob}_1(\Gamma)$$
@@ -586,7 +587,7 @@ naturality in $f$ of $\Idx$ and $rf$.
 %%%%% this remark has problems with notations, and it doesn't seem important [drg]
 %% \begin{remark}
 %% \llabel{2015.05.12.rem1}\rm A J0-structure is called degenerate or extensional
-%% if for all $T\in Ob_{\ge 1}(\aCC)$ and $o,o'\in \wt{Ob}(T)$ one has\footnote{The
+%% if for all $T\in Ob_{\ge 1}(\CC)$ and $o,o'\in \wt{Ob}(T)$ one has\footnote{The
 %%   following is the classical way of saying that there is an equivalence between
 %%   the types $\wt{Ob}(\Idx(o,o'))$ and $(o=o')$.}
 %% %
@@ -632,9 +633,9 @@ also Remark \ref{2015.05.24.rem2}.
 
 \subsection{The J-structure on a universe in a category}
 %
-Let $\mathcal C$ be a category\footnote{In the formalization, the category will not be assumed to be ``univalent''.},
+Let $\C$ be a category\footnote{In the formalization, the category will not be assumed to be ``univalent''.},
 and let $p:\wt{\U}\sr \U$ be a morphism in
-$\mathcal C$. Recall that a universe structure on $p$ is a choice of pullback
+$\C$. Recall that a universe structure on $p$ is a choice of pullback
 squares of the form
 %
 $$
@@ -644,7 +645,7 @@ $$
 \end{xy}
 $$
 %
-for all $X$ and all morphisms $F:X\sr \U$. A universe in $\mathcal C$ is a
+for all $X$ and all morphisms $F:X\sr \U$. A universe in $\C$ is a
 morphism with a universe structure on it and a universe category is a category
 with a universe and a choice of a final object $pt$.
 
@@ -691,7 +692,7 @@ As is shown in \cite{fromunivwithPi}, the square
 is a pullback square.
 
 Following \cite{fromunivwithPi} we define for any universe $p:\wt{\U}\sr \U$ and
-any $V\in {\mathcal C}$ a functor from $\mathcal C$ to the category of sets,
+any $V\in {\C}$ a functor from $\C$ to the category of sets,
 %
 $$\gls{D}_p(-,V):X\mapsto \amalg_{F:X\sr \U}Hom((X;F), V),$$
 %
@@ -701,7 +702,7 @@ $$\D_p(f,V):(F,a)\mapsto (f\circ F, \Q(f,F)\circ a).$$
 For $F:X\sr \U$ and $G : (X;F) \sr V$, the corresponding element of
 $\D_p(X,V)$ will be written as the pair $(F,G)$.
 
-When $\mathcal C$ is a locally cartesian closed category any morphism
+When $\C$ is a locally cartesian closed category any morphism
 $p:\wt{\U}\sr \U$ defines a functor\editorfootnote{Here $(\wt{\U},p)$ and
   $(\U\times V,pr_1)$ are objects in the category of objects over $\U$, and
   $\iHom$ denotes the internal Hom in that category.}
@@ -759,7 +760,7 @@ This is a particular case of the commutative square of \cite[Lemma
 \begin{lemma}
 \llabel{2015.04.02.l4} Let $p:\wt{\U}\sr \U$ and $p':\wt{\U}'\sr \U$ be two
 morphisms with universe structures and $f:\wt{\U}'\sr \wt{\U}$ be a morphism over
-$\U$. For $V\in {\mathcal C}$ let $\I^f(V)$ be the corresponding morphism
+$\U$. For $V\in {\C}$ let $\I^f(V)$ be the corresponding morphism
 $\I_{p'}(V)\sr \I_p(V)$. Then for any $X$ the square
 %
 $$
@@ -877,14 +878,14 @@ $Z=\U$, $b=f$ and $a=\id_{\I_p(V)}$. The last square is a particular case of
 %
 \begin{definition}
 \llabel{2015.03.27.def4} A J0-structure on a universe $p$ in a category
-$\mathcal C$ is a morphism $Eq:(\wt{\U};p)\sr \U$.
+$\C$ is a morphism $Eq:(\wt{\U};p)\sr \U$.
 \end{definition}
 %
 
 Let $Eq$ be a J0-structure on $p$. Consider the object\editorfootnote{As
   mentioned above, $(\wt{\U};p,Eq)$ is notation for $((\wt{\U};p);Eq)$.}
 $$E\wt{\U}:=(\wt{\U};p,Eq)$$
-of $\mathcal C$ together with the composite
+of $\C$ together with the composite
 $$E\wt{\U}\stackrel{\p_{(\wt{\U};p),Eq}}{\lr}(\wt{\U};p)\stackrel{\p_{\wt{\U},p}}{\lr}
 \wt{\U}\stackrel{p}{\sr} \U$$
 of projections as an object over $\U$, and let $pE\wt{\U}$ denote it.
@@ -944,7 +945,7 @@ We will also write $\Q(f,F)_{E}$ for the canonical morphisms from $(X;f\circ
 F)_{E}$ to $(X;F)_{E}$.
 %
 \begin{definition}
-\llabel{2015.03.27.def5} Let $p$ be a universe in $\mathcal C$ and $Eq$ be a
+\llabel{2015.03.27.def5} Let $p$ be a universe in $\C$ and $Eq$ be a
 J0-structure on $p$. A J1-structure on $p$ over $Eq$ is a morphism
 $\Omega:\wt{\U}\sr \wt{\U}$ such that the square
 %
@@ -963,7 +964,7 @@ commutes.
 The square (\ref{2015.03.27.sq1}) defines a morphism $\wt{\U}\sr E\wt{\U}$ that
 we will denote by $\gls{omega}$.
 
-To define a J2-structure on a universe we will need to assume that $\mathcal C$
+To define a J2-structure on a universe we will need to assume that $\C$
 is a locally cartesian closed category.  Recall that a locally cartesian closed
 category is a category with the choice of fiber squares based on all pairs of
 morphisms with a common codomain as well as the choice of relative internal
@@ -1035,8 +1036,8 @@ J-structures over a given J1-structure in categories with weak factorization
 systems in particular in Quillen model categories.
 %
 \begin{problem}
-\llabel{2015.05.12.l1} Let $\mathcal C$ be a category with a locally cartesian
-closed structure and $Eq,\Omega$ be a J1-structure on $({\mathcal C},p)$. To
+\llabel{2015.05.12.l1} Let $\C$ be a category with a locally cartesian
+closed structure and $Eq,\Omega$ be a J1-structure on $({\C},p)$. To
 construct a bijection between the set of J-structures on $p$ over $(Eq,\Omega)$
 and the set of morphisms $(\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U})\sr \wt{\U}$ that
 split the following square into two commutative triangles:
@@ -1437,9 +1438,9 @@ commutativity of the lower of the two triangles into which $g$ splits
 We can now prove the second main theorem of this section.
 %
 \begin{theorem}
-\llabel{2015.05.16.th1} Let $({\mathcal C},p,pt)$ be a universe category, let
-$\mathcal C$ be given a locally cartesian closed structure and let $TC$ and
-$FB$ be two collections of morphisms in $\mathcal C$ that satisfy Conditions
+\llabel{2015.05.16.th1} Let $({\C},p,pt)$ be a universe category, let
+$\C$ be given a locally cartesian closed structure and let $TC$ and
+$FB$ be two collections of morphisms in $\C$ that satisfy Conditions
 \ref{2015.05.22.cond1}. Let further $Eq:(\wt{\U};p)\sr \U$ and $\Omega:\wt{\U}\sr
 \wt{\U}$ be a J1-structure and assume that the following conditions hold:
 %
@@ -1645,14 +1646,14 @@ J-structure on $\p_*$.
 
 
 
-\subsection{Constructing a J-structure on $\toCC({\mathcal C},p)$ from a J-structure on~$p$}
+\subsection{Constructing a J-structure on $\toCC({\C},p)$ from a J-structure on~$p$}
 %
-The construction of a C-system $\toCC({\mathcal C},p)$ from a category with a
+The construction of a C-system $\toCC({\C},p)$ from a category with a
 universe $p$ and a final object $pt$ was presented in \cite{Cfromauniverse} and
 summarized in \cite{fromunivwithPi}. Let us recall some facts and
-notation. The underlying category of $\toCC({\mathcal C},p)$ is equipped with a
-functor $int$ to $\mathcal C$. Note that while $int$ is the identity on
-morphisms by construction of $\toCC({\mathcal C},p)$, the notations for the same
+notation. The underlying category of $\toCC({\C},p)$ is equipped with a
+functor $int$ to $\C$. Note that while $int$ is the identity on
+morphisms by construction of $\toCC({\C},p)$, the notations for the same
 element of $Hom(\Gamma',\Gamma)$ and $Hom(int(\Gamma'),int(\Gamma))$ may
 differ. In particular for $f:\Gamma'\sr \Gamma$ and $F:\Gamma\sr \U$ we have
 %
@@ -1661,7 +1662,7 @@ differ. In particular for $f:\Gamma'\sr \Gamma$ and $F:\Gamma\sr \U$ we have
 \end{eq}%
 %
 
-For each $\Gamma\in Ob(\toCC({\mathcal C},p))$ we have natural bijections
+For each $\Gamma\in Ob(\toCC({\C},p))$ we have natural bijections
 %
 \begin{eq}
 \llabel{2015.03.27.eq7b} u_1:Ob_1(\Gamma)\sr Hom(int(\Gamma),\U)
@@ -1688,8 +1689,8 @@ $p:\wt{\U}\sr \U$.
 %
 \begin{problem}
 \llabel{2015.03.27.prob3} Let $Eq:(\wt{\U};p)\sr \U$ be a J0-structure on a
-universe $p$ in a category $\mathcal C$. To construct a J0-structure on
-$\toCC({\mathcal C},p)$.
+universe $p$ in a category $\C$. To construct a J0-structure on
+$\toCC({\C},p)$.
 \end{problem}
 %
 \begin{construction}{2015.03.27.prob3}\rm
@@ -1705,7 +1706,7 @@ $$\Id(o,o')=u_1^{-1}(\wt{uu}(o,o')\circ Eq).$$
 %
 \end{construction}
 %
-We let $\Id_{Eq}$ denote the J0-structure on $\toCC({\mathcal C},p)$ constructed
+We let $\Id_{Eq}$ denote the J0-structure on $\toCC({\C},p)$ constructed
 from $Eq$ in Construction \ref{2015.03.27.constr3}. Note that
 %
 \begin{eq}
@@ -1763,8 +1764,8 @@ and the equality $\Q(f,F)\circ \Q(F)=\Q(f\circ F)$.
 %
 \begin{problem}
 \llabel{2015.03.27.prob4} Let $Eq:(\wt{\U};p)\sr \U$, $\Omega:\wt{\U}\sr \wt{\U}$
-be a J0-structure and a J1-structure on a universe $p$ in a category $\mathcal C$.
-To construct a J1-structure $\refl(Eq,\Omega)$ over $\Id_{Eq}$ on $\toCC({\mathcal C},p)$.
+be a J0-structure and a J1-structure on a universe $p$ in a category $\C$.
+To construct a J1-structure $\refl(Eq,\Omega)$ over $\Id_{Eq}$ on $\toCC({\C},p)$.
 \end{problem}
 %
 \begin{construction}{2015.03.27.prob4}\rm
@@ -1967,11 +1968,11 @@ This completes the proof of Lemma \ref{2015.03.31.l2}.
 \comment{
 \begin{problem}
 \llabel{2015.05.04.prob2} Let $Eq$ be a J0-structure on a universe $p$ in $\cal
-C$. To construct, for all objects $\Gamma\in Ob(\toCC({\mathcal C},p))$ two maps
+C$. To construct, for all objects $\Gamma\in Ob(\toCC({\C},p))$ two maps
 %
 \begin{align*}
-  \psi & :\D_{pE\wt{\U}}(int(\Gamma),\U)\sr Ob(\toCC({\mathcal C},p)) \\
-  \wt{\psi} & :\D_{pE\wt{\U}}(int(\Gamma),\wt{\U})\sr \wt{Ob}(\toCC({\mathcal C},p))
+  \psi & :\D_{pE\wt{\U}}(int(\Gamma),\U)\sr Ob(\toCC({\C},p)) \\
+  \wt{\psi} & :\D_{pE\wt{\U}}(int(\Gamma),\wt{\U})\sr \wt{Ob}(\toCC({\C},p))
 \end{align*}
 %
 such that
@@ -2006,7 +2007,7 @@ The proof of the relation (\ref{2015.05.04.eq3}) is straightforward.
 %
 \begin{problem}
 \llabel{2015.04.04.prob1} Let $(Eq,\Omega,Jp)$ be a J-structure on a universe
-$p$. To construct for all $\Gamma\in Ob=Ob(\toCC({\mathcal C},p))$, for all $T\in
+$p$. To construct for all $\Gamma\in Ob=Ob(\toCC({\C},p))$, for all $T\in
 Ob_1(\Gamma)$, for all $P\in Ob_1(\Idx(T))$, for all $s0\in
 \wt{Ob}(\rf_T^*(P))$, an element $\J(\Gamma,T,P,s0)$ of $\wt{Ob}(P)$.
 \end{problem} 
@@ -2069,7 +2070,7 @@ $\wt{u}_{1,\Idx(T)}(J))$ for some $J$ such that $\partial(J)=P$.
 \begin{remark}\rm
 \llabel{2015.05.08.rem1} Note that the defining property of
 $\J=\J_{Jp}(\Gamma,T,P,s0)$ is that it is the unique element of
-$\wt{Ob}(\toCC({\mathcal C},p))$ that satisfies the equation
+$\wt{Ob}(\toCC({\C},p))$ that satisfies the equation
 %
 $$\etaunshriek_{pE\wt{\U}}(u_{1,\Gamma}(T),\wt{u}_{1,\Idx(T)}(\J))=\phi(\Gamma,T,P,s0)\circ
 Jp,$$
@@ -2089,8 +2090,8 @@ u_{1,\Idx(T)}(P)), \etaunshriek_p(u_{1,\Gamma}(T),\wt{u}_{1,\Gamma}(s0)))$.
 
 \begin{lemma}
 \llabel{2015.04.04.l4} Let $Eq$ be a J0-structure on a universe $p$,
-$f:\Gamma'\sr \Gamma$ a morphism in $\toCC({\mathcal C},p)$ and $F:int(\Gamma)\sr
-\U$ a morphism in $\mathcal C$.  Let $q3:int(\Idx(\Gamma',f\circ F))\sr
+$f:\Gamma'\sr \Gamma$ a morphism in $\toCC({\C},p)$ and $F:int(\Gamma)\sr
+\U$ a morphism in $\C$.  Let $q3:int(\Idx(\Gamma',f\circ F))\sr
 int(\Idx(\Gamma,F))$ be the morphism $\q(f,\Idx(\Gamma,F),3)$ defined by
 $\Gamma$ since $\ft^3(\Idx(\Gamma,F))=\Gamma$. Then $q3=\Q(f,F)_{E}$.
 \end{lemma}
@@ -2270,7 +2271,7 @@ $\rf_T^*(\J)=s0$.
 %
 \begin{problem}
 \llabel{2015.04.04.prob2} Let $(Eq,\Omega,Jp)$ be a J-structure on a universe
-$p$. To construct a J-structure on $\toCC({\mathcal C},p)$ relative to $\Id_{Eq}$
+$p$. To construct a J-structure on $\toCC({\C},p)$ relative to $\Id_{Eq}$
 and $\refl_{\Omega}$.
 \end{problem} 
 %
@@ -2368,26 +2369,26 @@ $$\Q'(g,F)\circ F^*(f)\circ \p_{X,F}=(g\circ F)^*(f) \circ \Q(g,F)\circ \p_{X,F}
 which easily follows from the defining equations for $\Q(-,-)$ and $(-)^*$.
 \end{myproof}
 
-Let $({\mathcal C},p,pt)$, $({\mathcal C}',p',pt')$ be two universe categories
-such that $\mathcal C$ and $\mathcal C'$ are equipped with locally cartesian
+Let $({\C},p,pt)$, $({\C}',p',pt')$ be two universe categories
+such that $\C$ and $\C'$ are equipped with locally cartesian
 closed structures. In \cite[Construction 5.6]{fromunivwithPi} we have defined,
 for any universe category functor
 %
-$${\bf\Phi}=(\Phi,\phi,\wt{\phi}):({\mathcal C},p,pt)\sr ({\mathcal
+$${\bf\Phi}=(\Phi,\phi,\wt{\phi}):({\C},p,pt)\sr ({\mathcal
   C}',p',pt')$$
 %
-and any $V\in {\mathcal C}$, a morphism
+and any $V\in {\C}$, a morphism
 %
 $$\chi_{\bf\Phi}(V):\Phi(\I_p(V))\sr \I_{p'}(\Phi(V))$$
 %
 We now need to consider the case when we have the following collection of data:
 %
 \begin{enumerate}
-\item two universes $p_1$, $p_2$ in $\mathcal C$ with the common codomain $\U$
+\item two universes $p_1$, $p_2$ in $\C$ with the common codomain $\U$
   and a morphism $g:\wt{\U}_1\sr \wt{\U}_2$ over $\U$,
-\item two universes $\p_1'$, $\p_2'$ in $\mathcal C'$ with the common codomain
+\item two universes $\p_1'$, $\p_2'$ in $\C'$ with the common codomain
   $U'$ and a morphism $g':\wt{\U}_1'\sr \wt{\U}_2'$ over $U'$,
-\item a functor $\Phi:{\mathcal C}\sr {\mathcal C}'$,
+\item a functor $\Phi:{\C}\sr {\C}'$,
 \item a morphism $\phi:\Phi(\U)\sr U'$,
 \item two morphisms $\wt{\phi}_i:\Phi(\wt{\U}_i)\sr \wt{\U}_i'$, $i=1,2$
 \end{enumerate}
@@ -2740,9 +2741,9 @@ squares.
 
 Let us define now conditions on functors of universe categories that reflect
 the idea of compatibility with the J0- J1- and J2-structures on the
-universes. Recall that for universe categories $({\mathcal C},p,pt)$,
-$({\mathcal C}',p',pt')$ a functor of universe categories is a triple
-$(\Phi,\phi,\wt{\phi})$, where $\Phi:{\mathcal C}\sr {\mathcal C}'$ is a functor
+universes. Recall that for universe categories $({\C},p,pt)$,
+$({\C}',p',pt')$ a functor of universe categories is a triple
+$(\Phi,\phi,\wt{\phi})$, where $\Phi:{\C}\sr {\C}'$ is a functor
 that takes the canonical squares to pullback squares and $pt$ to a final object,
 and $\phi:\Phi(\U)\sr U'$, $\wt{\phi}:\Phi(\wt{\U})\sr \wt{\U}'$ are morphisms
 such that the square
@@ -3013,7 +3014,7 @@ and $\Omega'$.
 
 
 To formulate the condition of compatibility of a universe functor with full
-J-structures on $\mathcal C$ and $\mathcal C'$ we will use Theorem
+J-structures on $\C$ and $\C'$ we will use Theorem
 \ref{2015.04.10.th3}.
 
 Let ${\bf\Phi}=(\Phi,\phi,\wt{\phi})$ be a functor of universe categories. In
@@ -3134,12 +3135,12 @@ commutes.
 
 %
 \begin{definition}
-\llabel{2015.04.06.def1} Let $H:\aCC\sr CC'$ be a homomorphism of C-systems.
+\llabel{2015.04.06.def1} Let $H:\CC\sr CC'$ be a homomorphism of C-systems.
 %
 \begin{enumerate}
-\item Let $\Id$, $IdT'$ are J0-structures on $\aCC$ and $CC'$ respectively.  Then
-  $H$ is called a homomorphism of C-systems with J0-structures $(\aCC,\Id)\sr
-  (\aCC,IdT')$ if for each $\Gamma\in Ob(\aCC)$ and $o,o'\in\wt{Ob}_1(\Gamma)$ such
+\item Let $\Id$, $IdT'$ are J0-structures on $\CC$ and $CC'$ respectively.  Then
+  $H$ is called a homomorphism of C-systems with J0-structures $(\CC,\Id)\sr
+  (\CC,IdT')$ if for each $\Gamma\in Ob(\CC)$ and $o,o'\in\wt{Ob}_1(\Gamma)$ such
   that $\partial(o)=\partial(o')$, one has
 %
 $$H(\Id_{\Gamma}(o,o'))=IdT'_{H(\Gamma)}(H(o),H(o'))$$
@@ -3149,30 +3150,30 @@ $$H(\Id_{\Gamma}(o,o'))=IdT'_{H(\Gamma)}(H(o),H(o'))$$
 % 
 \item Let $\Id$, $IdT'$ be as above and let $\refl$, $refl'$ be J1-structures
   over $\Id$ and $IdT'$ respectively. A homomorphism of C-systems with
-  J0-structures $H:(\aCC,\Id)\sr (CC',IdT')$ is called a homomorphism of
+  J0-structures $H:(\CC,\Id)\sr (CC',IdT')$ is called a homomorphism of
   C-systems with J1-structures
 %
-$$(\aCC,\Id,\refl)\sr (CC',IdT',refl')$$
+$$(\CC,\Id,\refl)\sr (CC',IdT',refl')$$
 %
-if for all $\Gamma\in Ob(\aCC)$ and $o\in \wt{Ob}_1(\Gamma)$ one has
+if for all $\Gamma\in Ob(\CC)$ and $o\in \wt{Ob}_1(\Gamma)$ one has
 %
 $$H(\refl(o))=refl'(H(o))$$
 %
 \end{enumerate}
 \end{definition}
 %
-For a C-system $\aCC$ with a J0-structure $\Id$ and a J1-structure $\refl$ over
-$\Id$ define $Jdom(\aCC,\Id,\refl)$ as the set of quadruples $(\Gamma,T,P,s0)$,
+For a C-system $\CC$ with a J0-structure $\Id$ and a J1-structure $\refl$ over
+$\Id$ define $Jdom(\CC,\Id,\refl)$ as the set of quadruples $(\Gamma,T,P,s0)$,
 where $\Gamma\in Ob$, $T\in Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and $s0\in
-\wt{Ob}(\rf_T^*(P))$. Equivalently we can say that $Jdom(\aCC,\Id,\refl)$ is the
+\wt{Ob}(\rf_T^*(P))$. Equivalently we can say that $Jdom(\CC,\Id,\refl)$ is the
 subset in $Ob\times Ob\times Ob\times \wt{Ob}$ that consists of quadruples
 $(\Gamma,T,P,s0)$, where $\ft(T)=\Gamma$, $\ft(P)=\Idx(T)$ and
 $\partial(s0)=\rf_T^*(P)$. Then a J2-structure is defined by a map $Jdom\sr
 \wt{Ob}$ with some properties.
 %
 \begin{lemma}
-\llabel{2015.04.06.l3} Let $H:\aCC\sr CC'$ be a homomorphism of C-systems. Let
-$\Gamma,X,Y\in Ob(\aCC)$, $m,n\in\nn$ and suppose that
+\llabel{2015.04.06.l3} Let $H:\CC\sr CC'$ be a homomorphism of C-systems. Let
+$\Gamma,X,Y\in Ob(\CC)$, $m,n\in\nn$ and suppose that
 $\ft^m(X)=\ft^{n}(Y)=\Gamma$. Let $f:X\sr Y$ be a morphism over $\Gamma$ and let
 $F:\Gamma'\sr \Gamma$ be a morphism. Then
 %
@@ -3190,7 +3191,7 @@ $H(F)^*(H(f))$.
 \llabel{2015.04.06.l2} Let $\Id$, $IdT'$, $\refl$ and $refl'$ be as in
 Definition \ref{2015.04.06.def1} and let
 %
-$$H:(\aCC,\Id,\refl)\sr (CC',IdT',refl')$$
+$$H:(\CC,\Id,\refl)\sr (CC',IdT',refl')$$
 %
 be a homomorphism of C-systems with J1-structures. Then for all elements
 $(\Gamma,T,P,s0)$ of $Jdom(\Id,\refl)$ one has $(H(\Gamma),H(T),H(P),H(s0))\in
@@ -3215,13 +3216,13 @@ Definition \ref{2015.04.06.def1} and let $\J$, $\J'$ be J2-structures over
 $(\Id,\refl)$ and $(IdT',refl')$ respectively. A homomorphism of C-systems with
 J1-structures
 %
-$$H:(\aCC,\Id,\refl)\sr (CC',IdT',ref')$$
+$$H:(\CC,\Id,\refl)\sr (CC',IdT',ref')$$
 %
 is called a homomorphism of C-systems with J-structures
 %
-$$(\aCC,\Id,\refl,\J)\sr (CC',IdT',ref;',\J')$$
+$$(\CC,\Id,\refl,\J)\sr (CC',IdT',ref;',\J')$$
 %
-if for all $\Gamma\in Ob(\aCC)$, $T\in Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and
+if for all $\Gamma\in Ob(\CC)$, $T\in Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and
 $s0\in \wt{Ob}(\rf_T^*(P))$ one has
 %
 $$H(\J(\Gamma,T,P,s0))=\J'(H(\Gamma),H(T),H(P),H(s0)),$$
@@ -3249,11 +3250,11 @@ Let us first recall that by \cite[Construction 3.3]{Cfromauniverse} any
 universe category functor ${\bf \Phi}=(\Phi,\phi,\wt{\phi})$ defines a
 homomorphism of C-systems
 %
-$$H:\toCC({\mathcal C},p)\sr \toCC({\mathcal C}',p')$$
+$$H:\toCC({\C},p)\sr \toCC({\C}',p')$$
 %
 To define $H$ on objects, one defines by induction on $n$, for all $\Gamma\in
-Ob_n(\toCC({\mathcal C},p))$, pairs $(H(\Gamma),\psi_{\Gamma})$, where
-$H(\Gamma)\in Ob(\toCC({\mathcal C}',p'))$ and $\psi_{\Gamma}$ is a morphism
+Ob_n(\toCC({\C},p))$, pairs $(H(\Gamma),\psi_{\Gamma})$, where
+$H(\Gamma)\in Ob(\toCC({\C}',p'))$ and $\psi_{\Gamma}$ is a morphism
 %
 $$\psi_{\Gamma}:int'(H(\Gamma))\sr \Phi(int(\Gamma))$$
 %
@@ -3293,7 +3294,7 @@ $\Id_{Eq'}$.
 %
 \begin{myproof}
 Let $\Id=\Id_{Eq}$ and $IdT'=\Id_{Eq'}$. We need to check that for all
-$\Gamma\in Ob(\toCC({\mathcal C},p))$ and $o,o'\in \wt{Ob}_1(\Gamma)$ such that
+$\Gamma\in Ob(\toCC({\C},p))$ and $o,o'\in \wt{Ob}_1(\Gamma)$ such that
 $\partial(o)=\partial(o')$ one has
 %
 $$H(\Id(o,o'))=IdT'(H(o),H(o'))$$
@@ -3348,7 +3349,7 @@ condition is
 %
 $$\Phi(\Omega)\circ\wt{\phi}=\wt{\phi}\circ\Omega'$$
 %
-We need to check that for $\Gamma\in Ob(\toCC({\mathcal C},p))$ and $s\in
+We need to check that for $\Gamma\in Ob(\toCC({\C},p))$ and $s\in
 \wt{Ob}_1(\Gamma)$ one has
 %
 $$H(\refl(s))=refl'(H(s))$$
@@ -3376,7 +3377,7 @@ denote the composition of $n$ canonical projections $\p_{\Gamma}\circ \dots\circ
 %
 \begin{lemma}
 \llabel{2015.05.10.l1} Let ${\bf\Phi}$ be a universe category functor and
-$\Gamma\in Ob(\toCC({\mathcal C},p))$ be such that $l(\Gamma)\ge n$. Then the
+$\Gamma\in Ob(\toCC({\C},p))$ be such that $l(\Gamma)\ge n$. Then the
 square
 %
 $$
@@ -3406,9 +3407,9 @@ of $\psi_{\Gamma}$.
 
 
 \begin{lemma}
-\llabel{2015.05.06.l3} Let $Eq, Eq'$ be J0-structures on $({\mathcal C},p)$ and
-$({\mathcal C}',p')$ and $\bf\Phi$ be a universe category functor compatible
-with $Eq$ and $Eq'$. The for all $\Gamma\in Ob(\toCC({\mathcal C},p))$, $T\in
+\llabel{2015.05.06.l3} Let $Eq, Eq'$ be J0-structures on $({\C},p)$ and
+$({\C}',p')$ and $\bf\Phi$ be a universe category functor compatible
+with $Eq$ and $Eq'$. The for all $\Gamma\in Ob(\toCC({\C},p))$, $T\in
 Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and $o\in \wt{Ob}(P)$ one has:
 %
 \begin{enumerate}
@@ -3651,9 +3652,9 @@ Let $F'=u_1(H(T))$. Rewriting the right hand side we get
 \end{align*}
 %
 Where the second equality is from the upper square of Construction
-\ref{2015.05.08.constr1} in $\mathcal C'$, the third equality is from
+\ref{2015.05.08.constr1} in $\C'$, the third equality is from
 \cite[Lemma 3.2]{fromunivwithPi}, and the fourth from the middle square of
-Construction \ref{2015.05.08.constr1} in $\mathcal C'$.
+Construction \ref{2015.05.08.constr1} in $\C'$.
 \end{myproof}
 
 
@@ -3672,7 +3673,7 @@ $(\Id_{Eq'},\refl_{\Omega'},\J_{Jp'})$.
 Let $\Id=\Id_{\Omega}$, $IdT'=\Id_{\Omega'}$, $\refl=\refl_{\Omega}$,
 $refl'=\refl_{\Omega'}$, $\J=\J_{Jp}$ and $\J'=\J_{Jp'}$.
 
-We need to verify that for all $\Gamma\in Ob(\toCC({\mathcal C},p))$, $T\in
+We need to verify that for all $\Gamma\in Ob(\toCC({\C},p))$, $T\in
 Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and $s0\in \wt{Ob}(rf^*_T(P))$ one has
 %
 $$H(\J(\Gamma,T,P,s0))=\J'(H(\Gamma),H(T),H(P),H(s0))$$
