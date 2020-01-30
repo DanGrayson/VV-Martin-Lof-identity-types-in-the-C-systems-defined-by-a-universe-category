@@ -383,7 +383,7 @@ will allow the files to be located.
 \begin{remark}
   We recall some notation for use with a C-system $\aCC$.
 
-  As in \cite{Csubsystems}, except for the use of a sans-serif font, we use
+  As in \cite[Def.~2.1 and Prop.~2.4]{Csubsystems}, except for the use of a sans-serif font, we use
   $$
     \xymatrix@C=5pc{
       f^*(X) \ar[r]^{\gls q(f,X)} \ar[d]_{\p_{f^*(X)}}  & X \ar[d]^{\gls p_X} \\
@@ -391,15 +391,16 @@ will allow the files to be located.
     }
   $$
   as notation for the parts of the pull-back square that is part of the
-  structure of a C-system on $\aCC$.
+  structure of a C-system.
 
-  For a map $g : Y \sr X$ such that $g \circ p_X = f$, we will let
-  $\gls{s}_g : Y \sr f^*(X)$ denote the unique section of
-  $p_{f^*(X)}$ such that $\s_g \circ q(f,X) = g$.
+  As in \cite[Def.~2.3 and Prop.~2.4]{Csubsystems}, for a map $g : Y \sr X$
+  such that $g \circ p_X = f$, one may regard
+  $\gls{s}_g : Y \sr f^*(X)$ as part of the structure of a C-systerm, or
+  as the unique section of $p_{f^*(X)}$ such that $\s_g \circ q(f,X) = g$.
   $$
     \xymatrix@C=5pc{
-      f^*(X) \ar[r]^{\gls q(f,X)} \ar[d]_{\p_{f^*(X)}} & X \ar[d]^{\gls p_X} \\
-      Y \ar[ru]_g \ar[r]_f \ar@<-7pt>[u]_{\s_g} & \gls{ft}(X)
+      f^*(X) \ar[r]^{\gls q(f,X)} \ar@<-3pt>[d]_{\p_{f^*(X)}} & X \ar[d]^{\gls p_X} \\
+      Y \ar[ru]_g \ar[r]_f \ar@<-4pt>[u]_{\s_g} & \gls{ft}(X)
     }
   $$
 
@@ -407,8 +408,8 @@ will allow the files to be located.
   the diagonal morphism $\delta(X) := \s_{\id_X} : X\sr \p_X^*(X)$.
   $$
     \xymatrix@C=5pc{
-      p_X^*(X) \ar[r]^{\q(p_X,X)} \ar[d]_{\p_{p_X^*(X)}} & X \ar[d]^{\p_X} \\
-      X \ar[ru]_{1_X} \ar[r]_{p_X} \ar@<-7pt>[u]_{\delta(X)} & \ft(X)
+      p_X^*(X) \ar[r]^{\q(p_X,X)} \ar@<-3pt>[d]_{\p_{p_X^*(X)}} & X \ar[d]^{\p_X} \\
+      X \ar[ru]_{1_X} \ar[r]_{p_X} \ar@<-4pt>[u]_{\delta(X)} & \ft(X)
     }
   $$
 
@@ -599,7 +600,7 @@ One can easily see that any two extensional J0-structures are equal and that
 any extensional J0-structure has a unique extension to a full J-structure that
 is also called extensional.
 
-We will not consider these extended versions of $J$ in the present version of
+We will not consider these extensional versions of $J$ in the present version of
 the paper.
 \end{remark}
 
