@@ -67,7 +67,7 @@
 \newcommand{\Id}{\mathsf{Id}} % originally was "IdT"
 \newcommand{\refl}{\mathsf{refl}}
 \newcommand{\J}{\mathsf{J}}
-\newcommand{\Idx}{\mathsf{Id_x}} % originally was "IdxT"
+\newcommand{\Idx}{\mathsf{Id^+}} % originally was "IdxT"
 
 % notation for universe objects in a category
 \newcommand{\U}{\mathcal{U}}
@@ -663,11 +663,11 @@ write $(X;F)_{p}$ and $f*_p g$.
 \begin{remark}\rm
 \llabel{2015.03.29.rm1} Note that we made no assumption about $\Q(\id_\U)$ being
 equal to $\id_{\wt{\U}}$. In fact, since we want the results of this paper to be
-constructive, we are not allowed to make such an assumption since the question
-of whether or not a given morphism is an identity morphism need not be
-decidable and therefore we can not ``normalize'' our constructions by doing a
-``case'' on whether a morphism is an identity morphism or not. The importance
-of this observation (in the context of whether a simplex is degenerate or not)
+constructive, we are not allowed to make such an assumption since 
+whether a morphism is an identity morphism need not be
+decidable, and therefore we can not normalize our construction by doing
+something different when a morphism is not the identity.  The importance
+of this observation (in the context of whether a simplex is degenerate)
 was emphasized by \cite{BCH}.
 \end{remark}
 %
