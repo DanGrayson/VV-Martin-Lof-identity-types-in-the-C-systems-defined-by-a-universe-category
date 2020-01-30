@@ -396,6 +396,21 @@ will allow the files to be located.
   For a map $g : Y \sr X$ such that $g \circ p_X = f$, we will let
   $\gls{s}_g : Y \sr f^*(X)$ denote the unique section of
   $p_{f^*(X)}$ such that $\s_g \circ q(f,X) = g$.
+  $$
+    \xymatrix@C=5pc{
+      f^*(X) \ar[r]^{\gls q(f,X)} \ar[d]_{\p_{f^*(X)}} & X \ar[d]^{\gls p_X} \\
+      Y \ar[ru]_g \ar[r]_f \ar@<-7pt>[u]_{\s_g} & \gls{ft}(X)
+    }
+  $$
+
+  In the case where one takes $Y=X$, $f=p_X$, and $g = 1_X$, we let $\gls{delta}(X)$ denote
+  the diagonal morphism $\delta(X) := \s_{\id_X} : X\sr \p_X^*(X)$.
+  $$
+    \xymatrix@C=5pc{
+      p_X^*(X) \ar[r]^{\q(p_X,X)} \ar[d]_{\p_{p_X^*(X)}} & X \ar[d]^{\p_X} \\
+      X \ar[ru]_{1_X} \ar[r]_{p_X} \ar@<-7pt>[u]_{\delta(X)} & \ft(X)
+    }
+  $$
 
   We also recall the notations ${\gls{Ob}}_n(\Gamma)$ and
   $\gls{Obwt}_n(\Gamma)$ from \cite[\S 3]{fromunivwithPiI}, as well as the
@@ -456,14 +471,6 @@ given for all $\Gamma\in Ob$ such that:
 %
 To define the notion of a J2-structure over a given J1-structure we will need
 to describe two constructions first.
-
-\begin{remark}
-  For $T\in Ob_1(\Gamma)$ we let $\gls{delta}(T)$ denote the
-  morphism $T\sr \p_T^*(T)$, described equivalently\editorfootnote{The
-    notation $\s_{\id_T}$, used here, is undefined.} as $\s_{\id_T}$ or
-  as the only morphism such that $\delta(T)\circ \p_{\p_T^*(T)}=\id_T$ and
-  $\delta(T)\circ \q(\p_T,T)=\id_T$.
-\end{remark}
 
 %
 \begin{problem}
