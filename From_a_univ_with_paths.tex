@@ -65,8 +65,8 @@
 \newcommand{\s}{\mathsf{s}}     % making a section from a lifting
 
 % notations for the structures making up a J-system
-\newcommand{\Id}{\mathsf{Id^1}} % originally was "IdT"
-\newcommand{\Idx}{\mathsf{Id^3}} % originally was "IdxT"
+\newcommand{\Id}{\mathsf{Id_1}} % originally was "IdT"
+\newcommand{\Idx}{\mathsf{Id_3}} % originally was "IdxT"
 \newcommand{\refl}{\mathsf{refl}}
 \newcommand{\J}{\mathsf{J}}
 
@@ -2570,7 +2570,7 @@ $$\etaunshriek({\bf\Phi}_1^2((\etaunshriek)^{-1}(a)))=\Phi(a)\circ \chi_1(V)$$
 We have
 %
 \begin{align*}
-  \Phi(a)\circ & \chi_1(V) \\
+  \Phi(a)\circ & \chi_1(V)
     & = \Phi(a)\circ \eta'({\bf\Phi}^2_1((\etaunshriek)^{-1}(\id_{\I_{p_1}(V)}))) \\
     & = \eta'(\D_{\p_1'}(\Phi(a),\Phi(V))({\bf\Phi}^2_1((\etaunshriek)^{-1}(\id_{\I_{p_1}(V)}))),
 \end{align*}
@@ -2788,7 +2788,7 @@ where the second equality is by definition of $\Q'(-,-)$ and the third equality
 is by definition of $\Phi_{\wt{\U},p}$. Then
 %
 \begin{align*}
-  \Phi\wt{\U}p\circ & \Q'(p') \\
+  \Phi\wt{\U}p\circ & \Q'(p')
     & = \Phi_{\wt{\U},p}\circ \Q'(\wt{\phi},p')\circ \Q'(p') \\
     & = \Phi_{\wt{\U},p}\circ \Q(\wt{\phi}\circ p') \\
     & = \Phi_{\wt{\U},p}\circ \Q(\Phi(p)\circ \phi) \\
@@ -3135,29 +3135,29 @@ commutes.
 
 %
 \begin{definition}
-\llabel{2015.04.06.def1} Let $H:\CC\sr CC'$ be a homomorphism of C-systems.
+\llabel{2015.04.06.def1} Let $H:\CC\sr \CC'$ be a homomorphism of C-systems.
 %
 \begin{enumerate}
-\item Let $\Id$, $IdT'$ are J0-structures on $\CC$ and $CC'$ respectively.  Then
+\item Let $\Id$, $\Id'$ are J0-structures on $\CC$ and $\CC'$ respectively.  Then
   $H$ is called a homomorphism of C-systems with J0-structures $(\CC,\Id)\sr
-  (\CC,IdT')$ if for each $\Gamma\in Ob(\CC)$ and $o,o'\in\wt{Ob}_1(\Gamma)$ such
+  (\CC,\Id')$ if for each $\Gamma\in Ob(\CC)$ and $o,o'\in\wt{Ob}_1(\Gamma)$ such
   that $\partial(o)=\partial(o')$, one has
 %
-$$H(\Id_{\Gamma}(o,o'))=IdT'_{H(\Gamma)}(H(o),H(o'))$$
+$$H(\Id_{\Gamma}(o,o'))=\Id'_{H(\Gamma)}(H(o),H(o'))$$
 %
 (the right hand side of the equality makes sense because $H$ commutes with
   $\partial$).
 % 
-\item Let $\Id$, $IdT'$ be as above and let $\refl$, $refl'$ be J1-structures
-  over $\Id$ and $IdT'$ respectively. A homomorphism of C-systems with
-  J0-structures $H:(\CC,\Id)\sr (CC',IdT')$ is called a homomorphism of
+\item Let $\Id$, $\Id'$ be as above and let $\refl$, $\refl'$ be J1-structures
+  over $\Id$ and $\Id'$ respectively. A homomorphism of C-systems with
+  J0-structures $H:(\CC,\Id)\sr (\CC',\Id')$ is called a homomorphism of
   C-systems with J1-structures
 %
-$$(\CC,\Id,\refl)\sr (CC',IdT',refl')$$
+$$(\CC,\Id,\refl)\sr (\CC',\Id',\refl')$$
 %
 if for all $\Gamma\in Ob(\CC)$ and $o\in \wt{Ob}_1(\Gamma)$ one has
 %
-$$H(\refl(o))=refl'(H(o))$$
+$$H(\refl(o))=\refl'(H(o))$$
 %
 \end{enumerate}
 \end{definition}
@@ -3172,7 +3172,7 @@ $\partial(s0)=\rf_T^*(P)$. Then a J2-structure is defined by a map $Jdom\sr
 \wt{Ob}$ with some properties.
 %
 \begin{lemma}
-\llabel{2015.04.06.l3} Let $H:\CC\sr CC'$ be a homomorphism of C-systems. Let
+\llabel{2015.04.06.l3} Let $H:\CC\sr \CC'$ be a homomorphism of C-systems. Let
 $\Gamma,X,Y\in Ob(\CC)$, $m,n\in\nn$ and suppose that
 $\ft^m(X)=\ft^{n}(Y)=\Gamma$. Let $f:X\sr Y$ be a morphism over $\Gamma$ and let
 $F:\Gamma'\sr \Gamma$ be a morphism. Then
@@ -3188,14 +3188,14 @@ $H(F)^*(H(f))$.
 %
 %
 \begin{lemma}
-\llabel{2015.04.06.l2} Let $\Id$, $IdT'$, $\refl$ and $refl'$ be as in
+\llabel{2015.04.06.l2} Let $\Id$, $\Id'$, $\refl$ and $\refl'$ be as in
 Definition \ref{2015.04.06.def1} and let
 %
-$$H:(\CC,\Id,\refl)\sr (CC',IdT',refl')$$
+$$H:(\CC,\Id,\refl)\sr (\CC',\Id',\refl')$$
 %
 be a homomorphism of C-systems with J1-structures. Then for all elements
 $(\Gamma,T,P,s0)$ of $Jdom(\Id,\refl)$ one has $(H(\Gamma),H(T),H(P),H(s0))\in
-Jdom(IdT',refl')$.
+Jdom(\Id',\refl')$.
 \end{lemma}
 %
 \begin{myproof}
@@ -3211,16 +3211,16 @@ equations (\ref{2015.04.06.eq1}) and (\ref{2015.04.02.eq1}).
 \end{myproof}
 %
 \begin{definition}
-\llabel{2015.04.06.def2} Let $\Id$, $IdT'$, $\refl$ and $refl'$ be as in
+\llabel{2015.04.06.def2} Let $\Id$, $\Id'$, $\refl$ and $\refl'$ be as in
 Definition \ref{2015.04.06.def1} and let $\J$, $\J'$ be J2-structures over
-$(\Id,\refl)$ and $(IdT',refl')$ respectively. A homomorphism of C-systems with
+$(\Id,\refl)$ and $(\Id',\refl')$ respectively. A homomorphism of C-systems with
 J1-structures
 %
-$$H:(\CC,\Id,\refl)\sr (CC',IdT',ref')$$
+$$H:(\CC,\Id,\refl)\sr (\CC',\Id',\refl')$$
 %
 is called a homomorphism of C-systems with J-structures
 %
-$$(\CC,\Id,\refl,\J)\sr (CC',IdT',ref;',\J')$$
+$$(\CC,\Id,\refl,\J)\sr (\CC',\Id',\refl',\J')$$
 %
 if for all $\Gamma\in Ob(\CC)$, $T\in Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and
 $s0\in \wt{Ob}(\rf_T^*(P))$ one has
@@ -3293,21 +3293,21 @@ $\Id_{Eq'}$.
 \end{lemma}
 %
 \begin{myproof}
-Let $\Id=\Id_{Eq}$ and $IdT'=\Id_{Eq'}$. We need to check that for all
+Let $\Id=\Id_{Eq}$ and $\Id'=\Id_{Eq'}$. We need to check that for all
 $\Gamma\in Ob(\toCC({\C},p))$ and $o,o'\in \wt{Ob}_1(\Gamma)$ such that
 $\partial(o)=\partial(o')$ one has
 %
-$$H(\Id(o,o'))=IdT'(H(o),H(o'))$$
+$$H(\Id(o,o'))=\Id'(H(o),H(o'))$$
 %
 Since
 %
 $$\partial(H(\Id(o,o'))=H(\Gamma)$$
 %
-$$\partial(IdT'(H(o),H(o')))=\ft(\partial(H(o)))=H(\ft(\partial(o)))=H(\Gamma)$$
+$$\partial(\Id'(H(o),H(o')))=\ft(\partial(H(o)))=H(\ft(\partial(o)))=H(\Gamma)$$
 %
 this is equivalent to
 %
-$$u_1(H(\Id(o,o')))=u_1(IdT'(H(o),H(o')))$$
+$$u_1(H(\Id(o,o')))=u_1(\Id'(H(o),H(o')))$$
 %
 By \cite[Lemma 6.1(1)]{fromunivwithPi} we have
 %
@@ -3330,10 +3330,10 @@ and \cite[Lemma 6.1(2)]{fromunivwithPi}
   \psi_{\Gamma}\circ((\Phi&(\wt{u}_1(o))\circ\wt{\phi})*(\Phi(\wt{u}_1(o'))\circ\wt{\phi}))\circ Eq' \\
     & = ((\psi_{\Gamma}\circ\Phi(\wt{u}_1(o))\circ\wt{\phi})*(\psi_{\Gamma}\circ\Phi(\wt{u}_1(o'))\circ\wt{\phi}))\circ Eq' \\
     & = (\wt{u}_1(H(o))*\wt{u}_1(H(o')))\circ Eq' \\
-    & = IdT'(H(o),H(o))
+    & = \Id'(H(o),H(o))
 \end{align*}
 \end{myproof}
-%
+
 \begin{lemma}
 \llabel{2015.04.12.l2} Let ${\bf\Phi}$ be a universe category functor as above
 that is compatible with the (J0,J1)-structures $(Eq,\Omega)$ and
@@ -3344,7 +3344,7 @@ $(\Id_{Eq'},\refl_{\Omega'})$.
 \end{lemma}
 %
 \begin{myproof}
-Let $\refl=\refl_{\Omega}$ and $refl'=\refl_{\Omega'}$. The compatibility
+Let $\refl=\refl_{\Omega}$ and $\refl'=\refl_{\Omega'}$. The compatibility
 condition is
 %
 $$\Phi(\Omega)\circ\wt{\phi}=\wt{\phi}\circ\Omega'$$
@@ -3352,7 +3352,7 @@ $$\Phi(\Omega)\circ\wt{\phi}=\wt{\phi}\circ\Omega'$$
 We need to check that for $\Gamma\in Ob(\toCC({\C},p))$ and $s\in
 \wt{Ob}_1(\Gamma)$ one has
 %
-$$H(\refl(s))=refl'(H(s))$$
+$$H(\refl(s))=\refl'(H(s))$$
 %
 By \cite[Lemma 6.1(2)]{fromunivwithPi} we have
 %
@@ -3363,7 +3363,7 @@ By \cite[Lemma 6.1(2)]{fromunivwithPi} we have
     & = \wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s))\circ\Phi(\Omega)\circ \wt{\phi}) \\
     & = \wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s))\circ\wt{\phi}\circ\Omega') \\
     & = \wt{u}_1^{-1}(\wt{u}_1(H(s))\circ\Omega') \\
-    & = refl'(H(s)).
+    & = \refl'(H(s)).
 \end{align*}
 \end{myproof}
 %
@@ -3670,8 +3670,8 @@ $(\Id_{Eq'},\refl_{\Omega'},\J_{Jp'})$.
 \end{lemma}
 %
 \begin{myproof}
-Let $\Id=\Id_{\Omega}$, $IdT'=\Id_{\Omega'}$, $\refl=\refl_{\Omega}$,
-$refl'=\refl_{\Omega'}$, $\J=\J_{Jp}$ and $\J'=\J_{Jp'}$.
+Let $\Id=\Id_{\Omega}$, $\Id'=\Id_{\Omega'}$, $\refl=\refl_{\Omega}$,
+$\refl'=\refl_{\Omega'}$, $\J=\J_{Jp}$ and $\J'=\J_{Jp'}$.
 
 We need to verify that for all $\Gamma\in Ob(\toCC({\C},p))$, $T\in
 Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and $s0\in \wt{Ob}(rf^*_T(P))$ one has
