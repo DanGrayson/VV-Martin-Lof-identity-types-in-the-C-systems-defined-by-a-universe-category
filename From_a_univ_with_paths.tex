@@ -382,7 +382,7 @@ will allow the files to be located.
 \section{J-structures on C-systems and on universe categories}
 
 \begin{remark}
-  We recall some notation for use with a C-system $\CC$.
+  We recall some notation for use with a C-system $\CC$ and record some identities for later reference.
 
   We may let $\Ob$ denote the set $\Ob(\CC)$ of objects of $\CC$ when there is no danger of confusion.
 
@@ -407,14 +407,26 @@ will allow the files to be located.
 
   As in \cite[Def.~2.3 and Prop.~2.4]{Csubsystems}, for a map $g : Y \sr X$
   such that $g \circ p_X = f$, one may regard
-  $\gls{s}_g : Y \sr f^*(X)$ as part of the structure of a C-systerm, or
+  $\gls{s}_g : Y \sr f^*(X)$ as part of the structure of a C-system, or
   as the unique section of $p_{f^*(X)}$ such that $\s_g \circ q(f,X) = g$.
-  $$
+  \begin{eq}
     \xymatrix@C=5pc{
       f^*(X) \ar[r]^{\gls q(f,X)} \ar@<-3pt>[d]_{\p_{f^*(X)}} & X \ar[d]^{\gls p_X} \\
       Y \ar[ru]_g \ar[r]_f \ar@<-4pt>[u]_{\s_g} & \gls{ft}(X)
     }
-  $$
+  \end{eq}%
+  In the case where $Y = \ft(X)$ and $f = 1_X$, and thus $g$ is a section of $\p_X$,
+  one has the following identity.
+  \begin{eq}
+    \llabel{section-section}
+    \s_g = g
+  \end{eq}%
+  The formation of the section $s_g$ is natural in the sense that, for a map
+  $h : Z \to Y$, one has the following identity.
+  \begin{eq}
+    \llabel{s-naturality}
+    h^* (s_g) = s_{h \circ g}
+  \end{eq}
 
   In the case where one takes $Y=X$, $f=p_X$, and $g = 1_X$, we let $\gls{delta}(X)$ denote
   the diagonal morphism $\delta(X) := \s_{\id_X} : X\sr \p_X^*(X)$.
@@ -423,6 +435,11 @@ will allow the files to be located.
       \p_X^*(X) \ar[r]^{\q(\p_X,X)} \ar@<-3pt>[d]_{\p_{\p_X^*(X)}} & X \ar[d]^{\p_X} \\
       X \ar[ru]_{1_X} \ar[r]_{\p_X} \ar@<-4pt>[u]_{\delta(X)} & \ft(X)
     }
+  \end{eq}%
+  Using \ref{s-naturality}, one shows, for a map $g : Y \to X$, the following identity.
+  \begin{eq}
+    \llabel{delta-pullback}
+    g^* (\delta(X)) = s_g
   \end{eq}
 
   We also recall the notations ${\gls{Ob}}_n(\Gamma)$ and
@@ -461,7 +478,10 @@ $$\gls{Id}_{\Gamma}:\{(o_1,o_2)\,|\,o_1, o_2 \in \Obwt_1(\Gamma), \partial(o_1)=
 %
 given for all $\Gamma\in Ob$, that is natural in $\Gamma$, i.e., such that for any
 $f:\Gamma'\sr \Gamma$, one has the identity
-$f^*(\Id_{\Gamma}(o_1,o_2))=\Id_{\Gamma'}(f^*(o_1),f^*(o_2))$.
+\begin{eq}
+  \llabel{Id-naturality}
+  f^*(\Id_{\Gamma}(o_1,o_2))=\Id_{\Gamma'}(f^*(o_1),f^*(o_2)).
+\end{eq}%
 \end{definition}
 
 When there is no risk of ambiguity, we will write $\Id(o_1,o_2)$ for $\Id_{\Gamma}(o_1,o_2)$.
@@ -545,25 +565,32 @@ such that for any $f:\Gamma'\sr \Gamma$ one has $f^*(\rf_T)=\rf_{f^*(T)}$.
 \llabel{2015.03.27.constr2}\rm We have the following chain of equations.
 %
 \begin{align*}
-  \delta(T)^*(\Idx(T)) & = \delta(T)^*(\Id_{\p_T^*(T)}((\p_{\p_T^*(T)}^*(\delta(T)))),\delta(\p_T^*(T)))  & \by{...}\\
-    & = \Id_T(\delta(T)^*(\p_{\p_T^*(T)}^*(\delta(T))),\delta(T)^*(\delta(\p_T^*(T)))) & \by{...}\\
-    & = \Id_T(\delta(T),\delta(T)) & \by{...}
+  \delta(T)^*(\Idx(T)) & = \delta(T)^*(\Id_{\p_T^*(T)}((\p_{\p_T^*(T)}^*(\delta(T)))),\delta(\p_T^*(T)))
+  & \by{definition \ref{2015.04.06.eq1}} \\
+  & = \Id_T(\delta(T)^*(\p_{\p_T^*(T)}^*(\delta(T))),\delta(T)^*(\delta(\p_T^*(T))))
+  & \by{naturality \ref{Id-naturality}} \\
+  & = \Id_T((\delta(T) \circ \p_{\p_T^*(T)})^*(\delta(T)),\delta(T)^*(\delta(\p_T^*(T)))) \\
+  & = \Id_T((1_T)^*(\delta(T)),\delta(T)^*(\delta(\p_T^*(T)))) \\
+  & = \Id_T(\delta(T),\delta(T)^*(\delta(\p_T^*(T)))) \\
+  & = \Id_T(\delta(T),\s_{\delta(T)})
+  & \by{\ref{delta-pullback}}  \\
+  & = \Id_T(\delta(T),\delta(T))
+  & \by{\ref{section-section}} 
 \end{align*}
 %
-The last equality follows from the fact that $f^*(\delta(T))=\s_f$ and that for
-any $s\in\Obwt$, $\s_s=s$.  This shows that we have a canonical square of the
-form
+This shows that we have the canonical square in the following diagram.
 %
 \begin{eq}
 \llabel{2015.03.31.eq3}
 \begin{xy}
           \xymatrix@C=7pc{ \Id(\delta(T),\delta(T))
             \ar[r]^-{\q(\delta(T),\Idx(T))} \ar[d] & \Idx(T) \ar[d]\\ T
-            \ar[r]^{\delta(T)} & \p_T^*(T) }
+            \ar[r]^{\delta(T)} \ar@<6pt>[u]^{\refl(\delta(T))} \ar[ru]^{\rf_T}
+            & \p_T^*(T) }
        \end{xy}
 \end{eq}%
 %
-and $\refl(\delta(T))$ is a morphism $T\sr \Id(\delta(T),\delta(T))$. We define:
+Since $\refl(\delta(T))$ is a morphism $T\sr \Id(\delta(T),\delta(T))$, we may introduce the following definition.
 %
 \begin{eq}
 \llabel{2015.04.02.eq1} \rf_T:=\refl(\delta(T))\circ \q(\delta(T),\Idx(T))
