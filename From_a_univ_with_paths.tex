@@ -65,7 +65,7 @@
 \newcommand{\s}{\mathsf{s}}     % making a section from a lifting
 
 % notations for the structures making up a J-system
-\newcommand{\Id}{\mathsf{Id_1}} % originally was "IdT"
+\newcommand{\Id}{\mathsf{Id}} % originally was "IdT"
 \newcommand{\Idx}{\mathsf{Id_3}} % originally was "IdxT"
 \newcommand{\refl}{\mathsf{refl}}
 \newcommand{\J}{\mathsf{J}}
@@ -384,15 +384,26 @@ will allow the files to be located.
 \begin{remark}
   We recall some notation for use with a C-system $\CC$.
 
+  We may let $\Ob$ denote the set $\Ob(\CC)$ of objects of $\CC$ when there is no danger of confusion.
+
   As in \cite[Def.~2.1 and Prop.~2.4]{Csubsystems}, except for the use of a sans-serif font, we use
-  $$
+  \begin{eq}
     \xymatrix@C=5pc{
       f^*(X) \ar[r]^{\gls q(f,X)} \ar[d]_{\p_{f^*(X)}}  & X \ar[d]^{\gls p_X} \\
       Y \ar[r]_f & \gls{ft}(X)
     }
-  $$
+  \end{eq}%
   as notation for the parts of the pull-back square that is part of the
-  structure of a C-system.
+  structure of a C-system; here $l(X) > 0$.
+  Further, if $s : \ft(X) \sr X$ is a section of $\p_X$, then $f^*(X)$ denotes
+  the unique section of $\p_{f^*(X)}$ such that $f^*(X) \circ \q(f,X) = f \circ
+  s$, as in the following diagram.
+  \begin{eq}
+    \xymatrix@C=5pc{
+      f^*(X) \ar[r]^{\gls q(f,X)} \ar@<3pt>[d]^{\p_{f^*(X)}}  & X \ar@<3pt>[d]^{\gls p_X} \\
+      Y \ar[r]_f \ar@<4pt>[u]^{f^*(s)} & \gls{ft}(X) \ar@<4pt>[u]^s
+    }
+  \end{eq}%
 
   As in \cite[Def.~2.3 and Prop.~2.4]{Csubsystems}, for a map $g : Y \sr X$
   such that $g \circ p_X = f$, one may regard
@@ -407,12 +418,12 @@ will allow the files to be located.
 
   In the case where one takes $Y=X$, $f=p_X$, and $g = 1_X$, we let $\gls{delta}(X)$ denote
   the diagonal morphism $\delta(X) := \s_{\id_X} : X\sr \p_X^*(X)$.
-  $$
+  \begin{eq}
     \xymatrix@C=5pc{
-      p_X^*(X) \ar[r]^{\q(p_X,X)} \ar@<-3pt>[d]_{\p_{p_X^*(X)}} & X \ar[d]^{\p_X} \\
-      X \ar[ru]_{1_X} \ar[r]_{p_X} \ar@<-4pt>[u]_{\delta(X)} & \ft(X)
+      \p_X^*(X) \ar[r]^{\q(\p_X,X)} \ar@<-3pt>[d]_{\p_{\p_X^*(X)}} & X \ar[d]^{\p_X} \\
+      X \ar[ru]_{1_X} \ar[r]_{\p_X} \ar@<-4pt>[u]_{\delta(X)} & \ft(X)
     }
-  $$
+  \end{eq}
 
   We also recall the notations ${\gls{Ob}}_n(\Gamma)$ and
   $\gls{Obwt}_n(\Gamma)$ from \cite[\S 3]{fromunivwithPiI}, as well as the
@@ -422,13 +433,17 @@ will allow the files to be located.
   objects $\Delta$ of $\CC$ such that $l(\Delta)-n = \Gamma$ and
   $\ft^n(\Delta) = \Gamma$.
 
-  The set $\Obwt_n(\Gamma)$ is the set of morphisms of the form $o :
+  For $n>0$, the set $\Obwt_n(\Gamma)$ is the set of morphisms of the form $o :
   \ft(\Delta) \sr \Delta$ for some $\Delta \in \Ob_n(\Gamma)$ that are sections
-  of the corresponding canonical projection, i.e., where $o \circ p_\Delta = \id$
-  is an identity morphism; in that case $\partial(o)$ denotes $\Delta$.
+  of the corresponding canonical projection, i.e., where $o \circ p_\Delta = \id$;
+  in that case $\partial(o)$ denotes $\Delta$.  We $\Obwt(\Gamma)$ denote the
+  union of these sets.
+
+  Observe that $s_g$ above is an element of $\Obwt_1(Y)$, and $\delta(X)$ above
+  is an element of $\Obwt_1(X)$.
 \end{remark}
 
-\subsection{The J-structure on a C-system}
+\subsection{The notion of J-structure on a C-system}
 %
 
 
@@ -442,7 +457,7 @@ $\Id$, and $\J$ is a J2-structure over $\refl$.
 \llabel{2015.03.27.def1}
 A J0-structure on a C-system $\CC$ is a family of functions 
 %
-$$\gls{Id}_{\Gamma}:\{(o_1,o_2)\,|\,o_1, o_2 \in \wt{Ob}_1(\Gamma), \partial(o_1)=\partial(o_2)\}\sr Ob_1(\Gamma),$$
+$$\gls{Id}_{\Gamma}:\{(o_1,o_2)\,|\,o_1, o_2 \in \Obwt_1(\Gamma), \partial(o_1)=\partial(o_2)\}\sr Ob_1(\Gamma),$$
 %
 given for all $\Gamma\in Ob$, that is natural in $\Gamma$, i.e., such that for any
 $f:\Gamma'\sr \Gamma$, one has the identity
@@ -456,13 +471,13 @@ When there is no risk of ambiguity, we will write $\Id(o_1,o_2)$ for $\Id_{\Gamm
 Let $\Id$ be a J0-structure on $\CC$. A J1-structure over $\Id$ is a family of
 functions
 %
-$$\gls{refl}:\wt{Ob}_1(\Gamma)\sr \wt{Ob}_1(\Gamma)$$
+$$\gls{refl}:\Obwt_1(\Gamma)\sr \Obwt_1(\Gamma)$$
 %
 given for all $\Gamma\in Ob$ such that:
 %
 \begin{enumerate}
 \item $\refl$ is natural in $\Gamma$,
-\item for any $\Gamma$ and $o\in \wt{Ob}_1(\Gamma)$ one has 
+\item for any $\Gamma$ and $o\in \Obwt_1(\Gamma)$ one has 
 %
 \begin{eq}
 \llabel{2015.03.27.eq8}
@@ -479,7 +494,7 @@ to describe two constructions first.
 \llabel{2015.03.27.prob1} Given a J0-structure $\Id$, to construct a family of
 functions
 %
-$$\gls{Idx}:Ob_1(\Gamma)\sr Ob_3(\Gamma)$$
+$$\gls{Idx}:Ob_1(\Gamma)\sr Ob_3(\Gamma),$$
 %
 such that for $f:\Gamma'\sr \Gamma$ and $T\in Ob_1(\Gamma)$ one has
 $f^*(\Idx(T))=\Idx(f^*(T))$.
@@ -497,8 +512,6 @@ $$
 \end{xy}
 $$
 
-Because of the first equation we have $\delta(T)\in \wt{Ob}(\p_T^*(T))$.
-
 We define:
 %
 \begin{eq}
@@ -508,11 +521,11 @@ We define:
 %
 We have
 %
-$$\p_{\p_T^*(T)}^*(\delta(T))\in \wt{Ob}(\p_{\p_T^*(T)}^*(\p_T^*(T)))$$
+$$\p_{\p_T^*(T)}^*(\delta(T))\in \Obwt(\p_{\p_T^*(T)}^*(\p_T^*(T)))$$
 %
 and
 %
-$$\delta(\p_T^*(T))\in \wt{Ob}(\p_{\p_T^*(T)}^*(\p_T^*(T))),$$
+$$\delta(\p_T^*(T))\in \Obwt(\p_{\p_T^*(T)}^*(\p_T^*(T))),$$
 %
 and since $\ft(\p_{\p_T^*(T)}^*(\p_T^*(T)))=\p_T^*(T)$ we see that $\Idx(T)$ is well
 defined. The fact that $\Idx(T)\in Ob_3(\Gamma)$ follows now from the fact that
@@ -540,7 +553,7 @@ such that for any $f:\Gamma'\sr \Gamma$ one has $f^*(\rf_T)=\rf_{f^*(T)}$.
 \end{align*}
 %
 The last equality follows from the fact that $f^*(\delta(T))=\s_f$ and that for
-any $s\in\wt{Ob}$, $\s_s=s$.  This shows that we have a canonical square of the
+any $s\in\Obwt$, $\s_s=s$.  This shows that we have a canonical square of the
 form
 %
 \begin{eq}
@@ -566,8 +579,8 @@ straightforward.
 \llabel{2015.03.27.def3} Let $\Id$ and $\refl$ be a J0-structure and a
 J1-structure over it. A J2-structure over $(\Id,\refl)$ is data of the form: for
 all $\Gamma\in Ob$, for all $T\in Ob_1(\Gamma)$, for all $P\in Ob_1(\Idx(T))$,
-for all $s0\in \wt{Ob}(\rf_T^*(P))$, an element $\gls J(\Gamma,T,P,s0)$ of
-$\wt{Ob}(P)$ such that:
+for all $s0\in \Obwt(\rf_T^*(P))$, an element $\gls J(\Gamma,T,P,s0)$ of
+$\Obwt(P)$ such that:
 %
 \begin{enumerate}
 \item $\J$ satisfies the $\iota$-rule. For $\Gamma, T, P, s0$ as above one has
@@ -587,11 +600,11 @@ naturality in $f$ of $\Idx$ and $rf$.
 %%%%% this remark has problems with notations, and it doesn't seem important [drg]
 %% \begin{remark}
 %% \llabel{2015.05.12.rem1}\rm A J0-structure is called degenerate or extensional
-%% if for all $T\in Ob_{\ge 1}(\CC)$ and $o,o'\in \wt{Ob}(T)$ one has\footnote{The
+%% if for all $T\in Ob_{\ge 1}(\CC)$ and $o,o'\in \Obwt(T)$ one has\footnote{The
 %%   following is the classical way of saying that there is an equivalence between
-%%   the types $\wt{Ob}(\Idx(o,o'))$ and $(o=o')$.}
+%%   the types $\Obwt(\Idx(o,o'))$ and $(o=o')$.}
 %% %
-%% $$\wt{Ob}(\Idx(o,o'))=\left\{
+%% $$\Obwt(\Idx(o,o'))=\left\{
 %% \begin{array}{ll}
 %% \emptyset&\mbox{\rm if $o\ne o'$}\\ pt&\mbox{\rm if $o=o'$}
 %% \end{array}
@@ -617,8 +630,8 @@ that we consider here. This more complex structure can be seen as a family of
 structures $eJ_n$, where $eJ_0=J2$, and where $eJ_n$ over $(\Id,\refl)$ is a
 collection of data of the form: for all $\Gamma\in Ob$, for all $T\in
 Ob_1(\Gamma)$, for all $\Delta\in Ob_{n}(\Idx(T))$, for all $P\in
-Ob_1(\Delta)$, for all $s0\in \wt{Ob}(\rf_T^*(P))$, an element
-$eJ_n(\Gamma,T,\Delta,s0)$ in $\wt{Ob}(P)$ such that $eJ_n$ satisfies the
+Ob_1(\Delta)$, for all $s0\in \Obwt(\rf_T^*(P))$, an element
+$eJ_n(\Gamma,T,\Delta,s0)$ in $\Obwt(P)$ such that $eJ_n$ satisfies the
 obvious analogue of $\iota$-rule and such that it is natural in $\Gamma$. See
 also Remark \ref{2015.05.24.rem2}.
 \end{remark}
@@ -1669,7 +1682,7 @@ For each $\Gamma\in Ob(\toCC({\C},p))$ we have natural bijections
 \end{eq}%
 %
 \begin{eq}
-\llabel{2015.03.27.eq7a} \wt{u}_1:\wt{Ob}_1(\Gamma)\sr Hom(int(\Gamma),\wt{\U}),
+\llabel{2015.03.27.eq7a} \wt{u}_1:\Obwt_1(\Gamma)\sr Hom(int(\Gamma),\wt{\U}),
 \end{eq}%
 %
 where $u_1^{-1}(F)=(\Gamma,F)$ and where
@@ -1684,7 +1697,7 @@ $$\wt{u}_1(s)\circ p=s\circ \Q(u_1(\partial(s)))\circ p=s\circ
 \p_{\partial(s)}\circ u_1(\partial(s))=u_1(\partial(s)),$$
 %
 i.e., with respect to these bijections the function
-$\partial:\wt{Ob}_1(\Gamma)\sr Ob_1(\Gamma)$ is given by composition with
+$\partial:\Obwt_1(\Gamma)\sr Ob_1(\Gamma)$ is given by composition with
 $p:\wt{\U}\sr \U$.
 %
 \begin{problem}
@@ -1697,7 +1710,7 @@ $\toCC({\C},p)$.
 \llabel{2015.03.27.constr3} Since the canonical squares are pullback squares
 bijections $u_1$ and $\wt{u}_1$ gives us a bijection
 %
-$$\wt{uu}:\{o,o'\in\wt{Ob}_1(\Gamma)\,|\,\partial(o)=\partial(o')\} \sr
+$$\wt{uu}:\{o,o'\in\Obwt_1(\Gamma)\,|\,\partial(o)=\partial(o')\} \sr
 Hom(int(\Gamma),(\wt{\U};p)),$$
 %
 where $\wt{uu}(o,o')=\wt{u}_1(o)*\wt{u}_1(o')$. We set:
@@ -1772,7 +1785,7 @@ To construct a J1-structure $\refl(Eq,\Omega)$ over $\Id_{Eq}$ on $\toCC({\C},p)
 \llabel{2015.03.27.constr4} Due to the natural bijections
 (\ref{2015.03.27.eq7a}) the morphism $\Omega$ defines maps
 %
-$$\refl:\wt{Ob}_1(\Gamma)\sr \wt{Ob}_1(\Gamma)$$
+$$\refl:\Obwt_1(\Gamma)\sr \Obwt_1(\Gamma)$$
 %
 by the formula
 %
@@ -1789,7 +1802,7 @@ The following technical lemma is only needed in the proof of Lemma
 \ref{2015.03.31.l2}.
 %
 \begin{lemma}
-\llabel{2015.04.02.l3} For $s\in \wt{Ob}_1(\Gamma)$ one has:
+\llabel{2015.04.02.l3} For $s\in \Obwt_1(\Gamma)$ one has:
 %
 $$\refl_{\Omega}(s)\circ \Q(s\circ \Q(F)\circ \Omega\circ p)=s\circ \Q(F)\circ
 \Omega,$$
@@ -1972,7 +1985,7 @@ C$. To construct, for all objects $\Gamma\in Ob(\toCC({\C},p))$ two maps
 %
 \begin{align*}
   \psi & :\D_{pE\wt{\U}}(int(\Gamma),\U)\sr Ob(\toCC({\C},p)) \\
-  \wt{\psi} & :\D_{pE\wt{\U}}(int(\Gamma),\wt{\U})\sr \wt{Ob}(\toCC({\C},p))
+  \wt{\psi} & :\D_{pE\wt{\U}}(int(\Gamma),\wt{\U})\sr \Obwt(\toCC({\C},p))
 \end{align*}
 %
 such that
@@ -1982,7 +1995,7 @@ such that
 \partial(\wt{\psi}(d))=\psi(\D_{pE\wt{\U}}(int(\Gamma),p)(d))
 \end{eq}%
 %
-%$\psi(F,\wt{G})\in \wt{Ob}_1(\Idx(\Gamma,F))$.
+%$\psi(F,\wt{G})\in \Obwt_1(\Idx(\Gamma,F))$.
 \end{problem}
 %
 \begin{construction}{2015.05.04.eq3}
@@ -1992,7 +2005,7 @@ $F:int(\Gamma)\sr \U$ and $\wt{G}:(int(\Gamma);F)_{E}\sr \wt{\U}$. By Lemma
 \ref{2015.03.27.l1} we have
 $(int(\Gamma),F)_{E}=int(\Idx(\Gamma,F))$. Therefore
 $\wt{u}_{1,\Idx(\Gamma,F)}^{-1}(\wt{G})$ is defined and belongs to
-$\wt{Ob}_1(\Idx(\Gamma,F))$. We set
+$\Obwt_1(\Idx(\Gamma,F))$. We set
 %
 $$\wt{\psi}(F,\wt{G})=\wt{u}_{1,\Idx(\Gamma,F)}^{-1}(\wt{G})$$
 %
@@ -2009,7 +2022,7 @@ The proof of the relation (\ref{2015.05.04.eq3}) is straightforward.
 \llabel{2015.04.04.prob1} Let $(Eq,\Omega,Jp)$ be a J-structure on a universe
 $p$. To construct for all $\Gamma\in Ob=Ob(\toCC({\C},p))$, for all $T\in
 Ob_1(\Gamma)$, for all $P\in Ob_1(\Idx(T))$, for all $s0\in
-\wt{Ob}(\rf_T^*(P))$, an element $\J(\Gamma,T,P,s0)$ of $\wt{Ob}(P)$.
+\Obwt(\rf_T^*(P))$, an element $\J(\Gamma,T,P,s0)$ of $\Obwt(P)$.
 \end{problem} 
 %
 \begin{construction}{2015.04.04.prob1}\rm
@@ -2070,7 +2083,7 @@ $\wt{u}_{1,\Idx(T)}(J))$ for some $J$ such that $\partial(J)=P$.
 \begin{remark}\rm
 \llabel{2015.05.08.rem1} Note that the defining property of
 $\J=\J_{Jp}(\Gamma,T,P,s0)$ is that it is the unique element of
-$\wt{Ob}(\toCC({\C},p))$ that satisfies the equation
+$\Obwt(\toCC({\C},p))$ that satisfies the equation
 %
 $$\etaunshriek_{pE\wt{\U}}(u_{1,\Gamma}(T),\wt{u}_{1,\Idx(T)}(\J))=\phi(\Gamma,T,P,s0)\circ
 Jp,$$
@@ -2180,7 +2193,7 @@ is an abbreviation for
 %
 $$f^*(\J(\Gamma,T,P,s0),4)=\J(\Gamma',f^*(T),f^*(P,4),f^*(s0,2))$$
 %
-which in its turn translates into the equation in $\wt{Ob}_1(\Idx(f^*(T)))$ of
+which in its turn translates into the equation in $\Obwt_1(\Idx(f^*(T)))$ of
 the form
 %
 $$\q(f,\Idx(T),3)^*(\J,1)=\J'$$
@@ -3140,7 +3153,7 @@ commutes.
 \begin{enumerate}
 \item Let $\Id$, $\Id'$ are J0-structures on $\CC$ and $\CC'$ respectively.  Then
   $H$ is called a homomorphism of C-systems with J0-structures $(\CC,\Id)\sr
-  (\CC,\Id')$ if for each $\Gamma\in Ob(\CC)$ and $o,o'\in\wt{Ob}_1(\Gamma)$ such
+  (\CC,\Id')$ if for each $\Gamma\in Ob(\CC)$ and $o,o'\in\Obwt_1(\Gamma)$ such
   that $\partial(o)=\partial(o')$, one has
 %
 $$H(\Id_{\Gamma}(o,o'))=\Id'_{H(\Gamma)}(H(o),H(o'))$$
@@ -3155,7 +3168,7 @@ $$H(\Id_{\Gamma}(o,o'))=\Id'_{H(\Gamma)}(H(o),H(o'))$$
 %
 $$(\CC,\Id,\refl)\sr (\CC',\Id',\refl')$$
 %
-if for all $\Gamma\in Ob(\CC)$ and $o\in \wt{Ob}_1(\Gamma)$ one has
+if for all $\Gamma\in Ob(\CC)$ and $o\in \Obwt_1(\Gamma)$ one has
 %
 $$H(\refl(o))=\refl'(H(o))$$
 %
@@ -3165,11 +3178,11 @@ $$H(\refl(o))=\refl'(H(o))$$
 For a C-system $\CC$ with a J0-structure $\Id$ and a J1-structure $\refl$ over
 $\Id$ define $Jdom(\CC,\Id,\refl)$ as the set of quadruples $(\Gamma,T,P,s0)$,
 where $\Gamma\in Ob$, $T\in Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and $s0\in
-\wt{Ob}(\rf_T^*(P))$. Equivalently we can say that $Jdom(\CC,\Id,\refl)$ is the
-subset in $Ob\times Ob\times Ob\times \wt{Ob}$ that consists of quadruples
+\Obwt(\rf_T^*(P))$. Equivalently we can say that $Jdom(\CC,\Id,\refl)$ is the
+subset in $Ob\times Ob\times Ob\times \Obwt$ that consists of quadruples
 $(\Gamma,T,P,s0)$, where $\ft(T)=\Gamma$, $\ft(P)=\Idx(T)$ and
 $\partial(s0)=\rf_T^*(P)$. Then a J2-structure is defined by a map $Jdom\sr
-\wt{Ob}$ with some properties.
+\Obwt$ with some properties.
 %
 \begin{lemma}
 \llabel{2015.04.06.l3} Let $H:\CC\sr \CC'$ be a homomorphism of C-systems. Let
@@ -3223,7 +3236,7 @@ is called a homomorphism of C-systems with J-structures
 $$(\CC,\Id,\refl,\J)\sr (\CC',\Id',\refl',\J')$$
 %
 if for all $\Gamma\in Ob(\CC)$, $T\in Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and
-$s0\in \wt{Ob}(\rf_T^*(P))$ one has
+$s0\in \Obwt(\rf_T^*(P))$ one has
 %
 $$H(\J(\Gamma,T,P,s0))=\J'(H(\Gamma),H(T),H(P),H(s0)),$$
 %
@@ -3294,7 +3307,7 @@ $\Id_{Eq'}$.
 %
 \begin{myproof}
 Let $\Id=\Id_{Eq}$ and $\Id'=\Id_{Eq'}$. We need to check that for all
-$\Gamma\in Ob(\toCC({\C},p))$ and $o,o'\in \wt{Ob}_1(\Gamma)$ such that
+$\Gamma\in Ob(\toCC({\C},p))$ and $o,o'\in \Obwt_1(\Gamma)$ such that
 $\partial(o)=\partial(o')$ one has
 %
 $$H(\Id(o,o'))=\Id'(H(o),H(o'))$$
@@ -3350,7 +3363,7 @@ condition is
 $$\Phi(\Omega)\circ\wt{\phi}=\wt{\phi}\circ\Omega'$$
 %
 We need to check that for $\Gamma\in Ob(\toCC({\C},p))$ and $s\in
-\wt{Ob}_1(\Gamma)$ one has
+\Obwt_1(\Gamma)$ one has
 %
 $$H(\refl(s))=\refl'(H(s))$$
 %
@@ -3408,7 +3421,7 @@ of $\psi_{\Gamma}$.
 \llabel{2015.05.06.l3} Let $Eq, Eq'$ be J0-structures on $({\C},p)$ and
 $({\C}',p')$ and $\bf\Phi$ be a universe category functor compatible
 with $Eq$ and $Eq'$. The for all $\Gamma\in Ob(\toCC({\C},p))$, $T\in
-Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and $o\in \wt{Ob}(P)$ one has:
+Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and $o\in \Obwt(P)$ one has:
 %
 \begin{enumerate}
 \item $(u'_{1,H(\Gamma)}(H(T)), u_{1,IdxT'(H(T))}'(H(P)))$ is a well defined
@@ -3672,7 +3685,7 @@ Let $\Id=\Id_{\Omega}$, $\Id'=\Id_{\Omega'}$, $\refl=\refl_{\Omega}$,
 $\refl'=\refl_{\Omega'}$, $\J=\J_{Jp}$ and $\J'=\J_{Jp'}$.
 
 We need to verify that for all $\Gamma\in Ob(\toCC({\C},p))$, $T\in
-Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and $s0\in \wt{Ob}(rf^*_T(P))$ one has
+Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and $s0\in \Obwt(rf^*_T(P))$ one has
 %
 $$H(\J(\Gamma,T,P,s0))=\J'(H(\Gamma),H(T),H(P),H(s0))$$
 %
