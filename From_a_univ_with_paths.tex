@@ -502,38 +502,36 @@ $f^*(\Idx(T))=\Idx(f^*(T))$.
 %
 \begin{construction}{2015.03.27.prob1}\llabel{2015.03.27.constr1}\rm
 The objects and some of the morphisms involved
-in this construction can be seen in the following diagram.
+in this construction can be seen in the following diagram, in which the
+downward maps are canonical projections.
 %
-$$
-\begin{xy}
-          \xymatrix@C=5pc{ \p_{\p_T^*(T)}^*(\p_T^*(T)) \ar[r] \ar[d]& \p_T^*(T)
-            \ar[r]^{\q(\p_T,T)} \ar[d]_{\p_{\p_T^*(T)}} & T \ar[d]^{\p_T}\\ \p_T^*(T)
-            \ar[r]^{\p_{\p_T^*(T)}} & T \ar[r]^{\p_T} & \Gamma }
-\end{xy}
-$$
+\begin{eq}
+  \begin{xy}
+    \xymatrix@C=5pc{
+      \p_{\p_T^*(T)}^*(\p_T^*(T)) \ar[r] \ar[d]                             &
+      \p_T^*(T) \ar[r]^{\q(\p_T,T)} \ar[d]_{\p_{\p_T^*(T)}}                     &
+      T \ar[d]^{\p_T}                                                      \\
+      \p_T^*(T) \ar[r]^{\p_{\p_T^*(T)}}
+                \ar@<-6pt>[u]_{\delta(\p_T^*(T))} 
+                \ar@<6pt> [u]^{\p_{\p_T^*(T)}^*(\delta(T))}
+                                                                         &
+      T \ar[r]^{\p_T} \ar@<-6pt>[u]_{\delta(T)}                             &
+      \Gamma
+    }
+  \end{xy}
+\end{eq}%
 
-We define:
-%
+Since $\p_{\p_T^*(T)}^*(\delta(T))$ and $\delta(\p_T^*(T))$ are sections of the
+same canonical projection, we may make the following definition.
 \begin{eq}
 \llabel{2015.04.06.eq1}
 \Idx(T):=\Id_{\\p_T^*(T)}((\p_{\p_T^*(T)}^*(\delta(T))), \delta(\p_T^*(T)))
 \end{eq}%
-%
-We have
-%
-$$\p_{\p_T^*(T)}^*(\delta(T))\in \Obwt(\p_{\p_T^*(T)}^*(\p_T^*(T)))$$
-%
-and
-%
-$$\delta(\p_T^*(T))\in \Obwt(\p_{\p_T^*(T)}^*(\p_T^*(T))),$$
-%
-and since $\ft(\p_{\p_T^*(T)}^*(\p_T^*(T)))=\p_T^*(T)$ we see that $\Idx(T)$ is well
-defined. The fact that $\Idx(T)\in Ob_3(\Gamma)$ follows now from the fact that
+The fact that $\Idx(T)\in Ob_3(\Gamma)$ follows now from the fact that
 $\ft^2(\p_T^*(T))=\ft(T)=\Gamma$.
 The proof that $\Idx$ is natural in $f:\Gamma'\sr \Gamma$ is straightforward.
 \end{construction}
-%
-%
+
 \begin{problem}
 \llabel{2015.03.27.prob2} Given a J0-structure $\Id$ and a J1-structure $\refl$
 over it, to construct for all $\Gamma\in Ob$ and $T\in Ob_1(\Gamma)$ a morphism
