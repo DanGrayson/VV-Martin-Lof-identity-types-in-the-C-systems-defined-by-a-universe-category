@@ -474,7 +474,7 @@ $\Id$, and $\J$ is a J2-structure over $\refl$.
 
 \begin{definition}
 \llabel{2015.03.27.def1}
-A J0-structure on a C-system $\CC$ is a family of functions 
+A {\em J0-structure} on a C-system $\CC$ is a family of functions 
 %
 $$\gls{Id}_{\Gamma}:\{(o_1,o_2)\,|\,o_1, o_2 \in \Obwt_1(\Gamma), \partial(o_1)=\partial(o_2)\}\sr Ob_1(\Gamma),$$
 %
@@ -490,7 +490,7 @@ When there is no risk of ambiguity, we will write $\Id(o_1,o_2)$ for $\Id_{\Gamm
 
 \begin{definition}
 \llabel{2015.03.27.def2}
-Let $\Id$ be a J0-structure on $\CC$. A J1-structure over $\Id$ is a family of
+Let $\Id$ be a J0-structure on $\CC$. A {\em J1-structure} over $\Id$ is a family of
 functions
 %
 $$\gls{refl}:\Obwt_1(\Gamma)\sr \Obwt_1(\Gamma)$$
@@ -604,7 +604,7 @@ omitted.
 %
 \begin{definition}
 \llabel{2015.03.27.def3} Let $\Id$ and $\refl$ be a J0-structure and a
-J1-structure over it. A J2-structure over $(\Id,\refl)$ is data of the form: for
+J1-structure over it. A {\em J2-structure} over $(\Id,\refl)$ is data of the form: for
 all $\Gamma\in Ob$, for all $T\in Ob_1(\Gamma)$, for all $P\in Ob_1(\Idx(T))$,
 for all $s0\in \Obwt(\rf_T^*(P))$, an element $\gls J(\Gamma,T,P,s0)$ of
 $\Obwt(P)$ such that:
@@ -620,7 +620,7 @@ $$\rf_T^*(\J(\Gamma,T,P,s0))=s0$$
 $$f^*(\J(\Gamma,T,P,s0))=\J(\Gamma',f^*(T),f^*(P),f^*(s0)),$$
 %
 where the right hand side of the equation is well-defined because of the
-naturality in $f$ of $\Idx$ and $rf$.
+naturality in $f$ of $\Idx$ and $\rf^*$.
 \end{enumerate}
 \end{definition}
 %
@@ -650,10 +650,13 @@ naturality in $f$ of $\Idx$ and $rf$.
 %
 \begin{remark}\rm
 \llabel{2015.05.24.rem1} When one studies J-structures on C-systems that have
-no $(\Pi,\lambda)$-structures it is important, as emphasized for example in
+no $(\Pi,\lambda)$-structures it is important, as emphasized, for example, in
 \cite{vandenBergGarner2011} and perhaps in earlier work by Garner,
 to consider a more complex structure than the one
-that we consider here. This more complex structure can be seen as a family of
+that we consider here\editorfootnote{Dear referee, this is strange, since
+  nowhere in this paper is it assumed that the C-systems under consideration
+  have $(\Pi,\lambda)$-structures.}.
+This more complex structure can be seen as a family of
 structures $eJ_n$, where $eJ_0=J2$, and where $eJ_n$ over $(\Id,\refl)$ is a
 collection of data of the form: for all $\Gamma\in Ob$, for all $T\in
 Ob_1(\Gamma)$, for all $\Delta\in Ob_{n}(\Idx(T))$, for all $P\in
@@ -671,11 +674,11 @@ also Remark \ref{2015.05.24.rem2}.
 
 
 
-\subsection{The J-structure on a universe in a category}
+\subsection{The notion of J-structure on a universe in a category}
 %
 Let $\C$ be a category\footnote{In the formalization, the category will not be assumed to be ``univalent''.},
 and let $p:\wt{\U}\sr \U$ be a morphism in
-$\C$. Recall that a universe structure on $p$ is a choice of pullback
+$\C$. Recall that a {\em universe structure} on $p$ is a choice of pullback
 squares of the form
 %
 $$
@@ -706,7 +709,7 @@ write $(X;F)_{p}$ and $f*_p g$.
 \begin{remark}\rm
 \llabel{2015.03.29.rm1} Note that we made no assumption about $\Q(\id_\U)$ being
 equal to $\id_{\wt{\U}}$. In fact, since we want the results of this paper to be
-constructive, we are not allowed to make such an assumption since 
+constructive, we are not allowed to make such an assumption, since 
 whether a morphism is an identity morphism need not be
 decidable, and therefore we can not normalize our construction by doing
 something different when a morphism is not the identity.  The importance
@@ -917,7 +920,7 @@ $Z=\U$, $b=f$ and $a=\id_{\I_p(V)}$. The last square is a particular case of
 \end{myproof}
 %
 \begin{definition}
-\llabel{2015.03.27.def4} A J0-structure on a universe $p$ in a category
+\llabel{2015.03.27.def4} A {\em J0-structure} on a universe $p$ in a category
 $\C$ is a morphism $Eq:(\wt{\U};p)\sr \U$.
 \end{definition}
 %
@@ -986,7 +989,7 @@ F)_{E}$ to $(X;F)_{E}$.
 %
 \begin{definition}
 \llabel{2015.03.27.def5} Let $p$ be a universe in $\C$ and $Eq$ be a
-J0-structure on $p$. A J1-structure on $p$ over $Eq$ is a morphism
+J0-structure on $p$. A {\em J1-structure} on $p$ over $Eq$ is a morphism
 $\Omega:\wt{\U}\sr \wt{\U}$ such that the square
 %
 \begin{eq}\llabel{2015.03.27.sq1}
@@ -1035,8 +1038,8 @@ $$\I_{pE\wt{\U}}(\wt{\U}) \stackrel{coJ}{\lr} (\I_{pE\wt{\U}}(\U), \I^{\omega}(\
 $$
 %
 \begin{definition}
-\llabel{2015.03.27.def6} A J2-structure on $p$ relative to a J0-structure $Eq$
-and J1-structure $\Omega$, is a morphism
+\llabel{2015.03.27.def6} A {\em J2-structure} on $p$, relative to a J0-structure $Eq$
+and a J1-structure $\Omega$, is a morphism
 %
 $$ Jp:( \I_{pE\wt{\U}}(\U), \I^{\omega}(\U))\times_{\I_p(\U)} (\I_p(\wt{\U}), \I_p(p))\sr
 \I_{pE\wt{\U}}(\wt{\U}) $$
@@ -2326,7 +2329,7 @@ and $\refl_{\Omega}$.
 
 
 
-\section{Functoriality of the J-structures}
+\section{Functoriality of J-structures}
 
 
 
@@ -3712,7 +3715,7 @@ Let $\Id=\Id_{\Omega}$, $\Id'=\Id_{\Omega'}$, $\refl=\refl_{\Omega}$,
 $\refl'=\refl_{\Omega'}$, $\J=\J_{Jp}$ and $\J'=\J_{Jp'}$.
 
 We need to verify that for all $\Gamma\in Ob(\toCC({\C},p))$, $T\in
-Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and $s0\in \Obwt(rf^*_T(P))$ one has
+Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and $s0\in \Obwt(\rf^*_T(P))$ one has
 %
 $$H(\J(\Gamma,T,P,s0))=\J'(H(\Gamma),H(T),H(P),H(s0))$$
 %
