@@ -678,7 +678,7 @@ also Remark \ref{2015.05.24.rem2}.
 %
 Let $\C$ be a category\footnote{In the formalization, the category will not be assumed to be ``univalent''.},
 and let $p:\wt{\U}\sr \U$ be a morphism in
-$\C$. Recall that a {\em universe structure} on $p$ is a choice of pullback
+$\C$. Recall \cite{Cfromauniverse} that a {\em universe structure} on $p$ is a choice of pullback
 squares of the form
 %
 $$
@@ -692,7 +692,9 @@ for all $X$ and all morphisms $F:X\sr \U$. A universe in $\C$ is a
 morphism with a universe structure on it and a universe category is a category
 with a universe and a choice of a final object $pt$.
 
-We may use the notation $\gls{multisemicolon}$ for $(\dots(X;F_1);\dots;F_n)$.
+We may use the notation $\gls{multisemicolon}$ for $(\dots(X;F_1);\dots;F_n)$, where,
+for each $i$,
+$$F_{i+1} : (\dots(X;F_1);\dots;F_i) \to \U.$$
 
 For $f:W\sr X$ and $g:W\sr \wt{\U}$ satisfying $f\circ F = g \circ p$ we will denote by $\gls{starfg} : W \sr (X;F)$ the unique morphism
 such that
@@ -929,8 +931,7 @@ Let $Eq$ be a J0-structure on $p$. Consider the object\editorfootnote{As
   mentioned above, $(\wt{\U};p,Eq)$ is notation for $((\wt{\U};p);Eq)$.}
 $$E\wt{\U}:=(\wt{\U};p,Eq)$$
 of $\C$ together with the composite
-$$E\wt{\U}\stackrel{\p_{(\wt{\U};p),Eq}}{\lr}(\wt{\U};p)\stackrel{\p_{\wt{\U},p}}{\lr}
-\wt{\U}\stackrel{p}{\sr} \U$$
+$$E\wt{\U} \xrightarrow{\ \p_{(\wt{\U};p),Eq}\ } (\wt{\U};p) \xrightarrow{\p_{\wt{\U},p}} \wt{\U}\xrightarrow{p} \U$$
 of projections as an object over $\U$, and let $pE\wt{\U}$ denote it.
 
 \begin{problem}
