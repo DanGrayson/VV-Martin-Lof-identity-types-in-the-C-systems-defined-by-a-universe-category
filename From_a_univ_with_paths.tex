@@ -142,7 +142,7 @@ Princeton NJ, USA. e-mail: vladimir@ias.edu}$^,$\footnote{Work on this paper was
 %
 %
 \begin{abstract}
-This paper continues the series of papers that develop a new approach to syntax
+This paper continues a series of papers that develop a new approach to syntax
 and semantics of dependent type theories. Here we study the interpretation of
 the rules of the identity types in the intensional Martin-L\"of type theories on
 the C-systems that arise from universe categories.  In the first part of the
@@ -269,10 +269,10 @@ $R$-modules) and $\Id^s\,T\,x\,y$ is the ``named variables'' notation for
 $\Id^s_{{1,\dots,l+2}}(T,l+1,l+2)$.
 
 We do not continue this explanation of how to construct J-structures on
-syntactic C-systems. This will be done in a separate paper. Let us remark
-however that constructing J-structures on syntactic C-systems is relatively
-easy and that the difficult questions about J-structures on such C-systems are
-the ones related to the initially properties of the resulting objects.
+syntactic C-systems. This will be done in a separate paper. Let us remark,
+however, that constructing J-structures on syntactic C-systems is relatively
+easy, and that the difficult questions about J-structures on such C-systems are
+those related to the initially properties of the resulting objects.
 
 While constructing J-structures on the syntactic C-systems relatively
 straightforward, constructing non-degenerate\footnote{See Remark
@@ -292,7 +292,7 @@ generalized in the Ph.D.{} thesis of Michael Warren
 Further important advances were achieved in the work of Richard Garner and
 Benno van den Berg \cite{BergandGarner}.
 
-\comment{However the original expectation that it should be possible to
+\comment{However, the original expectation that it should be possible to
   construct C-systems or categories with families with J-structures
   corresponding to all Quillen closed model categories with sufficiently good
   properties have not been realized. In particular none of the previous methods
@@ -301,7 +301,7 @@ Benno van den Berg \cite{BergandGarner}.
   appropriately defined sense, to the standard closed model structure on this
   category.
 
-This goal is still not fully realized in this paper since to achieve it one has
+This goal is still not fully realized in this paper, since to achieve it one has
 to construct a Kan fibration with certain properties and discussing such a
 construction is outside of the scope of this paper. }
 
@@ -696,7 +696,7 @@ We may use the notation $\gls{multisemicolon}$ for $(\dots(X;F_1);\dots;F_n)$, w
 for each $i$,
 $$F_{i+1} : (\dots(X;F_1);\dots;F_i) \to \U.$$
 
-For $f:W\sr X$ and $g:W\sr \wt{\U}$ satisfying $f\circ F = g \circ p$ we will denote by $\gls{starfg} : W \sr (X;F)$ the unique morphism
+For $f:W\sr X$ and $g:W\sr \wt{\U}$ satisfying $f\circ F = g \circ p$ we will let $\gls{starfg} : W \sr (X;F)$ denote the unique morphism
 such that
 %
 \begin{align}
@@ -939,32 +939,20 @@ of projections as an object over $\U$, and let $pE\wt{\U}$ denote it.
 \end{problem}
 %
 \begin{construction}{2015.05.08.prob1}\rm
-\llabel{2015.05.08.constr1} We have three diagrams with pullback squares of the
-form:
-%
-$$
-\begin{xy}
-          \xymatrix@C=7pc{ (X;F,\Q(F)\circ p, \Q(\Q(F),p)\circ Eq)
-            \ar[r]^-{\Q(\Q(\Q(F),p),Eq)} \ar[d] & (\wt{\U}; p, Eq)
-            \ar[d]^{\p_{(\wt{\U};p),Eq}}\\ (X;F,\Q(F)\circ p) \ar[r]^-{\Q(\Q(F),p)}
-            & (\wt{\U};p) }
-\end{xy}
-$$
-$$
-\begin{xy}
-          \xymatrix@C=7pc{ (X;F,\Q(F)\circ p) \ar[r]^-{\Q(\Q(F),p)} \ar[d] &
-            (\wt{\U},p) \ar[d]^{\p_{\wt{\U},p}}\\ (X,F) \ar[r]^-{\Q(F)} & \wt{\U} }
-\end{xy}
-$$
-$$
-\begin{xy}
-          \xymatrix@C=4pc{ (X;F) \ar[r]^-{\Q(F)} \ar[d]_{\p_{X,F}} & \wt{\U}
-            \ar[d]^{p}\\ X \ar[r]^{F} & \U }
-\end{xy}
-$$
-%
-and we define the canonical square for $F$ relative to $pE\wt{\U}$ to be the
-square obtained by concatenating these three squares vertically.
+\llabel{2015.05.08.constr1} The three squares in the following diagram are pullback squares.
+\begin{eq}
+  \begin{xy}
+    \xymatrix@C=7pc{
+      (X;F,\Q(F)\circ p, \Q(\Q(F),p)\circ Eq) \ar[r]^-{\Q(\Q(\Q(F),p),Eq)} \ar[d] & (\wt{\U}; p, Eq) \ar[d]^{\p_{(\wt{\U};p),Eq}} \\
+      (X;F,\Q(F)\circ p) \ar[r]^-{\Q(\Q(F),p)} \ar[d]                             & (\wt{\U};p) \ar[d]^{\p_{\wt{\U},p}} \\
+      (X;F) \ar[r]^-{\Q(F)} \ar[d]_{\p_{X,F}}                                       & \wt{\U} \ar[d]^{p} \\
+      X \ar[r]^{F}                                                                & \U
+    }
+  \end{xy}
+\end{eq}
+Remarking that the composite of the right-hand vertical maps is $pE\wt{\U}$, we
+define the canonical square for $F$ relative to $pE\wt{\U}$ to be the
+square obtained by concatenating these three squares.
 \end{construction}
 %
 Let us denote the components of the canonical squares for $pE\wt{\U}$ as
@@ -1005,8 +993,8 @@ commutes.
 \end{definition}
 %
 
-The square (\ref{2015.03.27.sq1}) defines a morphism $\wt{\U}\sr E\wt{\U}$ that
-we will denote by $\gls{omega}$.
+The square (\ref{2015.03.27.sq1}) defines a morphism $\wt{\U}\sr E\wt{\U}$, which
+will be denoted by $\gls{omega}$.
 
 To define a J2-structure on a universe we will need to assume that $\C$
 is a locally cartesian closed category.  Recall that a locally cartesian closed
@@ -1345,9 +1333,9 @@ that both $p_1$ and $\pi_B:B\sr pt$ have the right lifting property for $TC$
 and $\pi_{E_1}=p_1\circ \pi_B$.
 
 Since $E_1$ is fibrant we know that $p_2$ has the right lifting property for
-$TC$ and since $B$ is fibrant we know that $p_1$ has the right lifting property
+$TC$, and since $B$ is fibrant we know that $p_1$ has the right lifting property
 for $FB$. From this we conclude in the standard way that $p_2\circ p_1$ have
-the right lifting property for $TC$ and since $B$ is fibrant this implies that
+the right lifting property for $TC$, and since $B$ is fibrant this implies that
 $p_2\circ p_1$ is in $FB$.
 \end{myproof}
 %
@@ -2137,7 +2125,7 @@ u_{1,\Idx(T)}(P)), \etaunshriek_p(u_{1,\Gamma}(T),\wt{u}_{1,\Gamma}(s0)))$.
 $f:\Gamma'\sr \Gamma$ a morphism in $\toCC({\C},p)$ and $F:int(\Gamma)\sr
 \U$ a morphism in $\C$.  Let $q3:int(\Idx(\Gamma',f\circ F))\sr
 int(\Idx(\Gamma,F))$ be the morphism $\q(f,\Idx(\Gamma,F),3)$ defined by
-$\Gamma$ since $\ft^3(\Idx(\Gamma,F))=\Gamma$. Then $q3=\Q(f,F)_{E}$.
+$\Gamma$, since $\ft^3(\Idx(\Gamma,F))=\Gamma$. Then $q3=\Q(f,F)_{E}$.
 \end{lemma}
 %
 \begin{myproof}
@@ -2521,7 +2509,7 @@ For which it is sufficient to check that
 %
 $$(\Phi(F_1)\circ \phi)^*(g')\circ \iota_2=\iota_1\circ \Phi(F_1^*(g))$$
 %
-The codomain of both morphisms is $\Phi((X;F_1)_{p_2})$ and since $\Phi$ takes
+The codomain of both morphisms is $\Phi((X;F_1)_{p_2})$, and since $\Phi$ takes
 canonical squares based on $p_2$ to pullback squares it is sufficient to check
 that
 %
@@ -2805,7 +2793,7 @@ is a pullback square. For any functor of universe categories and $X\in{\mathcal
 $$\Phi(\p_{X,F})*(\Phi(\Q(F))\circ\wt{\phi}):\Phi((X;F))\sr
 (\Phi(X);\Phi(F)\circ\phi)$$
 %
-is an isomorphism and we will denote it $\Phi_{X,F}$. Let $\Phi\wt{\U}p$ be the
+is an isomorphism, and it will be denoted by $\Phi_{X,F}$. Let $\Phi\wt{\U}p$ be the
 composition
 %
 $$\Phi((\wt{\U};p)) \stackrel{\Phi_{\wt{\U},p}}{\lr} (\Phi(\wt{\U});\Phi(p)\circ
@@ -3087,7 +3075,7 @@ $\chi_{\bf\Phi}(\wt{\U})\circ \I_{p'}(\wt{\phi})$, respectively, and let
 be given by the compositions $\chi_{{\bf\Phi}_{E}}(\U)\circ \I_{pE\wt{\U}'}(\phi)$
 and $\chi_{{\bf\Phi}_{E}}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi})$. Note that
 $\zeta_{\bf\Phi}=\xi_{{\bf\Phi}_{E}}$, but $\wt{\zeta}_{\bf\Phi}$ is different
-from $\wt{\xi}_{{\bf\Phi}_{E}}$ since the latter is equal to the composition
+from $\wt{\xi}_{{\bf\Phi}_{E}}$, since the latter is equal to the composition
 $\chi_{{\bf\Phi}_{E}}(E\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi}_{E})$. Applying
 Theorem \ref{2015.04.10.th3} in this context we get the following.
 %
@@ -3531,9 +3519,9 @@ sufficient to show that
 %
 $$\psi_{\Idx(T)}=\Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota$$
 %
-Both sides are morphisms with the codomain
+Both sides are morphisms with codomain
 %
-$$\Phi(int(\Idx(T)))=\Phi((X;F)_E)$$
+$$\Phi(int(\Idx(T)))=\Phi((X;F)_E),$$
 %
 and since ${\bf\Phi}_E$ is a universe category functor it is sufficient to show
 that the compositions of the two sides with $\Phi(\p^E_{X,F})$ and
@@ -3550,7 +3538,7 @@ the first equation reduces to
 %
 \begin{eq}
 \llabel{2015.05.10.eq1} \psi_{\Idx(T)}\circ
-\Phi(\p^E_{T})=p^{E'}_{int'(H(T))}\circ\psi_{\Gamma}
+\Phi(\p^E_{T})=p^{E'}_{int'(H(T))}\circ\psi_{\Gamma},
 \end{eq}%
 %
 and since
@@ -3848,7 +3836,7 @@ For (\ref{2015.05.10.eq3b}), rewriting the left hand side we get
     & = \etaunshriek_{p'}(\wt{u}_{2,H(\Gamma)}'(H(s0))),
 \end{align*}
 %
-where the last equality holds by \cite[Lemma 6.2(2)]{fromunivwithPi} since
+where the last equality holds by \cite[Lemma 6.2(2)]{fromunivwithPi}, since
 $(F,\wt{H})=u_{2,\Gamma}(s0)$.
 
 Rewriting the right hand side we get
