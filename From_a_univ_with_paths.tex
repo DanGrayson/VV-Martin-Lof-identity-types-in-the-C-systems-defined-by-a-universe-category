@@ -694,12 +694,11 @@ $$
 $$
 %
 for all $X$ and all morphisms $F:X\sr \U$. A universe in $\C$ is a
-morphism with a universe structure on it and a universe category is a category
+morphism with a universe structure on it, and a universe category is a category
 with a universe and a choice of a final object $pt$.
 
-We may use the notation $\gls{multisemicolon}$ for $(\dots(X;F_1);\dots;F_n)$, where,
-for each $i$,
-$$F_{i+1} : (\dots(X;F_1);\dots;F_i) \to \U.$$
+Given a sequence of maps $$F_{i+1} : (\dots(X;F_1);\dots;F_i) \to \U$$ for each $i$,
+we may use the notation $\gls{multisemicolon}$ for $(\dots(X;F_1);\dots;F_n)$.
 
 For $f:W\sr X$ and $g:W\sr \wt{\U}$ satisfying $f\circ F = g \circ p$ we will let $\gls{starfg} : W \sr (X;F)$ denote the unique morphism
 such that
@@ -710,7 +709,7 @@ such that
 \end{align}
 
 %
-When we need to distinguish canonical squares of different universes we may
+When we need to distinguish canonical squares arising from different universes we may
 write $(X;F)_{p}$ and $f*_p g$.
 %
 \begin{remark}\rm
@@ -718,7 +717,7 @@ write $(X;F)_{p}$ and $f*_p g$.
 equal to $\id_{\wt{\U}}$. In fact, since we want the results of this paper to be
 constructive, we are not allowed to make such an assumption, since 
 whether a morphism is an identity morphism need not be
-decidable, and therefore we can not normalize our construction by doing
+decidable, and therefore we can not normalize a construction of a universe structure by doing
 something different when a morphism is not the identity.  The importance
 of this observation (in the context of whether a simplex is degenerate)
 was emphasized by \cite{BCH}.
