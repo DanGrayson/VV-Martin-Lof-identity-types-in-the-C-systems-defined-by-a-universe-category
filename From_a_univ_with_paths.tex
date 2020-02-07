@@ -40,7 +40,6 @@
 %
 \newenvironment{construction}[1]{\begin{construction0}(for Problem \ref{#1})\ }{$\blacksquare$ \end{construction0}}
 \newcommand{\by}[1]{\text{(by #1)}}
-\newcommand{\llabel}[1]{\label{#1}}
 \newcommand{\comment}[1]{}
 \newcommand{\sr}{\rightarrow}
 \newcommand{\lr}{\longrightarrow}
@@ -418,13 +417,13 @@ will allow the files to be located.
   In the case where $Y = \ft(X)$ and $f = 1_X$, and thus $g$ is a section of $\p_X$,
   one has the following identity.
   \begin{eq}
-    \llabel{section-section}
+    \label{section-section}
     \s_g = g
   \end{eq}%
   The formation of the section $s_g$ is natural in the sense that, for a map
   $h : Z \to Y$, one has the following identity.
   \begin{eq}
-    \llabel{s-naturality}
+    \label{s-naturality}
     h^* (s_g) = s_{h \circ g}
   \end{eq}
 
@@ -438,7 +437,7 @@ will allow the files to be located.
   \end{eq}%
   Using \ref{s-naturality}, one shows, for a map $g : Y \to X$, the following identity.
   \begin{eq}
-    \llabel{delta-pullback}
+    \label{delta-pullback}
     g^* (\delta(X)) = s_g
   \end{eq}
 
@@ -473,7 +472,7 @@ $(\Id,\refl,\J)$, where $\Id$ is a J0-structure, $\refl$ is a J1-structure over
 $\Id$, and $\J$ is a J2-structure over $\refl$.
 
 \begin{definition}
-\llabel{2015.03.27.def1}
+\label{2015.03.27.def1}
 A {\em J0-structure} on a C-system $\CC$ is a family of functions 
 %
 $$\gls{Id}_{\Gamma}:\{(o_1,o_2)\,|\,o_1, o_2 \in \Obwt_1(\Gamma), \partial(o_1)=\partial(o_2)\}\sr Ob_1(\Gamma),$$
@@ -481,7 +480,7 @@ $$\gls{Id}_{\Gamma}:\{(o_1,o_2)\,|\,o_1, o_2 \in \Obwt_1(\Gamma), \partial(o_1)=
 given for all $\Gamma\in Ob$, that is natural in $\Gamma$, i.e., such that for any
 $f:\Gamma'\sr \Gamma$, one has the identity
 \begin{eq}
-  \llabel{Id-naturality}
+  \label{Id-naturality}
   f^*(\Id_{\Gamma}(o_1,o_2))=\Id_{\Gamma'}(f^*(o_1),f^*(o_2)).
 \end{eq}%
 \end{definition}
@@ -489,7 +488,7 @@ $f:\Gamma'\sr \Gamma$, one has the identity
 When there is no risk of ambiguity, we will write $\Id(o_1,o_2)$ for $\Id_{\Gamma}(o_1,o_2)$.
 
 \begin{definition}
-\llabel{2015.03.27.def2}
+\label{2015.03.27.def2}
 Let $\Id$ be a J0-structure on $\CC$. A {\em J1-structure} over $\Id$ is a family of
 functions
 %
@@ -502,7 +501,7 @@ given for all $\Gamma\in Ob$ such that:
 \item for any $\Gamma$ and $o\in \Obwt_1(\Gamma)$ one has 
 %
 \begin{eq}
-\llabel{2015.03.27.eq8}
+\label{2015.03.27.eq8}
 \partial(\refl(o))=\Id_\Gamma(o,o)
 \end{eq}%
 \end{enumerate}
@@ -513,7 +512,7 @@ to describe two constructions first.
 
 %
 \begin{problem}
-\llabel{2015.03.27.prob1} Given a J0-structure $\Id$, to construct a family of
+\label{2015.03.27.prob1} Given a J0-structure $\Id$, to construct a family of
 functions
 %
 $$\gls{Idx}:Ob_1(\Gamma)\sr Ob_3(\Gamma),$$
@@ -522,7 +521,7 @@ such that for $f:\Gamma'\sr \Gamma$ and $T\in Ob_1(\Gamma)$ one has
 $f^*(\Idx(T))=\Idx(f^*(T))$.
 \end{problem}
 %
-\begin{construction}{2015.03.27.prob1}\llabel{2015.03.27.constr1}\rm
+\begin{construction}{2015.03.27.prob1}\label{2015.03.27.constr1}\rm
 The objects and some of the morphisms involved
 in this construction can be seen in the following diagram, in which the
 downward maps are canonical projections.
@@ -546,7 +545,7 @@ downward maps are canonical projections.
 Since $\p_{\p_T^*(T)}^*(\delta(T))$ and $\delta(\p_T^*(T))$ are sections of the
 same canonical projection, we may make the following definition.
 \begin{eq}
-\llabel{2015.04.06.eq1}
+\label{2015.04.06.eq1}
 \Idx(T):=\Id_{\\p_T^*(T)}((\p_{\p_T^*(T)}^*(\delta(T))), \delta(\p_T^*(T)))
 \end{eq}%
 The fact that $\Idx(T)\in Ob_3(\Gamma)$ follows now from the fact that
@@ -555,25 +554,29 @@ The proof that $\Idx$ is natural in $f:\Gamma'\sr \Gamma$ is omitted.
 \end{construction}
 
 \begin{problem}
-\llabel{2015.03.27.prob2} Given a J0-structure $\Id$ and a J1-structure $\refl$
+\label{2015.03.27.prob2} Given a J0-structure $\Id$ and a J1-structure $\refl$
 over it, to construct for all $\Gamma\in Ob$ and $T\in Ob_1(\Gamma)$ a morphism
 %
 $$\gls{rf}_T:T\sr \Idx(T)$$
 %
+over $\Gamma$,
 such that for any $f:\Gamma'\sr \Gamma$ one has $f^*(\rf_T)=\rf_{f^*(T)}$.
 \end{problem}
 %
 \begin{construction}{2015.03.27.prob2}
-\llabel{2015.03.27.constr2}\rm We have the following chain of equations.
+\label{2015.03.27.constr2}\rm We have the following chain of equations.
 %
 \begin{align*}
   \delta(T)^*(\Idx(T)) & = \delta(T)^*(\Id_{\p_T^*(T)}((\p_{\p_T^*(T)}^*(\delta(T)))),\delta(\p_T^*(T)))
   & \by{definition \ref{2015.04.06.eq1}} \\
   & = \Id_T(\delta(T)^*(\p_{\p_T^*(T)}^*(\delta(T))),\delta(T)^*(\delta(\p_T^*(T))))
   & \by{naturality \ref{Id-naturality}} \\
-  & = \Id_T((\delta(T) \circ \p_{\p_T^*(T)})^*(\delta(T)),\delta(T)^*(\delta(\p_T^*(T)))) \\
-  & = \Id_T((1_T)^*(\delta(T)),\delta(T)^*(\delta(\p_T^*(T)))) \\
-  & = \Id_T(\delta(T),\delta(T)^*(\delta(\p_T^*(T)))) \\
+  & = \Id_T((\delta(T) \circ \p_{\p_T^*(T)})^*(\delta(T)),\delta(T)^*(\delta(\p_T^*(T))))
+  & \by{def'n{.} of C-system} \\
+  & = \Id_T((1_T)^*(\delta(T)),\delta(T)^*(\delta(\p_T^*(T)))) 
+  & \by{def'n{.} of C-system} \\
+  & = \Id_T(\delta(T),\delta(T)^*(\delta(\p_T^*(T)))) 
+  & \by{def'n{.} of C-system} \\
   & = \Id_T(\delta(T),\s_{\delta(T)})
   & \by{\ref{delta-pullback}}  \\
   & = \Id_T(\delta(T),\delta(T))
@@ -583,19 +586,21 @@ such that for any $f:\Gamma'\sr \Gamma$ one has $f^*(\rf_T)=\rf_{f^*(T)}$.
 This shows that we have the canonical square in the following diagram.
 %
 \begin{eq}
-\llabel{2015.03.31.eq3}
+\label{2015.03.31.eq3}
 \begin{xy}
-          \xymatrix@C=7pc{ \Id(\delta(T),\delta(T))
-            \ar[r]^-{\q(\delta(T),\Idx(T))} \ar[d] & \Idx(T) \ar[d]\\ T
-            \ar[r]^{\delta(T)} \ar@<6pt>[u]^{\refl(\delta(T))} \ar[ru]^{\rf_T}
+          \xymatrix@C=7pc{ \Id_\Gamma(\delta(T),\delta(T))
+            \ar[r]^-{\q(\delta(T),\Idx(T))} \ar[d]^{\p_{\Id_\Gamma(\delta(T),\delta(T))}} & \Idx(T) \ar[d]\\ T
+            \ar[r]^{\delta(T)} \ar@<6pt>[u]^{\refl(\delta(T))} \ar@{-->}[ru]^{\rf_T}
             & \p_T^*(T) }
        \end{xy}
 \end{eq}%
 %
-Since $\refl(\delta(T))$ is a morphism $T\sr \Id(\delta(T),\delta(T))$, we may introduce the following definition.
+Since $\refl(\delta(T))$ is a morphism $T\sr \Id(\delta(T),\delta(T))$
+and is a section of the corresponding canonical projection,
+we may introduce the following definition.
 %
 \begin{eq}
-\llabel{2015.04.02.eq1} \rf_T:=\refl(\delta(T))\circ \q(\delta(T),\Idx(T))
+\label{2015.04.02.eq1} \rf_T:=\refl(\delta(T))\circ \q(\delta(T),\Idx(T))
 \end{eq}%
 %
 The proof that for any $f:\Gamma'\sr \Gamma$ one has $f^*(\rf_T)=\rf_{f^*(T)}$ is
@@ -603,7 +608,7 @@ omitted.
 \end{construction}
 %
 \begin{definition}
-\llabel{2015.03.27.def3} Let $\Id$ and $\refl$ be a J0-structure and a
+\label{2015.03.27.def3} Let $\Id$ and $\refl$ be a J0-structure and a
 J1-structure over it. A {\em J2-structure} over $(\Id,\refl)$ is data of the form: for
 all $\Gamma\in Ob$, for all $T\in Ob_1(\Gamma)$, for all $P\in Ob_1(\Idx(T))$,
 for all $s0\in \Obwt(\rf_T^*(P))$, an element $\gls J(\Gamma,T,P,s0)$ of
@@ -626,7 +631,7 @@ naturality in $f$ of $\Idx$ and $\rf^*$.
 %
 %%%%% this remark has problems with notations, and it doesn't seem important [drg]
 %% \begin{remark}
-%% \llabel{2015.05.12.rem1}\rm A J0-structure is called degenerate or extensional
+%% \label{2015.05.12.rem1}\rm A J0-structure is called degenerate or extensional
 %% if for all $T\in Ob_{\ge 1}(\CC)$ and $o,o'\in \Obwt(T)$ one has\footnote{The
 %%   following is the classical way of saying that there is an equivalence between
 %%   the types $\Obwt(\Idx(o,o'))$ and $(o=o')$.}
@@ -649,7 +654,7 @@ naturality in $f$ of $\Idx$ and $\rf^*$.
 
 %
 \begin{remark}\rm
-\llabel{2015.05.24.rem1} When one studies J-structures on C-systems that have
+\label{2015.05.24.rem1} When one studies J-structures on C-systems that have
 no $(\Pi,\lambda)$-structures it is important, as emphasized, for example, in
 \cite{vandenBergGarner2011} and perhaps in earlier work by Garner,
 to consider a more complex structure than the one
@@ -709,7 +714,7 @@ When we need to distinguish canonical squares of different universes we may
 write $(X;F)_{p}$ and $f*_p g$.
 %
 \begin{remark}\rm
-\llabel{2015.03.29.rm1} Note that we made no assumption about $\Q(\id_\U)$ being
+\label{2015.03.29.rm1} Note that we made no assumption about $\Q(\id_\U)$ being
 equal to $\id_{\wt{\U}}$. In fact, since we want the results of this paper to be
 constructive, we are not allowed to make such an assumption, since 
 whether a morphism is an identity morphism need not be
@@ -727,7 +732,7 @@ $$(\p_{X',f\circ F}\circ f)*\Q(f\circ F):(X';f\circ F)\sr (X;F)$$
 As is shown in \cite{fromunivwithPi}, the square
 %
 \begin{eq}
-\llabel{2015.04.06.l0.sq}
+\label{2015.04.06.l0.sq}
 \begin{xy}
           \xymatrix@C=4pc{ (X';f\circ F) \ar[r]^-{\Q(f,F)} \ar[d]_{\p_{X',f\circ
                 F}} & (X;F) \ar[d]^{\p_{X,F}}\\ X' \ar[r]^{f} & X }
@@ -783,7 +788,7 @@ $p':\wt{\U}'\sr \U$, $h:\wt{\U}'\sr \wt{\U}$ over $\U$, and $V$, a morphism
 $$\I^h(V):\I_p(V)\sr \I_{p'}(V)$$
 %
 \begin{lemma}
-\llabel{2015.04.10.l2} In the notation introduced above let $f:V\sr V'$ be a
+\label{2015.04.10.l2} In the notation introduced above let $f:V\sr V'$ be a
 morphism, then the square
 %
 $$
@@ -803,7 +808,7 @@ This is a particular case of the commutative square of \cite[Lemma
 %
 %
 \begin{lemma}
-\llabel{2015.04.02.l4} Let $p:\wt{\U}\sr \U$ and $p':\wt{\U}'\sr \U$ be two
+\label{2015.04.02.l4} Let $p:\wt{\U}\sr \U$ and $p':\wt{\U}'\sr \U$ be two
 morphisms with universe structures and $f:\wt{\U}'\sr \wt{\U}$ be a morphism over
 $\U$. For $V\in {\C}$ let $\I^f(V)$ be the corresponding morphism
 $\I_{p'}(V)\sr \I_p(V)$. Then for any $X$ the square
@@ -922,7 +927,7 @@ $Z=\U$, $b=f$ and $a=\id_{\I_p(V)}$. The last square is a particular case of
 \end{myproof}
 %
 \begin{definition}
-\llabel{2015.03.27.def4} A {\em J0-structure} on a universe $p$ in a category
+\label{2015.03.27.def4} A {\em J0-structure} on a universe $p$ in a category
 $\C$ is a morphism $Eq:(\wt{\U};p)\sr \U$.
 \end{definition}
 %
@@ -935,11 +940,11 @@ $$E\wt{\U} \xrightarrow{\ \p_{(\wt{\U};p),Eq}\ } (\wt{\U};p) \xrightarrow{\p_{\w
 of projections as an object over $\U$, and let $pE\wt{\U}$ denote it.
 
 \begin{problem}
-\llabel{2015.05.08.prob1} To construct a universe structure on $pE\wt{\U}$.
+\label{2015.05.08.prob1} To construct a universe structure on $pE\wt{\U}$.
 \end{problem}
 %
 \begin{construction}{2015.05.08.prob1}\rm
-\llabel{2015.05.08.constr1} The three squares in the following diagram are pullback squares.
+\label{2015.05.08.constr1} The three squares in the following diagram are pullback squares.
 \begin{eq}
   \begin{xy}
     \xymatrix@C=7pc{
@@ -977,11 +982,11 @@ We will also write $\Q(f,F)_{E}$ for the canonical morphisms from $(X;f\circ
 F)_{E}$ to $(X;F)_{E}$.
 %
 \begin{definition}
-\llabel{2015.03.27.def5} Let $p$ be a universe in $\C$ and $Eq$ be a
+\label{2015.03.27.def5} Let $p$ be a universe in $\C$ and $Eq$ be a
 J0-structure on $p$. A {\em J1-structure} on $p$ over $Eq$ is a morphism
 $\Omega:\wt{\U}\sr \wt{\U}$ such that the square
 %
-\begin{eq}\llabel{2015.03.27.sq1}
+\begin{eq}\label{2015.03.27.sq1}
 \begin{xy}
           \xymatrix@C=4pc{ \wt{\U} \ar[r]^-{\Omega} \ar[d]_{\Delta} & \wt{\U}
             \ar[d]^{p}\\ (\wt{\U};p) \ar[r]^{Eq} & \U, }
@@ -1012,7 +1017,7 @@ structure.
 Consider the functors $\I_{p}$ and $\I_{pE\wt{\U}}$. We have the following
 commutative square:
 %
-\begin{eq}\llabel{2010.sq1}
+\begin{eq}\label{2010.sq1}
 \begin{xy}
           \xymatrix@C=4pc{ \I_{pE\wt{\U}}(\wt{\U}) \ar[r]^-{\I^{\omega}(\wt{\U})}
             \ar[d]_{\I_{pE\wt{\U}}(p)} & \I_p(\wt{\U})
@@ -1027,7 +1032,7 @@ $$\I_{pE\wt{\U}}(\wt{\U}) \stackrel{coJ}{\lr} (\I_{pE\wt{\U}}(\U), \I^{\omega}(\
 $$
 %
 \begin{definition}
-\llabel{2015.03.27.def6} A {\em J2-structure} on $p$, relative to a J0-structure $Eq$
+\label{2015.03.27.def6} A {\em J2-structure} on $p$, relative to a J0-structure $Eq$
 and a J1-structure $\Omega$, is a morphism
 %
 $$ Jp:( \I_{pE\wt{\U}}(\U), \I^{\omega}(\U))\times_{\I_p(\U)} (\I_p(\wt{\U}), \I_p(p))\sr
@@ -1039,12 +1044,12 @@ such that $Jp\circ coJ = \id$.
 Note that we have:
 %
 \begin{eq}
-\llabel{2015.04.04.eq1} J\circ \I^{\omega}(\wt{\U})=J\circ coJ\circ
+\label{2015.04.04.eq1} J\circ \I^{\omega}(\wt{\U})=J\circ coJ\circ
 prI_p(\wt{\U})=prI_{p}(\wt{\U})
 \end{eq}%
 %
 \begin{eq}
-\llabel{2015.04.04.eq2} J\circ \I_{pE\wt{\U}}(p)=J\circ coJ\circ
+\label{2015.04.04.eq2} J\circ \I_{pE\wt{\U}}(p)=J\circ coJ\circ
 prI_{pE\wt{\U}}(\U)=prI_{pE\wt{\U}}(\U),
 \end{eq}%
 %
@@ -1068,13 +1073,13 @@ J-structures over a given J1-structure in categories with weak factorization
 systems in particular in Quillen model categories.
 %
 \begin{problem}
-\llabel{2015.05.12.l1} Let $\C$ be a category with a locally cartesian
+\label{2015.05.12.l1} Let $\C$ be a category with a locally cartesian
 closed structure and $Eq,\Omega$ be a J1-structure on $({\C},p)$. To
 construct a bijection between the set of J-structures on $p$ over $(Eq,\Omega)$
 and the set of morphisms $(\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U})\sr \wt{\U}$ that
 split the following square into two commutative triangles:
 %
-\begin{eq}\llabel{2015.05.22.sq1}
+\begin{eq}\label{2015.05.22.sq1}
 \begin{xy}
           \xymatrix@C=7pc{ (\Fp,\pFp)\times_\U(\wt{\U},p) \ar[r]^-{adj(pr_2)\circ
               pr_2} \ar[d]_{\id_{\Fp}\times \omega} & \wt{\U}
@@ -1090,7 +1095,7 @@ If we omit, as is customary done, the explicit functions to the base in the
 notation of the fiber products the square (\ref{2015.05.22.sq1}) takes the
 following form:
 %
-\begin{eq}\llabel{2017.08.16.sq1}
+\begin{eq}\label{2017.08.16.sq1}
 \begin{xy}
           \xymatrix@C=7pc{ (\I_{pE\wt{\U}}(\U)\times_{\I_p(\U)}
             \I_p(\wt{\U}))\times_\U\wt{\U} \ar[r]^-{adj(pr_2)\circ pr_2}
@@ -1106,7 +1111,7 @@ following form:
 \end{remark}
 %
 \begin{construction}{2015.05.12.l1}\rm
-\llabel{2015.05.22.constr1} Observe first that there is a bijection between the
+\label{2015.05.22.constr1} Observe first that there is a bijection between the
 set of morphisms
 %
 $$(\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U})\sr \wt{\U}$$
@@ -1166,14 +1171,14 @@ This completes the construction.
 \end{construction}
 %
 \begin{remark}\rm
-\llabel{2015.05.24.rem2} It is likely to be relatively easy to generalize the
+\label{2015.05.24.rem2} It is likely to be relatively easy to generalize the
 constructions of this paper to the extended J-structures $eJ_n$ (see Remark
 \ref{2015.05.24.rem1}). The key to such generalization is \cite[Remark
   3.13]{fromunivwithPi}. The structures $eJp_n$ can be defined in the same way
 as $Jp$ but with the square (\ref{2010.sq1}) replaced by the square
 %
 \begin{eq}
-\llabel{2015.05.24.sq1}
+\label{2015.05.24.sq1}
 \begin{xy}
           \xymatrix@C=4pc{ \I_{pE\wt{\U}}(\I_p^n(\wt{\U}))
             \ar[r]^-{\I^{\omega}(\I_p^n(\wt{\U}))} \ar[d]_{\I_{pE\wt{\U}}(\I_p^n(p))}
@@ -1231,7 +1236,7 @@ elements of $FB$.
 
 Our first set of conditions is as follows:
 %
-\begin{cond}\llabel{2015.05.22.cond2}
+\begin{cond}\label{2015.05.22.cond2}
 \begin{enumerate}
 \item A morphism is in $FB$ if and only if it has the right lifting property
   for $TC$,
@@ -1245,7 +1250,7 @@ is in $TC$.
 \end{cond}
 %
 \begin{theorem}
-\llabel{2015.05.22.th1} Let $FB$ and $TC$ be two classes of morphisms in a
+\label{2015.05.22.th1} Let $FB$ and $TC$ be two classes of morphisms in a
 locally cartesian closed category $\cal C$ that satisfy Conditions
 \ref{2015.05.22.cond2}. Let $p$ be a universe in $\cal C$ and $(Eq,\Omega)$ a
 J1-structure on $p$ such that:
@@ -1279,7 +1284,7 @@ behavior is required only for fibrations over fibrant objects. One particular
 example of such situation is considered in \cite[Section 3.3]{SRF}.
 
 %
-\begin{cond}\llabel{2015.05.22.cond1}
+\begin{cond}\label{2015.05.22.cond1}
 %
 \begin{enumerate}
 \item $\id_{pt}$ is in $FB$,
@@ -1299,7 +1304,7 @@ is in $TC$.
 We will say that $B$ is fibrant if the morphism $B\sr pt$ is in $FB$.
 %
 \begin{lemma}
-\llabel{2015.05.14.l2} Let $p:E\sr B$ be in $FB$ and $f:B'\sr B$ be a
+\label{2015.05.14.l2} Let $p:E\sr B$ be in $FB$ and $f:B'\sr B$ be a
 morphism. Assume in addition that $B$ and $B'$ are fibrant, then for any
 pullback square of the form
 %
@@ -1321,7 +1326,7 @@ this property we know because $p$ is in $FB$ and $B$ is fibrant.
 \end{myproof}
 %
 \begin{lemma}
-\llabel{2015.05.14.l4} Let $B$ be fibrant and $p_2:E_2\sr E_1$, $p_1:E_1\sr B$
+\label{2015.05.14.l4} Let $B$ be fibrant and $p_2:E_2\sr E_1$, $p_1:E_1\sr B$
 be in $FB$. Then $p_2\circ p_1$ is in $FB$.
 \end{lemma}
 %
@@ -1340,7 +1345,7 @@ $p_2\circ p_1$ is in $FB$.
 \end{myproof}
 %
 \begin{lemma}
-\llabel{2015.05.14.l1} Assume that $\U,V$ are fibrant and that $p:\wt{\U}\sr \U$
+\label{2015.05.14.l1} Assume that $\U,V$ are fibrant and that $p:\wt{\U}\sr \U$
 is in $FB$. Then the morphism $prI_p(V):\I_p(V)\sr \U$ is in $FB$.
 \end{lemma}
 %
@@ -1385,7 +1390,7 @@ commutativity of the upper triangle.
 \end{myproof}
 %
 \begin{lemma}
-\llabel{2015.05.14.l3} Assume that $\U,V$ are fibrant and that $p:\wt{\U}\sr \U$
+\label{2015.05.14.l3} Assume that $\U,V$ are fibrant and that $p:\wt{\U}\sr \U$
 and $r:V'\sr V$ are in $FB$ then $\I_p(r):\I_p(V')\sr \I_p(V)$ is in $FB$.
 \end{lemma}
 %
@@ -1395,7 +1400,7 @@ fibrant. Therefore it is sufficient to show that $\I_p(r)$ has the right lifting
 property for $TC$. Consider a commutative square of the form
 %
 \begin{eq}
-\llabel{2015.05.14.sq1}
+\label{2015.05.14.sq1}
 \begin{xy}
           \xymatrix@C=4pc{ Z \ar[r]^-{f_Z} \ar[d]_{i} &
             \iHom_\U((\wt{\U},p),(\U\times V',pr_1))
@@ -1412,7 +1417,7 @@ $$\p_Z=i\circ \p_W=f_Z\circ (p\triangle pr^{\U,V'}_\U)$$
 Consider the square
 %
 \begin{eq}
-\llabel{2015.05.14.sq2}
+\label{2015.05.14.sq2}
 \begin{xy}
           \xymatrix@C=4pc{ (Z,\p_Z)\times_\U (\wt{\U},p) \ar[r]^-{adj(f_Z)}
             \ar[d]_{i\times \id_{\wt{\U}}} & \U\times V' \ar[d]^{\id_\U\times
@@ -1470,7 +1475,7 @@ commutativity of the lower of the two triangles into which $g$ splits
 We can now prove the second main theorem of this section.
 %
 \begin{theorem}
-\llabel{2015.05.16.th1} Let $({\C},p,pt)$ be a universe category, let
+\label{2015.05.16.th1} Let $({\C},p,pt)$ be a universe category, let
 $\C$ be given a locally cartesian closed structure and let $TC$ and
 $FB$ be two collections of morphisms in $\C$ that satisfy Conditions
 \ref{2015.05.22.cond1}. Let further $Eq:(\wt{\U};p)\sr \U$ and $\Omega:\wt{\U}\sr
@@ -1531,7 +1536,7 @@ in $FB$ which finishes the proof of the theorem.
 \end{myproof}
 %
 \begin{cor}
-\llabel{2015.05.18.cor1} Let $\cal C$ be a locally cartesian closed category
+\label{2015.05.18.cor1} Let $\cal C$ be a locally cartesian closed category
 with a Quillen model structure, $p$ a universe in $\cal C$ and $(Eq,\Omega)$ a
 J1-structure on $p$. Assume further that $p$ is a fibration and $\omega$ is a
 trivial cofibration and that in addition one of the following two conditions
@@ -1594,7 +1599,7 @@ is a pullback square.
 %
 %
 \begin{problem}
-\llabel{2015.05.22.th2} Let $\cal C$ be as above $FB$ and $TC$ two classes of
+\label{2015.05.22.th2} Let $\cal C$ be as above $FB$ and $TC$ two classes of
 morphisms satisfying one of the sets of conditions \ref{2015.05.22.cond1} or
 \ref{2015.05.22.cond2}. Assume in addition the following:
 %
@@ -1613,7 +1618,7 @@ p$, with the universe structure defined by the fiber squares of $\cal C$, has a
 J-structure with $\omega\in TC$.
 \end{problem}
 %
-\begin{construction}{2015.05.22.th2}\rm\llabel{2015.05.23.constr1}
+\begin{construction}{2015.05.22.th2}\rm\label{2015.05.23.constr1}
 Define $\p_n:\wt{\U}_n\sr \U_n$ inductively as follows. For $n=0$ we take
 $\p_0=p$. To define $\p_{n+1}$ consider the diagonal $\Delta_n:\wt{\U}_n\sr
 (\wt{\U}_n,\p_n)\times_{\U_n}(\wt{\U}_n,\p_n)$ and let
@@ -1690,24 +1695,24 @@ element of $Hom(\Gamma',\Gamma)$ and $Hom(int(\Gamma'),int(\Gamma))$ may
 differ. In particular for $f:\Gamma'\sr \Gamma$ and $F:\Gamma\sr \U$ we have
 %
 \begin{eq}
-\llabel{2015.04.02.eq2} \q(f,int(\Gamma,F))=\Q(f,F)
+\label{2015.04.02.eq2} \q(f,int(\Gamma,F))=\Q(f,F)
 \end{eq}%
 %
 
 For each $\Gamma\in Ob(\toCC({\C},p))$ we have natural bijections
 %
 \begin{eq}
-\llabel{2015.03.27.eq7b} u_1:Ob_1(\Gamma)\sr Hom(int(\Gamma),\U)
+\label{2015.03.27.eq7b} u_1:Ob_1(\Gamma)\sr Hom(int(\Gamma),\U)
 \end{eq}%
 %
 \begin{eq}
-\llabel{2015.03.27.eq7a} \wt{u}_1:\Obwt_1(\Gamma)\sr Hom(int(\Gamma),\wt{\U}),
+\label{2015.03.27.eq7a} \wt{u}_1:\Obwt_1(\Gamma)\sr Hom(int(\Gamma),\wt{\U}),
 \end{eq}%
 %
 where $u_1^{-1}(F)=(\Gamma,F)$ and where
 %
 \begin{eq}
-\llabel{2015.03.31.eq5} \wt{u}_1(s)=s\circ \Q(u_1(\partial(s))).
+\label{2015.03.31.eq5} \wt{u}_1(s)=s\circ \Q(u_1(\partial(s))).
 \end{eq}%
 %
 In particular,
@@ -1720,13 +1725,13 @@ $\partial:\Obwt_1(\Gamma)\sr Ob_1(\Gamma)$ is given by composition with
 $p:\wt{\U}\sr \U$.
 %
 \begin{problem}
-\llabel{2015.03.27.prob3} Let $Eq:(\wt{\U};p)\sr \U$ be a J0-structure on a
+\label{2015.03.27.prob3} Let $Eq:(\wt{\U};p)\sr \U$ be a J0-structure on a
 universe $p$ in a category $\C$. To construct a J0-structure on
 $\toCC({\C},p)$.
 \end{problem}
 %
 \begin{construction}{2015.03.27.prob3}\rm
-\llabel{2015.03.27.constr3} Since the canonical squares are pullback squares
+\label{2015.03.27.constr3} Since the canonical squares are pullback squares
 bijections $u_1$ and $\wt{u}_1$ gives us a bijection
 %
 $$\wt{uu}:\{o,o'\in\Obwt_1(\Gamma)\,|\,\partial(o)=\partial(o')\} \sr
@@ -1742,7 +1747,7 @@ We let $\Id_{Eq}$ denote the J0-structure on $\toCC({\C},p)$ constructed
 from $Eq$ in Construction \ref{2015.03.27.constr3}. Note that
 %
 \begin{eq}
-\llabel{2015.03.31.eq1}
+\label{2015.03.31.eq1}
 int(\Id(o,o'))=(int(\Gamma);(\wt{u}_1(o)*\wt{u}_1(o'))\circ Eq)
 \end{eq}%
 %
@@ -1751,7 +1756,7 @@ denote the composition of $n$ canonical projections $\p_{\Gamma}\circ \dots\circ
 \p_{\ft^{n-1}(\Gamma)}$.
 %
 \begin{lemma}
-\llabel{2015.03.27.l1} Let $Eq$ be a J0-structure on $p$. Let $\Gamma\in Ob$
+\label{2015.03.27.l1} Let $Eq$ be a J0-structure on $p$. Let $\Gamma\in Ob$
 and $F:int(\Gamma)\sr \U$. Then one has:
 %
 \begin{align*}
@@ -1795,13 +1800,13 @@ and the equality $\Q(f,F)\circ \Q(F)=\Q(f\circ F)$.
 \end{myproof}
 %
 \begin{problem}
-\llabel{2015.03.27.prob4} Let $Eq:(\wt{\U};p)\sr \U$, $\Omega:\wt{\U}\sr \wt{\U}$
+\label{2015.03.27.prob4} Let $Eq:(\wt{\U};p)\sr \U$, $\Omega:\wt{\U}\sr \wt{\U}$
 be a J0-structure and a J1-structure on a universe $p$ in a category $\C$.
 To construct a J1-structure $\refl(Eq,\Omega)$ over $\Id_{Eq}$ on $\toCC({\C},p)$.
 \end{problem}
 %
 \begin{construction}{2015.03.27.prob4}\rm
-\llabel{2015.03.27.constr4} Due to the natural bijections
+\label{2015.03.27.constr4} Due to the natural bijections
 (\ref{2015.03.27.eq7a}) the morphism $\Omega$ defines maps
 %
 $$\refl:\Obwt_1(\Gamma)\sr \Obwt_1(\Gamma)$$
@@ -1821,7 +1826,7 @@ The following technical lemma is only needed in the proof of Lemma
 \ref{2015.03.31.l2}.
 %
 \begin{lemma}
-\llabel{2015.04.02.l3} For $s\in \Obwt_1(\Gamma)$ one has:
+\label{2015.04.02.l3} For $s\in \Obwt_1(\Gamma)$ one has:
 %
 $$\refl_{\Omega}(s)\circ \Q(s\circ \Q(F)\circ \Omega\circ p)=s\circ \Q(F)\circ
 \Omega,$$
@@ -1852,7 +1857,7 @@ $$\wt{u}_1(\refl_{\Omega}(s))=\wt{u}_1(s)\circ \Omega=s\circ \Q(F)\circ \Omega.$
 
 
 \begin{lemma}
-\llabel{2015.03.31.l2} Given $Eq$ and $\Omega$ consider the corresponding $\Id$
+\label{2015.03.31.l2} Given $Eq$ and $\Omega$ consider the corresponding $\Id$
 and $\refl$. For $T\in Ob_1(\Gamma)$ let %
 $$\rf_T:int(T)\sr int(\Idx(T))$$
 %
@@ -1999,7 +2004,7 @@ This completes the proof of Lemma \ref{2015.03.31.l2}.
  
 \comment{
 \begin{problem}
-\llabel{2015.05.04.prob2} Let $Eq$ be a J0-structure on a universe $p$ in $\cal
+\label{2015.05.04.prob2} Let $Eq$ be a J0-structure on a universe $p$ in $\cal
 C$. To construct, for all objects $\Gamma\in Ob(\toCC({\C},p))$ two maps
 %
 \begin{align*}
@@ -2010,7 +2015,7 @@ C$. To construct, for all objects $\Gamma\in Ob(\toCC({\C},p))$ two maps
 such that
 %
 \begin{eq}
-\llabel{2015.05.04.eq3}
+\label{2015.05.04.eq3}
 \partial(\wt{\psi}(d))=\psi(\D_{pE\wt{\U}}(int(\Gamma),p)(d))
 \end{eq}%
 %
@@ -2018,7 +2023,7 @@ such that
 \end{problem}
 %
 \begin{construction}{2015.05.04.eq3}
-\llabel{2015.05.04.constr2}\rm Let us construct $\wt{\psi}$.  An element
+\label{2015.05.04.constr2}\rm Let us construct $\wt{\psi}$.  An element
 $(F,\wt{G})$ of $\D_{pE\wt{\U}}(int(\Gamma),\wt{\U})$ is a pair where
 $F:int(\Gamma)\sr \U$ and $\wt{G}:(int(\Gamma);F)_{E}\sr \wt{\U}$. By Lemma
 \ref{2015.03.27.l1} we have
@@ -2038,14 +2043,14 @@ The proof of the relation (\ref{2015.05.04.eq3}) is omitted.
 }
 %
 \begin{problem}
-\llabel{2015.04.04.prob1} Let $(Eq,\Omega,Jp)$ be a J-structure on a universe
+\label{2015.04.04.prob1} Let $(Eq,\Omega,Jp)$ be a J-structure on a universe
 $p$. To construct for all $\Gamma\in Ob=Ob(\toCC({\C},p))$, for all $T\in
 Ob_1(\Gamma)$, for all $P\in Ob_1(\Idx(T))$, for all $s0\in
 \Obwt(\rf_T^*(P))$, an element $\J(\Gamma,T,P,s0)$ of $\Obwt(P)$.
 \end{problem} 
 %
 \begin{construction}{2015.04.04.prob1}\rm
-\llabel{2015.04.04.constr1} Let $X:=int(\Gamma)$, $F:=u_1(T):X\sr \U$. By Lemma
+\label{2015.04.04.constr1} Let $X:=int(\Gamma)$, $F:=u_1(T):X\sr \U$. By Lemma
 \ref{2015.03.27.l1} we have
 $int(\Idx(T))=int(\Idx(\Gamma,F))=(int(\Gamma);F)_{E}$. Therefore we further
 have $G:=u_1(P):(int(\Gamma);F)_{E}\sr \U$ and $\wt{H}:=\wt{u}_1(s0):(X;F)\sr
@@ -2100,7 +2105,7 @@ $\wt{u}_{1,\Idx(T)}(J))$ for some $J$ such that $\partial(J)=P$.
 \end{construction}
 %
 \begin{remark}\rm
-\llabel{2015.05.08.rem1} Note that the defining property of
+\label{2015.05.08.rem1} Note that the defining property of
 $\J=\J_{Jp}(\Gamma,T,P,s0)$ is that it is the unique element of
 $\Obwt(\toCC({\C},p))$ that satisfies the equation
 %
@@ -2121,7 +2126,7 @@ u_{1,\Idx(T)}(P)), \etaunshriek_p(u_{1,\Gamma}(T),\wt{u}_{1,\Gamma}(s0)))$.
 
 
 \begin{lemma}
-\llabel{2015.04.04.l4} Let $Eq$ be a J0-structure on a universe $p$,
+\label{2015.04.04.l4} Let $Eq$ be a J0-structure on a universe $p$,
 $f:\Gamma'\sr \Gamma$ a morphism in $\toCC({\C},p)$ and $F:int(\Gamma)\sr
 \U$ a morphism in $\C$.  Let $q3:int(\Idx(\Gamma',f\circ F))\sr
 int(\Idx(\Gamma,F))$ be the morphism $\q(f,\Idx(\Gamma,F),3)$ defined by
@@ -2191,11 +2196,11 @@ commutativity of the three squares that define $q3$.
 \end{myproof}
 %
 \begin{lemma}
-\llabel{2015.04.04.l1} Let $(Eq,\Omega,Jp)$ be a J-structure on a universe
+\label{2015.04.04.l1} Let $(Eq,\Omega,Jp)$ be a J-structure on a universe
 $p$. Then the morphisms of Construction \ref{2015.04.04.constr1} are natural in
 $\Gamma$, i.e., for any $f:\Gamma'\sr \Gamma$ one has
 %
-\begin{eq}\llabel{2015.04.04.eq3}
+\begin{eq}\label{2015.04.04.eq3}
 f^*(\J_{Jp}(\Gamma,T,P,s0))=\J_{Jp}(\Gamma',f^*(T),f^*(P),f^*(s0))
 \end{eq}%
 %
@@ -2263,7 +2268,7 @@ $\etaunshriek$. This finished the proof of Lemma \ref{2015.04.04.l1}.
 \end{myproof}
 %
 \begin{lemma}
-\llabel{2015.04.04.l5} Let $(Eq,\Omega,Jp)$ be a J-structure on a universe
+\label{2015.04.04.l5} Let $(Eq,\Omega,Jp)$ be a J-structure on a universe
 $p$. Then the morphisms of Construction \ref{2015.04.04.constr1} satisfy the
 second condition of the definition of a J2-structure, i.e., for all $\Gamma$,
 $T$, $P$ and $s0$ as above one has
@@ -2302,13 +2307,13 @@ $\rf_T^*(\J)=s0$.
 \end{myproof}
 %
 \begin{problem}
-\llabel{2015.04.04.prob2} Let $(Eq,\Omega,Jp)$ be a J-structure on a universe
+\label{2015.04.04.prob2} Let $(Eq,\Omega,Jp)$ be a J-structure on a universe
 $p$. To construct a J-structure on $\toCC({\C},p)$ relative to $\Id_{Eq}$
 and $\refl_{\Omega}$.
 \end{problem} 
 %
 \begin{construction}{2015.04.04.prob2}\rm
-\llabel{2015.04.04.constr2} One has to combine Construction
+\label{2015.04.04.constr2} One has to combine Construction
 \ref{2015.04.04.constr1} with Lemmas \ref{2015.04.04.l1} and
 \ref{2015.04.04.l5}.
 \end{construction}
@@ -2324,7 +2329,7 @@ and $\refl_{\Omega}$.
 
 
 \subsection{A theorem about functors between categories with two universes}
-\llabel{twouniv}
+\label{twouniv}
 %
 Before we can formulate the definition of what it means for a universe category
 functor to be compatible with J-structures we need some general results about
@@ -2350,11 +2355,11 @@ $$
 and $f:\wt{\U}'\sr \wt{\U}$ over $\U$, we let $F^*(f)$ denote the unique morphism
 $(X;F)'\sr (X;F)$ such that
 %
-\begin{eq}\llabel{2015.04.08.eq3}
+\begin{eq}\label{2015.04.08.eq3}
 F^*(f)\circ \Q(F)=\Q(F)'\circ f
 \end{eq}%
 %
-\begin{eq}\llabel{2015.04.08.eq4}
+\begin{eq}\label{2015.04.08.eq4}
 F^*(f)\circ \p_{X,F}=\p_{X,F}'
 \end{eq}%
 %
@@ -2373,7 +2378,7 @@ We let $\Q'(-)$ and $\Q'(-,-)$ denote the morphisms $\Q(-)$ and $\Q(-,-)$ relati
 to the universe $p'$.
 %
 \begin{lemma}
-\llabel{2015.04.20.l1} Let $X'\stackrel{g}{\sr}X\stackrel{F}{\sr}\U$ be two
+\label{2015.04.20.l1} Let $X'\stackrel{g}{\sr}X\stackrel{F}{\sr}\U$ be two
 morphisms. Then the square
 %
 $$
@@ -2469,7 +2474,7 @@ by $\chi_i(V)$. The maps ${\bf\Phi}_i^2$ in the following lemma are constructed
 in \cite[Construction 5.2]{fromunivwithPi}.
 %
 \begin{lemma}
-\llabel{2015.04.08.l1} Under the previous assumptions and notation the squares
+\label{2015.04.08.l1} Under the previous assumptions and notation the squares
 %
 $$
 \begin{xy}
@@ -2557,7 +2562,7 @@ This finishes the proof of the lemma.
 \end{myproof}
 %
 \begin{lemma}
-\llabel{2015.04.06.l7} Under the previous assumptions and notation the squares
+\label{2015.04.06.l7} Under the previous assumptions and notation the squares
 %
 $$
 \begin{xy}
@@ -2643,7 +2648,7 @@ $\wt{\zeta}_1=\xi_{(\Phi,\phi,\wt{\phi}_1)}$ but $\wt{\zeta}_2\ne
 
 %
 \begin{theorem}
-\llabel{2015.04.10.th3} Under the previous assumptions and notation the
+\label{2015.04.10.th3} Under the previous assumptions and notation the
 morphisms $\zeta_1,\zeta_2,\wt{\zeta}_1,\wt{\zeta}_2$ form a morphism from the
 square
 %
@@ -2780,7 +2785,7 @@ that takes the canonical squares to pullback squares and $pt$ to a final object,
 and $\phi:\Phi(\U)\sr U'$, $\wt{\phi}:\Phi(\wt{\U})\sr \wt{\U}'$ are morphisms
 such that the square
 %
-\begin{eq}\llabel{2015.04.06.eq10}
+\begin{eq}\label{2015.04.06.eq10}
 \begin{xy}
           \xymatrix@C=3pc{ \Phi(\wt{\U}) \ar[r]^-{\wt{\phi}} \ar[d]_{\Phi(p)} &
             \wt{\U}' \ar[d]^{p'}\\ \Phi(\U) \ar[r]^{\phi} & \U }
@@ -2803,7 +2808,7 @@ $$\Phi((\wt{\U};p)) \stackrel{\Phi_{\wt{\U},p}}{\lr} (\Phi(\wt{\U});\Phi(p)\circ
 We also have another description of this morphism given by the following lemma.
 %
 \begin{lemma}
-\llabel{2015.04.10.l5} One has:
+\label{2015.04.10.l5} One has:
 %
 $$\Phi\wt{\U}p=(\Phi(\p_{\wt{\U},p})\circ\wt{\phi})*(\Phi(\Q(p))\circ\wt{\phi})$$
 %
@@ -2832,7 +2837,7 @@ equality is by definition of $\Phi_{\wt{\U},p}$.
 \end{myproof}
 %
 \begin{lemma}
-\llabel{2015.04.10.l6} For $s,s':Y\sr \wt{\U}$ such that $s\circ p=s'\circ p$
+\label{2015.04.10.l6} For $s,s':Y\sr \wt{\U}$ such that $s\circ p=s'\circ p$
 one has
 %
 $$\Phi(s*s')\circ\Phi\wt{\U}p=\Phi(s\circ \wt{\phi})*\Phi(s'\circ\wt{\phi})$$
@@ -2860,9 +2865,9 @@ $\Delta=\id_{\wt{\U}}*\id_{\wt{\U}}$.
 \end{myproof}
 %
 \begin{lemma}
-\llabel{2015.04.06.l5} The square
+\label{2015.04.06.l5} The square
 %
-\begin{eq}\llabel{2015.04.06.eq10-bis}
+\begin{eq}\label{2015.04.06.eq10-bis}
 \begin{xy}
           \xymatrix@C=3pc{ \Phi((\wt{\U};p)) \ar[r]^-{\Phi\wt{\U}p} \ar[d]_{
               \Phi(\p_{\wt{\U},p})} & (\wt{\U}';p')
@@ -2894,11 +2899,11 @@ pullback square.
 \end{myproof}
 %
 \begin{definition}
-\llabel{2015.04.06.def4} Let $Eq$ be a J0-structure on $p$ and $Eq'$ a
+\label{2015.04.06.def4} Let $Eq$ be a J0-structure on $p$ and $Eq'$ a
 J0-structure on $p'$. A universe category functor $(\Phi,\phi,\wt{\phi})$ is
 said to be compatible with $Eq$ and $Eq'$ if the square
 %
-\begin{eq}\llabel{2015.04.06.eq6}
+\begin{eq}\label{2015.04.06.eq6}
 \begin{xy}
           \xymatrix@C=3pc{ \Phi((\wt{\U};p)) \ar[r]^-{\Phi(Eq)}
             \ar[d]_{\Phi\wt{\U}p} & \Phi(\U) \ar[d]^{\phi}\\ (\wt{\U}';p')
@@ -2917,7 +2922,7 @@ $$\wt{\phi}_{E}:\Phi(E\wt{\U})\sr E\wt{\U}'=((\wt{\U}';p'),Eq')$$
 as $(\Phi(\p_{(\wt{\U};p),Eq})\circ \Phi\wt{\U}p)*(\Phi(\Q(Eq))\circ \wt{\phi})$.
 %
 \begin{lemma}
-\llabel{2015.04.06.l4} Let $Eq$, $Eq'$ be as above. Let $(\Phi,\phi,\wt{\phi})$
+\label{2015.04.06.l4} Let $Eq$, $Eq'$ be as above. Let $(\Phi,\phi,\wt{\phi})$
 be a universe functor compatible with $Eq$, and $Eq'$. Then the square
 %
 $$
@@ -2936,7 +2941,7 @@ is a pullback square.
 \begin{myproof}
 Consider the diagram
 %
-\begin{eq}\llabel{2015.04.06.eq8}
+\begin{eq}\label{2015.04.06.eq8}
 \begin{xy}
           \xymatrix@C=3pc{ \Phi(E\wt{\U})
             \ar[r]^-{\wt{\phi}_{E}}\ar[d]_{\Phi(\p_{(\wt{\U};p),Eq})} & E\wt{\U}'
@@ -2948,7 +2953,7 @@ Consider the diagram
 %
 The outer square of this diagram is equal to the outer square of the diagram
 %
-\begin{eq}\llabel{2015.04.06.eq7}
+\begin{eq}\label{2015.04.06.eq7}
 \begin{xy}
           \xymatrix@C=3pc{ \Phi(E\wt{\U})
             \ar[r]^-{\Phi(\Q(Eq))}\ar[d]_{\Phi(\p_{(\wt{\U};p),Eq})} &
@@ -2969,11 +2974,11 @@ of (\ref{2015.04.06.eq8}) is a pullback square.
 \end{myproof}
 %
 \begin{lemma}
-\llabel{2015.04.06.l6} Let $Eq$, $Eq'$ be as above. Let $(\Phi,\phi,\wt{\phi})$
+\label{2015.04.06.l6} Let $Eq$, $Eq'$ be as above. Let $(\Phi,\phi,\wt{\phi})$
 be a functor of universe categories compatible with $Eq$, and $Eq'$. Then the
 square
 %
-\begin{eq}\llabel{2015.04.06.eq9}
+\begin{eq}\label{2015.04.06.eq9}
 \begin{xy}
           \xymatrix@C=3pc{ \Phi(E\wt{\U}) \ar[r]^-{\wt{\phi}_{E}}
             \ar[d]_{\Phi(pE\wt{\U})} & E\wt{\U}' \ar[d]^{pE\wt{\U}'}\\ \Phi(\U)
@@ -2994,7 +2999,7 @@ vertical composition of the squares of Lemmas \ref{2015.04.06.l4} and
 
 
 \begin{definition}
-\llabel{2015.04.06.def5} Let $Eq$, $Eq'$ be as above and let $\Omega$,
+\label{2015.04.06.def5} Let $Eq$, $Eq'$ be as above and let $\Omega$,
 $\Omega'$ be J1-structures over $Eq$ and $Eq'$ respectively. A universe
 category functor $(\Phi,\phi,\wt{\phi})$ is said to be compatible with $\Omega$
 and $\Omega'$ if the square
@@ -3011,7 +3016,7 @@ commutes.
 \end{definition}
 %
 \begin{lemma}
-\llabel{2015.04.10.l7} Let $Eq,\Omega$ and $Eq',\Omega'$ be as above and let
+\label{2015.04.10.l7} Let $Eq,\Omega$ and $Eq',\Omega'$ be as above and let
 ${\bf\Phi}$ be a universe category functor compatible with $Eq,Eq'$ and
 $\Omega,\Omega'$. Then the square
 %
@@ -3080,7 +3085,7 @@ $\chi_{{\bf\Phi}_{E}}(E\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi}_{E})$. Applying
 Theorem \ref{2015.04.10.th3} in this context we get the following.
 %
 \begin{theorem}
-\llabel{2015.04.10.th1} Let ${\bf\Phi}$ be a functor of universe categories
+\label{2015.04.10.th1} Let ${\bf\Phi}$ be a functor of universe categories
 compatible with the J1-structures $(Eq,\Omega)$ and $(Eq',\Omega')$ on $p$ and
 $p'$ respectively. Then the morphisms $\xi_{\bf\Phi}, \wt{\xi}_{\bf\Phi},
 \zeta_{\bf\Phi}, \wt{\zeta}_{\bf\Phi}$ form a morphism from the square
@@ -3119,7 +3124,7 @@ where the second arrow is defined by $\xi_{\bf\Phi}, \wt{\xi}_{\bf\Phi}$ and
 $\zeta_{\bf\Phi}$ in view of Theorem \ref{2015.04.10.th1}.
 %
 \begin{definition}
-\llabel{2015.04.06.def6} Let $Eq$, $Eq'$, $\Omega$ and $\Omega'$ be as
+\label{2015.04.06.def6} Let $Eq$, $Eq'$, $\Omega$ and $\Omega'$ be as
 above. Let $Jp$ and $Jp'$ be J2-structures over $(Eq,\Omega)$ and
 $(Eq',\Omega')$ respectively.  A universe category functor
 $(\Phi,\phi,\wt{\phi})$ is said to be compatible with $Jp$ and $Jp'$ if it is
@@ -3167,7 +3172,7 @@ commutes.
 
 %
 \begin{definition}
-\llabel{2015.04.06.def1} Let $H:\CC\sr \CC'$ be a homomorphism of C-systems.
+\label{2015.04.06.def1} Let $H:\CC\sr \CC'$ be a homomorphism of C-systems.
 %
 \begin{enumerate}
 \item Let $\Id$, $\Id'$ are J0-structures on $\CC$ and $\CC'$ respectively.  Then
@@ -3204,7 +3209,7 @@ $\partial(s0)=\rf_T^*(P)$. Then a J2-structure is defined by a map $Jdom\sr
 \Obwt$ with some properties.
 %
 \begin{lemma}
-\llabel{2015.04.06.l3} Let $H:\CC\sr \CC'$ be a homomorphism of C-systems. Let
+\label{2015.04.06.l3} Let $H:\CC\sr \CC'$ be a homomorphism of C-systems. Let
 $\Gamma,X,Y\in Ob(\CC)$, $m,n\in\nn$ and suppose that
 $\ft^m(X)=\ft^{n}(Y)=\Gamma$. Let $f:X\sr Y$ be a morphism over $\Gamma$ and let
 $F:\Gamma'\sr \Gamma$ be a morphism. Then
@@ -3220,7 +3225,7 @@ $H(F)^*(H(f))$.
 %
 %
 \begin{lemma}
-\llabel{2015.04.06.l2} Let $\Id$, $\Id'$, $\refl$ and $\refl'$ be as in
+\label{2015.04.06.l2} Let $\Id$, $\Id'$, $\refl$ and $\refl'$ be as in
 Definition \ref{2015.04.06.def1} and let
 %
 $$H:(\CC,\Id,\refl)\sr (\CC',\Id',\refl')$$
@@ -3243,7 +3248,7 @@ equations (\ref{2015.04.06.eq1}) and (\ref{2015.04.02.eq1}), which we omit.
 \end{myproof}
 %
 \begin{definition}
-\llabel{2015.04.06.def2} Let $\Id$, $\Id'$, $\refl$ and $\refl'$ be as in
+\label{2015.04.06.def2} Let $\Id$, $\Id'$, $\refl$ and $\refl'$ be as in
 Definition \ref{2015.04.06.def1} and let $\J$, $\J'$ be J2-structures over
 $(\Id,\refl)$ and $(\Id',\refl')$ respectively. A homomorphism of C-systems with
 J1-structures
@@ -3317,7 +3322,7 @@ $$H(f)=\psi_{\Gamma}\circ\Phi(f)\circ\psi_{\Gamma'}^{-1}$$
 
 
 \begin{lemma}
-\llabel{2015.04.12.l1} Let ${\bf\Phi}$ be a universe category functor as above
+\label{2015.04.12.l1} Let ${\bf\Phi}$ be a universe category functor as above
 that is compatible with the J0-structures $Eq$ and $Eq'$ on $p$ and $p'$
 respectively. Then the homomorphism of C-systems $H=H({\bf\Phi})$ is a
 homomorphism of C-systems with J0-structures relative to $\Id_{Eq}$ and
@@ -3367,7 +3372,7 @@ and \cite[Lemma 6.1(2)]{fromunivwithPi}
 \end{myproof}
 
 \begin{lemma}
-\llabel{2015.04.12.l2} Let ${\bf\Phi}$ be a universe category functor as above
+\label{2015.04.12.l2} Let ${\bf\Phi}$ be a universe category functor as above
 that is compatible with the (J0,J1)-structures $(Eq,\Omega)$ and
 $(Eq',\Omega')$ on $p$ and $p'$ respectively. Then the homomorphism of
 C-systems $H=H({\bf\Phi})$ is a homomorphism of C-systems with
@@ -3408,7 +3413,7 @@ denote the composition of $n$ canonical projections $\p_{\Gamma}\circ \dots\circ
 \p_{\ft^{n-1}(\Gamma)}$.
 %
 \begin{lemma}
-\llabel{2015.05.10.l1} Let ${\bf\Phi}$ be a universe category functor and
+\label{2015.05.10.l1} Let ${\bf\Phi}$ be a universe category functor and
 $\Gamma\in Ob(\toCC({\C},p))$ be such that $l(\Gamma)\ge n$. Then the
 square
 %
@@ -3437,7 +3442,7 @@ of $\psi_{\Gamma}$.
 
 
 \begin{lemma}
-\llabel{2015.05.06.l3} Let $Eq, Eq'$ be J0-structures on $({\C},p)$ and
+\label{2015.05.06.l3} Let $Eq, Eq'$ be J0-structures on $({\C},p)$ and
 $({\C}',p')$ and $\bf\Phi$ be a universe category functor compatible
 with $Eq$ and $Eq'$. The for all $\Gamma\in Ob(\toCC({\C},p))$, $T\in
 Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and $o\in \Obwt(P)$ one has:
@@ -3537,7 +3542,7 @@ $\Phi(\Q(F)_E)\circ \wt{\phi}_E$ are the same. Since
 the first equation reduces to
 %
 \begin{eq}
-\llabel{2015.05.10.eq1} \psi_{\Idx(T)}\circ
+\label{2015.05.10.eq1} \psi_{\Idx(T)}\circ
 \Phi(\p^E_{T})=p^{E'}_{int'(H(T))}\circ\psi_{\Gamma},
 \end{eq}%
 %
@@ -3552,7 +3557,7 @@ and since
 the second equation reduces to
 %
 \begin{eq}
-\llabel{2015.05.10.eq2.0} \psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ
+\label{2015.05.10.eq2.0} \psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ
 \wt{\phi}_E=\Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}
 \end{eq}%
 %
@@ -3591,7 +3596,7 @@ Therefore (\ref{2015.05.10.eq2a}) is equivalent to two equations
 $$\psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ
 \Phi(\p_{\wt{\U},p})\circ\wt{\phi}=$$
 \begin{eq}
-\llabel{2015.05.10.eq2aa} \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ
+\label{2015.05.10.eq2aa} \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ
 \p_{(\wt{\U}';p'),Eq'}\circ \p_{\wt{\U}',p'}
 \end{eq}%
 %
@@ -3600,7 +3605,7 @@ and
 $$\psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ
 \Phi(\Q(p))\circ\wt{\phi}=$$
 \begin{eq}
-\llabel{2015.05.10.eq2ab} \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ
+\label{2015.05.10.eq2ab} \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ
 \p_{(\wt{\U}';p'),Eq'}\circ \Q(p')
 \end{eq}%
 %
@@ -3691,7 +3696,7 @@ Construction \ref{2015.05.08.constr1} in $\C'$.
 
 
 \begin{lemma}
-\llabel{2015.04.12.l3} Let ${\bf\Phi}$ be a universe category functor as above
+\label{2015.04.12.l3} Let ${\bf\Phi}$ be a universe category functor as above
 that is compatible with the (J0,J1,J2)-structures $(Eq,\Omega,Jp)$ and
 $(Eq',\Omega',Jp)$ on $p$ and $p'$ respectively. Then the homomorphism of
 C-systems $H=H({\bf\Phi})$ is a homomorphism of C-systems with
@@ -3779,7 +3784,7 @@ and similarly for $F',G'$ and $\wt{H}'$.
 We need to prove
 %
 \begin{eq}
-\llabel{2015.05.10.eq3a} \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ
+\label{2015.05.10.eq3a} \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ
 R_{\Phi}\circ pr_1' = \phi(H(\Gamma),H(T),H(P),H(s0))\circ pr_1'
 \end{eq}%
 %
@@ -3787,7 +3792,7 @@ and
 %
 %
 \begin{eq}
-\llabel{2015.05.10.eq3b} \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ
+\label{2015.05.10.eq3b} \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ
 R_{\Phi}\circ pr_2' = \phi(H(\Gamma),H(T),H(P),H(s0))\circ pr_2'
 \end{eq}%
 %
