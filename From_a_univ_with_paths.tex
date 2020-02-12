@@ -177,10 +177,10 @@ the Cartmell's foundational definition.
 In the past decade or more, it has been a tradition in the study of type
 theories to consider, as the main mathematical object associated with a type
 theory, not a C-system by a category with families (see \cite{Dybjer}). As was
-observed recently all of the constructions of \cite{Cfromauniverse,fromunivwithPi}
+observed recently all of the constructions of \cite{Cfromauniverse,fromunivwithPiI,presheavesOb,fromunivwithPiII}
 and of the present paper (but not of \cite{Csubsystems}
-or \cite{Cofamodule}!) can be either used directly or reformulated in a very
-straightforward way to provide very similar results for categories with
+or \cite{Cofamodule}!) can be either used directly or reformulated in a
+straightforward way to provide similar results for categories with
 families. This modification will be discussed in a separate paper or papers.
 
 In this introductory explanation we will distinguish between the syntactic and
@@ -328,7 +328,7 @@ In this paper we continue to use the diagrammatic order of writing composition
 of morphisms, i.e., for $f:X\sr Y$ and $g:Y\sr Z$ the composition of $f$ and
 $g$ is denoted by $f\circ g$.
 
-In this paper, as in the preceding papers \cite{Cfromauniverse,fromunivwithPi},
+In this paper, as in the preceding papers \cite{Cfromauniverse,fromunivwithPiI,presheavesOb,fromunivwithPiII},
 we often have to consider structures on categories that
 are not invariant under equivalences and their interaction with structures that
 are invariant under the equivalences.
@@ -740,7 +740,7 @@ As is shown in \cite{fromunivwithPi}, the square
 %
 is a pullback square.
 
-Following \cite{fromunivwithPi} we define for any universe $p:\wt{\U}\sr \U$ and
+Following \cite[2.30]{presheavesOb} we define for any universe $p:\wt{\U}\sr \U$ and
 any $V\in {\C}$ a functor from $\C$ to the category of sets,
 %
 $$\gls{D}_p(-,V):X\mapsto \amalg_{F:X\sr \U}Hom((X;F), V),$$
@@ -758,7 +758,7 @@ $p:\wt{\U}\sr \U$ defines a functor\editorfootnote{Here $(\wt{\U},p)$ and
 %
 $$\gls{I}_p:V\mapsto \iHom((\wt{\U},p),(\U\times V,pr_1)),$$
 %
-and we have constructed in \cite[Construction 3.9]{fromunivwithPi} a family of
+and we have constructed in \cite[Construction 2.6.4]{fromunivwithPiI} a family of
 bijections\editorfootnote{Since $\I_p(V)$ is an object over $\U$, one may infer
   that formation of $Hom(X,\I_p(V))$ involves forgetting the structure map
   $\I_p(V) \sr \U$.}
@@ -781,14 +781,15 @@ get a functoriality structure on $\I_p$
 $$(f:V\sr V')\mapsto (\I_p(f):\I_p(V)\sr \I_p(V'))$$
 %
 Similarly, using the functoriality of $\iHom$ in the second argument (see,
-e.g., the appendix in \cite{fromunivwithPi}) we obtain, for any $p:\wt{\U}\sr \U$,
-$p':\wt{\U}'\sr \U$, $h:\wt{\U}'\sr \wt{\U}$ over $\U$, and $V$, a morphism
+e.g., \cite[\S 4.2]{presheavesOb}) we obtain, for any universe $p:\wt{\U}\sr \U$,
+any universe $p':\wt{\U}'\sr \U$, any map $h:\wt{\U}'\sr \wt{\U}$ over $\U$, and and object $V$, a morphism
 %
 $$\I^h(V):\I_p(V)\sr \I_{p'}(V)$$
 %
 \begin{lemma}
-\label{2015.04.10.l2} In the notation introduced above let $f:V\sr V'$ be a
-morphism, then the square
+  \label{2015.04.10.l2}
+  Given a map $f:V\sr V'$ and a map $h:\wt{\U}'\sr \wt{\U}$ over $\U$,
+  as in the notation introduced above, the following square is commutative.
 %
 $$
 \begin{xy}
@@ -799,8 +800,7 @@ $$
 \end{lemma}
 %
 \begin{myproof}
-This is a particular case of the commutative square of \cite[Lemma
-  8.5]{fromunivwithPi}.
+This is a particular case of the commutative square of \cite[Lemma 4.1.5]{presheavesOb}.
 \end{myproof}
 
 
@@ -816,28 +816,28 @@ $$
 \begin{xy}
           \xymatrix@C=3pc{ \D_p(X,V) \ar[r]^-{\etaunshriek_{p,X,V}} \ar[d]_{D^f(X,V)} &
             Hom(X, \I_p(V)) \ar[d]^{-\circ \I^f(V)}\\ \D_{p'}(X,V)
-            \ar[r]^-{\etaunshriek_{p',X.V}} & Hom (X, \I_{p'}(V)), }
+            \ar[r]^-{\etaunshriek_{p',X,V}} & Hom (X, \I_{p'}(V)), }
 \end{xy}
 $$
 %
-where the left hand vertical arrow is defined by
+commutes, where the left hand vertical arrow is defined by
 %
-$$D^f(X,V):(F, F')\mapsto (F,F^*(f)\circ F'),$$
+$$D^f(X,V):(F, F')\mapsto (F,F^*(f)\circ F').$$
 %
-commutes.
 \end{lemma}
 %
 \begin{myproof}
+We abbreviate $\etashriek_{p,X,V}$ as $\etashriek$ and $\etashriek_{p',X,V}$ as $\eta^{',!}$.
 Since $\etaunshriek$ is defined as an inverse to $\etashriek$ it is sufficient to show that
-for any $g\in Hom(X,\I_p(V))$ one has\editorfootnote{$\eta^{',!}$ is undefined here} $\eta^{',!}(g\circ
-\I^f(V))=D^f(X,V)(\etashriek(g))$. Let
+for any $g\in Hom(X,\I_p(V))$ one has $\eta^{',!}(g\circ \I^f(V))=D^f(X,V)(\etashriek(g))$.
+Let
 %
 \begin{align*}
   pr=\gls{prI}_p(V) & :\I_p(V)\sr \U \\
   pr'=prI_{p'}(V) & :\I_{p'}(V)\sr \U
 \end{align*}
 %
-be the canonical projections\editorfootnote{How is $prI_p$ defined?}. Let
+be the canonical projections. Let
 %
 \begin{align*}
   st=st_p(V)&:(\I_p(V);pr)\sr V \\
