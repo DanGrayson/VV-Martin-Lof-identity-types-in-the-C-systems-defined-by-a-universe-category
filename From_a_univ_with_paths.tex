@@ -710,7 +710,7 @@ such that
 
 %
 When we need to distinguish canonical squares arising from different universes we may
-write $(X;F)_{p}$ and $f*_p g$.
+write $(X;F)_{p}$ and $f*_p g$.  We may also write $(X;F)'$ for $(X;F)_{p'}$.
 %
 \begin{remark}\rm
 \label{2015.03.29.rm1} Note that we made no assumption about $\Q(\id_\U)$ being
@@ -758,7 +758,7 @@ $p:\wt{\U}\sr \U$ defines a functor\editorfootnote{Here $(\wt{\U},p)$ and
 %
 $$\gls{I}_p:V\mapsto \iHom((\wt{\U},p),(\U\times V,pr_1)),$$
 %
-and we have constructed in \cite[Construction 2.6.4]{fromunivwithPiI} a family of
+and we have constructed in \cite[Construction 2.6.4]{presheavesOb} a family of
 bijections\editorfootnote{Since $\I_p(V)$ is an object over $\U$, one may infer
   that formation of $Hom(X,\I_p(V))$ involves forgetting the structure map
   $\I_p(V) \sr \U$.}
@@ -769,10 +769,11 @@ that are natural in $X$ and $V$. We let $\etaunshriek$ denote the inverse biject
 %
 $$\gls{etaunshriek}_{p,X,V}:\D_p(X,V)\sr Hom(X,\I_p(V)).$$
 For $F:X\sr \U$ and $G : (X;F) \sr V$, we will abbreviate
-$\etaunshriek_{p,X,V}(F,G)$ to $\etaunshriek_p(F,G)$; this should cause no
+$\etashriek_{p,X,V}(F,G)$ to $\etashriek_p(F,G)$; this should cause no
 confusion, because $X$ and $V$ are determined by $F$ and $G$.
 Similarly, for $H : X \sr \I_p(V)$, we will abbreviate $\etashriek_{p,X,V}(H)$
 to $\etashriek_p(H)$, provided that $X$ and $V$ can be determined from the context.
+We may even write $\etashriek$ for $\etashriek_p$ and $\eta^{',!}$ for $\etashriek_{p'}$.
 
 Using the functorial structure on the mapping $V\mapsto (\U\times V,pr_1)$
 together with the naturality of internal Hom-objects in the second argument we
@@ -816,21 +817,21 @@ $$
 \begin{xy}
           \xymatrix@C=3pc{ \D_p(X,V) \ar[r]^-{\etaunshriek_{p,X,V}} \ar[d]_{D^f(X,V)} &
             Hom(X, \I_p(V)) \ar[d]^{-\circ \I^f(V)}\\ \D_{p'}(X,V)
-            \ar[r]^-{\etaunshriek_{p',X,V}} & Hom (X, \I_{p'}(V)), }
+            \ar[r]^-{\etaunshriek_{p',X.V}} & Hom (X, \I_{p'}(V)), }
 \end{xy}
 $$
 %
-commutes, where the left hand vertical arrow is defined by
+where the left hand vertical arrow is defined by
 %
-$$D^f(X,V):(F, F')\mapsto (F,F^*(f)\circ F').$$
+$$D^f(X,V):(F, F')\mapsto (F,F^*(f)\circ F'),$$
 %
+commutes.
 \end{lemma}
 %
 \begin{myproof}
-We abbreviate $\etashriek_{p,X,V}$ as $\etashriek$ and $\etashriek_{p',X,V}$ as $\eta^{',!}$.
 Since $\etaunshriek$ is defined as an inverse to $\etashriek$ it is sufficient to show that
-for any $g\in Hom(X,\I_p(V))$ one has $\eta^{',!}(g\circ \I^f(V))=D^f(X,V)(\etashriek(g))$.
-Let
+for any $g\in Hom(X,\I_p(V))$ one has $\eta^{',!}(g\circ
+\I^f(V))=D^f(X,V)(\etashriek(g))$. Let
 %
 \begin{align*}
   pr=\gls{prI}_p(V) & :\I_p(V)\sr \U \\
@@ -844,16 +845,13 @@ be the canonical projections. Let
   st'=st_{p'}(V)&:(\I_{p'}(V);pr')'\sr V
 \end{align*}
 %
-be the morphisms introduced in \cite{fromunivwithPi}. By \cite[Problem
-  3.8]{fromunivwithPi} we have
+be the morphisms introduced in \cite[(2.60)]{presheavesOb}. By \cite[(2.65)]{presheavesOb} we have
 %
-$$\eta^{',!}(g\circ \I^f(V))=(g\circ \I^f(V)\circ pr', \Q'(g\circ \I^f(V),
-pr')\circ st')$$
+$$\eta^{',!}(g\circ \I^f(V))=(g\circ \I^f(V)\circ pr', \Q'(g\circ \I^f(V), pr')\circ st')$$
 %
 and
 %
-$$D^f(X,V)(\etashriek(g))=D^f(X,V)(g\circ pr, \Q(g,pr)\circ st)=(g\circ pr, (g\circ
-pr)^*(f)\circ \Q(g,pr)\circ st)$$
+$$D^f(X,V)(\etashriek(g))=D^f(X,V)(g\circ pr, \Q(g,pr)\circ st)=(g\circ pr, (g\circ pr)^*(f)\circ \Q(g,pr)\circ st).$$
 %
 Therefore it is sufficient to show that
 %
@@ -870,16 +868,18 @@ By Lemma \ref{2015.04.20.l1} we have
 %
 $$(g\circ pr)^*(f)\circ \Q(g,pr)=\Q'(g,pr)\circ pr^*(f)$$
 %
-Next we have
+Next we have the following equations.
 %
-$$\Q'(g\circ \I^f(V), pr')=\Q'(g,\I^f(V)\circ pr')\circ
-\Q'(\I^f(V),pr')=\Q'(g,pr)\circ \Q'(\I^f(V),pr')$$
-%
-by \cite[Lemma 3.2]{fromunivwithPi}. It remains to check that
+\begin{align*}
+  \Q'(g\circ \I^f(V), pr')
+  & =\Q'(g,\I^f(V)\circ pr')\circ \Q'(\I^f(V),pr') & \by{\cite[Lemma 2.5]{Cfromauniverse}} \\
+  & =\Q'(g,pr)\circ \Q'(\I^f(V),pr') & \by{}
+\end{align*}
+It remains to check that
 %
 $$\Q'(\I^f(V),pr')\circ st'=pr^*(f)\circ st$$
 %
-This requires opening up the definitions of $st$ and $st'$, which gives us
+This requires opening up the definitions \cite[(2.60)]{presheavesOb} of $st$ and $st'$, which gives us
 %
 $$\Q'(\I^f(V),pr')\circ \iota'\circ ev'\circ pr_2=pr^*(f)\circ \iota\circ ev\circ
 pr_2$$
@@ -917,10 +917,11 @@ $$
 $$
 %
 The first two squares are particular cases of \cite[Lemma
-  8.1]{fromunivwithPi}. To obtain the first one one has to set $Z=\U$,
+  4.1.3]{presheavesOb}, which defines the maps $\iota$ and $\iota'$.
+To obtain the first one one has to set $Z=\U$,
 $b=\id_{\wt{\U}'}$, and $a=\I^f(V)$. To obtain the second one one has to set
 $Z=\U$, $b=f$ and $a=\id_{\I_p(V)}$. The last square is a particular case of
-\cite[Lemma 8.6]{fromunivwithPi}.
+\cite[Lemma 4.1.6]{presheavesOb}.
 %
 % This is a lengthy but straightforward computation that applies to any locally cartesian closed category.
 \end{myproof}
@@ -1006,7 +1007,7 @@ category is a category with the choice of fiber squares based on all pairs of
 morphisms with a common codomain as well as the choice of relative internal
 Hom-objects and co-evaluation morphisms for all such pairs. For our notation
 related to the locally cartesian closed categories as well as for some other
-notations used below see \cite{fromunivwithPi}.
+notations used below see \cite{fromunivwithPiI,presheavesOb,fromunivwithPiII}.
 
 When a universe is considered in a locally cartesian closed category we make no
 assumption about the compatibility of choices of the pullback squares of the
