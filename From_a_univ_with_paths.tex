@@ -425,7 +425,7 @@ will allow the files to be located.
   \begin{eq}
     \label{s-naturality}
     h^* (s_g) = s_{h \circ g}
-  \end{eq}
+  \end{eq}%
 
   In the case where one takes $Y=X$, $f=p_X$, and $g = 1_X$, we let $\gls{delta}(X)$ denote
   the diagonal morphism $\delta(X) := \s_{\id_X} : X\sr \p_X^*(X)$.
@@ -439,7 +439,7 @@ will allow the files to be located.
   \begin{eq}
     \label{delta-pullback}
     g^* (\delta(X)) = s_g
-  \end{eq}
+  \end{eq}%
 
   We also recall the notations ${\gls{Ob}}_n(\Gamma)$ and
   $\gls{Obwt}_n(\Gamma)$ from \cite[\S 3]{fromunivwithPiI}, as well as the
@@ -881,47 +881,28 @@ $$\Q'(\I^f(V),pr')\circ st'=pr^*(f)\circ st$$
 %
 This requires opening up the definitions \cite[(2.60)]{presheavesOb} of $st$ and $st'$, which gives us
 %
-$$\Q'(\I^f(V),pr')\circ \iota'\circ ev'\circ pr_2=pr^*(f)\circ \iota\circ ev\circ
-pr_2$$
+$$\Q'(\I^f(V),pr')\circ \iota'\circ ev'\circ pr_2=pr^*(f)\circ \iota\circ ev\circ pr_2$$
 %
-We will obtain this equality as a consequence of commutativity of three
-squares:
-%
-$$
-\begin{xy}
-          \xymatrix@C=5pc{ (\I_p(V);pr)' \ar[r]^-{\Q'(\I^f(V),pr)} \ar[d]_{\iota'}
-            & (\I_{p'}(V);pr')'
-            \ar[d]^{\iota'}\\ (\I_p(V),pr)\times_\U(\wt{\U}',p')
-            \ar[r]^-{\I^f(V)\times \id} & (\I_{p'}(V),pr')\times_\U(\wt{\U}',p') }
-\end{xy}
-$$
-%
-$$
-\begin{xy}
-          \xymatrix@C=5pc{ (\I_p(V);pr)' \ar[r]^-{pr^*(f)} \ar[d]_{\iota'} &
-            (\I_{p}(V);pr) \ar[d]^{\iota}\\ (\I_p(V),pr)\times_\U(\wt{\U}',p')
-            \ar[r]^-{\id\times f} & (\I_{p}(V),pr)\times_\U(\wt{\U},p) }
-\end{xy}
-$$
-%
-and
-%
-$$
-\begin{xy}
-          \xymatrix@C=5pc{ (\I_p(V),pr)\times_\U(\wt{\U}',p')
-            \ar[r]^-{\I^f(V)\times \id} \ar[d]_{\id\times f} &
-            (\I_{p'}(V),pr')\times_\U(\wt{\U}',p')
-            \ar[d]^{ev'}\\ (\I_p(V),pr)\times_\U(\wt{\U},p) \ar[r]^-{ev} & \U\times
-            V }
-\end{xy}
-$$
-%
-The first two squares are particular cases of \cite[Lemma
-  4.1.3]{presheavesOb}, which defines the maps $\iota$ and $\iota'$.
-To obtain the first one one has to set $Z=\U$,
-$b=\id_{\wt{\U}'}$, and $a=\I^f(V)$. To obtain the second one one has to set
-$Z=\U$, $b=f$ and $a=\id_{\I_p(V)}$. The last square is a particular case of
-\cite[Lemma 4.1.6]{presheavesOb}.
+It will suffice to prove the following equation.
+$$\Q'(\I^f(V),pr')\circ \iota'\circ ev'=pr^*(f)\circ \iota\circ ev$$
+We will obtain this equality as a consequence of commutativity of the three
+squares in the following diagram.
+\begin{eq}
+  \begin{xy}
+    \xymatrix{
+                    & (\I_p(V);pr)' \ar[ld] _{pr^*(f)} \ar[rd]^{\ \Q'(\I^f(V),pr)} \ar[dd]_{\iota'} & \\
+      (\I_{p}(V);pr) \ar[dd]^{\iota} & & (\I_{p'}(V);pr')' \ar[dd]^{\iota'} \\
+                    & (\I_p(V),pr)\times_\U(\wt{\U}',p') \ar[ld]^{\id\times f} \ar[rd]_{\I^f(V)\times \id} & \\
+      (\I_{p}(V),pr)\times_\U(\wt{\U},p) \ar[rd]^{ev} & & (\I_{p'}(V),pr')\times_\U(\wt{\U}',p') \ar[ld]_{ev'} \\
+      & \U \times V &
+      }
+  \end{xy}
+\end{eq}%
+The top two squares are particular cases of \cite[Lemma 4.1.3]{presheavesOb} applied to the category of objects over $\U$;
+the maps $\iota$ and $\iota'$ are defined in the statement of the lemma.
+To obtain the upper right square one sets $b=\id_{\wt{\U}'}$ and $a=\I^f(V)$.
+To obtain the upper left square one sets $b=f$ and $a=\id_{\I_p(V)}$.
+The lower square is a particular case of \cite[Lemma 4.1.6]{presheavesOb}.
 %
 % This is a lengthy but straightforward computation that applies to any locally cartesian closed category.
 \end{myproof}
@@ -954,7 +935,7 @@ of projections as an object over $\U$, and let $pE\wt{\U}$ denote it.
       X \ar[r]^{F}                                                                & \U
     }
   \end{xy}
-\end{eq}
+\end{eq}%
 Remarking that the composite of the right-hand vertical maps is $pE\wt{\U}$, we
 define the canonical square for $F$ relative to $pE\wt{\U}$ to be the
 square obtained by concatenating these three squares.
