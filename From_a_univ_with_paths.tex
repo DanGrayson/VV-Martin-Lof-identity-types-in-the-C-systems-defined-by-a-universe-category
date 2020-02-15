@@ -929,9 +929,9 @@ of projections as an object over $\U$, and let $pE\wt{\U}$ denote it.
 \begin{eq}
   \begin{xy}
     \xymatrix@C=7pc{
-      (X;F,\Q(F)\circ p, \Q(\Q(F),p)\circ Eq) \ar[r]^-{\Q(\Q(\Q(F),p),Eq)} \ar[d] & (\wt{\U}; p, Eq) \ar[d]^{\p_{(\wt{\U};p),Eq}} \\
-      (X;F,\Q(F)\circ p) \ar[r]^-{\Q(\Q(F),p)} \ar[d]                             & (\wt{\U};p) \ar[d]^{\p_{\wt{\U},p}} \\
-      (X;F) \ar[r]^-{\Q(F)} \ar[d]_{\p_{X,F}}                                       & \wt{\U} \ar[d]^{p} \\
+      (X;F,\Q(F)\circ p, \Q(\Q(F),p)\circ Eq) \ar[r]^-{\Q(\Q(\Q(F),p),Eq)} \ar[d] & (\wt{\U}; p, Eq) \ar[d]_{\p_{(\wt{\U};p),Eq}} \ar@/^2pc/[ddd]^{pE\wt{\U}} \\
+      (X;F,\Q(F)\circ p) \ar[r]^-{\Q(\Q(F),p)} \ar[d]                             & (\wt{\U};p) \ar[d]_{\p_{\wt{\U},p}} \\
+      (X;F) \ar[r]^-{\Q(F)} \ar[d]_{\p_{X,F}}                                       & \wt{\U} \ar[d]_{p} \\
       X \ar[r]^{F}                                                                & \U
     }
   \end{xy}
@@ -959,7 +959,7 @@ Explicitly we have
   \p_{X,F}^E&=\p_{(X;F,\Q(F)\circ p),\Q(\Q(F),p)\circ Eq}\circ \p_{(X;F),\Q(F)\circ p}\circ \p_{X,F}
 \end{align*}
 %
-We will also write $\Q(f,F)_{E}$ for the canonical morphisms from $(X;f\circ
+We will also write $\Q(f,F)_{E}$ for the canonical morphism from $(X;f\circ
 F)_{E}$ to $(X;F)_{E}$.
 %
 \begin{definition}
@@ -1051,7 +1051,7 @@ $\I_{pE\wt{\U}}(\U)$ and $pr_2$ the projection from $\Fp$ to $\I_p(\wt{\U})$.
 
 Our solution to the following problem is the key to the construction of
 J-structures over a given J1-structure in categories with weak factorization
-systems in particular in Quillen model categories.
+systems, particularly in Quillen model categories.
 %
 \begin{problem}
 \label{2015.05.12.l1} Let $\C$ be a category with a locally cartesian
@@ -1072,9 +1072,9 @@ split the following square into two commutative triangles:
 \end{problem}
 %
 \begin{remark}\rm
-If we omit, as is customary done, the explicit functions to the base in the
-notation of the fiber products the square (\ref{2015.05.22.sq1}) takes the
-following form:
+If we omit, as is customarily done, the explicit functions to the base in the
+notation of the fiber products, then the square (\ref{2015.05.22.sq1}) takes the
+following form.
 %
 \begin{eq}\label{2017.08.16.sq1}
 \begin{xy}
@@ -1422,19 +1422,21 @@ third by \cite[Lemma 8.7(3)]{fromunivwithPi}. By Lemmas \ref{2015.05.14.l2} and
 (3) on $FB$ and $TC$ we know that $i\times \id_{\wt{\U}}$ is in $TC$. Therefore,
 there exists a morphism $g:(W,\p_W)\times_\U (\wt{\U},p) \sr \U\times V'$ that
 splits this square into two commutative triangles. Since the lower triangle
-commutes, $g$ is a morphism over $\U$ and in particular $g=adj(f)$ for some
+commutes, $g$ is a morphism over $\U$ and, in particular, $g=adj(f)$ for some
 $f:W\sr \iHom_\U((\wt{\U},p),(\U\times V',pr_1))$. Let us show that $f$ splits
 the square (\ref{2015.05.14.sq1}) into two commutative triangles, i.e., that we
 have $i\circ f= f_Z$ and $f\circ \iHom_\U((\wt{\U},p), \id_\U\times r)=f_W$.
 
 The first equality is equivalent to $adj(i\circ f)=adj(f_Z)$ which is
-equivalent, by \cite[Lemma 8.7(3)]{fromunivwithPi} to $(i\times
-\id_{\wt{\U}})\circ g=adj(f_Z)$ which is the commutativity of the upper of the
+equivalent, by \cite[Lemma 8.7(3)]{fromunivwithPi} to
+$(i\times \id_{\wt{\U}})\circ g=adj(f_Z),$
+which is the commutativity of the upper of the
 two triangles into which $g$ splits (\ref{2015.05.14.sq2}).
 
-The second equality is equivalent to $adj(f\circ \iHom_\U((\wt{\U},p),
-\id_\U\times r))=adj(f_W)$, which is equivalent by \cite[Lemma
-  8.7(1)]{fromunivwithPi} to $g\circ (\id_\U\times r)=adj(f_W)$ which is the
+The second equality is equivalent to
+$adj(f\circ \iHom_\U((\wt{\U},p), \id_\U\times r))=adj(f_W)$,
+which is equivalent by \cite[Lemma 8.7(1)]{fromunivwithPi} to
+$g\circ (\id_\U\times r)=adj(f_W),$ which is the
 commutativity of the lower of the two triangles into which $g$ splits
 (\ref{2015.05.14.sq2}).
 \end{myproof}
@@ -1608,7 +1610,7 @@ $\p_0=p$. To define $\p_{n+1}$ consider the diagonal $\Delta_n:\wt{\U}_n\sr
 $$\p_{n+1}=q_{\Delta_n}:P(\Delta_n)\sr
 (\wt{\U}_n,\p_n)\times_{\U_n}(\wt{\U}_n,\p_n)$$
 %
-so that in particular $\U_{n+1}=(\wt{\U}_n,\p_n)\times_{\U_n}(\wt{\U}_n,\p_n)$.
+so that, in particular, $\U_{n+1}=(\wt{\U}_n,\p_n)\times_{\U_n}(\wt{\U}_n,\p_n)$.
 
 Let $\U_*=\amalg_n \U_n$, $\wt{\U}_*=\amalg_n\wt{\U}_n$ and $\p_*=\amalg_n
 \p_n$. According to the first of the two properties that we required from the
@@ -2224,8 +2226,8 @@ Therefore, by Lemma \ref{2015.04.04.l4} we have
     & = \etaunshriek_{pE\wt{\U}}(f\circ F, \wt{u}_1(\q(f,\Idx(T),3)^*(\J,1)))
 \end{align*}
 %
-Since both $\etaunshriek_{pE\wt{\U}}$ and $\wt{u}_1$ are bijections and in particular
-injections it is sufficient to show that
+Since both $\etaunshriek_{pE\wt{\U}}$ and $\wt{u}_1$ are bijections and thus
+injections, it is sufficient to show that
 %
 $$f\circ \phi(\Gamma,T,P,s0)\circ Jp = \phi(\Gamma',f^*(T),f^*(P),f^*(s0))\circ
 Jp$$
@@ -2824,9 +2826,9 @@ one has
 %
 $$\Phi(s*s')\circ\Phi\wt{\U}p=\Phi(s\circ \wt{\phi})*\Phi(s'\circ\wt{\phi})$$
 %
-in particular
+and thus
 %
-$$\Phi(\Delta)\circ \Phi\wt{\U}p = \wt{\phi}*\wt{\phi}$$
+$$\Phi(\Delta)\circ \Phi\wt{\U}p = \wt{\phi}*\wt{\phi}.$$
 %
 \end{lemma}
 %
