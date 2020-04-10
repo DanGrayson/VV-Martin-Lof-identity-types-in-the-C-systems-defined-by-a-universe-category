@@ -83,9 +83,12 @@
 \newcommand{\etaunshriek}{{\etashriek}^{-1}}
 \newcommand{\Ob}{Ob}
 \newcommand{\Obwt}{\wt{Ob}}
+\newcommand{\st}{\mathsf{st}}
+\newcommand{\pr}{\mathsf{pr}}
+\newcommand{\prI}{\mathsf{prI}}
 
 % persistent notations to go into symbol index
-%   at definition time, use \gls{foo}
+%   at definition time, use \gls{foo} to generate a link to the symbol index
 %   at subsequent uses, use \foo or the actual code
 %   the order here is the order in the index, and is obtained with "sort -f"
 \newoperator{partial}{\partial}
@@ -102,7 +105,8 @@
 \newoperator{Obwt}{\Obwt}
 \newoperator{Ob}{Ob}
 \newoperator{omega}{\omega}
-\newoperator{prI}{prI}
+\newoperator{pr}{\pr}
+\newoperator{prI}{\prI}
 \newoperator{p}{\p}
 \newoperator{pFp}{\pFp}
 \newoperator{Q}{\Q}
@@ -111,6 +115,7 @@
 \newoperator{rf}{\rf}
 \newoperator{s}{\s}
 \newoperator{semicolon}{(X;F)}
+\newoperator{st}{\st}
 \newoperator{multisemicolon}{(X;F_1,\dots,F_n)}
 \newoperator{starfg}{f*g}
 
@@ -753,10 +758,10 @@ $\D_p(X,V)$ will be written as the pair $(F,G)$.
 
 When $\C$ is a locally cartesian closed category any morphism
 $p:\wt{\U}\sr \U$ defines a functor\editorfootnote{Here $(\wt{\U},p)$ and
-  $(\U\times V,pr_1)$ are objects in the category of objects over $\U$, and
+  $(\U\times V,\pr_1)$ are objects in the category of objects over $\U$, and
   $\iHom$ denotes the internal Hom in that category.}
 %
-$$\gls{I}_p:V\mapsto \iHom((\wt{\U},p),(\U\times V,pr_1)),$$
+$$\gls{I}_p:V\mapsto \iHom((\wt{\U},p),(\U\times V,\pr_1)),$$
 %
 and we have constructed in \cite[Construction 2.6.4]{presheavesOb} a family of
 bijections\editorfootnote{Since $\I_p(V)$ is an object over $\U$, one may infer
@@ -775,7 +780,7 @@ Similarly, for $H : X \sr \I_p(V)$, we will abbreviate $\etashriek_{p,X,V}(H)$
 to $\etashriek_p(H)$, provided that $X$ and $V$ can be determined from the context.
 We may even write $\etashriek$ for $\etashriek_p$ and $\eta^{',!}$ for $\etashriek_{p'}$.
 
-Using the functorial structure on the mapping $V\mapsto (\U\times V,pr_1)$
+Using the functorial structure on the mapping $V\mapsto (\U\times V,\pr_1)$
 together with the naturality of internal Hom-objects in the second argument we
 get a functoriality structure on $\I_p$
 %
@@ -834,66 +839,66 @@ for any $g\in Hom(X,\I_p(V))$ one has $\eta^{',!}(g\circ
 \I^f(V))=D^f(X,V)(\etashriek(g))$. Let
 %
 \begin{align*}
-  pr=\gls{prI}_p(V) & :\I_p(V)\sr \U \\
-  pr'=prI_{p'}(V) & :\I_{p'}(V)\sr \U
+  \gls{pr}=\gls{prI}_p(V) & :\I_p(V)\sr \U \\
+  \pr'=\prI_{p'}(V) & :\I_{p'}(V)\sr \U
 \end{align*}
 %
 be the canonical projections. Let
 %
 \begin{align*}
-  st=st_p(V)&:(\I_p(V);pr)\sr V \\
-  st'=st_{p'}(V)&:(\I_{p'}(V);pr')'\sr V
+  \st=\gls{st}_p(V)&:(\I_p(V);\pr)\sr V \\
+  \st'=\st_{p'}(V)&:(\I_{p'}(V);\pr')'\sr V
 \end{align*}
 %
 be the morphisms introduced in \cite[(2.60)]{presheavesOb}. By \cite[(2.65)]{presheavesOb} we have
 %
-$$\eta^{',!}(g\circ \I^f(V))=(g\circ \I^f(V)\circ pr', \Q'(g\circ \I^f(V), pr')\circ st')$$
+$$\eta^{',!}(g\circ \I^f(V))=(g\circ \I^f(V)\circ \pr', \Q'(g\circ \I^f(V), \pr')\circ \st')$$
 %
 and
 %
-$$D^f(X,V)(\etashriek(g))=D^f(X,V)(g\circ pr, \Q(g,pr)\circ st)=(g\circ pr, (g\circ pr)^*(f)\circ \Q(g,pr)\circ st).$$
+$$D^f(X,V)(\etashriek(g))=D^f(X,V)(g\circ \pr, \Q(g,\pr)\circ \st)=(g\circ \pr, (g\circ \pr)^*(f)\circ \Q(g,\pr)\circ \st).$$
 %
 Therefore it is sufficient to show that
 %
-$$\I^f(V)\circ pr'=pr$$
+$$\I^f(V)\circ \pr'=\pr$$
 %
 and
 %
-$$\Q'(g\circ \I^f(V), pr')\circ st'=(g\circ pr)^*(f)\circ \Q(g,pr)\circ st$$
+$$\Q'(g\circ \I^f(V), \pr')\circ \st'=(g\circ \pr)^*(f)\circ \Q(g,\pr)\circ \st$$
 %
 The first equality asserts that $\I^f(V)$ is a morphism over $\U$, which follows
 from its construction.
 
 By Lemma \ref{2015.04.20.l1} we have
 %
-$$(g\circ pr)^*(f)\circ \Q(g,pr)=\Q'(g,pr)\circ pr^*(f)$$
+$$(g\circ \pr)^*(f)\circ \Q(g,\pr)=\Q'(g,\pr)\circ \pr^*(f)$$
 %
 Next we have the following equations.
 %
 \begin{align*}
-  \Q'(g\circ \I^f(V), pr')
-  & =\Q'(g,\I^f(V)\circ pr')\circ \Q'(\I^f(V),pr') & \by{\cite[Lemma 2.5]{Cfromauniverse}} \\
-  & =\Q'(g,pr)\circ \Q'(\I^f(V),pr') & \by{}
+  \Q'(g\circ \I^f(V), \pr')
+  & =\Q'(g,\I^f(V)\circ \pr')\circ \Q'(\I^f(V),\pr') & \by{\cite[Lemma 2.5]{Cfromauniverse}} \\
+  & =\Q'(g,\pr)\circ \Q'(\I^f(V),\pr') & \by{}
 \end{align*}
 It remains to check that
 %
-$$\Q'(\I^f(V),pr')\circ st'=pr^*(f)\circ st$$
+$$\Q'(\I^f(V),\pr')\circ \st'=\pr^*(f)\circ \st$$
 %
-This requires opening up the definitions \cite[(2.60)]{presheavesOb} of $st$ and $st'$, which gives us
+This requires opening up the definitions \cite[(2.60)]{presheavesOb} of $\st$ and $\st'$, which gives us
 %
-$$\Q'(\I^f(V),pr')\circ \iota'\circ ev'\circ pr_2=pr^*(f)\circ \iota\circ ev\circ pr_2$$
+$$\Q'(\I^f(V),\pr')\circ \iota'\circ ev'\circ \pr_2=\pr^*(f)\circ \iota\circ ev\circ \pr_2$$
 %
 It will suffice to prove the following equation.
-$$\Q'(\I^f(V),pr')\circ \iota'\circ ev'=pr^*(f)\circ \iota\circ ev$$
+$$\Q'(\I^f(V),\pr')\circ \iota'\circ ev'=\pr^*(f)\circ \iota\circ ev$$
 We will obtain this equality as a consequence of commutativity of the three
 squares in the following diagram.
 \begin{eq}
   \begin{xy}
     \xymatrix{
-                    & (\I_p(V);pr)' \ar[ld] _{pr^*(f)} \ar[rd]^{\ \Q'(\I^f(V),pr)} \ar[dd]_{\iota'} & \\
-      (\I_{p}(V);pr) \ar[dd]^{\iota} & & (\I_{p'}(V);pr')' \ar[dd]^{\iota'} \\
-                    & (\I_p(V),pr)\times_\U(\wt{\U}',p') \ar[ld]^{\id\times f} \ar[rd]_{\I^f(V)\times \id} & \\
-      (\I_{p}(V),pr)\times_\U(\wt{\U},p) \ar[rd]^{ev} & & (\I_{p'}(V),pr')\times_\U(\wt{\U}',p') \ar[ld]_{ev'} \\
+                    & (\I_p(V);\pr)' \ar[ld] _{\pr^*(f)} \ar[rd]^{\ \Q'(\I^f(V),\pr)} \ar[dd]_{\iota'} & \\
+      (\I_{p}(V);\pr) \ar[dd]^{\iota} & & (\I_{p'}(V);\pr')' \ar[dd]^{\iota'} \\
+                    & (\I_p(V),\pr)\times_\U(\wt{\U}',p') \ar[ld]^{\id\times f} \ar[rd]_{\I^f(V)\times \id} & \\
+      (\I_{p}(V),\pr)\times_\U(\wt{\U},p) \ar[rd]^{ev} & & (\I_{p'}(V),\pr')\times_\U(\wt{\U}',p') \ar[ld]_{ev'} \\
       & \U \times V &
       }
   \end{xy}
@@ -1026,15 +1031,15 @@ Note that we have:
 %
 \begin{eq}
 \label{2015.04.04.eq1} J\circ \I^{\omega}(\wt{\U})=J\circ coJ\circ
-prI_p(\wt{\U})=prI_{p}(\wt{\U})
+\prI_p(\wt{\U})=\prI_{p}(\wt{\U})
 \end{eq}%
 %
 \begin{eq}
 \label{2015.04.04.eq2} J\circ \I_{pE\wt{\U}}(p)=J\circ coJ\circ
-prI_{pE\wt{\U}}(\U)=prI_{pE\wt{\U}}(\U),
+\prI_{pE\wt{\U}}(\U)=\prI_{pE\wt{\U}}(\U),
 \end{eq}%
 %
-where $prI_p(V)$ is the canonical morphism $\I_p(V)\sr \U$.
+where $\prI_p(V)$ is the canonical morphism $\I_p(V)\sr \U$.
 
 A J-structure on $p$ is a triple $(Eq,\Omega,Jp)$, where $Eq$ is a J0-structure,
 $\Omega$ is a J1-structure relative to $Eq$, and $Jp$ a J2-structure relative to
@@ -1046,8 +1051,8 @@ cartesian closed structure let $\gls{Fp}_{Eq,\Omega}$ denote the fiber product
 $$(\I_{pE\wt{\U}}(\U), \I^{\omega}(\U)) \times_{\I_p(\U)} (\I_p(\wt{\U}), \I_p(p))$$
 %
 and let $\gls{pFp}_{Eq,\Omega}=\I^{\omega}(\U)\dd \I_p(p)$ be the projection
-$\Fp_{Eq,\Omega}\sr \U$. Let further $pr_1$ be the projection from $\Fp$ to
-$\I_{pE\wt{\U}}(\U)$ and $pr_2$ the projection from $\Fp$ to $\I_p(\wt{\U})$.
+$\Fp_{Eq,\Omega}\sr \U$. Let further $\pr_1$ be the projection from $\Fp$ to
+$\I_{pE\wt{\U}}(\U)$ and $\pr_2$ the projection from $\Fp$ to $\I_p(\wt{\U})$.
 
 Our solution to the following problem is the key to the construction of
 J-structures over a given J1-structure in categories with weak factorization
@@ -1062,10 +1067,10 @@ split the following square into two commutative triangles:
 %
 \begin{eq}\label{2015.05.22.sq1}
 \begin{xy}
-          \xymatrix@C=7pc{ (\Fp,\pFp)\times_\U(\wt{\U},p) \ar[r]^-{adj(pr_2)\circ
-              pr_2} \ar[d]_{\id_{\Fp}\times \omega} & \wt{\U}
+          \xymatrix@C=7pc{ (\Fp,\pFp)\times_\U(\wt{\U},p) \ar[r]^-{adj(\pr_2)\circ
+              \pr_2} \ar[d]_{\id_{\Fp}\times \omega} & \wt{\U}
             \ar[d]^{p}\\ (\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U})
-            \ar[r]^-{adj(pr_1)\circ pr_2} & \U }
+            \ar[r]^-{adj(\pr_1)\circ \pr_2} & \U }
 \end{xy}
 \end{eq}%
 %
@@ -1079,10 +1084,10 @@ following form.
 \begin{eq}\label{2017.08.16.sq1}
 \begin{xy}
           \xymatrix@C=7pc{ (\I_{pE\wt{\U}}(\U)\times_{\I_p(\U)}
-            \I_p(\wt{\U}))\times_\U\wt{\U} \ar[r]^-{adj(pr_2)\circ pr_2}
+            \I_p(\wt{\U}))\times_\U\wt{\U} \ar[r]^-{adj(\pr_2)\circ \pr_2}
             \ar[d]_{\id_{\Fp}\times \omega} & \wt{\U}
             \ar[d]^{p}\\ (\I_{pE\wt{\U}}(\U)\times_{\I_p(\U)} \I_p(\wt{\U}))\times_\U
-            E\wt{\U} \ar[r]^-{adj(pr_1)\circ pr_2} & \U }
+            E\wt{\U} \ar[r]^-{adj(\pr_1)\circ \pr_2} & \U }
 \end{xy}
 \end{eq}%
 
@@ -1106,9 +1111,9 @@ that split into two commutative triangles the square:
 %
 $$
 \begin{xy}
-          \xymatrix@C=7pc{ (\Fp,\pFp)\times_\U(\wt{\U},p) \ar[r]^-{adj(pr_2)}
+          \xymatrix@C=7pc{ (\Fp,\pFp)\times_\U(\wt{\U},p) \ar[r]^-{adj(\pr_2)}
             \ar[d]_{\id_{\Fp}\times \omega} & \U\times \wt{\U} \ar[d]^{\id_\U\times
-              p}\\ (\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U}) \ar[r]^-{adj(pr_1)} &
+              p}\\ (\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U}) \ar[r]^-{adj(\pr_1)} &
             \U\times \U }
 \end{xy}
 $$
@@ -1116,7 +1121,7 @@ $$
 The rule $f\mapsto adj(f)$ gives us a bijection of the form
 %
 $$Hom_\U((\Fp,\pFp),(\I_{pE\wt{\U}}(\wt{\U}),\_))\sr Hom_\U((\Fp,\pFp)\times_\U
-(E\wt{\U},pE\wt{\U}), (\U\times\wt{\U}, pr_2))$$
+(E\wt{\U},pE\wt{\U}), (\U\times\wt{\U}, \pr_2))$$
 %
 All sections of $coJ$ are automatically morphisms over $\U$. Therefore it
 remains to show that this bijection defines a bijection of the subset of
@@ -1124,14 +1129,14 @@ morphisms that are sections of $coJ$ and morphisms that make the two triangles
 commutative.
 
 One verifies first that a morphism $f:\Fp\sr \I_{pE\wt{\U}}(\wt{\U})$ is a section
-of $coJ$ if and only if $f\circ \I_{pE\wt{\U}}(p)=pr_1$ and $f\circ
-\I^{\omega}(\wt{\U})=pr_2$. This is omitted.
+of $coJ$ if and only if $f\circ \I_{pE\wt{\U}}(p)=\pr_1$ and $f\circ
+\I^{\omega}(\wt{\U})=\pr_2$. This is omitted.
 
 Next we have
 %
 \begin{align*}
   \I_{pE\wt{\U}}(p)&=\iHom_\U((E\wt{\U},pE\wt{\U}),\id_\U\times p) \\
-  \I^{\omega}(\wt{\U})&=\iHom_\U(\omega,(\U\times\wt{\U},pr_2))
+  \I^{\omega}(\wt{\U})&=\iHom_\U(\omega,(\U\times\wt{\U},\pr_2))
 \end{align*}
 %
 Therefore by \cite[Lemma 4.1.7]{presheavesOb} one has
@@ -1144,8 +1149,8 @@ Therefore by \cite[Lemma 4.1.7]{presheavesOb} one has
 and we conclude that $f$ is a section of $coJ$ if and only if
 %
 \begin{align*}
-  adj(f)\circ (\id_\U\times p)&=adj(pr_1) & \text{and} \\
-  (\id_{\Fp}\times_{\U}\omega)\circ adj(f)&=adj(pr_2).
+  adj(f)\circ (\id_\U\times p)&=adj(\pr_1) & \text{and} \\
+  (\id_{\Fp}\times_{\U}\omega)\circ adj(f)&=adj(\pr_2).
 \end{align*}
 % 
 This completes the construction.
@@ -1328,23 +1333,23 @@ $p_2\circ p_1$ is in $FB$.
 %
 \begin{lemma}
 \label{2015.05.14.l1} Assume that $\U,V$ are fibrant and that $p:\wt{\U}\sr \U$
-is in $FB$. Then the morphism $prI_p(V):\I_p(V)\sr \U$ is in $FB$.
+is in $FB$. Then the morphism $\prI_p(V):\I_p(V)\sr \U$ is in $FB$.
 \end{lemma}
 %
 \begin{myproof}
-Since $\U$ is fibrant it is sufficient to check that $pr=prI_p(V)$ has the right
+Since $\U$ is fibrant it is sufficient to check that $\pr=\prI_p(V)$ has the right
 lifting property for $TC$. Consider a commutative square of the form
 %
 $$
 \begin{xy}
           \xymatrix@C=2pc{ Z \ar[r]^-{f_Z} \ar[d]_{i} &
-            \iHom_\U((\wt{\U},p),(\U\times V,pr_1)) \ar[d]^{pr}\\ W
+            \iHom_\U((\wt{\U},p),(\U\times V,\pr_1)) \ar[d]^{\pr}\\ W
             \ar[r]^-{f_W} & \U }
 \end{xy}
 $$
 %
 We need to construct a morphism $f:W\sr \iHom_\U((\wt{\U},p),(\U\times
-V,pr_1))$ that would make the two triangles commutative. The commutativity of
+V,\pr_1))$ that would make the two triangles commutative. The commutativity of
 the lower triangle means that $f$ is a morphism over $\U$ which is equivalent to
 the assumption that $f=adj^{-1}(g)$ for some $g:(W,f_W)\times_\U (\wt{\U},p)\sr
 \U\times V$ over $\U$.
@@ -1355,11 +1360,11 @@ $$
 \begin{xy}
           \xymatrix@C=4pc{ (Z, i\circ f_W)\times_\U (\wt{\U},p)
             \ar[r]^-{adj(f_Z)} \ar[d]_{i\times \id_{\wt{\U}}} & \U\times V
-            \ar[d]^{pr_1}\\ (W,f_W)\times_\U (\wt{\U},p) \ar[r]^-{f_W\dd p} & \U }
+            \ar[d]^{\pr_1}\\ (W,f_W)\times_\U (\wt{\U},p) \ar[r]^-{f_W\dd p} & \U }
 \end{xy}
 $$
 %
-By Lemma \ref{2015.05.14.l2} we know that $pr_1$ belongs to $FB$. By our
+By Lemma \ref{2015.05.14.l2} we know that $\pr_1$ belongs to $FB$. By our
 assumptions on $TC$ and $FB$ we know that $i\times \id_{\wt{\U}}$ is in
 $TC$. Therefore there exists a morphism $g:(W,f_W)\times_\U (\wt{\U},p) \sr
 \U\times V$ that makes the two triangles commute.  The commutativity of the
@@ -1385,16 +1390,16 @@ property for $TC$. Consider a commutative square of the form
 \label{2015.05.14.sq1}
 \begin{xy}
           \xymatrix@C=4pc{ Z \ar[r]^-{f_Z} \ar[d]_{i} &
-            \iHom_\U((\wt{\U},p),(\U\times V',pr_1))
+            \iHom_\U((\wt{\U},p),(\U\times V',\pr_1))
             \ar[d]^{\iHom_\U((\wt{\U},p), \id_\U\times r)}\\ W \ar[r]^-{f_W} &
-            \iHom_\U((\wt{\U},p), (\U\times V, pr_1)) }
+            \iHom_\U((\wt{\U},p), (\U\times V, \pr_1)) }
 \end{xy}
 \end{eq}%
 %
 The lower right corner is an object over $\U$ through the morphism $p\triangle
-pr_1$. Let $\p_W=f_W\circ (p\triangle pr^{\U,V}_\U)$ and
+\pr_1$. Let $\p_W=f_W\circ (p\triangle \pr^{\U,V}_\U)$ and
 %
-$$\p_Z=i\circ \p_W=f_Z\circ (p\triangle pr^{\U,V'}_\U)$$
+$$\p_Z=i\circ \p_W=f_Z\circ (p\triangle \pr^{\U,V'}_\U)$$
 %
 Consider the square
 %
@@ -1423,7 +1428,7 @@ third by \cite[Lemma 8.7(3)]{fromunivwithPi}. By Lemmas \ref{2015.05.14.l2} and
 there exists a morphism $g:(W,\p_W)\times_\U (\wt{\U},p) \sr \U\times V'$ that
 splits this square into two commutative triangles. Since the lower triangle
 commutes, $g$ is a morphism over $\U$ and, in particular, $g=adj(f)$ for some
-$f:W\sr \iHom_\U((\wt{\U},p),(\U\times V',pr_1))$. Let us show that $f$ splits
+$f:W\sr \iHom_\U((\wt{\U},p),(\U\times V',\pr_1))$. Let us show that $f$ splits
 the square (\ref{2015.05.14.sq1}) into two commutative triangles, i.e., that we
 have $i\circ f= f_Z$ and $f\circ \iHom_\U((\wt{\U},p), \id_\U\times r)=f_W$.
 
@@ -1484,9 +1489,9 @@ constructing the splitting of the square
 $$
 \begin{xy}
           \xymatrix@C=4pc{ (\wt{\U},p)\times_\U (\Fp,\pFp) \ar[r]^-{\sigma\circ
-              adj(pr_2)} \ar[d]_{\omega \times \id_{\Fp}} & \U\times\wt{\U}
+              adj(\pr_2)} \ar[d]_{\omega \times \id_{\Fp}} & \U\times\wt{\U}
             \ar[d]^{\id_\U\times p}\\ (E\wt{\U},pE\wt{\U})\times_\U (\Fp,\pFp)
-            \ar[r]^-{\sigma'\circ adj(pr_1)} & \U\times \U, }
+            \ar[r]^-{\sigma'\circ adj(\pr_1)} & \U\times \U, }
 \end{xy}
 $$
 %
@@ -1507,15 +1512,15 @@ classes $FB$ and $TC$ to $B=\U$, $f=pE\wt{\U}$, $i=\omega$ and $p=\pFp$.  It
 remains to show that $\pFp$ is in $FB$. We can represent $\pFp$ as the
 composition
 %
-$$\Fp\stackrel{pr_1}{\sr} \I_{pE\wt{\U}}(\U) \stackrel{prI_{pE\wt{\U}}}{\sr} \U$$
+$$\Fp\stackrel{\pr_1}{\sr} \I_{pE\wt{\U}}(\U) \stackrel{\prI_{pE\wt{\U}}}{\sr} \U$$
 %
 The morphism $pE\wt{\U}$ is in $FB$ as a composition of pullbacks of $p$ with
 respect to morphisms with fibrant domains through repeated application of
 Lemmas \ref{2015.05.14.l2} and \ref{2015.05.14.l4}. Therefore, the morphism
-$prI_{pE\wt{\U}}$ is in $FB$ by Lemma \ref{2015.05.14.l1} and as a corollary we
+$\prI_{pE\wt{\U}}$ is in $FB$ by Lemma \ref{2015.05.14.l1} and as a corollary we
 know that $\I_{pE\wt{\U}}(\U)$ is fibrant. Similarly $\I_p(\U)$ is fibrant and
 $i_p(p)$ is in $FB$ and applying again Lemma \ref{2015.05.14.l2} we see that
-$pr_1$ is in $FB$. And again by Lemma \ref{2015.05.14.l4} we see that $\pFp$ is
+$\pr_1$ is in $FB$. And again by Lemma \ref{2015.05.14.l4} we see that $\pFp$ is
 in $FB$ which finishes the proof of the theorem.
 \end{myproof}
 %
@@ -1559,7 +1564,7 @@ Assume that these coproducts satisfy the following two conditions:
 $$
 \begin{xy}
           \xymatrix@C=4pc{ \amalg_n (E_n,f_n)\times_{B_n}(E_n,f_n)
-            \ar[r]^-{\amalg_n pr_2} \ar[d]_{\amalg_n pr_1} & \amalg_n E_n
+            \ar[r]^-{\amalg_n \pr_2} \ar[d]_{\amalg_n \pr_1} & \amalg_n E_n
             \ar[d]^{\amalg_n f_n}\\ \amalg_n E_n \ar[r]^-{\amalg_n f_n} &
             \amalg_n B_n }
 \end{xy}
@@ -2279,7 +2284,7 @@ $$\etaunshriek_{E\wt{\U}}(F,\wt{u}_1(\J))\circ \I^{\omega}(\wt{\U})=\etaunshriek
 %
 On the other hand
 %
-$$\phi\circ Jp\circ \I^{\omega}(\wt{\U})=\phi\circ prI_p(\wt{\U})$$
+$$\phi\circ Jp\circ \I^{\omega}(\wt{\U})=\phi\circ \prI_p(\wt{\U})$$
 %
 by (\ref{2015.04.04.eq1}) which equals, by construction,
 $\etaunshriek_p(F,\wt{u}_1(s0))$. Therefore,
@@ -3738,22 +3743,22 @@ $$\psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ R_{\Phi} =
 Let
 %
 \begin{align*}
-  pr_1 & :(\I_{pE\wt{\U}}(\U),\I^{\omega})\times_{\I_{p}(\U)}(\I_{p}(\wt{\U}),\I_p(p))\sr \I_{pE\wt{\U}}(\U) \\
-  pr_2 & :(\I_{pE\wt{\U}}(\U),\I^{\omega})\times_{\I_{p}(\U)}(\I_{p}(\wt{\U}),\I_p(p))\sr \I_{p}(\wt{\U})
+  \pr_1 & :(\I_{pE\wt{\U}}(\U),\I^{\omega})\times_{\I_{p}(\U)}(\I_{p}(\wt{\U}),\I_p(p))\sr \I_{pE\wt{\U}}(\U) \\
+  \pr_2 & :(\I_{pE\wt{\U}}(\U),\I^{\omega})\times_{\I_{p}(\U)}(\I_{p}(\wt{\U}),\I_p(p))\sr \I_{p}(\wt{\U})
 \end{align*}
 %
-be the projections and let $pr_1'$, $pr_2'$ be their analogues in $\mathcal
+be the projections and let $\pr_1'$, $\pr_2'$ be their analogues in $\mathcal
 C'$. Then one has
 %
-$$R_{\Phi}\circ pr_1'=\Phi(pr_1)\circ \zeta_{\Phi}$$
+$$R_{\Phi}\circ \pr_1'=\Phi(\pr_1)\circ \zeta_{\Phi}$$
 and
-$$R_{\Phi}\circ pr_2'=\Phi(pr_2)\circ \wt{\xi}_{\Phi}.$$
+$$R_{\Phi}\circ \pr_2'=\Phi(\pr_2)\circ \wt{\xi}_{\Phi}.$$
 %
 On the other hand the defining relations of $\phi(\Gamma,T,P,s0)$ are
 %
-$$\phi(\Gamma,T,P,s0)\circ pr_1=\etaunshriek_{pE\wt{\U}}(F,G)$$
+$$\phi(\Gamma,T,P,s0)\circ \pr_1=\etaunshriek_{pE\wt{\U}}(F,G)$$
 and
-$$\phi(\Gamma,T,P,s0)\circ pr_2=\etaunshriek_p(F,\wt{H}),$$
+$$\phi(\Gamma,T,P,s0)\circ \pr_2=\etaunshriek_p(F,\wt{H}),$$
 %
 where
 %
@@ -3769,7 +3774,7 @@ We need to prove
 %
 \begin{eq}
 \label{2015.05.10.eq3a} \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ
-R_{\Phi}\circ pr_1' = \phi(H(\Gamma),H(T),H(P),H(s0))\circ pr_1'
+R_{\Phi}\circ \pr_1' = \phi(H(\Gamma),H(T),H(P),H(s0))\circ \pr_1'
 \end{eq}%
 %
 and
@@ -3777,15 +3782,15 @@ and
 %
 \begin{eq}
 \label{2015.05.10.eq3b} \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ
-R_{\Phi}\circ pr_2' = \phi(H(\Gamma),H(T),H(P),H(s0))\circ pr_2'
+R_{\Phi}\circ \pr_2' = \phi(H(\Gamma),H(T),H(P),H(s0))\circ \pr_2'
 \end{eq}%
 %
 For (\ref{2015.05.10.eq3a}), rewriting the left hand side we get
 %
 \begin{align*}
-  \psi_{\Gamma}\circ \Phi&(\phi(\Gamma,T,P,s0))\circ R_{\Phi}\circ pr_1'  \\
-    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ\Phi(pr_1)\circ \zeta_{\Phi} \\
-    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ pr_1)\circ \zeta_{\Phi} \\
+  \psi_{\Gamma}\circ \Phi&(\phi(\Gamma,T,P,s0))\circ R_{\Phi}\circ \pr_1'  \\
+    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ\Phi(\pr_1)\circ \zeta_{\Phi} \\
+    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ \pr_1)\circ \zeta_{\Phi} \\
     & = \psi_{\Gamma}\circ \Phi(\etaunshriek_{pE\wt{\U}}(F,G))\circ \zeta_{\Phi}
 \end{align*}
 %
@@ -3810,7 +3815,7 @@ where the last equality holds by Lemma \ref{2015.05.06.l3}(1).
 
 Rewriting the right hand side we get
 %
-$$\phi(H(\Gamma),H(T),H(P),H(s0))\circ pr_1'=\etaunshriek_{pE\wt{\U}'}(F',G'),$$
+$$\phi(H(\Gamma),H(T),H(P),H(s0))\circ \pr_1'=\etaunshriek_{pE\wt{\U}'}(F',G'),$$
 %
 where $F'=u_{1,H(\Gamma)}(H(T))$ and $G'=u_{1,IdxT'(H(\Gamma))}(H(P))$.  This
 shows that the first equality holds.
@@ -3818,9 +3823,9 @@ shows that the first equality holds.
 For (\ref{2015.05.10.eq3b}), rewriting the left hand side we get
 %
 \begin{align*}
-  \psi_{\Gamma}\circ & \Phi(\phi(\Gamma,T,P,s0))\circ R_{\Phi}\circ pr_2'  \\
-    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ \Phi(pr_2)\circ \wt{\xi}_{\Phi} \\
-    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ pr_2)\circ \wt{\xi}_{\Phi} \\
+  \psi_{\Gamma}\circ & \Phi(\phi(\Gamma,T,P,s0))\circ R_{\Phi}\circ \pr_2'  \\
+    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ \Phi(\pr_2)\circ \wt{\xi}_{\Phi} \\
+    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ \pr_2)\circ \wt{\xi}_{\Phi} \\
     & = \psi_{\Gamma}\circ \Phi(\etaunshriek_p(F,\wt{H}))\circ \wt{\xi}_{\Phi} \\
     & = \etaunshriek_{p'}(\wt{u}_{2,H(\Gamma)}'(H(s0))),
 \end{align*}
@@ -3830,7 +3835,7 @@ $(F,\wt{H})=u_{2,\Gamma}(s0)$.
 
 Rewriting the right hand side we get
 %
-$$\phi(H(\Gamma),H(T),H(P),H(s0))\circ pr_2'=\etaunshriek_{p'}(F',\wt{H}'),$$
+$$\phi(H(\Gamma),H(T),H(P),H(s0))\circ \pr_2'=\etaunshriek_{p'}(F',\wt{H}'),$$
 %
 which proves the second equality, since
 $(F',\wt{H}')=\wt{u}_{2,H(\Gamma)}'(H(s0))$.
