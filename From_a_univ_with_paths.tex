@@ -771,7 +771,7 @@ As is shown in \cite[Lemma 2.3]{Cfromauniverse}, the square
 is a pullback square.
 
 Following \cite[2.30]{presheavesOb} we define for any universe $p:\wt{\U}\sr \U$ and
-any $V\in {\C}$ a functor from $\C$ to the category of sets,
+any $V\in {\C}$ a contravariant functor from $\C$ to the category of sets,
 %
 $$\gls{D}_p(-,V):X\mapsto \amalg_{F:X\sr \U}Hom((X;F), V),$$
 %
@@ -889,29 +889,30 @@ $$\I^f(V)\circ \pr'=\pr$$
 %
 and
 %
-$$\Q'(g\circ \I^f(V), \pr')\circ \st'=(g\circ \pr)^*(f)\circ \Q(g,\pr)\circ \st$$
+\[\Q'(g\circ \I^f(V), \pr')\circ \st'=(g\circ \pr)^*(f)\circ \Q(g,\pr)\circ \st.\]
 %
 The first equality asserts that $\I^f(V)$ is a morphism over $\U$, which follows
 from its construction.
 
 By Lemma \ref{2015.04.20.l1} we have
 %
-$$(g\circ \pr)^*(f)\circ \Q(g,\pr)=\Q'(g,\pr)\circ \pr^*(f)$$
+\[(g\circ \pr)^*(f)\circ \Q(g,\pr)=\Q'(g,\pr)\circ \pr^*(f).\]
 %
 Next we have the following equations.
 %
 \begin{align*}
   \Q'(g\circ \I^f(V), \pr')
   & =\Q'(g,\I^f(V)\circ \pr')\circ \Q'(\I^f(V),\pr') & \by{\cite[Lemma 2.5]{Cfromauniverse}} \\
-  & =\Q'(g,\pr)\circ \Q'(\I^f(V),\pr') & \by{}
+  & =\Q'(g,\pr)\circ \Q'(\I^f(V),\pr') & \by{TODO}
 \end{align*}
+\BA{Proof is missing in the previous equation.}
 It remains to check that
 %
-$$\Q'(\I^f(V),\pr')\circ \st'=\pr^*(f)\circ \st$$
+\[\Q'(\I^f(V),\pr')\circ \st'=\pr^*(f)\circ \st.\]
 %
 This requires opening up the definitions \cite[(2.60)]{presheavesOb} of $\st$ and $\st'$, which gives us
 %
-$$\Q'(\I^f(V),\pr')\circ \iota'\circ ev'\circ \pr_2=\pr^*(f)\circ \iota\circ ev\circ \pr_2$$
+\[\Q'(\I^f(V),\pr')\circ \iota'\circ ev'\circ \pr_2=\pr^*(f)\circ \iota\circ ev\circ \pr_2.\]
 %
 It will suffice to prove the following equation.
 $$\Q'(\I^f(V),\pr')\circ \iota'\circ ev'=\pr^*(f)\circ \iota\circ ev$$
