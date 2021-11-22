@@ -1007,11 +1007,13 @@ $\Omega:\wt{\U}\sr \wt{\U}$ such that the square
 %
 where $\Delta=(\id_{\wt{\U}})*(\id_{\wt{\U}})$ is the diagonal of $\wt{\U}$,
 commutes.
-\end{definition}
-%
 
 The square (\ref{2015.03.27.sq1}) defines a morphism $\wt{\U}\sr E\wt{\U}$, which
 will be denoted by $\gls{omega}$.
+
+\end{definition}
+%
+
 
 To define a J2-structure on a universe we will need to assume that $\C$
 is a locally cartesian closed category.  Recall that a locally cartesian closed
@@ -1222,18 +1224,18 @@ paper. In all the previous cases the objects that we considered were given
 the use of ``there exists'' one would have to define the collection $FB$ as a
 collection of pairs of a morphism $p$ together with, for all $i\in TC$, $f_W$
 and $f_Z$ such that $f_Z\circ p=i\circ f_W$, a morphism $g$ such that $i\circ
-g=f_W$ and $g\circ p=f_W$.
+g=f_Z$ and $g\circ p=f_W$.
 
 Recall that a collection of morphisms $R$ is said to have the right lifting
 property for the collection of morphisms $L$ if for any commutative square of
 the form
 %
-$
+\[
 \begin{xy}
           \xymatrix@C=2pc{ Z \ar[r]^-{f_Z} \ar[d]_{i} & E \ar[d]^{p}\\ W
             \ar[r]^-{f_W} & B }
 \end{xy}
-$
+\]
 %
 such that $i\in L$ and $p\in R$ there exists a morphism $g:W\sr E$ that makes
 the two triangles into which it splits the square to commute, i.e., a morphism
@@ -1270,7 +1272,7 @@ J1-structure on $p$ such that:
 %
 \begin{enumerate}
 \item $p$ is in $FB$,
-\item $\omega$ is in $TC$.
+\item $\omega$ is in $TC$ (see Def.~\ref{2015.03.27.def5} for the definition of $\omega$).
 \end{enumerate}
 %
 Then there exists an extension of $(Eq,\Omega)$ to a full J-structure on $p$.
@@ -1291,7 +1293,7 @@ in $FB$. It remains to apply the second of our conditions.
 
 Our second set of conditions is more involved. Conditions of this set can be
 satisfied in the situations arising when one attempts to localize Quillen model
-structures and when the resulting sets of morphisms do not for a model
+structures and when the resulting sets of morphisms do not form a model
 structure. The difference is mainly concerned with the fact that the good
 behavior is required only for fibrations over fibrant objects. One particular
 example of such situation is considered in \cite[Section 3.3]{SRF}.
@@ -1301,11 +1303,11 @@ example of such situation is considered in \cite[Section 3.3]{SRF}.
 %
 \begin{enumerate}
 \item $\id_{pt}$ is in $FB$,
-\item let $B$ be such that the morphism $B\sr pt$ is in $FB$ then a morphism
+\item let $B$ be such that the morphism $B\sr pt$ is in $FB$, then a morphism
   $p:E\sr B$ is in $FB$ if and only if it has the right lifting property for
   $TC$,
 \item if $p:E\sr B$ and $B\sr pt$ are in $FB$, $i:Z\sr W$ is in $TC$ and
-  $f:W\sr B$ is an arbitrary morphism then
+  $f:W\sr B$ is an arbitrary morphism, then
 %
 $$(i\times_\U \id_E):(Z,i\circ f)\times_B (E,p)\sr (W,f)\times_B (E,p)$$
 %
