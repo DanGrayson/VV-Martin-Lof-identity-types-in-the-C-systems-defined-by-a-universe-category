@@ -1407,7 +1407,7 @@ commutativity of the upper triangle.
 %
 \begin{lemma}
 \label{2015.05.14.l3} Assume that $\U,V$ are fibrant and that $p:\wt{\U}\sr \U$
-and $r:V'\sr V$ are in $FB$ then $\I_p(r):\I_p(V')\sr \I_p(V)$ is in $FB$.
+and $r:V'\sr V$ are in $FB$. Then $\I_p(r):\I_p(V')\sr \I_p(V)$ is in $FB$.
 \end{lemma}
 %
 \begin{myproof}
@@ -1428,7 +1428,7 @@ property for $TC$. Consider a commutative square of the form
 The lower right corner is an object over $\U$ through the morphism $p\triangle
 \pr_1$. Let $\p_W=f_W\circ (p\triangle \pr^{\U,V}_\U)$ and
 %
-$$\p_Z=i\circ \p_W=f_Z\circ (p\triangle \pr^{\U,V'}_\U)$$
+\[ \p_Z=i\circ \p_W=f_Z\circ (p\triangle \pr^{\U,V'}_\U) . \]
 %
 Consider the square
 %
@@ -1536,7 +1536,7 @@ are permutations of the factors.
 It is easy to show that $\U\times \U$ is fibrant. Therefore it is sufficient to
 show that $\id_\U\times p$ is in $FB$ and $\omega\times_\U \id_{\Fp}$ is in
 $TC$. The first fact follows from the assumption that $p$ is in $FB$ and that
-$\U$ is fibrant. The obtain the second fact let us apply condition (3) on the
+$\U$ is fibrant. To obtain the second fact let us apply condition (3) on the
 classes $FB$ and $TC$ to $B=\U$, $f=pE\wt{\U}$, $i=\omega$ and $p=\pFp$.  It
 remains to show that $\pFp$ is in $FB$. We can represent $\pFp$ as the
 composition
@@ -1673,20 +1673,20 @@ $$
 %
 where  $r=\amalg_n  \p_{n+1}$. Define  $Eq$  as  the  composition of  the  lower
 horizontal arrows of  this diagram (up to an isomorphism  this is just $\langle
-in_{n+1}\rangle_{n}$).  Since  the squares  of  the  diagram are  pullback  the
+in_{n+1}\rangle_{n}$).  Since  the squares  of  the  diagram are  pullback squared, the
 natural morphism
 %
-$$\iota':\amalg_n\wt{\U}_{n+1}\sr
-((\wt{\U}_*,\p_*)\times_{\U_*}(\wt{\U}_*,\p_*),Eq)_{\U_*} (\wt{\U}_*,\p_*)$$
+\[\iota':\amalg_n\wt{\U}_{n+1}\sr
+((\wt{\U}_*,\p_*)\times_{\U_*}(\wt{\U}_*,\p_*),Eq)_{\U_*} (\wt{\U}_*,\p_*)\]
 %
 is an isomorphism. Define
 %
-$$\Omega=(\amalg_n    i_{\Delta_n})\circ     \iota'\circ    \langle    in_{n+1}
-\rangle_{n}$$
+\[\Omega=(\amalg_n    i_{\Delta_n})\circ     \iota'\circ    \langle    in_{n+1}
+\rangle_{n}\]
 %
 such that then
 %
-$$\omega=(\amalg_n i_{\Delta_n})\circ \iota'$$
+\[\omega=(\amalg_n i_{\Delta_n})\circ \iota'.\]
 %
 By our assumptions  $\omega\in TC$ and then by  Theorem \ref{2015.05.22.th1} if
 $FB$  and  $TC$  satisfied  Conditions  \ref{2015.05.22.cond2}  or  by  Theorem
@@ -1713,7 +1713,7 @@ element of $Hom(\Gamma',\Gamma)$ and $Hom(int(\Gamma'),int(\Gamma))$ may
 differ. In particular for $f:\Gamma'\sr \Gamma$ and $F:\Gamma\sr \U$ we have
 %
 \begin{eq}
-\label{2015.04.02.eq2} \q(f,int(\Gamma,F))=\Q(f,F)
+\label{2015.04.02.eq2} \q(f,int(\Gamma,F))=\Q(f,F).
 \end{eq}%
 %
 
@@ -1749,8 +1749,8 @@ $\toCC({\C},p)$.
 \end{problem}
 %
 \begin{construction}{2015.03.27.prob3}\rm
-\label{2015.03.27.constr3} Since the canonical squares are pullback squares
-bijections $u_1$ and $\wt{u}_1$ gives us a bijection
+\label{2015.03.27.constr3} Since the canonical squares are pullback squares,
+bijections $u_1$ and $\wt{u}_1$ give us a bijection
 %
 $$\wt{uu}:\{o,o'\in\Obwt_1(\Gamma)\,|\,\partial(o)=\partial(o')\} \sr
 Hom(int(\Gamma),(\wt{\U};p)),$$
@@ -1766,7 +1766,7 @@ from $Eq$ in Construction \ref{2015.03.27.constr3}. Note that
 %
 \begin{eq}
 \label{2015.03.31.eq1}
-int(\Id(o,o'))=(int(\Gamma);(\wt{u}_1(o)*\wt{u}_1(o'))\circ Eq)
+int(\Id(o,o'))=(int(\Gamma);(\wt{u}_1(o)*\wt{u}_1(o'))\circ Eq).
 \end{eq}%
 %
 Recall that in \cite{Csubsystems} we let $\p_{\Gamma,n}:\Gamma\sr \ft^n(\Gamma)$
@@ -1863,7 +1863,7 @@ therefore
 \begin{align*}
   \wt{u}_1(\refl_{\Omega}(s))
   & =\refl_{\Omega}(s)\circ \Q(u_1(\partial(\refl_{\Omega}(s)))) \\
-  & = \refl_{\Omega}(s)\circ \Q(s\circ \Q(F)\circ \Omega\circ p)
+  & = \refl_{\Omega}(s)\circ \Q(s\circ \Q(F)\circ \Omega\circ p).
 \end{align*}
 %
 On the other hand, by definition of $\refl_{\Omega}$,
@@ -1884,7 +1884,7 @@ other hand let
 %
 $$F^*(\omega):(int(\Gamma);F)\sr (int(\Gamma);F)_{E}$$
 %
-is the pullback of $\omega:\wt{\U}\sr E\wt{\U}$ with respect to $F=u_1(T)$,
+be the pullback of $\omega:\wt{\U}\sr E\wt{\U}$ with respect to $F=u_1(T)$,
 i.e., the unique morphism
 %
 $$(int(\Gamma);F)\sr (int(\Gamma);F)_{E}$$
@@ -1898,7 +1898,7 @@ such that
 %
 Then
 %
-$$\rf_T=F^*(\omega)$$
+\[\rf_T=F^*(\omega).\]
 %
 \end{lemma}
 %
@@ -1974,9 +1974,9 @@ We have $u_1(\partial(\delta(T)))=\Q(F)\circ p$ and
 %
 Therefore by Lemma \ref{2015.04.02.l3} we have
 %
-$$\refl(\delta(T))\circ \Q(\Q(F)\circ \Omega\circ p)=\Q(F)\circ \Omega$$
+\[\refl(\delta(T))\circ \Q(\Q(F)\circ \Omega\circ p)=\Q(F)\circ \Omega.\]
 %
-Which proves that $\rf_T\circ h=F^*(\omega)\circ h$.
+This proves that $\rf_T\circ h=F^*(\omega)\circ h$.
 
 We have $\rf_T\circ v=\delta(T)$ because the square (\ref{2015.03.31.eq3})
 commutes.  Both $\rf_T\circ v$ and $F^*(\omega)\circ v$ are morphisms $int(T)\sr
@@ -1993,8 +1993,8 @@ projections being $\p_{\p_T^*(T)}$ and $\Q(\Q(F)\circ p)$ we need to check that
 %
 which holds by a simple computation, and
 %
-$$\id_{int(T)}=\delta(T)\circ \p_{\p_T^*(T)}=F^*(\omega)\circ v\circ
-\p_{\p_T^*(T)}$$
+\[\id_{int(T)}=\delta(T)\circ \p_{\p_T^*(T)}=F^*(\omega)\circ v\circ
+\p_{\p_T^*(T)}.\]
 %
 For this equality we need to verify two further equalities
 %
@@ -2002,7 +2002,7 @@ $$\Q(F)=\id_{int(T)}\circ \Q(F)=F^*(\omega)\circ v\circ \p_{\p_T^*(T)}\circ \Q(F
 %
 and
 %
-$$\p_T=\id_{int(T)}\circ \p_T=F^*(\omega)\circ v\circ \p_{\p_T^*(T)}\circ \p_T$$
+\[\p_T=\id_{int(T)}\circ \p_T=F^*(\omega)\circ v\circ \p_{\p_T^*(T)}\circ \p_T.\]
 %
 The second one is the second equality of the two that define $F^*(\omega)$. For
 the first one we have
