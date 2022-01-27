@@ -92,6 +92,7 @@
 %   at subsequent uses, use \foo or the actual code
 %   the order here is the order in the index, and is obtained with "sort -f"
 \newoperator{partial}{\partial}
+\newoperator{parto}{\partial(o)}
 \newoperator{delta}{\delta}
 \newoperator{D}{\D}
 \newoperator{etashriek}{\etashriek}
@@ -102,8 +103,9 @@
 \newoperator{Id}{\Id}
 \newoperator{I}{\I}
 \newoperator{J}{\J}
-\newoperator{Obwt}{\Obwt}
-\newoperator{Ob}{Ob}
+\newoperator{ObwtD}{\Obwt(\Delta)}
+\newoperator{Obn}{\Ob_n(\Gamma)}
+\newoperator{Obwtn}{\Obwt_n(\Gamma)}
 \newoperator{omega}{\omega}
 \newoperator{pr}{\pr}
 \newoperator{prI}{\prI}
@@ -113,7 +115,7 @@
 \newoperator{q}{\q}
 \newoperator{refl}{\refl}
 \newoperator{rf}{\rf}
-\newoperator{s}{\s}
+\newoperator{sg}{\s_g}
 \newoperator{semicolon}{(X;F)}
 \newoperator{st}{\st}
 \newoperator{multisemicolon}{(X;F_1,\dots,F_n)}
@@ -214,7 +216,7 @@ families. This modification will be discussed in a separate paper or papers.
 
 In this introductory explanation we will distinguish between the syntactic and
 semantic C-systems. By a syntactic C-system we will mean a C-system that is a
-regular sub-quotient of a C-system of the form $\toCC(R,LM)$, where $R$ is a monad
+regular subquotient of a C-system of the form $\toCC(R,LM)$, where $R$ is a monad
 on sets and $LM$ is a left module over $R$, see \cite{Cofamodule,Csubsystems}.
 In particular, the C-systems of all of the various versions
 of dependent type theory of Martin-L\"of ``genus" are syntactic type systems in
@@ -267,9 +269,9 @@ $(\Gamma, x:T, y:T, e:\Id\, T\, x\, y\,;)$ in Construction \ref{2015.03.27.const
 %% part of a tradition and is not reflected in any mathematical statement that one
 %% can refer to.
 
-For the syntactic C-systems we are allowed to use the sequent notation for the
-following reason. First, since $\CC$ in this case is a sub-quotient of
-$\toCC(R,LM)$ our notation only needs to provide a reference to elements of sets
+For a syntactic C-system $\CC$ we are allowed to use sequent notation, for the
+following reason. First, since $\CC$ in this case is a subquotient of
+$\toCC(R,LM)$ our notation needs only to provide a reference to elements of sets
 associated with $\toCC(R,LM)$ itself.  There, the first $T$ refers to an element
 of $LM(\{1,\dots,l\})$, where $l$ is the length of $\Gamma$ and $LM(X)$ is the
 set of type expressions in the raw syntax with free variables from a set $X$
@@ -302,10 +304,10 @@ however, that constructing J-structures on syntactic C-systems is relatively
 easy, and that the difficult questions about J-structures on such C-systems are
 those related to the initiality properties of the resulting objects.
 
-While constructing J-structures on the syntactic C-systems relatively
+While constructing J-structures on syntactic C-systems is relatively
 straightforward, constructing non-degenerate\footnote{See Remark
-  \ref{2015.05.12.rem1}.} J-structures on semantic C-systems or categories with
-families proved to be very difficult.
+  \ref{2015.05.12.rem1} for the definition of \emph{degenerate} J-structure.} J-structures on semantic C-systems or categories with
+families proves to be very difficult.
 
 The first instance of such a construction, due to Martin Hofmann and Thomas
 Streicher, appeared in \cite{Hofmann1}. It was done in the language of
@@ -332,7 +334,7 @@ This goal is still not fully realized in this paper, since to achieve it one has
 to construct a Kan fibration with certain properties and discussing such a
 construction is outside of the scope of this paper. }
 
-Two main results of the first part of this paper provide a new approach to the
+The two main results of the first part of this paper provide a new approach to the
 construction of J-structures on semantic C-systems, an approach that can be
 used to construct the J-structure on the C-system of the univalent model.
 
@@ -342,7 +344,7 @@ J1-structure on a universe $p$ in a category $\cal C$ to a full J-structure.
 Construction \ref{2015.04.04.constr2} provides a method of constructing a
 J-structure on the C-system $\toCC({\C},p)$ from a J-structure on $p$.
 
-Combined together they provide a method of constructing a J-structure on
+Combined, they provide a method of constructing a J-structure on
 $\toCC({\cal C},p)$ from a J1-structure on $p$.
 
 We also discuss two sets of conditions on a pair of classes of morphisms $TC$
@@ -359,10 +361,10 @@ $g$ is denoted by $f\circ g$.
 In this paper, as in the preceding papers \cite{Cfromauniverse,fromunivwithPiI,presheavesOb,fromunivwithPiII},
 we often have to consider structures on categories that
 are not invariant under equivalences and their interaction with structures that
-are invariant under the equivalences.
+are invariant under equivalence.
 
 The methods used in this paper are fully constructive and the paper is written
-in ``formalization ready'' style with all the proofs provided in enough detail
+in ``formalization ready'' style, with all the proofs provided in enough detail
 to ensure that there are no hidden difficulties for the formalization of all of
 the results presented here.
 
@@ -434,7 +436,7 @@ will allow the files to be located.
 
   As in \cite[Def.~2.3 and Prop.~2.4]{Csubsystems}, for a map $g : Y \sr X$
   such that $g \circ p_X = f$, one may regard
-  $\gls{s}_g : Y \sr f^*(X)$ as part of the structure of a C-system, or
+  $\gls{sg} : Y \sr f^*(X)$ as part of the structure of a C-system, or
   as the unique section of $p_{f^*(X)}$ such that $\s_g \circ q(f,X) = g$.
   \begin{eq}
     \xymatrix@C=5pc{
@@ -448,11 +450,11 @@ will allow the files to be located.
     \label{section-section}
     \s_g = g
   \end{eq}%
-  The formation of the section $s_g$ is natural in the sense that, for a map
+  The formation of the section $\s_g$ is natural in the sense that, for a map
   $h : Z \to Y$, one has the following identity.
   \begin{eq}
     \label{s-naturality}
-    h^* (s_g) = s_{h \circ g}
+    h^* (\s_g) = \s_{h \circ g}
   \end{eq}%
 
   In the case where one takes $Y=X$, $f=p_X$, and $g = 1_X$, we let $\gls{delta}(X)$ denote
@@ -466,26 +468,26 @@ will allow the files to be located.
   Using \eqref{s-naturality}, one shows, for a map $g : Y \to X$, the following identity.
   \begin{eq}
     \label{delta-pullback}
-    g^* (\delta(X)) = s_g
+    g^* (\delta(X)) = \s_g
   \end{eq}%
 
-  We also recall the notations ${\gls{Ob}}_n(\Gamma)$ and
-  $\gls{Obwt}_n(\Gamma)$ from \cite[\S 3]{fromunivwithPiI}, as well as the
-  notation $\gls{partial}(o)$ from \cite[\S 3]{Csubsystems}.
+  Now we also recall the notations ${{Ob}}_n(\Gamma)$ and
+  $Obwt_n(\Gamma)$ from \cite[\S 3]{fromunivwithPiI}, as well as the
+  notation ${partial}(o)$ from \cite[\S 3]{Csubsystems}.
 
-  Let $\Gamma$ be an object in $\CC$.  The set $\Ob_n(\Gamma)$ is the set of
+  Let $\Gamma$ be an object in $\CC$.  The set $\gls{Obn}$ is the set of
   objects $\Delta$ of $\CC$ such that $l(\Delta)-n = l(\Gamma)$ and
   $\ft^n(\Delta) = \Gamma$.
 
-  For $n>0$, the set $\Obwt_n(\Gamma)$ is the set of morphisms of the form $o :
-  \ft(\Delta) \sr \Delta$ for some $\Delta \in \Ob_n(\Gamma)$ that are sections
+  For $n>0$, the set $\gls{Obwtn}$ is the set of morphisms of the form
+  $o : \ft(\Delta) \sr \Delta$ for some $\Delta \in \Ob_n(\Gamma)$ that are sections
   of the corresponding canonical projection, i.e., where $o \circ p_\Delta = \id$;
-  in that case $\partial(o)$ denotes $\Delta$.
+  in that case $\gls{parto}$ denotes $\Delta$.
 
   Similarly, for an object $\Delta$ with $l(\Delta) > 0$, we let
-  $\Obwt(\Delta)$ denote the set of sections of $\p_\Delta$.
+  $\gls{ObwtD}$ denote the set of sections of $\p_\Delta$.
 
-  Observe that $s_g$ above is an element of $\Obwt_1(Y)$, and $\delta(X)$ above
+  Observe that $\s_g$ above is an element of $\Obwt_1(Y)$, and $\delta(X)$ above
   is an element of $\Obwt_1(X)$.
 \end{remark}
 
@@ -504,7 +506,7 @@ $\Id$, and $\J$ is a J2-structure over $\refl$.
 A {\em J0-structure} on a C-system $\CC$ is a family of functions 
 %
 $$\gls{Id}_{\Gamma}:\{(o_1,o_2)\,|\,o_1, o_2 \in \Obwt_1(\Gamma), \partial(o_1)=\partial(o_2)\}\sr Ob_1(\Gamma),$$
-%
+
 given for all $\Gamma\in Ob$, that is natural in $\Gamma$, i.e., such that for any
 $f:\Gamma'\sr \Gamma$, one has the identity
 \begin{eq}
@@ -657,27 +659,27 @@ naturality in $f$ of $\Idx$ and $\rf^*$.
 \end{enumerate}
 \end{definition}
 %
-%%%%% this remark has problems with notations, and it doesn't seem important [drg]
-%% \begin{remark}
-%% \label{2015.05.12.rem1}\rm A J0-structure is called degenerate or extensional
-%% if for all $T\in Ob_{\ge 1}(\CC)$ and $o,o'\in \Obwt(T)$ one has\footnote{The
-%%   following is the classical way of saying that there is an equivalence between
-%%   the types $\Obwt(\Idx(o,o'))$ and $(o=o')$.}
-%% %
-%% $$\Obwt(\Idx(o,o'))=\left\{
-%% \begin{array}{ll}
-%% \emptyset&\mbox{\rm if $o\ne o'$}\\ pt&\mbox{\rm if $o=o'$}
-%% \end{array}
-%% \right.
-%% $$
-%% %
-%% One can easily see that any two extensional J0-structures are equal and that
-%% any extensional J0-structure has a unique extension to a full J-structure that
-%% is also called extensional.
 
-%% We will not consider these extensional versions of $J$ in the present version of
-%% the paper.
-%% \end{remark}
+\begin{remark}
+\label{2015.05.12.rem1}\rm A J0-structure is called degenerate or extensional
+if for all $T\in Ob_{\ge 1}(\CC)$ and $o,o'\in \Obwt(T)$ one has\footnote{The
+  condition stated is the classical way of saying that there is an equivalence between
+  the types $\Obwt(\Idx(o,o'))$ and $(o=o')$.}
+%
+$$\Obwt(\Idx(o,o'))=\left\{
+\begin{array}{ll}
+\emptyset&\mbox{\rm if $o\ne o'$}\\ pt&\mbox{\rm if $o=o'$}
+\end{array}
+\right.
+$$\DG{We should replace $pt$ by the one element set containing $\refl$.}
+%
+One can easily see that any two extensional J0-structures are equal and that
+any extensional J0-structure has a unique extension to a full J-structure that
+is also called extensional.
+
+We will not consider these extensional versions of $J$ in the present version of
+the paper.
+\end{remark}
 
 
 %
@@ -686,9 +688,10 @@ naturality in $f$ of $\Idx$ and $\rf^*$.
 no $(\Pi,\lambda)$-structures it is important, as emphasized, for example, in
 \cite{vandenBergGarner2011} and perhaps in earlier work by Garner,
 to consider a more complex structure than the one
-that we consider here.
+that we consider here.\editorfootnote{So presumably, this paper will find its applications in situations
+  where the C-systems do have $(\Pi,\lambda)$-structures.}
 This more complex structure can be seen as a family of
-structures $eJ_n$, where $eJ_0=J2$, and where $eJ_n$ over $(\Id,\refl)$ is a
+structures $eJ_n$, where $eJ_0=\J$ (as above in \ref{2015.03.27.def3}), and where $eJ_n$ over $(\Id,\refl)$ is a
 collection of data of the form: for all $\Gamma\in Ob$, for all $T\in
 Ob_1(\Gamma)$, for all $\Delta\in Ob_{n}(\Idx(T))$, for all $P\in
 Ob_1(\Delta)$, for all $s0\in \Obwt(\rf_T^*(P))$, an element
