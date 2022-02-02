@@ -725,8 +725,10 @@ for all $X$ and all morphisms $F:X\sr \U$. A universe in $\C$ is a
 morphism with a universe structure on it, and a universe category is a category
 with a universe and a choice of a final object $pt$.
 
-Given a sequence of maps $$F_{i+1} : (\dots(X;F_1);\dots;F_i) \to \U$$ for each $i$,
-we may use the notation $\gls{multisemicolon}$ for $(\dots(X;F_1);\dots;F_n)$.
+\begin{definition}\label{iter-univ-str}
+  Given a sequence of maps $$F_{i+1} : (\dots(X;F_1);\dots;F_i) \to \U$$ for each $i$,
+  we will use the notation $\gls{multisemicolon}$ for $(\dots(X;F_1);\dots;F_n)$.
+\end{definition}
 
 For $f:W\sr X$ and $g:W\sr \wt{\U}$ satisfying $f\circ F = g \circ p$ we will let $\gls{starfg} : W \sr (X;F)$ denote the unique morphism
 such that
@@ -948,7 +950,7 @@ $\C$ is a morphism $Eq:(\wt{\U};p)\sr \U$.
 %
 
 Let $Eq$ be a J0-structure on $p$. Consider the object\editorfootnote{As
-  mentioned above, $(\wt{\U};p,Eq)$ is notation for $((\wt{\U};p);Eq)$.}
+  introduced in \ref{iter-univ-str}, $(\wt{\U};p,Eq)$ is notation for $((\wt{\U};p);Eq)$.}
 $$E\wt{\U}:=(\wt{\U};p,Eq)$$
 of $\C$ together with the composite
 $$E\wt{\U} \xrightarrow{\ \p_{(\wt{\U};p),Eq}\ } (\wt{\U};p) \xrightarrow{\p_{\wt{\U},p}} \wt{\U}\xrightarrow{p} \U$$
