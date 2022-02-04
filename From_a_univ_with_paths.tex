@@ -339,7 +339,7 @@ construction of J-structures on semantic C-systems, an approach that can be
 used to construct the J-structure on the C-system of the univalent model.
 
 Construction \ref{2015.05.22.constr1} provides a simple way of extending a
-J1-structure on a universe $p$ in a category $\cal C$ to a full J-structure.
+J1-structure on a universe $p:\wt{\U}\sr \U$ in a category $\cal C$ to a full J-structure.
 
 Construction \ref{2015.04.04.constr2} provides a method of constructing a
 J-structure on the C-system $\toCC({\C},p)$ from a J-structure on $p$.
@@ -999,7 +999,7 @@ We will also write $\Q(f,F)_{E}$ for the canonical morphism from $(X;f\circ
 F)_{E}$ to $(X;F)_{E}$.
 %
 \begin{definition}
-\label{2015.03.27.def5} Let $p$ be a universe in $\C$ and $Eq$ be a
+\label{2015.03.27.def5} Let $p:\wt{\U}\sr \U$ be a universe in $\C$ and $Eq$ be a
 J0-structure on $p$. A {\em J1-structure} on $p$ over $Eq$ is a morphism
 $\Omega:\wt{\U}\sr \wt{\U}$ such that the square
 %
@@ -1051,7 +1051,7 @@ $$\I_{pE\wt{\U}}(\wt{\U}) \stackrel{coJ}{\lr} (\I_{pE\wt{\U}}(\U), \I^{\omega}(\
 $$
 %
 \begin{definition}
-\label{2015.03.27.def6} A {\em J2-structure} on $p$, relative to a J0-structure $Eq$
+\label{2015.03.27.def6} A {\em J2-structure} on $p:\wt{\U}\sr \U$, relative to a J0-structure $Eq$
 and a J1-structure $\Omega$, is a morphism
 %
 $$ Jp:( \I_{pE\wt{\U}}(\U), \I^{\omega}(\U))\times_{\I_p(\U)} (\I_p(\wt{\U}), \I_p(p))\sr
@@ -1074,7 +1074,7 @@ Note that we have:
 %
 where $\prI_p(V)$ is the canonical morphism $\I_p(V)\sr \U$.
 
-A J-structure on $p$ is a triple $(Eq,\Omega,Jp)$, where $Eq$ is a J0-structure,
+A J-structure on $p:\wt{\U}\sr \U$ is a triple $(Eq,\Omega,Jp)$, where $Eq$ is a J0-structure,
 $\Omega$ is a J1-structure relative to $Eq$, and $Jp$ a J2-structure relative to
 $Eq$ and $\Omega$.
 
@@ -1279,12 +1279,12 @@ is in $TC$.
 \begin{theorem}
 \label{2015.05.22.th1} Let $FB$ and $TC$ be two classes of morphisms in a
 locally cartesian closed category $\cal C$ that satisfy Conditions
-\ref{2015.05.22.cond2}. Let $p$ be a universe in $\cal C$ and $(Eq,\Omega)$ a
+\ref{2015.05.22.cond2}. Let $p:\wt{\U}\sr \U$ be a universe in $\cal C$ and $(Eq,\Omega)$ a
 J1-structure on $p$ such that:
 %
 \begin{enumerate}
 \item $p$ is in $FB$,
-\item $\omega$ is in $TC$ (see Def.~\ref{2015.03.27.def5} for the definition of $\omega$).
+\item $\omega : \wt{\U}\sr E\wt{\U}$ is in $TC$ (see Def.~\ref{2015.03.27.def5} for the definition of $\omega$).
 \end{enumerate}
 %
 Then there exists an extension of $(Eq,\Omega)$ to a full J-structure on $p$.
@@ -1512,8 +1512,8 @@ $FB$ be two collections of morphisms in $\C$ that satisfy Conditions
 %
 \begin{enumerate}
 \item $\U$ is fibrant,
-\item $p$ is in $FB$,
-\item $\omega$ is in $TC$.
+\item $p:\wt{\U}\sr \U$ is in $FB$,
+\item $\omega : \wt{\U}\sr E\wt{\U}$ is in $TC$.
 \end{enumerate}
 %
 Then there exists a J-structure $Jp$ extending $(Eq,\Omega)$.
@@ -1567,7 +1567,7 @@ in $FB$ which finishes the proof of the theorem.
 \begin{cor}
 \label{2015.05.18.cor1} Let $\cal C$ be a locally cartesian closed category
 with a Quillen model structure, $p$ a universe in $\cal C$ and $(Eq,\Omega)$ a
-J1-structure on $p$. Assume further that $p$ is a fibration and $\omega$ is a
+J1-structure on $p$. Assume further that $p$ is a fibration and $\omega : \wt{\U}\sr E\wt{\U}$ is a
 trivial cofibration and that in addition one of the following two conditions
 holds:
 %
