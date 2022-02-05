@@ -97,6 +97,8 @@
 \newoperator{D}{\D}
 \newoperator{etashriek}{\etashriek}
 \newoperator{etaunshriek}{\etaunshriek}
+\newoperator{fstarX}{f^*(X)}
+\newoperator{fstars}{f^*(s)}
 \newoperator{Fp}{\Fp}
 \newoperator{ft}{\ft}
 \newoperator{Idx}{\Idx}
@@ -107,12 +109,16 @@
 \newoperator{Obn}{\Ob_n(\Gamma)}
 \newoperator{Obwtn}{\Obwt_n(\Gamma)}
 \newoperator{omega}{\omega}
+\newoperator{pX}{\p_X}
+\newoperator{pXF}{\p_{X,F}}
+\newoperator{pEXF}{\p^E_{X,F}}
 \newoperator{pr}{\pr}
 \newoperator{prI}{\prI}
-\newoperator{p}{\p}
 \newoperator{pFp}{\pFp}
-\newoperator{Q}{\Q}
-\newoperator{q}{\q}
+\newoperator{qfX}{\q(f,X)}
+\newoperator{QF}{\Q(F)}
+\newoperator{QfF}{\Q(f,F)}
+\newoperator{QFE}{\Q(F)_{E}}
 \newoperator{refl}{\refl}
 \newoperator{rf}{\rf}
 \newoperator{sg}{\s_g}
@@ -418,19 +424,19 @@ will allow the files to be located.
   As in \cite[Def.~2.1 and Prop.~2.4]{Csubsystems}, except for the use of a sans-serif font, we use
   \begin{eq}
     \xymatrix@C=5pc{
-      f^*(X) \ar[r]^{\gls q(f,X)} \ar[d]_{\p_{f^*(X)}}  & X \ar[d]^{\gls p_X} \\
+      \gls{fstarX} \ar[r]^{\gls{qfX}} \ar[d]_{\p_{f^*(X)}}  & X \ar[d]^{\gls{pX}} \\
       Y \ar[r]_f & \gls{ft}(X)
     }
   \end{eq}%
   as notation for the parts of the pull-back square that is part of the
   structure of a C-system; here $l(X) > 0$.
-  Further, if $s : \ft(X) \sr X$ is a section of $\p_X$, then $f^*(s)$ denotes
+  Further, if $s : \ft(X) \sr X$ is a section of $\p_X$, then $\gls{fstars}$ denotes
   the unique section of $\p_{f^*(X)}$ such that $f^*(X) \circ \q(f,X) = f \circ
   s$, as in the following diagram.
   \begin{eq}
     \xymatrix@C=5pc{
-      f^*(X) \ar[r]^{\gls q(f,X)} \ar@<3pt>[d]^{\p_{f^*(X)}}  & X \ar@<3pt>[d]^{\gls p_X} \\
-      Y \ar[r]_f \ar@<4pt>[u]^{f^*(s)} & \gls{ft}(X) \ar@<4pt>[u]^s
+      f^*(X) \ar[r]^{\q(f,X)} \ar@<3pt>[d]^{\p_{f^*(X)}}  & X \ar@<3pt>[d]^{\p_X} \\
+      Y \ar[r]_f \ar@<4pt>[u]^{f^*(s)} & \ft(X) \ar@<4pt>[u]^s
     }
   \end{eq}%
 
@@ -440,8 +446,8 @@ will allow the files to be located.
   as the unique section of $p_{f^*(X)}$ such that $\s_g \circ q(f,X) = g$.
   \begin{eq}
     \xymatrix@C=5pc{
-      f^*(X) \ar[r]^{\gls q(f,X)} \ar@<-3pt>[d]_{\p_{f^*(X)}} & X \ar[d]^{\gls p_X} \\
-      Y \ar[ru]_g \ar[r]_f \ar@<-4pt>[u]_{\s_g} & \gls{ft}(X)
+      f^*(X) \ar[r]^{\q(f,X)} \ar@<-3pt>[d]_{\p_{f^*(X)}} & X \ar[d]^{\p_X} \\
+      Y \ar[ru]_g \ar[r]_f \ar@<-4pt>[u]_{\s_g} & \ft(X)
     }
   \end{eq}%
   In the case where $Y = \ft(X)$ and $f = 1_X$, and thus $g$ is a section of $\p_X$,
@@ -716,7 +722,7 @@ squares of the form
 %
 $$
 \begin{xy}
-          \xymatrix@C=4pc{ \gls{semicolon} \ar[r]^-{\gls Q(F)} \ar[d]_{\gls p_{X,F}} & \wt{\U}
+          \xymatrix@C=4pc{ \gls{semicolon} \ar[r]^-{\gls{QF}} \ar[d]_{\gls{pXF}} & \wt{\U}
             \ar[d]^{p}\\ X \ar[r]^{F} & \U }
 \end{xy}
 $$
@@ -753,7 +759,7 @@ of this observation (in the context of whether a simplex is degenerate)
 was emphasized by \cite{BCH}.
 \end{remark}
 %
-For $X'\stackrel{f}{\sr}X\stackrel{F}{\sr}\U$ we let $\gls Q(f,F)$ denote the
+For $X'\stackrel{f}{\sr}X\stackrel{F}{\sr}\U$ we let $\gls{QfF}$ denote the
 morphism
 %
 $$(\p_{X',f\circ F}\circ f)*\Q(f\circ F):(X';f\circ F)\sr (X;F)$$
@@ -982,7 +988,7 @@ follows:
 %
 $$
 \begin{xy}
-          \xymatrix@C=4pc{ (X;F)_{E} \ar[r]^-{\gls Q(F)_{E}} \ar[d]_{\gls p^E_{X,F}} &
+          \xymatrix@C=4pc{ (X;F)_{E} \ar[r]^-{\gls{QFE}} \ar[d]_{\gls{pEXF}} &
             E\wt{\U} \ar[d]^{pE\wt{\U}}\\ X \ar[r]^{F} & \U }
 \end{xy}
 $$
