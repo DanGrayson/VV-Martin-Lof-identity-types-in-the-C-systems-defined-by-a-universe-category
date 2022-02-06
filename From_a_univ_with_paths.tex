@@ -103,6 +103,7 @@
 \newoperator{ft}{\ft}
 \newoperator{Idx}{\Idx}
 \newoperator{Id}{\Id}
+\newoperator{IdGamma}{\Id_\Gamma}
 \newoperator{I}{\I}
 \newoperator{J}{\J}
 \newoperator{ObwtD}{\Obwt(\Delta)}
@@ -121,7 +122,9 @@
 \newoperator{QFE}{\Q(F)_{E}}
 \newoperator{refl}{\refl}
 \newoperator{rf}{\rf}
+\newoperator{rfT}{\rf_T}
 \newoperator{sg}{\s_g}
+\newoperator{XFE}{(X;F)_{E}}
 \newoperator{semicolon}{(X;F)}
 \newoperator{st}{\st}
 \newoperator{multisemicolon}{(X;F_1,\dots,F_n)}
@@ -511,7 +514,7 @@ $\Id$, and $\J$ is a J2-structure over $\refl$.
 \label{2015.03.27.def1}
 A {\em J0-structure} on a C-system $\CC$ is a family of functions 
 %
-$$\gls{Id}_{\Gamma}:\{(o_1,o_2)\,|\,o_1, o_2 \in \Obwt_1(\Gamma), \partial(o_1)=\partial(o_2)\}\sr Ob_1(\Gamma),$$
+$$\gls{IdGamma}:\{(o_1,o_2)\,|\,o_1, o_2 \in \Obwt_1(\Gamma), \partial(o_1)=\partial(o_2)\}\sr Ob_1(\Gamma),$$
 
 given for all $\Gamma\in Ob$, that is natural in $\Gamma$, i.e., such that for any
 $f:\Gamma'\sr \Gamma$, one has the identity
@@ -593,7 +596,7 @@ The proof that $\Idx$ is natural in $f:\Gamma'\sr \Gamma$ is omitted.
 \label{2015.03.27.prob2} Given a J0-structure $\Id$ and a J1-structure $\refl$
 over it, to construct for all $\Gamma\in Ob$ and $T\in Ob_1(\Gamma)$ a morphism
 %
-$$\gls{rf}_T:T\sr \Idx(T)$$
+$$\gls{rfT} : T \sr \Idx(T)$$
 %
 over $\Gamma$,
 such that for any $f:\Gamma'\sr \Gamma$ one has $f^*(\rf_T)=\rf_{f^*(T)}$.
@@ -988,7 +991,7 @@ follows:
 %
 $$
 \begin{xy}
-          \xymatrix@C=4pc{ (X;F)_{E} \ar[r]^-{\gls{QFE}} \ar[d]_{\gls{pEXF}} &
+          \xymatrix@C=4pc{ \gls{XFE} \ar[r]^-{\gls{QFE}} \ar[d]_{\gls{pEXF}} &
             E\wt{\U} \ar[d]^{pE\wt{\U}}\\ X \ar[r]^{F} & \U }
 \end{xy}
 $$
@@ -1058,7 +1061,7 @@ $$
 %
 \begin{definition}
 \label{2015.03.27.def6} A {\em J2-structure} on $p:\wt{\U}\sr \U$, relative to a J0-structure $Eq$
-and a J1-structure $\Omega$, is a morphism
+and a J1-structure $\Omega$ over $Eq$, is a morphism
 %
 $$ Jp:( \I_{pE\wt{\U}}(\U), \I^{\omega}(\U))\times_{\I_p(\U)} (\I_p(\wt{\U}), \I_p(p))\sr
 \I_{pE\wt{\U}}(\wt{\U}) $$
@@ -1236,7 +1239,7 @@ the form
 \]
 %
 such that $i\in L$ and $p\in R$ there exists a morphism $g:W\sr E$ that makes
-the two triangles into which it splits the square to commute, i.e., a morphism
+the two triangles into which it splits the square commute, i.e., a morphism
 $g$ such that $i\circ g=f_Z$ and $g\circ p=f_W$.
 %
 
@@ -1274,7 +1277,7 @@ Our first set of conditions is as follows:
 \item A morphism is in $FB$ if and only if it has the right lifting property
   for $TC$,
 \item consider morphisms $f: B'\sr B$, $p_1:E_1\sr B$, $p_2:E_2\sr B$ and
-  $i:E_1\sr E_2$ such that $p_1,p_2\in FB$ and $i\in TC$. Then the morphism
+  $i:E_1\sr E_2$ such that $p_1,p_2\in FB$, $i \circ p_2 = p_1$, and $i\in TC$. Then the morphism
 %
 $$\id_{B'}\times i: (B',f)\times_B(E_1,p_1)\sr (B',f)\times_B(E_2,p_2)$$
 %
@@ -1285,8 +1288,9 @@ is in $TC$.
 \begin{theorem}
 \label{2015.05.22.th1} Let $FB$ and $TC$ be two classes of morphisms in a
 locally cartesian closed category $\cal C$ that satisfy Conditions
-\ref{2015.05.22.cond2}. Let $p:\wt{\U}\sr \U$ be a universe in $\cal C$ and $(Eq,\Omega)$ a
-J1-structure on $p$ such that:
+\ref{2015.05.22.cond2}. Let $p:\wt{\U}\sr \U$ be a universe in $\cal C$, let 
+$Eq$ be a J0-structure on $p$, and let $\Omega$ be a J1-structure over $Eq$.
+Assume further that:
 %
 \begin{enumerate}
 \item $p$ is in $FB$,
@@ -1314,7 +1318,7 @@ satisfied in the situations arising when one attempts to localize Quillen model
 structures and when the resulting sets of morphisms do not form a model
 structure. The difference is mainly concerned with the fact that the good
 behavior is required only for fibrations over fibrant objects. One particular
-example of such situation is considered in \cite[Section 3.3]{SRF}.
+example of such a situation is considered in \cite[Section 3.3]{SRF}.
 
 %
 \begin{cond}\label{2015.05.22.cond1}
@@ -1337,7 +1341,9 @@ is in $TC$.
 We will say that $B$ is fibrant if the morphism $B\sr pt$ is in $FB$.
 %
 \begin{lemma}
-\label{2015.05.14.l2} Let $p:E\sr B$ be in $FB$ and $f:B'\sr B$ be a
+  \label{2015.05.14.l2}
+  Assume conditions \ref{2015.05.22.cond1} are satisfied.
+Let $p:E\sr B$ be in $FB$ and $f:B'\sr B$ be a
 morphism. Assume in addition that $B$ and $B'$ are fibrant, then for any
 pullback square of the form
 %
@@ -1359,8 +1365,10 @@ this property we know because $p$ is in $FB$ and $B$ is fibrant.
 \end{myproof}
 %
 \begin{lemma}
-\label{2015.05.14.l4} Let $B$ be fibrant and $p_2:E_2\sr E_1$, $p_1:E_1\sr B$
-be in $FB$. Then $p_2\circ p_1$ is in $FB$.
+  \label{2015.05.14.l4}
+  Assume conditions \ref{2015.05.22.cond1} are satisfied.
+  Let $B$ be fibrant and $p_2:E_2\sr E_1$, $p_1:E_1\sr B$
+  be in $FB$. Then $p_2\circ p_1$ is in $FB$.
 \end{lemma}
 %
 \begin{myproof}
@@ -1378,8 +1386,10 @@ $p_2\circ p_1$ is in $FB$.
 \end{myproof}
 %
 \begin{lemma}
-\label{2015.05.14.l1} Assume that $\U,V$ are fibrant and that $p:\wt{\U}\sr \U$
-is in $FB$. Then the morphism $\prI_p(V):\I_p(V)\sr \U$ is in $FB$.
+  \label{2015.05.14.l1}
+  Assume conditions \ref{2015.05.22.cond1} are satisfied.
+  Assume that $\U,V$ are fibrant and that $p:\wt{\U}\sr \U$
+  is in $FB$. Then the morphism $\prI_p(V):\I_p(V)\sr \U$ is in $FB$.
 \end{lemma}
 %
 \begin{myproof}
@@ -1423,8 +1433,10 @@ commutativity of the upper triangle.
 \end{myproof}
 %
 \begin{lemma}
-\label{2015.05.14.l3} Assume that $\U,V$ are fibrant and that $p:\wt{\U}\sr \U$
-and $r:V'\sr V$ are in $FB$. Then $\I_p(r):\I_p(V')\sr \I_p(V)$ is in $FB$.
+  \label{2015.05.14.l3}
+  Assume conditions \ref{2015.05.22.cond1} are satisfied.
+  Assume that $\U,V$ are fibrant and that $p:\wt{\U}\sr \U$
+  and $r:V'\sr V$ are in $FB$. Then $\I_p(r):\I_p(V')\sr \I_p(V)$ is in $FB$.
 \end{lemma}
 %
 \begin{myproof}
@@ -1493,28 +1505,15 @@ commutativity of the lower of the two triangles into which $g$ splits
 \end{myproof}
 %
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 We can now prove the second main theorem of this section.
 %
 \begin{theorem}
 \label{2015.05.16.th1} Let $({\C},p,pt)$ be a universe category, let
 $\C$ be given a locally cartesian closed structure and let $TC$ and
 $FB$ be two collections of morphisms in $\C$ that satisfy Conditions
-\ref{2015.05.22.cond1}. Let further $Eq:(\wt{\U};p)\sr \U$ and $\Omega:\wt{\U}\sr
-\wt{\U}$ be a J1-structure and assume that the following conditions hold:
+\ref{2015.05.22.cond1}. Let further $Eq:(\wt{\U};p)\sr \U$ be a J0-structure on $p$,
+and let $\Omega:\wt{\U}\sr \wt{\U}$ be a J1-structure over $Eq$.
+Assume that the following conditions hold:
 %
 \begin{enumerate}
 \item $\U$ is fibrant,
@@ -1522,7 +1521,7 @@ $FB$ be two collections of morphisms in $\C$ that satisfy Conditions
 \item $\omega : \wt{\U}\sr E\wt{\U}$ is in $TC$.
 \end{enumerate}
 %
-Then there exists a J-structure $Jp$ extending $(Eq,\Omega)$.
+Then there exists a J2-structure $Jp$ relative to $Eq$ and $\Omega$.
 \end{theorem}
 %
 \begin{myproof}
@@ -1579,28 +1578,31 @@ holds:
 %
 \begin{enumerate}
 \item consider morphisms $f: B'\sr B$, $p_1:E_1\sr B$, $p_2:E_2\sr B$ and
-  $i:E_1\sr E_2$ such that $p_1,p_2$ are fibrations and $i$ a trivial
+  $i:E_1\sr E_2$ such that $p_1,p_2$ are fibrations, $i \circ p_2 = p_1$, and $i$ is a trivial
   cofibration. Then the morphism
 %
 $$\id_{B'}\times i: (B',f)\times_B(E_1,p_1)\sr (B',f)\times_B(E_2,p_2)$$
 %
-is a trivial cofibration,
+is a trivial cofibration; or
 %
 \item $\U$ is fibrant and the pullback of a trivial cofibration along a
   fibration is a trivial cofibration.
 \end{enumerate}
 %
-Then $(Eq,\omega)$ can be extended to a full J-structure on $p$.
+Then $(Eq,\Omega)$ can be extended to a full J-structure on $p$.
 \end{cor}
 %
 
-The following result can be used to produce many examples of universes with
-J-structures (but not the univalent universes). Let $\cal C$ be a locally
-cartesian closed category with coproducts of sequences
-$\amalg_{n\in\nn}X_n$. We let $in_n:X_n\sr \amalg_n X_n$ and $\langle f_n
-\rangle_{n} : \amalg_n X_n\sr Y$ denote the canonical morphisms. We let $\amalg
-f_n : \amalg_n X_n \amalg_n Y_n$ denote the morphism $\langle f_n\circ in_n
-\rangle_{n}$.
+The following result can be used to produce many examples of (non-univalent) universes with
+J-structures.
+
+Let $\cal C$ be a locally
+cartesian closed category with coproducts $\amalg_{n\in\nn}X_n$ of sequences of objects.
+We let $in_n:X_n\sr \amalg_n X_n$ the canonical inclusion.
+Given a sequence of maps $f_n : X_n \sr Y$, we let
+$\langle f_n \rangle_{n} : \amalg_n X_n\sr Y$ denote the associated morphism.
+Given two sequences of objects, $X_n$ and $Y_n$, along with a sequence of maps $f_n : X_n \sr Y_n$,
+we let $\amalg f_n : \amalg_n X_n \sr \amalg_n Y_n$ denote the morphism $\langle f_n\circ in_n \rangle_{n}$.
 
 Assume that these coproducts satisfy the following two conditions:
 %
