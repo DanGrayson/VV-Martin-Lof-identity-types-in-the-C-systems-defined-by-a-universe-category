@@ -104,6 +104,7 @@
 \newoperator{Fp}{\Fp}
 \newoperator{ft}{\ft}
 \newoperator{Idx}{\Idx}
+\newoperator{IdEq}{\Id_{Eq}}
 \newoperator{Id}{\Id}
 \newoperator{IdGamma}{\Id_\Gamma}
 \newoperator{I}{\I}
@@ -114,6 +115,7 @@
 \newoperator{Obn}{\Ob_n(\Gamma)}
 \newoperator{Obwtn}{\Obwt_n(\Gamma)}
 \newoperator{omega}{\omega}
+\newoperator{pGamman}{\p_{\Gamma,n}}
 \newoperator{pX}{\p_X}
 \newoperator{pXF}{\p_{X,F}}
 \newoperator{pEXF}{\p^E_{X,F}}
@@ -647,7 +649,7 @@ and is a section of the corresponding canonical projection,
 we may introduce the following definition.
 %
 \begin{eq}
-\label{2015.04.02.eq1} \rf_T:=\refl(\delta(T))\circ \q(\delta(T),\Idx(T))
+\label{2015.04.02.eq1} \gls{rfT} :=\refl(\delta(T))\circ \q(\delta(T),\Idx(T))
 \end{eq}%
 %
 The proof that for any $f:\Gamma'\sr \Gamma$ one has $f^*(\rf_T)=\rf_{f^*(T)}$ is
@@ -1736,7 +1738,7 @@ summarized in \cite{fromunivwithPi}. Let us recall some facts and
 notation. The underlying category of $\toCC({\C},p)$ is equipped with a
 functor $\gls{int}$ to $\C$. Note that while $int$ is the identity function on
 Hom-sets by the construction of $\toCC({\C},p)$, the notations for an
-element of $Hom(\Gamma',\Gamma)$ and $Hom(int(\Gamma'),int(\Gamma))$ may
+element of $Hom(\Gamma',\Gamma) = Hom(int(\Gamma'),int(\Gamma))$ may
 differ.  In particular, for $f:\Gamma'\sr \Gamma$ in $\toCC({\C},p)$ and $F:int(\Gamma) \sr \U$ in $\C$,
 we have the following equation.\editorfootnote{The
   notation $(\Gamma,F)$ refers to the inductive construction of objects of $\toCC({\C},p)$ presented
@@ -1748,7 +1750,7 @@ we have the following equation.\editorfootnote{The
   the definition \cite[2.6 (4)]{Cfromauniverse}.}
 %
 \begin{eq}
-\label{2015.04.02.eq2} int(\q(f,(\Gamma,F))) = \Q(int(f),F).
+\label{2015.04.02.eq2} \q(f,(\Gamma,F)) = \Q(int(f),F).
 \end{eq}%
 %
 
@@ -1785,7 +1787,7 @@ $\toCC({\C},p)$.
 %
 \begin{construction}{2015.03.27.prob3}\rm
 \label{2015.03.27.constr3} Since the canonical squares are pullback squares,
-bijections $u_1$ and $\wt{u}_1$ give us a bijection
+the bijections $u_1$ and $\wt{u}_1$ give us a bijection
 %
 $$\wt{uu}:\{o,o'\in\Obwt_1(\Gamma)\,|\,\partial(o)=\partial(o')\} \sr
 Hom(int(\Gamma),(\wt{\U};p)),$$
@@ -1796,7 +1798,7 @@ $$\Id(o,o')=u_1^{-1}(\wt{uu}(o,o')\circ Eq).$$
 %
 \end{construction}
 %
-We let $\Id_{Eq}$ denote the J0-structure on $\toCC({\C},p)$ constructed
+We let $\gls{IdEq}$ denote the J0-structure on $\toCC({\C},p)$ constructed
 from $Eq$ in Construction \ref{2015.03.27.constr3}. Note that
 %
 \begin{eq}
@@ -1804,7 +1806,7 @@ from $Eq$ in Construction \ref{2015.03.27.constr3}. Note that
 int(\Id(o,o'))=(int(\Gamma);(\wt{u}_1(o)*\wt{u}_1(o'))\circ Eq).
 \end{eq}%
 %
-Recall that in \cite{Csubsystems} we let $\p_{\Gamma,n}:\Gamma\sr \ft^n(\Gamma)$
+Recall that in \cite{Csubsystems} we let $\gls{pGamman}:\Gamma\sr \ft^n(\Gamma)$
 denote the composition of $n$ canonical projections $\p_{\Gamma}\circ \dots\circ
 \p_{\ft^{n-1}(\Gamma)}$.
 %
@@ -1853,8 +1855,9 @@ and the equality $\Q(f,F)\circ \Q(F)=\Q(f\circ F)$.
 \end{myproof}
 %
 \begin{problem}
-\label{2015.03.27.prob4} Let $Eq:(\wt{\U};p)\sr \U$, $\Omega:\wt{\U}\sr \wt{\U}$
-be a J0-structure and a J1-structure on a universe $p$ in a category $\C$.
+\label{2015.03.27.prob4} Let $Eq:(\wt{\U};p)\sr \U$
+be a J0-structure on a universe $p$ in a category $\C$,
+and let $\Omega:\wt{\U}\sr \wt{\U}$ be a J1-structure over $Eq$.
 To construct a J1-structure $\refl(Eq,\Omega)$ over $\Id_{Eq}$ on $\toCC({\C},p)$.
 \end{problem}
 %
