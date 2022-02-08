@@ -91,6 +91,7 @@
 %   at definition time, use \gls{foo} to generate a link to the symbol index
 %   at subsequent uses, use \foo or the actual code
 %   the order here is the order in the index, and is obtained with "sort -f"
+\newoperator{CCCp}{\toCC({\C},p)}
 \newoperator{partial}{\partial}
 \newoperator{parto}{\partial(o)}
 \newoperator{delta}{\delta}
@@ -105,6 +106,7 @@
 \newoperator{Id}{\Id}
 \newoperator{IdGamma}{\Id_\Gamma}
 \newoperator{I}{\I}
+\newoperator{int}{int}
 \newoperator{J}{\J}
 \newoperator{ObwtD}{\Obwt(\Delta)}
 \newoperator{Obn}{\Ob_n(\Gamma)}
@@ -124,9 +126,11 @@
 \newoperator{rf}{\rf}
 \newoperator{rfT}{\rf_T}
 \newoperator{sg}{\s_g}
+\newoperator{st}{\st}
 \newoperator{XFE}{(X;F)_{E}}
 \newoperator{semicolon}{(X;F)}
-\newoperator{st}{\st}
+\newoperator{u1}{u_1}
+\newoperator{utilde1}{\wt u_1}
 \newoperator{multisemicolon}{(X;F_1,\dots,F_n)}
 \newoperator{starfg}{f*g}
 
@@ -1722,28 +1726,35 @@ J-structure on $\p_*$.
 
 \subsection{Constructing a J-structure on $\toCC({\C},p)$ from a J-structure on~$p$}
 %
-The construction of a C-system $\toCC({\C},p)$ from a category with a
+The construction of a C-system $\gls{CCCp}$ from a category with a
 universe $p$ and a final object $pt$ was presented in \cite{Cfromauniverse} and
 summarized in \cite{fromunivwithPi}. Let us recall some facts and
 notation. The underlying category of $\toCC({\C},p)$ is equipped with a
-functor $int$ to $\C$. Note that while $int$ is the identity on
-morphisms by construction of $\toCC({\C},p)$, the notations for the same
+functor $\gls{int}$ to $\C$. Note that while $int$ is the identity on
+Hom-sets by the construction of $\toCC({\C},p)$, the notations for an
 element of $Hom(\Gamma',\Gamma)$ and $Hom(int(\Gamma'),int(\Gamma))$ may
-differ. In particular for $f:\Gamma'\sr \Gamma$ and $F:\Gamma\sr \U$ we have
+differ.  In particular, for $f:\Gamma'\sr \Gamma$ and $F:\Gamma\sr \U$ in $\toCC({\C},p)$, we have the following
+equation.\editorfootnote{The
+  notation $(\Gamma,F)$ refers to the inductive construction of objects of $\toCC({\C},p)$ presented
+  in \cite{Cfromauniverse}.  Here $\Gamma$
+  is an object of $\toCC({\C},p)$, so $(\Gamma,F)$ is a new object of $\toCC({\C},p)$, with
+  $\ft(\Gamma,F) = \Gamma$ and $int(\Gamma,F) = (\Gamma;F)$.  In the equation displayed,
+  the left side, $\q(f,(\Gamma,F))$, refers to the C-system structure on $\toCC({\C},p)$, while
+  the right side, $\Q(f,F)$, refers to the universe structure on $\C$.}
 %
 \begin{eq}
-\label{2015.04.02.eq2} \q(f,int(\Gamma,F))=\Q(f,F).
+\label{2015.04.02.eq2} \q(f,(\Gamma,F))=\Q(f,F).
 \end{eq}%
 %
 
 For each $\Gamma\in Ob(\toCC({\C},p))$ we have natural bijections
 %
 \begin{eq}
-\label{2015.03.27.eq7b} u_1:Ob_1(\Gamma)\sr Hom(int(\Gamma),\U)
+\label{2015.03.27.eq7b} \gls{u1}:Ob_1(\Gamma)\sr Hom(int(\Gamma),\U)
 \end{eq}%
 %
 \begin{eq}
-\label{2015.03.27.eq7a} \wt{u}_1:\Obwt_1(\Gamma)\sr Hom(int(\Gamma),\wt{\U}),
+\label{2015.03.27.eq7a} \gls{utilde1}:\Obwt_1(\Gamma)\sr Hom(int(\Gamma),\wt{\U}),
 \end{eq}%
 %
 where $u_1^{-1}(F)=(\Gamma,F)$ and where
