@@ -96,7 +96,7 @@
 \newoperator{partial}{\partial}
 \newoperator{parto}{\partial(o)}
 \newoperator{delta}{\delta}
-\newoperator{D}{\D}
+\newoperator{DpV}{\D_p(-,V)}
 \newoperator{etashriek}{\etashriek}
 \newoperator{etaunshriek}{\etaunshriek}
 \newoperator{fstarX}{f^*(X)}
@@ -107,7 +107,7 @@
 \newoperator{IdEq}{\Id_{Eq}}
 \newoperator{Id}{\Id}
 \newoperator{IdGamma}{\Id_\Gamma}
-\newoperator{I}{\I}
+\newoperator{Ip}{\I_p}
 \newoperator{int}{int}
 \newoperator{J}{\J}
 \newoperator{l}{l}
@@ -595,7 +595,7 @@ Since $\p_{\p_T^*(T)}^*(\delta(T))$ and $\delta(\p_T^*(T))$ are sections of the
 same canonical projection, we may make the following definition.
 \begin{eq}
 \label{2015.04.06.eq1}
-\Idx(T):=\Id_{\\p_T^*(T)}((\p_{\p_T^*(T)}^*(\delta(T))), \delta(\p_T^*(T)))
+\Idx(T):=\Id_{\\p_T^*(T)}(\p_{\p_T^*(T)}^*(\delta(T)), \delta(\p_T^*(T)))
 \end{eq}%
 The fact that $\Idx(T)\in Ob_3(\Gamma)$ follows now from the fact that
 $\ft^2(\p_T^*(T))=\ft(T)=\Gamma$.
@@ -794,7 +794,7 @@ is a pullback square.
 Following \cite[2.30]{presheavesOb} we define for any universe $p:\wt{\U}\sr \U$ and
 any $V\in {\C}$ a contravariant functor from $\C$ to the category of sets,
 %
-$$\gls{D}_p(-,V):X\mapsto \amalg_{F:X\sr \U}Hom((X;F), V).$$
+$$\gls{DpV}:X\mapsto \amalg_{F:X\sr \U}Hom((X;F), V).$$
 %
 For $F:X\sr \U$ and $G : (X;F) \sr V$, the corresponding element of
 $\D_p(X,V)$ will be written as the pair $(F,G)$.
@@ -808,7 +808,7 @@ $p:\wt{\U}\sr \U$ defines a functor\editorfootnote{Here $(\wt{\U},p)$ and
   $(\U\times V,\pr_1)$ are objects in the category of objects over $\U$, and
   $\iHom$ denotes the internal Hom in that category.}
 %
-$$\gls{I}_p:V\mapsto \iHom((\wt{\U},p),(\U\times V,\pr_1))$$
+$$\gls{Ip}:V\mapsto \iHom((\wt{\U},p),(\U\times V,\pr_1)),$$
 %
 into the slice category over $\U$; we denote by
 \begin{equation}\label{eq:def-prI}
@@ -1582,7 +1582,7 @@ respect to morphisms with fibrant domains through repeated application of
 Lemmas \ref{2015.05.14.l2} and \ref{2015.05.14.l4}. Therefore, the morphism
 $\prI_{pE\wt{\U}}$ is in $FB$ by Lemma \ref{2015.05.14.l1} and as a corollary we
 know that $\I_{pE\wt{\U}}(\U)$ is fibrant. Similarly $\I_p(\U)$ is fibrant and
-$i_p(p)$ is in $FB$ and applying again Lemma \ref{2015.05.14.l2} we see that
+$\I_p(p)$ is in $FB$ and applying again Lemma \ref{2015.05.14.l2} we see that
 $\pr_1$ is in $FB$. And again by Lemma \ref{2015.05.14.l4} we see that $\pFp$ is
 in $FB$ which finishes the proof of the theorem.
 \end{myproof}
@@ -1758,7 +1758,7 @@ we have the following equation.\editorfootnote{The
   the definition \cite[2.6 (4)]{Cfromauniverse}.}
 %
 \begin{eq}
-\label{2015.04.02.eq2} \q(f,(\Gamma,F)) = \Q(int(f),F).
+\label{2015.04.02.eq2} \q(f,(\Gamma,F)) = \Q(f,F).
 \end{eq}%
 %
 
@@ -1824,7 +1824,7 @@ and $F:int(\Gamma)\sr \U$. Then one has:
 %
 \begin{align*}
   int(\Idx(\Gamma,F))&=(int(\Gamma);F)_{E} \\
-  \p_{\Idx(T),3} &= \p^E_{\Gamma,F} \\
+  \p_{\Idx((\Gamma,F)),3} &= \p^E_{\Gamma,F} \\
   \Q(F)_{E}\circ \Q(Eq)&=\Q(\Q(\Q(F)\circ p)\circ Eq)
 \end{align*}
 %
@@ -1922,7 +1922,7 @@ $$\wt{u}_1(\refl_{\Omega}(s))=\wt{u}_1(s)\circ \Omega=s\circ \Q(F)\circ \Omega.$
 
 \begin{lemma}
 \label{2015.03.31.l2} Given $Eq$ and $\Omega$ consider the corresponding $\Id$
-and $\refl$. For $T\in Ob_1(\Gamma)$ let %
+and $\refl$. For $\Gamma \in Ob(\toCC({\C},p))$ and for $T\in Ob_1(\Gamma)$ let
 $$\rf_T:int(T)\sr int(\Idx(T))$$
 %
 be the morphism constructed in Construction \ref{2015.03.27.constr2}. On the
@@ -1930,7 +1930,7 @@ other hand let
 %
 $$F^*(\omega):(int(\Gamma);F)\sr (int(\Gamma);F)_{E}$$
 %
-be the pullback of $\omega:\wt{\U}\sr E\wt{\U}$ with respect to $F=u_1(T)$,
+be the pullback of $\omega:\wt{\U}\sr E\wt{\U}$ with respect to $F:=u_1(T)$,
 i.e., the unique morphism
 %
 $$(int(\Gamma);F)\sr (int(\Gamma);F)_{E}$$
