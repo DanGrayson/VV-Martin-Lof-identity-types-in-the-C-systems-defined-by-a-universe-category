@@ -803,14 +803,20 @@ The action of the functor on a morphism $f : X' \to X$ is given by
 %
 $$\D_p(f,V):(F,G)\mapsto (f\circ F, \Q(f,F)\circ G).$$
 
-When $\C$ is a locally cartesian closed category any morphism
+When $\C$ is a locally cartesian closed category, any morphism
 $p:\wt{\U}\sr \U$ defines a functor\editorfootnote{Here $(\wt{\U},p)$ and
   $(\U\times V,\pr_1)$ are objects in the category of objects over $\U$, and
   $\iHom$ denotes the internal Hom in that category.}
 %
 $$\gls{Ip}:V\mapsto \iHom((\wt{\U},p),(\U\times V,\pr_1)),$$
 %
-and we have constructed in \cite[Construction 2.6.4]{presheavesOb} a family of
+into the slice category over $\U$; we denote by
+\begin{equation}\label{eq:def-prI}
+  \gls{prI}_p(V) :\I_p(V)\sr \U
+\end{equation}
+the arrow of $\I_p(V)$.
+
+We have constructed in \cite[Construction 2.6.4]{presheavesOb} a family of
 bijections\editorfootnote{Since $\I_p(V)$ is an object over $\U$, one may infer
   that formation of $Hom(X,\I_p(V))$ involves forgetting the structure map
   $\I_p(V) \sr \U$.}
@@ -886,11 +892,11 @@ for any $g\in Hom(X,\I_p(V))$ one has $\eta^{',!}(g\circ
 \I^f(V))=D^f(X,V)(\etashriek(g))$. Let
 %
 \begin{align*}
-  \gls{pr}=\gls{prI}_p(V) & :\I_p(V)\sr \U \\
+  \gls{pr}=\prI_p(V) & :\I_p(V)\sr \U \\
   \pr'=\prI_{p'}(V) & :\I_{p'}(V)\sr \U
 \end{align*}
 %
-be the canonical projections. Let
+(cf.\ \eqref{eq:def-prI}) be the canonical projections. Let
 %
 \begin{align*}
   \st=\gls{st}_p(V)&:(\I_p(V);\pr)\sr V \\
