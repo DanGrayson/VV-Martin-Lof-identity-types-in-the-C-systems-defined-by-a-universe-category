@@ -1970,6 +1970,31 @@ $$
 $$
 
 %
+
+Let $\Delta := (\id_{\wt{\U}})*(\id_{\wt{\U}})$ be the diagonal of $\wt{\U}$ over $\U$.
+
+The following commutative diagram of canonical pullback squares clarifies some
+of the forthcoming computations.
+
+\centerline{
+  \xymatrix{
+            &                                & \wt \U \ar[d]^{\Delta}                                                         \\
+            &  (X;F) \ar[ru]^{Q(F)}           
+                    \ar[d]_{\delta(T)}       & (\wt \U; p) \ar[dd]^(.33){\p_{(\wt \U; p)}}
+                                                           \ar[rr]^{Q(p)} &                                & \wt \U \ar[dd]^p \\
+ int(\p_T^*(T))
+   \ar[r]^-=
+            &  (X;F,Q(F) \circ p)
+                 \ar[ru]^(.6){Q(Q(F),p)}         
+                 \ar[dd]
+                 \ar[rr]                     &                            & (X;F) \ar[dd]^(.3){\p_{(X;F)}}
+                                                                                  \ar[ur]^(.4){Q(F)}       &                  \\
+            &                               & \wt \U \ar[rr]^(.33)p      &                                 & \U               \\
+            & (X;F) \ar[rr]^{\p_{(X;F)}} 
+                    \ar[ru]^{Q(F)}           &                            & X \ar[ur]_F
+  }}
+
+
 We have two projections
 %
 \begin{align*}
@@ -1984,7 +2009,6 @@ We need to check the following equations.
   \rf_T\circ v &=F^*(\omega)\circ v
 \end{align*}
 %
-Let $\Delta := (\id_{\wt{\U}})*(\id_{\wt{\U}})$ be the diagonal of $\wt{\U}$.
 We have
 %
 \begin{align*}
