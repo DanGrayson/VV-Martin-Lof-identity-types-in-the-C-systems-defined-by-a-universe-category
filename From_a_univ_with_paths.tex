@@ -779,17 +779,20 @@ morphism
 %
 $$(\p_{X',f\circ F}\circ f)*\Q(f\circ F):(X';f\circ F)\sr (X;F)$$
 %
-As is shown in \cite[Lemma 2.3]{Cfromauniverse}, the square
+As shown in \cite[Lemma 2.3]{Cfromauniverse}, the left hand square in the following diagram is a pullback square.
 %
 \begin{eq}
 \label{2015.04.06.l0.sq}
-\begin{xy}
-          \xymatrix@C=4pc{ (X';f\circ F) \ar[r]^-{\Q(f,F)} \ar[d]_{\p_{X',f\circ
-                F}} & (X;F) \ar[d]^{\p_{X,F}}\\ X' \ar[r]^{f} & X }
-       \end{xy}
+  \begin{xy}
+     \xymatrix@C=4pc{
+       (X';f\circ F) \ar[r]_{\Q(f,F)}
+                     \ar@/^1.5pc/[rr]^{Q(f \circ F)}
+                     \ar[d]_{\p_{X',f\circ F}}            & (X;F) \ar[d]^{\p_{X,F}} \ar[r]_{Q(F)} & \wt \U \ar[d]_{p} \\
+       X' \ar[r]^{f} \ar@/_1.5pc/[rr]_{f \circ F}         & X \ar[r]^F                            & \U
+     }
+  \end{xy}
 \end{eq}%
 %
-is a pullback square.
 
 Following \cite[2.30]{presheavesOb} we define for any universe $p:\wt{\U}\sr \U$ and
 any $V\in {\C}$ a contravariant functor from $\C$ to the category of sets,
@@ -989,7 +992,7 @@ of projections as an object over $\U$, and let $pE\wt{\U}$ denote it.
 %
 \begin{construction}{2015.05.08.prob1}\rm
 \label{2015.05.08.constr1} The three squares in the following diagram are pullback squares.
-\begin{eq}
+\begin{eq}\label{pEU-diagram}
   \begin{xy}
     \xymatrix@C=7pc{
       (X;F,\Q(F)\circ p, \Q(\Q(F),p)\circ Eq) \ar[r]^-{\Q(\Q(\Q(F),p),Eq)} \ar[d] & (\wt{\U}; p, Eq) \ar[d]_{\p_{(\wt{\U};p),Eq}} \ar@/^2pc/[ddd]^{pE\wt{\U}} \\
@@ -1797,7 +1800,7 @@ $\toCC({\C},p)$.
 \label{2015.03.27.constr3} Since the canonical squares given by the universe structure on $p$ are pullback squares,
 the bijections $u_1$ and $\wt{u}_1$ give us a bijection
 %
-$$\wt{uu}:\{o,o'\in\Obwt_1(\Gamma)\,|\,\partial(o)=\partial(o')\} \sr
+$$\wt{uu}:\{o,o'\in\Obwt_1(\Gamma)\,|\,\partial(o)=\partial(o')\} \xrightarrow \cong
 Hom(int(\Gamma),(\wt{\U};p)),$$
 %
 where $\wt{uu}(o,o')=\wt{u}_1(o)*\wt{u}_1(o')$. We set:
@@ -1822,20 +1825,21 @@ denote the composition of $n$ canonical projections $\p_{\Gamma}\circ \dots\circ
 \label{2015.03.27.l1} Let $Eq$ be a J0-structure on $p$. Let $\Gamma\in Ob$
 and $F:int(\Gamma)\sr \U$. Then one has:
 %
-\begin{align*}
+\begin{align}
+  \Idx(\Gamma,F) &= (((X,F),\Q(F)\circ p), \Q(\Q(F),p)\circ Eq) \label{2015.03.27.l1-IDx} \\
   int(\Idx(\Gamma,F))&=(int(\Gamma);F)_{E} \\
-  \p_{\Idx((\Gamma,F)),3} &= \p^E_{\Gamma,F} \\
+  int(\p_{\Idx((\Gamma,F)),3}) &= \p^E_{\Gamma,F} \\
   \Q(F)_{E}\circ \Q(Eq)&=\Q(\Q(\Q(F)\circ p)\circ Eq)
-\end{align*}
+\end{align}
 %
 %
 \end{lemma}
 %
 \begin{myproof}
+It will be helpful for the reader to refer to diagram \ref{pEU-diagram}.
 Let $T=(\Gamma,F)$. We have:
 %
-$$int(\Idx(T))=int(\Id_{\p_T^*(T)}(o,o'))=(int(\p_T^*(T));(\wt{u}_1(o)*\wt{u}_1(o'))\circ
-Eq),$$
+$$\Idx(T)=\Id_{\p_T^*(T)}(o,o')= (\p_T^*(T), (\wt{u}_1(o)*\wt{u}_1(o')) \circ Eq),$$
 %
 where
 %
@@ -1846,7 +1850,7 @@ where
 %
 We have
 %
-$$int(\p_T^*(T))=(int(\Gamma);F,\Q(F)\circ p)$$
+$$\p_T^*(T) =((\Gamma,F),\Q(F)\circ p)$$
 %
 and
 %
@@ -1856,9 +1860,9 @@ and
 \end{align*}
 %
 which shows that $\wt{u}_1(o)*\wt{u}_1(o')=\Q(\Q(F),p)$ and completes the proof
-of the first and the second equations.
+of the first three equations.
 
-The third equality is a corollary of the equality $\Q(F)_{E}=\Q(\Q(\Q(F),p),Eq)$
+The last equality is a corollary of the equality $\Q(F)_{E}=\Q(\Q(\Q(F),p),Eq)$
 and the equality $\Q(f,F)\circ \Q(F)=\Q(f\circ F)$.
 \end{myproof}
 %
@@ -1980,24 +1984,17 @@ We need to check the following equations.
   \rf_T\circ v &=F^*(\omega)\circ v
 \end{align*}
 %
-The morphism $\rf_T$ is defined in (\ref{2015.04.02.eq1}) as
-%
-\begin{align*}
-  \rf_T
-  & :=\refl(\delta(T))\circ \q(\delta(T),\Idx(T)) \\
-  & = \refl(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)\circ Eq),
-\end{align*}
-%
-where the second equation is from (\ref{2015.04.02.eq2}).
-%
+Let $\Delta := (\id_{\wt{\U}})*(\id_{\wt{\U}})$ be the diagonal of $\wt{\U}$.
 We have
 %
 \begin{align*}
   \rf_T \circ h
-  & = \refl(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)\circ Eq)\circ h & \by{...}\\
-  & = \refl(\delta(T))\circ \Q(\delta(T)\circ \Q(\Q(F),p)\circ Eq) & \by{...}\\
+  & = \refl(\delta(T))\circ \q(\delta(T),\Idx(T)) \circ h & \by{def'n \ref{2015.04.02.eq1}} \\
+  & = \refl(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)\circ Eq) \circ h & \by{\ref{2015.04.02.eq2} and \ref{2015.03.27.l1-IDx}} \\
+  & = \refl(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)\circ Eq) \circ \Q(\Q(\Q(F),p)\circ Eq) & \by{def'n of h} \\
+  & = \refl(\delta(T))\circ \Q(\delta(T)\circ \Q(\Q(F),p)\circ Eq) & \by{\ref{2015.04.06.l0.sq}}\\
   & = \refl(\delta(T))\circ \Q(\Q(F)\circ \Delta\circ Eq) & \by{...}\\
-  & = \refl(\delta(T))\circ \Q(\Q(F)\circ (\omega\circ pE\wt{\U})\circ Eq) & \by{...}\\
+  & = \refl(\delta(T))\circ \Q(\Q(F)\circ \omega\circ pE\wt{\U} \circ Eq) & \by{...}\\
   & = \refl(\delta(T))\circ \Q(\Q(F)\circ \omega\circ \Q(Eq)\circ p) & \by{...}\\
   & = \refl(\delta(T))\circ \Q(\Q(F)\circ \Omega\circ p) & \by{...}
 \end{align*}
