@@ -119,6 +119,7 @@
 \newoperator{pX}{\p_X}
 \newoperator{pXF}{\p_{X,F}}
 \newoperator{pEXF}{\p^E_{X,F}}
+\newoperator{pEUtilde}{pE\wt{\U}}
 \newoperator{pr}{\pr}
 \newoperator{prI}{\prI}
 \newoperator{pFp}{\pFp}
@@ -984,7 +985,7 @@ Let $Eq$ be a J0-structure on $p$. Consider the object\editorfootnote{As
 $$E\wt{\U}:=(\wt{\U};p,Eq)$$
 of $\C$ together with the composite
 $$E\wt{\U} \xrightarrow{\ \p_{(\wt{\U};p),Eq}\ } (\wt{\U};p) \xrightarrow{\p_{\wt{\U},p}} \wt{\U}\xrightarrow{p} \U$$
-of projections as an object over $\U$, and let $pE\wt{\U}$ denote it.
+of projections as an object over $\U$, and let $\gls{pEUtilde}a$ denote it.
 
 \begin{problem}
 \label{2015.05.08.prob1} To construct a universe structure on $pE\wt{\U}$.
@@ -1044,11 +1045,20 @@ where $\Delta=(\id_{\wt{\U}})*(\id_{\wt{\U}})$ is the diagonal of $\wt{\U}$,
 commutes.
 
 The square (\ref{2015.03.27.sq1}) defines a morphism $\wt{\U}\sr E\wt{\U}$, which
-will be denoted by $\gls{omega}$.
+will be denoted by $\gls{omega}$, as in the following diagram.
+\begin{eq}\label{diag4}
+  \xymatrix@C=4pc{
+    \wt{\U}
+    \ar[rd]^-{\omega}
+    \ar@/^1pc/[rrd]^-{\Omega}
+    \ar@/_1pc/[drd]_{\Delta} \\
+                      & E\wt\U \ar[r]^{Q(Eq)} 
+                               \ar[d]^{\p_{(\wt\U;p),Eq}}   & \wt{\U} \ar[d]^{p}  \\
+                      & (\wt{\U};p) \ar[r]_{Eq}             & \U
+    }
+\end{eq}
 
 \end{definition}
-%
-
 
 To define a J2-structure on a universe we will need to assume that $\C$
 is a locally cartesian closed category.  Recall that a locally cartesian closed
@@ -1934,7 +1944,7 @@ other hand let
 %
 $$F^*(\omega):(int(\Gamma);F)\sr (int(\Gamma);F)_{E}$$
 %
-be the pullback of $\omega:\wt{\U}\sr E\wt{\U}$ with respect to $F:=u_1(T)$,
+be the pullback of $\omega : \wt{\U}\sr E\wt{\U}$ (defined in \ref{2015.03.27.def5}) with respect to $F:=u_1(T)$,
 i.e., the unique morphism
 %
 $$(int(\Gamma);F)\sr (int(\Gamma);F)_{E}$$
@@ -1976,23 +1986,26 @@ Let $\Delta := (\id_{\wt{\U}})*(\id_{\wt{\U}})$ be the diagonal of $\wt{\U}$ ove
 The following commutative diagram of canonical pullback squares clarifies some
 of the forthcoming computations.
 
-\centerline{
-  \xymatrix{
-            &                                & \wt \U \ar[d]^{\Delta}                                                         \\
-            &  (X;F) \ar[ru]^{Q(F)}           
-                    \ar[d]_{\delta(T)}       & (\wt \U; p) \ar[dd]^(.33){\p_{(\wt \U; p)}}
-                                                           \ar[rr]^{Q(p)} &                                & \wt \U \ar[dd]^p \\
- int(\p_T^*(T))
-   \ar[r]^-=
-            &  (X;F,Q(F) \circ p)
-                 \ar[ru]^(.6){Q(Q(F),p)}         
-                 \ar[dd]
-                 \ar[rr]                     &                            & (X;F) \ar[dd]^(.3){\p_{(X;F)}}
-                                                                                  \ar[ur]^(.4){Q(F)}       &                  \\
-            &                               & \wt \U \ar[rr]^(.33)p      &                                 & \U               \\
-            & (X;F) \ar[rr]^{\p_{(X;F)}} 
-                    \ar[ru]^{Q(F)}           &                            & X \ar[ur]_F
-  }}
+\begin{eq}
+    \label{diag3}
+    {
+      \xymatrix{
+                &                                & \wt \U \ar[d]^{\Delta}                                                         \\
+                &  (X;F) \ar[ru]^{Q(F)}           
+                        \ar[d]_{\delta(T)}       & (\wt \U; p) \ar[dd]^(.33){\p_{(\wt \U; p)}}
+                                                               \ar[rr]^{Q(p)} &                                & \wt \U \ar[dd]^p \\
+     int(\p_T^*(T))
+       \ar[r]^-=
+                &  (X;F,Q(F) \circ p)
+                     \ar[ru]^(.6){Q(Q(F),p)}         
+                     \ar[dd]
+                     \ar[rr]                     &                            & (X;F) \ar[dd]^(.3){\p_{(X;F)}}
+                                                                                      \ar[ur]^(.4){Q(F)}       &                  \\
+                &                               & \wt \U \ar[rr]^(.33)p      &                                 & \U               \\
+                & (X;F) \ar[rr]^{\p_{(X;F)}} 
+                        \ar[ru]^{Q(F)}           &                            & X \ar[ur]_F
+      }}
+\end{eq}
 
 
 We have two projections
@@ -2013,14 +2026,12 @@ We have
 %
 \begin{align*}
   \rf_T \circ h
-  & = \refl(\delta(T))\circ \q(\delta(T),\Idx(T)) \circ h & \by{def'n \ref{2015.04.02.eq1}} \\
-  & = \refl(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)\circ Eq) \circ h & \by{\ref{2015.04.02.eq2} and \ref{2015.03.27.l1-IDx}} \\
-  & = \refl(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)\circ Eq) \circ \Q(\Q(\Q(F),p)\circ Eq) & \by{def'n of h} \\
-  & = \refl(\delta(T))\circ \Q(\delta(T)\circ \Q(\Q(F),p)\circ Eq) & \by{\ref{2015.04.06.l0.sq}}\\
-  & = \refl(\delta(T))\circ \Q(\Q(F)\circ \Delta\circ Eq) & \by{...}\\
-  & = \refl(\delta(T))\circ \Q(\Q(F)\circ \omega\circ pE\wt{\U} \circ Eq) & \by{...}\\
-  & = \refl(\delta(T))\circ \Q(\Q(F)\circ \omega\circ \Q(Eq)\circ p) & \by{...}\\
-  & = \refl(\delta(T))\circ \Q(\Q(F)\circ \Omega\circ p) & \by{...}
+  & = \refl(\delta(T))\circ \q(\delta(T),\Idx(T))         \circ h & \by{def'n \ref{2015.04.02.eq1}} \\
+  & = \refl(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)      \circ Eq) \circ h & \by{\ref{2015.04.02.eq2} and \ref{2015.03.27.l1-IDx}} \\
+  & = \refl(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)      \circ Eq) \circ \Q(\Q(\Q(F),p)\circ Eq) & \by{def'n of h} \\
+  & = \refl(\delta(T))\circ \Q(\delta(T)\circ \Q(\Q(F),p) \circ Eq) & \by{\ref{2015.04.06.l0.sq}}\\
+  & = \refl(\delta(T))\circ \Q(\Q(F)\circ \Delta          \circ Eq) & \by{\ref{diag3}}\\
+  & = \refl(\delta(T))\circ \Q(\Q(F)\circ \Omega          \circ p) & \by{\ref{2015.03.27.sq1}}
 \end{align*}
 %
 On the other hand
