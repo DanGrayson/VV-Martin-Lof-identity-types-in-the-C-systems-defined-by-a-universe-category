@@ -4,7 +4,7 @@
 \usepackage{amsmath, amscd, amssymb}
 \usepackage[pdf,all,2cell]{xy}\SelectTips{cm}{10}\SilentMatrices\UseAllTwocells
 \usepackage{enumerate}
-\usepackage{hyperref}
+\usepackage[bookmarksnumbered=true]{hyperref}
 % lscape.sty Produce landscape pages in a (mainly) portrait document.
 \usepackage{lscape}
 \input symbolindex.tex
@@ -95,6 +95,7 @@
 \newoperator{CCCp}{\toCC({\C},p)}
 \newoperator{partial}{\partial}
 \newoperator{parto}{\partial(o)}
+\newoperator{Delta}{\Delta}
 \newoperator{delta}{\delta}
 \newoperator{DpV}{\D_p(-,V)}
 \newoperator{etashriek}{\etashriek}
@@ -1041,7 +1042,7 @@ $\Omega:\wt{\U}\sr \wt{\U}$ such that the square
 \end{xy}
 \end{eq}%
 %
-where $\Delta=(\id_{\wt{\U}})*(\id_{\wt{\U}})$ is the diagonal of $\wt{\U}$,
+where $\gls{Delta}=(\id_{\wt{\U}})*(\id_{\wt{\U}})$ is the diagonal of $\wt{\U}$,
 commutes.
 
 The square (\ref{2015.03.27.sq1}) defines a morphism $\wt{\U}\sr E\wt{\U}$, which
@@ -2028,26 +2029,30 @@ We have
   \rf_T \circ h
   & = \refl(\delta(T))\circ \q(\delta(T),\Idx(T))         \circ h & \by{def'n \ref{2015.04.02.eq1}} \\
   & = \refl(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)      \circ Eq) \circ h & \by{\ref{2015.04.02.eq2} and \ref{2015.03.27.l1-IDx}} \\
-  & = \refl(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)      \circ Eq) \circ \Q(\Q(\Q(F),p)\circ Eq) & \by{def'n of h} \\
+  & = \refl(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)      \circ Eq) \circ \Q(\Q(\Q(F),p)\circ Eq) & \by{def'n of $h$} \\
   & = \refl(\delta(T))\circ \Q(\delta(T)\circ \Q(\Q(F),p) \circ Eq) & \by{\ref{2015.04.06.l0.sq}}\\
   & = \refl(\delta(T))\circ \Q(\Q(F)\circ \Delta          \circ Eq) & \by{\ref{diag3}}\\
   & = \refl(\delta(T))\circ \Q(\Q(F)\circ \Omega          \circ p) & \by{\ref{2015.03.27.sq1}}
 \end{align*}
 %
 On the other hand
-%
-$$F^*(\omega)\circ h=F^*(\omega)\circ h_1\circ h_2=\Q(F)\circ \omega\circ
-h_2=\Q(F)\circ \omega\circ \Q(Eq)=\Q(F)\circ \Omega$$
-%
+
+\begin{align*}
+  F^*(\omega) \circ h & = F^*(\omega) \circ h_1 \circ h_2 & \by{def'n of $h$} \\
+                      & = \Q(F) \circ \omega \circ h_2    & \by{...} \\
+                      & = \Q(F) \circ \omega \circ \Q(Eq) & \by{...} \\
+                      & = \Q(F) \circ \Omega              & \by{...}
+\end{align*}
+
 We have $u_1(\partial(\delta(T)))=\Q(F)\circ p$ and
 %
 \begin{align*}
-  \delta(T)\circ \Q(u_1(\partial(\delta(T))))
-    & = \delta(T)\circ \Q(\Q(F)\circ p) \\
-    & =  \delta(T)\circ \Q(\p_T\circ F) \\
-    & = \delta(T)\circ \q(\p_T,T)\circ \Q(F) \\
-    & = \id_{int(T)}\circ \Q(F) \\
-    & = \Q(F)
+        \delta(T) \circ \Q(u_1(\partial(\delta(T))))
+    & = \delta(T) \circ \Q(\Q(F) \circ p)      & \by{...} \\
+    & = \delta(T) \circ \Q(\p_T \circ F)       & \by{...} \\
+    & = \delta(T) \circ \q(\p_T,T) \circ \Q(F) & \by{...} \\
+    & = \id_{int(T)} \circ \Q(F)               & \by{...} \\
+    & = \Q(F)                                  & \by{...}
 \end{align*}
 %
 Therefore by Lemma \ref{2015.04.02.l3} we have
