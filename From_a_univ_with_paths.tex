@@ -735,12 +735,12 @@ and let $p:\wt{\U}\sr \U$ be a morphism in
 $\C$. Recall \cite{Cfromauniverse} that a {\em universe structure} on $p$ is a choice of pullback
 squares of the form
 %
-$$
+\begin{eq}
 \begin{xy}
           \xymatrix@C=4pc{ \gls{semicolon} \ar[r]^-{\gls{QF}} \ar[d]_{\gls{pXF}} & \wt{\U}
             \ar[d]^{p}\\ X \ar[r]^{F} & \U }
-\end{xy}
-$$
+\end{xy}\label{univstrdiag}
+\end{eq}
 %
 for all $X$ and all morphisms $F:X\sr \U$.
 We refer to the pullbacks given by a universe structure as \emph{canonical pullbacks}.
@@ -788,8 +788,8 @@ As shown in \cite[Lemma 2.3]{Cfromauniverse}, the left hand square in the follow
   \begin{xy}
      \xymatrix@C=4pc{
        (X';f\circ F) \ar[r]_{\Q(f,F)}
-                     \ar@/^1.5pc/[rr]^{Q(f \circ F)}
-                     \ar[d]_{\p_{X',f\circ F}}            & (X;F) \ar[d]^{\p_{X,F}} \ar[r]_{Q(F)} & \wt \U \ar[d]_{p} \\
+                     \ar@/^1.5pc/[rr]^{\Q(f \circ F)}
+                     \ar[d]_{\p_{X',f\circ F}}            & (X;F) \ar[d]^{\p_{X,F}} \ar[r]_{\Q(F)} & \wt \U \ar[d]_{p} \\
        X' \ar[r]^{f} \ar@/_1.5pc/[rr]_{f \circ F}         & X \ar[r]^F                            & \U
      }
   \end{xy}
@@ -1053,7 +1053,7 @@ will be denoted by $\gls{omega}$, as in the following diagram.
     \ar[rd]^-{\omega}
     \ar@/^1pc/[rrd]^-{\Omega}
     \ar@/_1pc/[drd]_{\Delta} \\
-                      & E\wt\U \ar[r]^{Q(Eq)} 
+                      & E\wt\U \ar[r]^{\Q(Eq)} 
                                \ar[d]^{\p_{(\wt\U;p),Eq}}   & \wt{\U} \ar[d]^{p}  \\
                       & (\wt{\U};p) \ar[r]_{Eq}             & \U
     }
@@ -1993,21 +1993,21 @@ of the forthcoming computations.
     {
       \xymatrix{
                 &                                & \wt \U \ar[d]^{\Delta}                                                         \\
-                &  (X;F) \ar[ru]^{Q(F)}           
+                &  (X;F) \ar[ru]^{\Q(F)}           
                         \ar[d]_{\delta(T)}       & (\wt \U; p) \ar[dd]^(.33){\p_{(\wt \U; p)}}
-                                                               \ar[rr]^{Q(p)} &                                & \wt \U \ar[dd]^p \\
+                                                               \ar[rr]^{\Q(p)} &                                & \wt \U \ar[dd]^p \\
      int(\p_T^*(T))
        \ar[r]^-=
-                &  (X;F,Q(F) \circ p)
-                     \ar[ru]^(.6){Q(Q(F),p)}         
+                &  (X;F,\Q(F) \circ p)
+                     \ar[ru]^(.6){\Q(\Q(F),p)}         
                      \ar[dd]
                      \ar[rr]                     &                            & (X;F) \ar[dd]^(.3){\p_{(X;F)}}
-                                                                                      \ar[ur]^(.4){Q(F)}       &                  \\
+                                                                                      \ar[ur]^(.4){\Q(F)}       &                  \\
                 &                               & \wt \U \ar[rr]^(.33)p      &                                 & \U               \\
      int(T) 
        \ar[r]^-=
                 & (X;F) \ar[rr]^{\p_{(X;F)}} 
-                        \ar[ru]^{Q(F)}           &                            & X \ar[ur]_F
+                        \ar[ru]^{\Q(F)}           &                            & X \ar[ur]_F
       }}
 \end{eq}
 
@@ -2042,21 +2042,22 @@ On the other hand
 
 \begin{align*}
   F^*(\omega) \circ h & = F^*(\omega) \circ h_1 \circ h_2    & \by{def'n of $h$} \\
-                      & = F^*(\omega) \circ Q(F)_E \circ h_2 & \by{def'n of $h_1$} \\
+                      & = F^*(\omega) \circ \Q(F)_E \circ h_2 & \by{def'n of $h_1$} \\
                       & = \Q(F) \circ \omega \circ h_2       & \by{\ref{eqn2}} \\
                       & = \Q(F) \circ \omega \circ \Q(Eq)    & \by{def'n of $h_2$} \\
                       & = \Q(F) \circ \Omega                 & \by{\ref{diag4}}
 \end{align*}
 
-We have $u_1(\partial(\delta(T)))=\Q(F)\circ p$ and
+We have
 %
 \begin{align*}
-        \delta(T) \circ \Q(u_1(\partial(\delta(T))))
-    & = \delta(T) \circ \Q(\Q(F) \circ p)      & \by{...} \\
-    & = \delta(T) \circ \Q(\p_T \circ F)       & \by{...} \\
-    & = \delta(T) \circ \q(\p_T,T) \circ \Q(F) & \by{...} \\
-    & = \id_{int(T)} \circ \Q(F)               & \by{...} \\
-    & = \Q(F)                                  & \by{...}
+        \delta(T) \circ \Q(u_1(\partial(\delta(T)))) 
+    & = \delta(T) \circ \Q(u_1((X;F,\Q(F) \circ p))) & \by{def'n of $\partial$} \\
+    & = \delta(T) \circ \Q(\Q(F) \circ p)            & \by{def'n of $u_1$} \\
+    & = \delta(T) \circ \Q(\p_{X,F} \circ F)         & \by{\ref{univstrdiag}} \\
+    & = \delta(T) \circ \Q(\p_{X,F},F) \circ \Q(F)   & \by{\ref{2015.04.06.l0.sq}} \\
+    & = \id_{int(T)} \circ \Q(F)                     & \by{def'n of $\delta(T)$} \\
+    & = \Q(F)                                        &
 \end{align*}
 %
 Therefore by Lemma \ref{2015.04.02.l3} we have
