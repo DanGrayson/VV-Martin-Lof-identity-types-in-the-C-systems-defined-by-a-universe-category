@@ -129,6 +129,7 @@
 \newoperator{QfF}{\Q(f,F)}
 \newoperator{QFE}{\Q(F)_{E}}
 \newoperator{refl}{\refl}
+\newoperator{reflOmega}{\refl_\Omega}
 \newoperator{rf}{\rf}
 \newoperator{rfT}{\rf_T}
 \newoperator{sg}{\s_g}
@@ -1881,7 +1882,7 @@ and the equality $\Q(f,F)\circ \Q(F)=\Q(f\circ F)$.
 \label{2015.03.27.prob4} Let $Eq:(\wt{\U};p)\sr \U$
 be a J0-structure on a universe $p$ in a category $\C$,
 and let $\Omega:\wt{\U}\sr \wt{\U}$ be a J1-structure over $Eq$.
-To construct a J1-structure $\refl(Eq,\Omega)$ over $\Id_{Eq}$ on $\toCC({\C},p)$.
+To construct a J1-structure $\refl$ over $\Id_{Eq}$ on $\toCC({\C},p)$.
 \end{problem}
 %
 \begin{construction}{2015.03.27.prob4}\rm
@@ -1898,10 +1899,10 @@ that are natural in $\Gamma$. The equation (\ref{2015.03.27.eq8}) follows from
 the commutativity of the square (\ref{2015.03.27.sq1}).
 \end{construction}
 %
-We let $\refl_{\Omega}$ denote the J1-structure constructed from $\Omega$ in
+We let $\gls{reflOmega}$ denote the J1-structure constructed from $\Omega$ in
 Construction \ref{2015.03.27.constr4}.
 %
-The following technical lemma is only needed in the proof of Lemma
+The following technical lemma is needed only in the proof of Lemma
 \ref{2015.03.31.l2}.
 %
 \begin{lemma}
@@ -2030,23 +2031,20 @@ We have
 %
 \begin{align*}
   \rf_T \circ h
-  & = \refl(\delta(T))\circ \q(\delta(T),\Idx(T))         \circ h & \by{def'n \ref{2015.04.02.eq1}} \\
-  & = \refl(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)      \circ Eq) \circ h & \by{\ref{2015.04.02.eq2} and \ref{2015.03.27.l1-IDx}} \\
-  & = \refl(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)      \circ Eq) \circ \Q(\Q(\Q(F),p)\circ Eq) & \by{def'n of $h$} \\
-  & = \refl(\delta(T))\circ \Q(\delta(T)\circ \Q(\Q(F),p) \circ Eq) & \by{\ref{2015.04.06.l0.sq}}\\
-  & = \refl(\delta(T))\circ \Q(\Q(F)\circ \Delta          \circ Eq) & \by{\ref{diag3}}\\
-  & = \refl(\delta(T))\circ \Q(\Q(F)\circ \Omega          \circ p) & \by{\ref{2015.03.27.sq1}}
+  & = \refl_\Omega(\delta(T))\circ \q(\delta(T),\Idx(T))         \circ h & \by{def'n \ref{2015.04.02.eq1}} \\
+  & = \refl_\Omega(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)      \circ Eq) \circ h & \by{\ref{2015.04.02.eq2} and \ref{2015.03.27.l1-IDx}} \\
+  & = \refl_\Omega(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)      \circ Eq) \circ \Q(\Q(\Q(F),p)\circ Eq) & \by{def'n of $h$} \\
+  & = \refl_\Omega(\delta(T))\circ \Q(\delta(T)\circ \Q(\Q(F),p) \circ Eq) & \by{\ref{2015.04.06.l0.sq}}\\
+  & = \refl_\Omega(\delta(T))\circ \Q(\Q(F)\circ \Delta          \circ Eq) & \by{\ref{diag3}}\\
+  & = \refl_\Omega(\delta(T))\circ \Q(\Q(F)\circ \Omega          \circ p) & \by{\ref{2015.03.27.sq1}},
 \end{align*}
-%
-On the other hand
+and thus we deduce that
+\begin{eq}
+  \label{eqnrfth}
+  \rf_T \circ h = \refl_\Omega(\delta(T))\circ \Q(\Q(F)\circ \Omega \circ p)
+\end{eq}
 
-\begin{align*}
-  F^*(\omega) \circ h & = F^*(\omega) \circ h_1 \circ h_2    & \by{def'n of $h$} \\
-                      & = F^*(\omega) \circ \Q(F)_E \circ h_2 & \by{def'n of $h_1$} \\
-                      & = \Q(F) \circ \omega \circ h_2       & \by{\ref{eqn2}} \\
-                      & = \Q(F) \circ \omega \circ \Q(Eq)    & \by{def'n of $h_2$} \\
-                      & = \Q(F) \circ \Omega                 & \by{\ref{diag4}}
-\end{align*}
+%
 
 We have
 %
@@ -2060,10 +2058,31 @@ We have
     & = \Q(F)                                        &
 \end{align*}
 %
-Therefore by Lemma \ref{2015.04.02.l3} we have
+
+In particular, we have the following equation, because $T = (X,F)$.
+\[
+  \delta(T) \circ \Q(\p_T \circ F) = \Q(F)
+\]
+Using that and applying Lemma \ref{2015.04.02.l3} with $s$ as $\delta(T)$ and $F$ as $p_T \circ F$,
+we derive the following equation.
 %
-\[\refl(\delta(T))\circ \Q(\Q(F)\circ \Omega\circ p)=\Q(F)\circ \Omega.\]
-%
+\[
+  \refl_\Omega(\delta(T))\circ \Q(\Q(F)\circ \Omega\circ p)=\Q(F)\circ \Omega
+\]
+Combining that with \ref{eqnrfth}, we deduce that 
+\[
+  \rf_T \circ h = \Q(F)\circ \Omega.
+\]
+
+On the other hand, we have the following sequence of equations.
+\begin{align*}
+  F^*(\omega) \circ h & = F^*(\omega) \circ h_1 \circ h_2    & \by{def'n of $h$} \\
+                      & = F^*(\omega) \circ \Q(F)_E \circ h_2 & \by{def'n of $h_1$} \\
+                      & = \Q(F) \circ \omega \circ h_2       & \by{\ref{eqn2}} \\
+                      & = \Q(F) \circ \omega \circ \Q(Eq)    & \by{def'n of $h_2$} \\
+                      & = \Q(F) \circ \Omega                 & \by{\ref{diag4}}
+\end{align*}
+
 This proves that $\rf_T\circ h=F^*(\omega)\circ h$.
 
 We have $\rf_T\circ v=\delta(T)$ because the square (\ref{2015.03.31.eq3})
