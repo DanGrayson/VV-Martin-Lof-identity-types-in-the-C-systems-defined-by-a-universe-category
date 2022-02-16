@@ -1975,13 +1975,12 @@ $$(X;F)_{E}=(Y;\Q(\Q(F),p)\circ Eq)$$
 %
 and we can see this object as a part of the diagram with two pullback squares:
 %
-$$
-\begin{xy}
-          \xymatrix@C=4pc{ (Y;\Q(\Q(F),p)\circ Eq) \ar[r]^-{h_1} \ar[d]_{\p_{Y,
-                \Q(\Q(F),p)\circ Eq}} & E\wt{\U} \ar[r]^-{h_2} \ar[d] & \wt{\U}
-            \ar[d]^{p} \\ Y \ar[r]^-{\Q(\Q(F),p)} & (\wt{\U},p) \ar[r]^-{Eq} & \U },
-\end{xy}
-$$
+\begin{eq} \label{h1h2squares}
+  \xymatrix@C=4pc{
+    (X;F)_{E} \ar[r]^-{h_1} \ar[d]_{\p_{Y,\Q(\Q(F),p)\circ Eq}} & E\wt{\U} \ar[r]^-{h_2} \ar[d]^{\p_{(\wt\U;p),Eq}} & \wt{\U} \ar[d]^{p} \\
+      Y \ar[r]^-{\Q(\Q(F),p)} & (\wt{\U},p) \ar[r]^-{Eq} & \U
+    },
+\end{eq}
 where $h_1 := \Q(F)_E$ and $h_2 := \Q(Eq)$.
 
 %
@@ -1997,13 +1996,13 @@ of the forthcoming computations.
       \xymatrix{
                 &                                & \wt \U \ar[d]^{\Delta}                                                         \\
                 &  (X;F) \ar[ru]^{\Q(F)}           
-                        \ar[d]_{\delta(T)}       & (\wt \U; p) \ar[dd]^(.33){\p_{(\wt \U; p)}}
+                        \ar[d]_{\delta(T)}       & (\wt \U; p) \ar[dd]^(.33){\p_{\wt \U, p}}
                                                                \ar[rr]^{\Q(p)} &                                & \wt \U \ar[dd]^p \\
      int(\p_T^*(T))
        \ar[r]^-=
                 &  (X;F,\Q(F) \circ p)
                      \ar[ru]^(.6){\Q(\Q(F),p)}         
-                     \ar[dd]
+                     \ar[dd]^-{\p_{\p_T^*(T)}}
                      \ar[rr]                     &                            & (X;F) \ar[dd]^(.3){\p_{(X;F)}}
                                                                                       \ar[ur]^(.4){\Q(F)}       &                  \\
                 &                               & \wt \U \ar[rr]^(.33)p      &                                 & \U               \\
@@ -2015,12 +2014,12 @@ of the forthcoming computations.
 \end{eq}
 
 
-We have two projections
+We have the following two projections.
 %
-\begin{align*}
-  h := h_1\circ h_2=\Q(\Q(\Q(F),p)\circ Eq)&:(X;F)_{E}\sr \wt{\U} \\
-  v := \p_{Y,\Q(\Q(F),p)\circ Eq}&:(X;F)_{E} \sr Y
-\end{align*}
+\begin{align}
+  h := h_1\circ h_2=\Q(\Q(\Q(F),p)\circ Eq)&:(X;F)_{E}\sr \wt{\U} \label{defnh} \\
+  v := \p_{Y,\Q(\Q(F),p)\circ Eq}&:(X;F)_{E} \sr Y                \label{defnv}
+\end{align}
 %
 It suffices to check the following equations.
 %
@@ -2121,17 +2120,24 @@ We verify \ref{eqn46} as follows.
   & = \delta(T) \circ \p_{\p_T^*(T)} \circ \Q(F)         & \by{\ref{2015.03.31.eq3}} \\
   & = \id_{int(T)} \circ \Q(F)                           & \by{def'n of $\delta(T)$} \\
   & = \Q(F)                                              & \by{def'n of $\delta(T)$} \\
-  & = \Q(F) \circ \Delta \circ \p_{\wt{\U},p}            & \by{...} \\
-  & = \Q(F)\circ \omega \circ pE\wt{\U} \circ \p_{\wt{\U},p}            & \by{...} \\
-  & = F^*(\omega) \circ h_1 \circ pE\wt{\U} \circ \p_{\wt{\U},p}        & \by{...} \\
-  & = F^*(\omega) \circ v \circ \Q(\Q(F) \circ p) \circ \p_{\wt{\U},p}  & \by{...} \\
-  & = F^*(\omega) \circ v \circ \p_{\p_T^*(T)}    \circ \Q(F)           & \by{...}
+  & = \Q(F) \circ \Delta \circ \p_{\wt{\U},p}            & \by{def'n of $\Delta$} \\
+  & = \Q(F) \circ \omega \circ \p_{(\wt\U;p),Eq} \circ \p_{\wt{\U},p}                        & \by{\ref{diag4}} \\
+  & = F^*(\omega) \circ \Q(F)_E \circ \p_{(\wt\U;p),Eq} \circ \p_{\wt{\U},p}                 & \by{\ref{eqn2}} \\
+  & = F^*(\omega) \circ h_1 \circ \p_{(\wt\U;p),Eq} \circ \p_{\wt{\U},p}                     & \by{def'n of $h_1$} \\
+  & = F^*(\omega) \circ \p_{Y,\Q(\Q(F),p)\circ Eq} \circ \Q(\Q(F),p) \circ \p_{\wt{\U},p}    & \by{\ref{h1h2squares}} \\
+  & = F^*(\omega) \circ v \circ \Q(\Q(F),p) \circ \p_{\wt{\U},p}                             & \by{\ref{defnv}} \\
+  & = F^*(\omega) \circ v \circ \p_{\p_T^*(T)}    \circ \Q(F)           & \by{\ref{diag3}}
 \end{align*}
 
 We verify \ref{eqn44} as follows.
 \begin{align*}
+  \rf_T\circ v \circ \Q(\Q(F)\circ p)
+  & = ... & \by{...} \\
+  & = ... & \by{...} \\
+  & = ... & \by{...} \\
+  & = ... & \by{...} \\
+  & = F^*(\omega)\circ v \circ \Q(\Q(F)\circ p) & \by{...}
 \end{align*}
-
 
 %
 \begin{align*}
