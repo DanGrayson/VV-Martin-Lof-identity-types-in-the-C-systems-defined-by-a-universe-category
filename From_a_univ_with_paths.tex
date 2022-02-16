@@ -952,9 +952,11 @@ This requires opening up the definitions \cite[(2.60)]{presheavesOb} of $\st$ an
 %
 \[\Q'(\I^f(V),\pr')\circ \iota'\circ ev'\circ \pr_2=\pr^*(f)\circ \iota\circ ev\circ \pr_2.\]
 %
-It will suffice to prove the following equation.
-$$\Q'(\I^f(V),\pr')\circ \iota'\circ ev'=\pr^*(f)\circ \iota\circ ev$$
-We will obtain this equality as a consequence of commutativity of the three
+It will suffice to prove the following equation:
+\begin{equation}\label{eq:proof-two-universes}
+  \Q'(\I^f(V),\pr')\circ \iota'\circ ev'=\pr^*(f)\circ \iota\circ ev.
+\end{equation}
+We will obtain Equation~\eqref{eq:proof-two-universes} as a consequence of commutativity of the three
 squares in the following diagram.
 \begin{eq}
   \begin{xy}
@@ -1380,12 +1382,12 @@ Let $p:E\sr B$ be in $FB$ and $f:B'\sr B$ be a
 morphism. Assume in addition that $B$ and $B'$ are fibrant, then for any
 pullback square of the form
 %
-$
+\[
 \begin{xy}
           \xymatrix@C=2pc{ E' \ar[r] \ar[d]_{p'} & E \ar[d]^{p}\\ B'
             \ar[r]^-{f} & B }
 \end{xy}
-$
+\]
 %
 the morphism $p'$ is in $FB$.
 \end{lemma}
