@@ -2085,10 +2085,52 @@ On the other hand, we have the following sequence of equations.
 
 This proves that $\rf_T\circ h=F^*(\omega)\circ h$.
 
-We have $\rf_T\circ v=\delta(T)$ because the square (\ref{2015.03.31.eq3})
-commutes.  Both $\rf_T\circ v$ and $F^*(\omega)\circ v$ are morphisms $int(T)\sr
-int(\p_T^*(T))$. Since $\p_T^*(T)$ is a part of a pullback square with the
-projections being $\p_{\p_T^*(T)}$ and $\Q(\Q(F)\circ p)$ we need to check that
+%% We have $\rf_T\circ v=\delta(T)$ because the square (\ref{2015.03.31.eq3})
+%% commutes.
+
+Both $\rf_T\circ v$ and $F^*(\omega)\circ v$ are morphisms
+$int(T)\sr int(\p_T^*(T))$. Since $int(\p_T^*(T))$ is a part of a pullback square with the
+projections being $\p_{\p_T^*(T)}$ and $\Q(\Q(F)\circ p)$, to prove
+$\rf_T\circ v = F^*(\omega)\circ v$ it suffices to verify the following equations.
+\begin{align}
+  \rf_T\circ v \circ \p_{\p_T^*(T)}   & = F^*(\omega)\circ v \circ \p_{\p_T^*(T)}   \label{eqn43}  \\
+  \rf_T\circ v \circ \Q(\Q(F)\circ p) & = F^*(\omega)\circ v \circ \Q(\Q(F)\circ p) \label{eqn44}
+\end{align}
+Similarly, because the common target in the first equation above is $(X;F)$,
+which is a pullback whose projections are $\p_T$ and $\Q(F)$, to verify \ref{eqn43} it suffices to
+verify the following equations.
+\begin{align}
+  \rf_T\circ v \circ \p_{\p_T^*(T)} \circ \p_T   & = F^*(\omega)\circ v \circ \p_{\p_T^*(T)} \circ \p_T      \label{eqn45}  \\
+  \rf_T\circ v \circ \p_{\p_T^*(T)} \circ \Q(F)  & = F^*(\omega)\circ v \circ \p_{\p_T^*(T)} \circ \Q(F)     \label{eqn46}  
+\end{align}
+
+We verify \ref{eqn45} as follows.
+\begin{align*}
+  \rf_T\circ v \circ \p_{\p_T^*(T)} \circ \p_T
+  & = \delta(T) \circ \p_{\p_T^*(T)} \circ \p_T          & \by{\ref{2015.03.31.eq3}} \\
+  & = \id_{int(T)} \circ \p_T                            & \by{def'n of $\delta(T)$} \\
+  & = p_T                                                & \\
+  & = F^*(\omega)\circ v \circ \p_{\p_T^*(T)} \circ \p_T & \by{def'n of $F^*(\omega)$}
+\end{align*}
+
+We verify \ref{eqn46} as follows.
+\begin{align*}
+  \rf_T \circ v \circ \p_{\p_T^*(T)} \circ \Q(F)
+  & = \delta(T) \circ \p_{\p_T^*(T)} \circ \Q(F)         & \by{\ref{2015.03.31.eq3}} \\
+  & = \id_{int(T)} \circ \Q(F)                           & \by{def'n of $\delta(T)$} \\
+  & = \Q(F)                                              & \by{def'n of $\delta(T)$} \\
+  & = \Q(F) \circ \Delta \circ \p_{\wt{\U},p}            & \by{...} \\
+  & = \Q(F)\circ \omega \circ pE\wt{\U} \circ \p_{\wt{\U},p}            & \by{...} \\
+  & = F^*(\omega) \circ h_1 \circ pE\wt{\U} \circ \p_{\wt{\U},p}        & \by{...} \\
+  & = F^*(\omega) \circ v \circ \Q(\Q(F) \circ p) \circ \p_{\wt{\U},p}  & \by{...} \\
+  & = F^*(\omega) \circ v \circ \p_{\p_T^*(T)}    \circ \Q(F)           & \by{...}
+\end{align*}
+
+We verify \ref{eqn44} as follows.
+\begin{align*}
+\end{align*}
+
+
 %
 \begin{align*}
   \delta(T)\circ \Q(\Q(F)\circ p)
@@ -2124,7 +2166,6 @@ the first one we have
 This completes the proof of Lemma \ref{2015.03.31.l2}.
 \end{myproof}
 %
- 
 
  
 \comment{
