@@ -1000,9 +1000,15 @@ of projections as an object over $\U$, and let $\gls{pEUtilde}$ denote it.
 \begin{eq}\label{pEU-diagram}
   \begin{xy}
     \xymatrix@C=7pc{
-      (X;F,\Q(F)\circ p, \Q(\Q(F),p)\circ Eq) \ar[r]^-{\Q(\Q(\Q(F),p),Eq)} \ar[d] & (\wt{\U}; p, Eq) \ar[d]_{\p_{(\wt{\U};p),Eq}} \ar@/^2pc/[ddd]^{pE\wt{\U}} \\
-      (X;F,\Q(F)\circ p) \ar[r]^-{\Q(\Q(F),p)} \ar[d]                             & (\wt{\U};p) \ar[d]_{\p_{\wt{\U},p}} \\
-      (X;F) \ar[r]^-{\Q(F)} \ar[d]_{\p_{X,F}}                                       & \wt{\U} \ar[d]_{p} \\
+      (X;F,\Q(F)\circ p, \Q(\Q(F),p)\circ Eq)
+          \ar[r]^-{\Q(\Q(\Q(F),p),Eq)}
+          \ar[d]^-{\p_{(X;F,\Q(F)\circ p), \Q(\Q(F),p)\circ Eq}}                  & (\wt{\U}; p, Eq) \ar[d]_{\p_{(\wt{\U};p),Eq}} \ar@/^2pc/[ddd]^{pE\wt{\U}} \\
+      (X;F,\Q(F)\circ p) 
+          \ar[r]^-{\Q(\Q(F),p)} 
+          \ar[d]^-{\p_{(X;F,\Q(F)), p}}                                           & (\wt{\U};p) \ar[d]_{\p_{\wt{\U},p}} \\
+      (X;F) 
+          \ar[r]^-{\Q(F)} 
+          \ar[d]_{\p_{X,F}}                                                       & \wt{\U} \ar[d]_{p} \\
       X \ar[r]^{F}                                                                & \U
     }
   \end{xy}
@@ -1015,20 +1021,18 @@ square obtained by concatenating these three squares.
 Let us denote the components of the canonical squares for $pE\wt{\U}$ as
 follows:
 %
-$$
-\begin{xy}
+\begin{eq}
           \xymatrix@C=4pc{ \gls{XFE} \ar[r]^-{\gls{QFE}} \ar[d]_{\gls{pEXF}} &
             E\wt{\U} \ar[d]^{pE\wt{\U}}\\ X \ar[r]^{F} & \U }
-\end{xy}
-$$
+\end{eq}
 %
 Explicitly we have
 %
-\begin{align*}
+\begin{align}
   (X;F)_{E}&=(X;F,\Q(F)\circ p, \Q(\Q(F),p)\circ Eq) \\
-  \Q(F)_{E}&=\Q(\Q(\Q(F),p),Eq) \\
+  \Q(F)_{E}&=\Q(\Q(\Q(F),p),Eq) \label{defQFE} \\
   \p_{X,F}^E&=\p_{(X;F,\Q(F)\circ p),\Q(\Q(F),p)\circ Eq}\circ \p_{(X;F),\Q(F)\circ p}\circ \p_{X,F}
-\end{align*}
+\end{align}
 %
 We will also write $\Q(f,F)_{E}$ for the canonical morphism from $(X;f\circ
 F)_{E}$ to $(X;F)_{E}$.
@@ -2034,7 +2038,7 @@ We have
   \rf_T \circ h
   & = \refl_\Omega(\delta(T))\circ \q(\delta(T),\Idx(T))         \circ h & \by{def'n \ref{2015.04.02.eq1}} \\
   & = \refl_\Omega(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)      \circ Eq) \circ h & \by{\ref{2015.04.02.eq2} and \ref{2015.03.27.l1-IDx}} \\
-  & = \refl_\Omega(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)      \circ Eq) \circ \Q(\Q(\Q(F),p)\circ Eq) & \by{def'n of $h$} \\
+  & = \refl_\Omega(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)      \circ Eq) \circ \Q(\Q(\Q(F),p)\circ Eq) & \by{\ref{defnh}} \\
   & = \refl_\Omega(\delta(T))\circ \Q(\delta(T)\circ \Q(\Q(F),p) \circ Eq) & \by{\ref{2015.04.06.l0.sq}}\\
   & = \refl_\Omega(\delta(T))\circ \Q(\Q(F)\circ \Delta          \circ Eq) & \by{\ref{diag3}}\\
   & = \refl_\Omega(\delta(T))\circ \Q(\Q(F)\circ \Omega          \circ p) & \by{\ref{2015.03.27.sq1}},
@@ -2091,11 +2095,11 @@ This proves that $\rf_T\circ h=F^*(\omega)\circ h$.
 
 Both $\rf_T\circ v$ and $F^*(\omega)\circ v$ are morphisms
 $int(T)\sr int(\p_T^*(T))$. Since $int(\p_T^*(T))$ is a part of a pullback square with the
-projections being $\p_{\p_T^*(T)}$ and $\Q(\Q(F)\circ p)$, to prove
+projections being $\p_{\p_T^*(T)}$ and $\Q(\Q(F), p)$, to prove
 $\rf_T\circ v = F^*(\omega)\circ v$ it suffices to verify the following equations.
 \begin{align}
   \rf_T\circ v \circ \p_{\p_T^*(T)}   & = F^*(\omega)\circ v \circ \p_{\p_T^*(T)}   \label{eqn43}  \\
-  \rf_T\circ v \circ \Q(\Q(F)\circ p) & = F^*(\omega)\circ v \circ \Q(\Q(F)\circ p) \label{eqn44}
+  \rf_T\circ v \circ \Q(\Q(F), p) & = F^*(\omega)\circ v \circ \Q(\Q(F), p) \label{eqn44}
 \end{align}
 Similarly, because the common target in the first equation above is $(X;F)$,
 which is a pullback whose projections are $\p_T$ and $\Q(F)$, to verify \ref{eqn43} it suffices to
@@ -2131,50 +2135,17 @@ We verify \ref{eqn46} as follows.
 
 We verify \ref{eqn44} as follows.
 \begin{align*}
-  \rf_T\circ v \circ \Q(\Q(F)\circ p)
-  & = ... & \by{...} \\
-  & = ... & \by{...} \\
-  & = ... & \by{...} \\
-  & = ... & \by{...} \\
-  & = F^*(\omega)\circ v \circ \Q(\Q(F)\circ p) & \by{...}
+  \rf_T \circ v \circ \Q(\Q(F), p)
+  & = \delta(T) \circ \Q(\Q(F), p)                                                  & \by{\ref{2015.03.31.eq3}} \\
+  & = \Q(F) \circ \Delta                                                            & \by{\ref{diag3}} \\
+  & = \Q(F) \circ \omega \circ \p_{(\wt\U;p),Eq}                                    & \by{\ref{diag4}} \\
+  & = F^*(\omega) \circ \Q(F)_{E} \circ \p_{(\wt\U;p),Eq}                           & \by{\ref{eqn2}} \\
+  & = F^*(\omega) \circ \Q(\Q(\Q(F),p),Eq) \circ \p_{(\wt\U;p),Eq}                  & \by{\ref{defQFE}} \\
+  & = F^*(\omega) \circ \p_{Y,\Q(\Q(F),p) \circ Eq} \circ \Q(\Q(F), p)              & \by{\ref{pEU-diagram}} \\
+  & = F^*(\omega) \circ v \circ \Q(\Q(F), p)                                        & \by{\ref{defnv}}
 \end{align*}
-
-%
-\begin{align*}
-  \delta(T)\circ \Q(\Q(F)\circ p)
-    & = F^*(\omega)\circ v\circ \Q(\Q(F)\circ p) \\
-    & = F^*(\omega)\circ h_1\circ pE\wt{\U} \\
-    & = \Q(F)\circ \omega \circ pE\wt{\U} \\
-    & = \Q(F)\circ \Delta
-\end{align*}
-%
-which holds by a simple computation, and
-%
-\[\id_{int(T)}=\delta(T)\circ \p_{\p_T^*(T)}=F^*(\omega)\circ v\circ
-\p_{\p_T^*(T)}.\]
-%
-For this equality we need to verify two further equalities
-%
-$$\Q(F)=\id_{int(T)}\circ \Q(F)=F^*(\omega)\circ v\circ \p_{\p_T^*(T)}\circ \Q(F)$$
-%
-and
-%
-\[\p_T=\id_{int(T)}\circ \p_T=F^*(\omega)\circ v\circ \p_{\p_T^*(T)}\circ \p_T.\]
-%
-The second one is the second equality of the two that define $F^*(\omega)$. For
-the first one we have
-%
-\begin{align*}
-  F^*(\omega)\circ v\circ (\p_{\p_T^*(T)}\circ \Q(F))
-    & = F^*(\omega)\circ v\circ \Q(\Q(F),p)\circ \p_{\wt{\U},p} \\
-    & = \Q(F)\circ \Delta\circ \p_{\wt{\U},p} \\
-    & = \Q(F).
-\end{align*}
-%
 This completes the proof of Lemma \ref{2015.03.31.l2}.
 \end{myproof}
-%
-
  
 \comment{
 \begin{problem}
