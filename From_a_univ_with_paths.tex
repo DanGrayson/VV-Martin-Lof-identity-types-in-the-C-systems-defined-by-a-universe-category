@@ -87,6 +87,7 @@
 \newcommand{\st}{\mathsf{st}}
 \newcommand{\pr}{\mathsf{pr}}
 \newcommand{\prI}{\mathsf{prI}}
+\newcommand{\adj}{\mathsf{adj}}
 
 % persistent notations to go into symbol index
 %   at definition time, use \gls{foo} to generate a link to the symbol index
@@ -1148,10 +1149,10 @@ split the following square into two commutative triangles:
 %
 \begin{eq}\label{2015.05.22.sq1}
 \begin{xy}
-          \xymatrix@C=7pc{ (\Fp,\pFp)\times_\U(\wt{\U},p) \ar[r]^-{adj(\pr_2)\circ
+          \xymatrix@C=7pc{ (\Fp,\pFp)\times_\U(\wt{\U},p) \ar[r]^-{\adj(\pr_2)\circ
               \pr_2} \ar[d]_{\id_{\Fp}\times \omega} & \wt{\U}
             \ar[d]^{p}\\ (\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U})
-            \ar[r]^-{adj(\pr_1)\circ \pr_2} & \U }
+            \ar[r]^-{\adj(\pr_1)\circ \pr_2} & \U }
 \end{xy}
 \end{eq}%
 %
@@ -1165,10 +1166,10 @@ following form.
 \begin{eq}\label{2017.08.16.sq1}
 \begin{xy}
           \xymatrix@C=7pc{ (\I_{pE\wt{\U}}(\U)\times_{\I_p(\U)}
-            \I_p(\wt{\U}))\times_\U\wt{\U} \ar[r]^-{adj(\pr_2)\circ \pr_2}
+            \I_p(\wt{\U}))\times_\U\wt{\U} \ar[r]^-{\adj(\pr_2)\circ \pr_2}
             \ar[d]_{\id_{\Fp}\times \omega} & \wt{\U}
             \ar[d]^{p}\\ (\I_{pE\wt{\U}}(\U)\times_{\I_p(\U)} \I_p(\wt{\U}))\times_\U
-            E\wt{\U} \ar[r]^-{adj(\pr_1)\circ \pr_2} & \U }
+            E\wt{\U} \ar[r]^-{\adj(\pr_1)\circ \pr_2} & \U }
 \end{xy}
 \end{eq}%
 
@@ -1192,14 +1193,14 @@ that split into two commutative triangles the square:
 %
 $$
 \begin{xy}
-          \xymatrix@C=7pc{ (\Fp,\pFp)\times_\U(\wt{\U},p) \ar[r]^-{adj(\pr_2)}
+          \xymatrix@C=7pc{ (\Fp,\pFp)\times_\U(\wt{\U},p) \ar[r]^-{\adj(\pr_2)}
             \ar[d]_{\id_{\Fp}\times \omega} & \U\times \wt{\U} \ar[d]^{\id_\U\times
-              p}\\ (\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U}) \ar[r]^-{adj(\pr_1)} &
+              p}\\ (\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U}) \ar[r]^-{\adj(\pr_1)} &
             \U\times \U }
 \end{xy}
 $$
 %
-The rule $f\mapsto adj(f)$ gives us a bijection of the form
+The rule $f\mapsto \adj(f)$ gives us a bijection of the form
 %
 $$Hom_\U((\Fp,\pFp),(\I_{pE\wt{\U}}(\wt{\U}),\_))\sr Hom_\U((\Fp,\pFp)\times_\U
 (E\wt{\U},pE\wt{\U}), (\U\times\wt{\U}, \pr_2))$$
@@ -1223,15 +1224,15 @@ Next we have
 Therefore by \cite[Lemma 4.1.7]{presheavesOb} one has
 %
 \begin{align*}
-  adj(f\circ \I_{pE\wt{\U}}(p))&=adj(f)\circ (\id_\U\times p) & \text{and} \\
-  adj(f\circ \I^{\omega}(\wt{\U}))&=(\id_{\Fp}\times_{\U}\omega)\circ adj(f),
+  \adj(f\circ \I_{pE\wt{\U}}(p))&=\adj(f)\circ (\id_\U\times p) & \text{and} \\
+  \adj(f\circ \I^{\omega}(\wt{\U}))&=(\id_{\Fp}\times_{\U}\omega)\circ \adj(f),
 \end{align*}
 %
 and we conclude that $f$ is a section of $coJ$ if and only if
 %
 \begin{align*}
-  adj(f)\circ (\id_\U\times p)&=adj(\pr_1) & \text{and} \\
-  (\id_{\Fp}\times_{\U}\omega)\circ adj(f)&=adj(\pr_2).
+  \adj(f)\circ (\id_\U\times p)&=\adj(\pr_1) & \text{and} \\
+  (\id_{\Fp}\times_{\U}\omega)\circ \adj(f)&=\adj(\pr_2).
 \end{align*}
 % 
 This completes the construction.
@@ -1446,7 +1447,7 @@ $$
 We need to construct a morphism $f:W\sr \iHom_\U((\wt{\U},p),(\U\times
 V,\pr_1))$ that would make the two triangles commutative. The commutativity of
 the lower triangle means that $f$ is a morphism over $\U$ which is equivalent to
-the assumption that $f=adj^{-1}(g)$ for some $g:(W,f_W)\times_\U (\wt{\U},p)\sr
+the assumption that $f=\adj^{-1}(g)$ for some $g:(W,f_W)\times_\U (\wt{\U},p)\sr
 \U\times V$ over $\U$.
 
 Consider the square
@@ -1454,7 +1455,7 @@ Consider the square
 $$
 \begin{xy}
           \xymatrix@C=4pc{ (Z, i\circ f_W)\times_\U (\wt{\U},p)
-            \ar[r]^-{adj(f_Z)} \ar[d]_{i\times \id_{\wt{\U}}} & \U\times V
+            \ar[r]^-{\adj(f_Z)} \ar[d]_{i\times \id_{\wt{\U}}} & \U\times V
             \ar[d]^{\pr_1}\\ (W,f_W)\times_\U (\wt{\U},p) \ar[r]^-{f_W\dd p} & \U }
 \end{xy}
 $$
@@ -1463,11 +1464,11 @@ By Lemma \ref{2015.05.14.l2} we know that $\pr_1$ belongs to $FB$. By our
 assumptions on $TC$ and $FB$ we know that $i\times \id_{\wt{\U}}$ is in
 $TC$. Therefore there exists a morphism $g:(W,f_W)\times_\U (\wt{\U},p) \sr
 \U\times V$ that makes the two triangles commute.  The commutativity of the
-lower triangle means that this is a morphism over $\U$. Therefore $adj^{-1}(g)$
-is defined. Set $f=adj^{-1}(g)$. It remains to check that $i\circ f=f_Z$. This
-is equivalent to $adj(i\circ f)=adj(f_Z)$. Since $adj(i\circ f)=(i\times
-\id_{\wt{\U}})\circ adj(f)$ by \cite[Lemma 8.7(3)]{fromunivwithPi}, this is
-equivalent to $(i\times \id_{\wt{\U}})\circ g=adj(f_Z)$ which is the
+lower triangle means that this is a morphism over $\U$. Therefore $\adj^{-1}(g)$
+is defined. Set $f=\adj^{-1}(g)$. It remains to check that $i\circ f=f_Z$. This
+is equivalent to $\adj(i\circ f)=\adj(f_Z)$. Since $\adj(i\circ f)=(i\times
+\id_{\wt{\U}})\circ \adj(f)$ by \cite[Lemma 8.7(3)]{fromunivwithPi}, this is
+equivalent to $(i\times \id_{\wt{\U}})\circ g=\adj(f_Z)$ which is the
 commutativity of the upper triangle.
 \end{myproof}
 %
@@ -1503,19 +1504,19 @@ Consider the square
 \begin{eq}
 \label{2015.05.14.sq2}
 \begin{xy}
-          \xymatrix@C=4pc{ (Z,\p_Z)\times_\U (\wt{\U},p) \ar[r]^-{adj(f_Z)}
+          \xymatrix@C=4pc{ (Z,\p_Z)\times_\U (\wt{\U},p) \ar[r]^-{\adj(f_Z)}
             \ar[d]_{i\times \id_{\wt{\U}}} & \U\times V' \ar[d]^{\id_\U\times
-              r}\\ (W,\p_W)\times_\U (\wt{\U},p) \ar[r]^-{adj(f_W)} & \U\times V }
+              r}\\ (W,\p_W)\times_\U (\wt{\U},p) \ar[r]^-{\adj(f_W)} & \U\times V }
 \end{xy}
 \end{eq}%
 %
 This square commutes. Indeed,
 %
 \begin{align*}
-  adj(f_Z)\circ (\id_\U\times r )
-  & = adj(f_Z\circ \iHom_\U((\wt{\U},p), \id_\U\times r)) \\
-  & = adj(i\circ f_W) \\
-  & = (i\times \id_{\wt{\U}})\circ adj (f_W),
+  \adj(f_Z)\circ (\id_\U\times r )
+  & = \adj(f_Z\circ \iHom_\U((\wt{\U},p), \id_\U\times r)) \\
+  & = \adj(i\circ f_W) \\
+  & = (i\times \id_{\wt{\U}})\circ \adj (f_W),
 \end{align*}
 %
 where the first equality is by \cite[Lemma 8.7(1)]{fromunivwithPi} and the
@@ -1524,21 +1525,21 @@ third by \cite[Lemma 8.7(3)]{fromunivwithPi}. By Lemmas \ref{2015.05.14.l2} and
 (3) on $FB$ and $TC$ we know that $i\times \id_{\wt{\U}}$ is in $TC$. Therefore,
 there exists a morphism $g:(W,\p_W)\times_\U (\wt{\U},p) \sr \U\times V'$ that
 splits this square into two commutative triangles. Since the lower triangle
-commutes, $g$ is a morphism over $\U$ and, in particular, $g=adj(f)$ for some
+commutes, $g$ is a morphism over $\U$ and, in particular, $g=\adj(f)$ for some
 $f:W\sr \iHom_\U((\wt{\U},p),(\U\times V',\pr_1))$. Let us show that $f$ splits
 the square (\ref{2015.05.14.sq1}) into two commutative triangles, i.e., that we
 have $i\circ f= f_Z$ and $f\circ \iHom_\U((\wt{\U},p), \id_\U\times r)=f_W$.
 
-The first equality is equivalent to $adj(i\circ f)=adj(f_Z)$ which is
+The first equality is equivalent to $\adj(i\circ f)=\adj(f_Z)$ which is
 equivalent, by \cite[Lemma 8.7(3)]{fromunivwithPi} to
-$(i\times \id_{\wt{\U}})\circ g=adj(f_Z),$
+$(i\times \id_{\wt{\U}})\circ g=\adj(f_Z),$
 which is the commutativity of the upper of the
 two triangles into which $g$ splits (\ref{2015.05.14.sq2}).
 
 The second equality is equivalent to
-$adj(f\circ \iHom_\U((\wt{\U},p), \id_\U\times r))=adj(f_W)$,
+$\adj(f\circ \iHom_\U((\wt{\U},p), \id_\U\times r))=\adj(f_W)$,
 which is equivalent by \cite[Lemma 8.7(1)]{fromunivwithPi} to
-$g\circ (\id_\U\times r)=adj(f_W),$ which is the
+$g\circ (\id_\U\times r)=\adj(f_W),$ which is the
 commutativity of the lower of the two triangles into which $g$ splits
 (\ref{2015.05.14.sq2}).
 \end{myproof}
@@ -1573,9 +1574,9 @@ constructing the splitting of the square
 $$
 \begin{xy}
           \xymatrix@C=4pc{ (\wt{\U},p)\times_\U (\Fp,\pFp) \ar[r]^-{\sigma\circ
-              adj(\pr_2)} \ar[d]_{\omega \times \id_{\Fp}} & \U\times\wt{\U}
+              \adj(\pr_2)} \ar[d]_{\omega \times \id_{\Fp}} & \U\times\wt{\U}
             \ar[d]^{\id_\U\times p}\\ (E\wt{\U},pE\wt{\U})\times_\U (\Fp,\pFp)
-            \ar[r]^-{\sigma'\circ adj(\pr_1)} & \U\times \U, }
+            \ar[r]^-{\sigma'\circ \adj(\pr_1)} & \U\times \U, }
 \end{xy}
 $$
 %
