@@ -93,6 +93,7 @@
 %   at definition time, use \gls{foo} to generate a link to the symbol index
 %   at subsequent uses, use \foo or the actual code
 %   the order here is the order in the index, and is obtained with "sort -f"
+\newoperator{adj}{\adj}
 \newoperator{CCCp}{\toCC({\C},p)}
 \newoperator{partial}{\partial}
 \newoperator{parto}{\partial(o)}
@@ -1136,10 +1137,16 @@ and let $\gls{pFp}_{Eq,\Omega}=\I^{\omega}(\U)\dd \I_p(p)$ be the projection
 $\Fp_{Eq,\Omega}\sr \U$. Let further $\pr_1$ be the projection from $\Fp$ to
 $\I_{pE\wt{\U}}(\U)$ and $\pr_2$ the projection from $\Fp$ to $\I_p(\wt{\U})$.
 
+\begin{definition}
+  Let $\C$ be a cartesian closed category.  For any objects $X$, $Y$, $Z$ of $\C$, we let
+  $$ \gls{adj} : Hom (X, \iHom(Y,Z) ) \xrightarrow \cong Hom(X \times Y, Z) $$
+  denote the corresponding adjunction bijection.
+\end{definition}
+
 Our solution to the following problem is the key to the construction of
 J-structures over a given J1-structure in categories with weak factorization
 systems, particularly in Quillen model categories.
-%
+
 \begin{problem}
 \label{2015.05.12.l1} Let $\C$ be a category with a locally cartesian
 closed structure and $Eq,\Omega$ be a J1-structure on $({\C},p)$. To
