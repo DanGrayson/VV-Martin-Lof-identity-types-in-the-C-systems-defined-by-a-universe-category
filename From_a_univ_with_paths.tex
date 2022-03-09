@@ -1112,33 +1112,30 @@ $$ Jp:( \I_{pE\wt{\U}}(\U), \I^{\omega}(\U))\times_{\I_p(\U)} (\I_p(\wt{\U}), \I
 %
 such that $Jp\circ coJ = \id$.
 \end{definition}
-%
-Note that we have:
-%
-\begin{eq}
-\label{2015.04.04.eq1} Jp \circ \I^{\omega}(\wt{\U})= Jp \circ coJ\circ
-\prI_p(\wt{\U})=\prI_{p}(\wt{\U})
-\end{eq}%
-%
-\begin{eq}
-\label{2015.04.04.eq2} Jp \circ \I_{pE\wt{\U}}(p)=Jp \circ coJ\circ
-\prI_{pE\wt{\U}}(\U)=\prI_{pE\wt{\U}}(\U),
-\end{eq}%
-%
-where $\prI_p(V)$ was defined in \ref{eq:def-prI}.
 
-A J-structure on $p:\wt{\U}\sr \U$ is a triple $(Eq,\Omega,Jp)$, where $Eq$ is a J0-structure,
-$\Omega$ is a J1-structure relative to $Eq$, and $Jp$ a J2-structure relative to
-$Eq$ and $\Omega$.
+\begin{definition}
+  A J-structure on $p:\wt{\U}\sr \U$ is a triple $(Eq,\Omega,Jp)$, where $Eq$
+  is a J0-structure, $\Omega$ is a J1-structure relative to $Eq$, and $Jp$ is a
+  J2-structure relative to $Eq$ and $\Omega$.
+\end{definition}
 
-For a J1-structure $(Eq,\Omega)$ on a universe in a category with a locally
-cartesian closed structure let $\gls{Fp}_{Eq,\Omega}$ denote the fiber product
+Let $\gls{Fp}_{Eq,\Omega}$ denote the fiber product
 %
 $$(\I_{pE\wt{\U}}(\U), \I^{\omega}(\U)) \times_{\I_p(\U)} (\I_p(\wt{\U}), \I_p(p))$$
 %
 and let $\gls{pFp}_{Eq,\Omega}=\I^{\omega}(\U)\dd \I_p(p)$ be the projection
 $\Fp_{Eq,\Omega}\sr \U$. Let further $\pr_1$ be the projection from $\Fp$ to
 $\I_{pE\wt{\U}}(\U)$ and $\pr_2$ the projection from $\Fp$ to $\I_p(\wt{\U})$.
+
+Note that we have the following two equations.
+\begin{eq}
+  \label{2015.04.04.eq2}
+  Jp \circ \I_{pE\wt{\U}}(p)=Jp \circ coJ\circ \pr_1 = \pr_1
+\end{eq}
+\begin{eq}
+  \label{2015.04.04.eq1}
+  Jp \circ \I^{\omega}(\wt{\U}) = Jp \circ coJ\circ \pr_2 = \pr_2 
+\end{eq}
 
 \begin{definition}
   Let $\C$ be a cartesian closed category.  For any objects $X$, $Y$, $Z$ of $\C$, we let
