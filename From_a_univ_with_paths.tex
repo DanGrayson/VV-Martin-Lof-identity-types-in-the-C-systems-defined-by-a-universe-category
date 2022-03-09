@@ -95,6 +95,7 @@
 %   the order here is the order in the index, and is obtained with "sort -f"
 \newoperator{adj}{\adj}
 \newoperator{CCCp}{\toCC({\C},p)}
+\newoperator{coJ}{coJ}
 \newoperator{partial}{\partial}
 \newoperator{parto}{\partial(o)}
 \newoperator{Delta}{\Delta}
@@ -112,6 +113,7 @@
 \newoperator{Id}{\Id}
 \newoperator{IdGamma}{\Id_\Gamma}
 \newoperator{Ip}{\I_p}
+\newoperator{IhV}{\I^h(V)}
 \newoperator{int}{int}
 \newoperator{J}{\J}
 \newoperator{l}{l}
@@ -852,7 +854,7 @@ Similarly, using the functoriality of $\iHom$ in the second argument (see,
 e.g., \cite[\S 4.2]{presheavesOb}) we obtain, for any universe $p:\wt{\U}\sr \U$,
 any universe $p':\wt{\U}'\sr \U$, any map $h:\wt{\U}'\sr \wt{\U}$ over $\U$, and and object $V$, a morphism
 %
-\[\I^h(V):\I_p(V)\sr \I_{p'}(V).\]
+\[\gls{IhV} : \I_p(V) \sr \I_{p'}(V).\]
 %
 \begin{lemma}
   \label{2015.04.10.l2}
@@ -1052,7 +1054,7 @@ $\Omega:\wt{\U}\sr \wt{\U}$ such that the square
 \end{xy}
 \end{eq}%
 %
-where $\gls{Delta}=(\id_{\wt{\U}})*(\id_{\wt{\U}})$ is the diagonal of $\wt{\U}$,
+where $\gls{Delta} := (\id_{\wt{\U}})*(\id_{\wt{\U}})$ is the diagonal of $\wt{\U}$,
 commutes.
 
 The square (\ref{2015.03.27.sq1}) defines a morphism $\wt{\U}\sr E\wt{\U}$, which
@@ -1097,7 +1099,7 @@ commutative square:
 %
 and therefore a morphism
 %
-$$\I_{pE\wt{\U}}(\wt{\U}) \stackrel{coJ}{\lr} (\I_{pE\wt{\U}}(\U), \I^{\omega}(\U))
+$$\gls{coJ} : \I_{pE\wt{\U}}(\wt{\U}) \lr (\I_{pE\wt{\U}}(\U), \I^{\omega}(\U))
 \times_{\I_p(\U)} (\I_p(\wt{\U}), \I_p(p))
 $$
 %
