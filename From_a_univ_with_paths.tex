@@ -1463,9 +1463,10 @@ $$
 \begin{xy}
           \xymatrix@C=4pc{ (Z, i\circ f_W)\times_\U (\wt{\U},p)
             \ar[r]^-{\adj(f_Z)} \ar[d]_{i\times \id_{\wt{\U}}} & \U\times V
-            \ar[d]^{\pr_1}\\ (W,f_W)\times_\U (\wt{\U},p) \ar[r]^-{f_W\dd p} & \U }
+            \ar[d]^{\pr_1}\\ (W,f_W)\times_\U (\wt{\U},p) \ar[r] & \U },
 \end{xy}
 $$
+where the bottom horizontal arrow is the projection to $\U$.
 %
 By Lemma \ref{2015.05.14.l2} we know that $\pr_1$ belongs to $FB$. By our
 assumptions on $TC$ and $FB$ we know that $i\times \id_{\wt{\U}}$ is in
@@ -1482,7 +1483,7 @@ commutativity of the upper triangle.
 \begin{lemma}
   \label{2015.05.14.l3}
   Assume conditions \ref{2015.05.22.cond1} are satisfied.
-  Assume that $\U,V$ are fibrant and that $p:\wt{\U}\sr \U$
+  Assume that $\U$ and $V$ are fibrant and that $p:\wt{\U}\sr \U$
   and $r:V'\sr V$ are in $FB$. Then $\I_p(r):\I_p(V')\sr \I_p(V)$ is in $FB$.
 \end{lemma}
 %
