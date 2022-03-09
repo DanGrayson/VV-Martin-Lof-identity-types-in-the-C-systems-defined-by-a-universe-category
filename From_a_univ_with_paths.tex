@@ -100,6 +100,7 @@
 \newoperator{Delta}{\Delta}
 \newoperator{delta}{\delta}
 \newoperator{DpV}{\D_p(-,V)}
+\newoperator{EUtilde}{E\wt{\U}}
 \newoperator{etashriek}{\etashriek}
 \newoperator{etaunshriek}{\etaunshriek}
 \newoperator{fstarX}{f^*(X)}
@@ -738,7 +739,7 @@ and let $p:\wt{\U}\sr \U$ be a morphism in
 $\C$. Recall \cite{Cfromauniverse} that a {\em universe structure} on $p$ is a choice of pullback
 squares of the form
 %
-\begin{eq}
+
 \begin{xy}
           \xymatrix@C=4pc{ \gls{semicolon} \ar[r]^-{\gls{QF}} \ar[d]_{\gls{pXF}} & \wt{\U}
             \ar[d]^{p}\\ X \ar[r]^{F} & \U }
@@ -988,10 +989,10 @@ $\C$ is a morphism $Eq:(\wt{\U};p)\sr \U$.
 
 Let $Eq$ be a J0-structure on $p$. Consider the object\editorfootnote{As
   introduced in \ref{iter-univ-str}, $(\wt{\U};p,Eq)$ is notation for $((\wt{\U};p);Eq)$.}
-$$E\wt{\U}:=(\wt{\U};p,Eq)$$
+$$\gls{EUtilde} := (\wt{\U};p,Eq)$$
 of $\C$ together with the composite
 $$E\wt{\U} \xrightarrow{\ \p_{(\wt{\U};p),Eq}\ } (\wt{\U};p) \xrightarrow{\p_{\wt{\U},p}} \wt{\U}\xrightarrow{p} \U$$
-of projections as an object over $\U$, and let $\gls{pEUtilde}$ denote it.
+of projections as an object over $\U$; let $\gls{pEUtilde}$ denote that composite map.
 
 \begin{problem}
 \label{2015.05.08.prob1} To construct a universe structure on $pE\wt{\U}$.
