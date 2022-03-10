@@ -1146,6 +1146,18 @@ Note that we have the following two equations.
   denote the corresponding adjunction bijection.
 \end{definition}
 
+\begin{remark}
+  We will use the adjunction $\adj$ as follows.  Consider the map
+  $\pr_1 : \Fp \to \I_{pE\wt{\U}}(\U) = \iHom_U(E\wt\U,\U\times\U)$ over $\U$.
+  Applying $\adj$ yields a map $\adj(\pr_1) : \Fp \times_\U E\wt\U \to \U\times\U$ over $\U$.
+  Composing with $\pr_2 : E\wt\U \times \U \to \U$ yields a map
+  $\adj(\pr_1) \circ \pr_2 : \Fp \times_\U \wt\U \to \U$ (not over $\U$).
+
+  The same reasoning yields the map $\adj(\pr_2) \circ \pr_2 : \Fp \times_\U \wt\U \to \wt\U$.
+
+  These maps will be used below.
+\end{remark}
+
 Our solution to the following problem is the key to the construction of
 J-structures over a given J1-structure in categories with weak factorization
 systems, particularly in Quillen model categories.
