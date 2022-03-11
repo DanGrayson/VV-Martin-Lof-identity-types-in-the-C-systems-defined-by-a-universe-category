@@ -1121,7 +1121,7 @@ such that $Jp\circ coJ = \id$.
 
 \begin{definition}
   \label{Fp-defn}
-Let $\gls{Fp}_{Eq,\Omega}$ denote the fiber product
+Let $\gls{Fp} = \gls{Fp}_{Eq,\Omega}$ denote the fiber product
 %
 $$(\I_{pE\wt{\U}}(\U), \I^{\omega}(\U)) \times_{\I_p(\U)} (\I_p(\wt{\U}), \I_p(p))$$
 %
@@ -1167,7 +1167,7 @@ systems, particularly in Quillen model categories.
 closed structure and $Eq,\Omega$ be a J1-structure on $({\C},p)$. To
 construct a bijection between the set of J-structures on $p$ over $(Eq,\Omega)$
 and the set of morphisms $(\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U})\sr \wt{\U}$ that
-split the following square into two commutative triangles:
+split the following commutative square into two commutative triangles:
 %
 \begin{eq}\label{2015.05.22.sq1}
 \begin{xy}
@@ -1177,7 +1177,8 @@ split the following square into two commutative triangles:
           }
 \end{xy}
 \end{eq}%
-%
+(Commutativity of the square follows from the naturality of the adjunction $\adj$ and
+the equation $\pr_1 \circ \I^\omega(\U) = \pr_2 \circ \I_p(p)$.)
 \end{problem}
 %
 \begin{remark}\rm
@@ -1191,7 +1192,7 @@ following form.
             \I_p(\wt{\U}))\times_\U\wt{\U} \ar[r]^-{\adj(\pr_2)\circ \pr_2}
             \ar[d]_{\id_{\Fp}\times \omega} & \wt{\U}
             \ar[d]^{p}\\ (\I_{pE\wt{\U}}(\U)\times_{\I_p(\U)} \I_p(\wt{\U}))\times_\U
-            E\wt{\U} \ar[r]^-{\adj(\pr_1)\circ \pr_2} & \U }
+            E\wt{\U} \ar[r]^-{\adj(\pr_1)\circ \pr_2} \ar@{.>}[ur] & \U }
 \end{xy}
 \end{eq}%
 
@@ -1211,13 +1212,13 @@ the set of morphisms
 %
 $$(\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U})\sr \U\times\wt{\U}$$
 %
-that split into two commutative triangles the square:
+that split into two commutative triangles the commutative square:
 %
 $$
 \begin{xy}
           \xymatrix@C=7pc{ (\Fp,\pFp)\times_\U(\wt{\U},p) \ar[r]^-{\adj(\pr_2)}
             \ar[d]_{\id_{\Fp}\times \omega} & \U\times \wt{\U} \ar[d]^{\id_\U\times
-              p}\\ (\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U}) \ar[r]^-{\adj(\pr_1)} &
+              p}\\ (\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U}) \ar[r]^-{\adj(\pr_1)} \ar@{.>}[ur] &
             \U\times \U }
 \end{xy}
 $$
