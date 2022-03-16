@@ -2231,21 +2231,16 @@ Let us show first that
 %
 $$\etaunshriek_{pE\wt{\U}}(F,G)\circ \I^{\omega}(\U)=\etaunshriek_p(F,\wt{H})\circ \I_p(p)$$
 %
-Indeed,
+We show this as follows.
 %
 \begin{align*}
-  \etaunshriek_{pE\wt{\U}}(F,G)\circ \I^{\omega}(\U)
-    & = \etaunshriek_p(F,G\circ F^*(\omega)) \\
-    & = \etaunshriek_p(F,\rf_T\circ G) \\
-    & = \etaunshriek_p(F,s0\circ \Q(\rf_T\circ G)\circ p) \\
-    & = \etaunshriek_p(F,\wt{H}\circ p) \\
-    & = \etaunshriek_p(F,\wt{H})\circ \I_p(p),
+  \etaunshriek_{pE\wt{\U}}(F,G) & \circ \I^{\omega}(\U) \\
+    & = \etaunshriek_p(F,G\circ F^*(\omega)) & \by{Lemma \ref{2015.04.02.l4}} \\
+    & = \etaunshriek_p(F,\rf_T\circ G) & \by{Lemma \ref{2015.03.31.l2}}  \\
+    & = \etaunshriek_p(F,s0\circ \Q(\rf_T\circ G)\circ p) & \by{commutativity of the canonical square}  \\
+    & = \etaunshriek_p(F,\wt{H}\circ p) & \by{\ref{2015.03.31.eq5}}  \\
+    & = \etaunshriek_p(F,\wt{H})\circ \I_p(p) & \by{naturality of $\etaunshriek_{p,X,V}$ in $V$}.
 \end{align*}
-%
-where the first equality is from Lemma \ref{2015.04.02.l4}, the second from
-Lemma \ref{2015.03.31.l2}, the third from the commutativity of the canonical
-square and the fact that $s0$ is a section, the fourth from
-(\ref{2015.03.31.eq5}) and the fifth from naturality of $\etaunshriek_{p,X,V}$ in $V$.
 
 Therefore the pair $(\etaunshriek_{pE\wt{\U}}(F,G),\etaunshriek_p(F,\wt{H}))$ gives us a
 morphism
@@ -2260,7 +2255,7 @@ $$\phi(\Gamma,T,P,s0)\circ Jp: X\sr \I_{pE\wt{\U}}(\wt{\U})$$
 %
 Consider the element
 %
-$$(F_1,F_2)=\etashriek_{pE\wt{\U}}(\phi(\Gamma,T,P,s0)\circ Jp)\in
+$$(F_1,F_2) := \etashriek_{pE\wt{\U}}(\phi(\Gamma,T,P,s0)\circ Jp)\in
 \D_{pE\wt{\U}}(X,\wt{\U})$$
 %
 By \cite[Problem 3.8(1)]{fromunivwithPi} we have
@@ -2272,12 +2267,12 @@ Jp\circ \I_{pE\wt{\U}}(p))=$$
 $$\etashriek_{pE\wt{\U}}(\etaunshriek_{pE\wt{\U}}(F,G))=(F,G)$$
 %
 Therefore, $F_2$ is of the form $(X;F)_E\sr \wt{\U}$, i.e., of the form
-$\wt{u}_{1,\Idx(T)}(J))$ for some $J$ such that $\partial(J)=P$.
+$\wt{u}_{1,\Idx(T)}(\J(\Gamma,T,P,s0)))$ for some $\J(\Gamma,T,P,s0)$ such that $\partial(\J(\Gamma,T,P,s0))=P$.
 \end{construction}
 %
 \begin{remark}\rm
 \label{2015.05.08.rem1} Note that the defining property of
-$\J=\J_{Jp}(\Gamma,T,P,s0)$ is that it is the unique element of
+$\J := \J(\Gamma,T,P,s0)$ is that it is the unique element of
 $\Obwt(\toCC({\C},p))$ that satisfies the equation
 %
 $$\etaunshriek_{pE\wt{\U}}(u_{1,\Gamma}(T),\wt{u}_{1,\Idx(T)}(\J))=\phi(\Gamma,T,P,s0)\circ
@@ -2300,8 +2295,10 @@ u_{1,\Idx(T)}(P)), \etaunshriek_p(u_{1,\Gamma}(T),\wt{u}_{1,\Gamma}(s0)))$.
 \label{2015.04.04.l4} Let $Eq$ be a J0-structure on a universe $p$,
 $f:\Gamma'\sr \Gamma$ a morphism in $\toCC({\C},p)$ and $F:int(\Gamma)\sr
 \U$ a morphism in $\C$.  Let $q3:int(\Idx(\Gamma',f\circ F))\sr
-int(\Idx(\Gamma,F))$ be the morphism $\q(f,\Idx(\Gamma,F),3)$ defined by
-$\Gamma$, since $\ft^3(\Idx(\Gamma,F))=\Gamma$. Then $q3=\Q(f,F)_{E}$.
+int(\Idx(\Gamma,F))$ be the morphism $\q(f,\Idx(\Gamma,F),3)$ defined\footnote{The notation $\q(\text{---,---},3)$
+is defined in section 3 of \cite{Csubsystems}, by induction on the third
+parameter.} by
+$\Gamma$, using $\ft^3(\Idx(\Gamma,F))=\Gamma$.  Then $q3=\Q(f,F)_{E}$.
 \end{lemma}
 %
 \begin{myproof}
@@ -2313,7 +2310,7 @@ unique morphism such that
   \Q(f,F)_{E}\circ p^{E}_{X,F}&=p^{E}_{X',f\circ F}\circ f
 \end{align*}
 %
-We will be building the proof using the following diagram\editorfootnote{The notation $p_3$ is undefined!}
+We will be building the proof using the following diagram.
 %
 $$
 \begin{xy}
