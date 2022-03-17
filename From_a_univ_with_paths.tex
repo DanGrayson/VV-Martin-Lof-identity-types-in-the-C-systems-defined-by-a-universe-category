@@ -105,7 +105,9 @@
 \newoperator{etashriek}{\etashriek}
 \newoperator{etaunshriek}{\etaunshriek}
 \newoperator{fstarX}{f^*(X)}
+\newoperator{fstarXi}{f^*(X,i)}
 \newoperator{fstars}{f^*(s)}
+\newoperator{fstarsi}{f^*(s,i)}
 \newoperator{Fp}{\Fp}
 \newoperator{ft}{\ft}
 \newoperator{Idx}{\Idx}
@@ -130,6 +132,7 @@
 \newoperator{prI}{\prI}
 \newoperator{pFp}{\pFp}
 \newoperator{qfX}{\q(f,X)}
+\newoperator{qfXi}{\q(f,X,i)}
 \newoperator{QF}{\Q(F)}
 \newoperator{QfF}{\Q(f,F)}
 \newoperator{QFE}{\Q(F)_{E}}
@@ -2269,7 +2272,12 @@ $$\etashriek_{pE\wt{\U}}(\etaunshriek_{pE\wt{\U}}(F,G))=(F,G)$$
 Therefore, $F_2$ is of the form $(X;F)_E\sr \wt{\U}$, i.e., of the form
 $\wt{u}_{1,\Idx(T)}(\J(\Gamma,T,P,s0)))$ for some $\J(\Gamma,T,P,s0)$ such that $\partial(\J(\Gamma,T,P,s0))=P$.
 \end{construction}
-%
+
+\begin{remark}
+  When more than one J2-structure $Jp$ is under consideration, we may write $\J_{Jp} = \J_{Jp}(\Gamma,T,P,s0)$ instead of $\J = \J(\Gamma,T,P,s0)$
+  to indicate which J2-structure is involved in the construction of $\J$.
+\end{remark}
+
 \begin{remark}\rm
 \label{2015.05.08.rem1} Note that the defining property of
 $\J := \J(\Gamma,T,P,s0)$ is that it is the unique element of
@@ -2293,11 +2301,9 @@ u_{1,\Idx(T)}(P)), \etaunshriek_p(u_{1,\Gamma}(T),\wt{u}_{1,\Gamma}(s0)))$.
 
 \begin{lemma}
 \label{2015.04.04.l4} Let $Eq$ be a J0-structure on a universe $p$,
-$f:\Gamma'\sr \Gamma$ a morphism in $\toCC({\C},p)$ and $F:int(\Gamma)\sr
-\U$ a morphism in $\C$.  Let $q3:int(\Idx(\Gamma',f\circ F))\sr
-int(\Idx(\Gamma,F))$ be the morphism $\q(f,\Idx(\Gamma,F),3)$ defined\footnote{The notation $\q(\text{---,---},3)$
-is defined in section 3 of \cite{Csubsystems}, by induction on the third
-parameter.} by
+$f:\Gamma'\sr \Gamma$ a morphism in $\toCC({\C},p)$ and $F:int(\Gamma)\sr \U$ a morphism in $\C$.
+Let $q3:int(\Idx(\Gamma',f\circ F))\sr int(\Idx(\Gamma,F))$ be the morphism $\q(f,\Idx(\Gamma,F),3)$ defined\footnote{The notation $\gls{qfXi}$
+is defined in section 3 of \cite{Csubsystems}, by induction on the third parameter, which is a natural number.} by
 $\Gamma$, using $\ft^3(\Idx(\Gamma,F))=\Gamma$.  Then $q3=\Q(f,F)_{E}$.
 \end{lemma}
 %
@@ -2379,9 +2385,9 @@ Let us write $\J$ for $\J_{Jp}(\Gamma,T,P,s0)$ and $\J'$ for
 $\J_{Jp}(\Gamma',f^*(T),f^*(P),f^*(s0))$ and use the notation of Construction
 \ref{2015.04.04.constr1}. Recall that for $f:\Gamma'\sr \Gamma$ the operation
 $f^*$ is defined only on $Ob_1(\Gamma)$. In all other uses it is an
-abbreviation for operations such as $X\mapsto f^*(X,i)$ and $s\mapsto f^*(s,i)$
-for various $i$ (see \cite{Csubsystems}). In particular, (\ref{2015.04.04.eq3})
-is an abbreviation for
+abbreviation for the operation $X\mapsto \gls{fstarXi}$ or the operation $s\mapsto \gls{fstarsi}$,
+for various values of $i$; these operations are defined in \cite[\S 3]{Csubsystems} by induction on $i$.
+In particular, (\ref{2015.04.04.eq3}) is an abbreviation for
 %
 $$f^*(\J(\Gamma,T,P,s0),4)=\J(\Gamma',f^*(T),f^*(P,4),f^*(s0,2))$$
 %
@@ -2432,7 +2438,7 @@ $$f\circ \etaunshriek_p(F,\wt{H})=\etaunshriek_p(f\circ F, \wt{u}_1(f^*(s0)))$$
 %
 The first equality follows naturality of $\etaunshriek$ and Lemma
 \ref{2015.04.04.l4}. The second equality follows from naturality of
-$\etaunshriek$. This finished the proof of Lemma \ref{2015.04.04.l1}.
+$\etaunshriek$. This finishes the proof of Lemma \ref{2015.04.04.l1}.
 \end{myproof}
 %
 \begin{lemma}
@@ -2461,11 +2467,11 @@ By Lemma \ref{2015.03.31.l2} we have $F^*(\omega)=\rf_T$. Therefore,
 $$\etaunshriek_{E\wt{\U}}(F,\wt{u}_1(\J))\circ \I^{\omega}(\wt{\U})=\etaunshriek_p(F,\rf_T\circ
 \wt{u}_1(\J))=\etaunshriek_p(F,\wt{u}_1(\rf_T^*(\J)))$$
 %
-On the other hand
+On the other hand, by \ref{2015.04.04.eq1},\DG{verify this reference -- the equation there has changed}
 %
 $$\phi\circ Jp\circ \I^{\omega}(\wt{\U})=\phi\circ \prI_p(\wt{\U})$$
 %
-by \ref{2015.04.04.eq1}\DG{verify this reference -- the equation there has changed} which equals, by construction,
+which equals, by construction,
 $\etaunshriek_p(F,\wt{u}_1(s0))$. Therefore,
 %
 $$\etaunshriek_p(F,\wt{u}_1(\rf_T^*(\J)))=\etaunshriek_p(F,\wt{u}_1(s0))$$
