@@ -146,7 +146,9 @@
 \newoperator{XFE}{(X;F)_{E}}
 \newoperator{semicolon}{(X;F)}
 \newoperator{u1}{u_1}
+\newoperator{u1Gamma}{u_{1,\Gamma}}
 \newoperator{utilde1}{\wt u_1}
+\newoperator{utilde1Gamma}{\wt u_{1,\Gamma}}
 \newoperator{multisemicolon}{(X;F_1,\dots,F_n)}
 \newoperator{starfg}{f*g}
 
@@ -1815,11 +1817,11 @@ we have the following equation.\editorfootnote{The
 For each $\Gamma\in Ob(\toCC({\C},p))$ we have natural bijections
 %
 \begin{eq}
-\label{2015.03.27.eq7b} \gls{u1}:Ob_1(\Gamma) \xrightarrow\cong Hom(int(\Gamma),\U)
+\label{2015.03.27.eq7b} \gls{u1} = \gls{u1Gamma}:Ob_1(\Gamma) \xrightarrow\cong Hom(int(\Gamma),\U)
 \end{eq}%
 %
 \begin{eq}
-\label{2015.03.27.eq7a} \gls{utilde1}:\Obwt_1(\Gamma) \xrightarrow\cong Hom(int(\Gamma),\wt{\U}),
+\label{2015.03.27.eq7a} \gls{utilde1} = \gls{utilde1Gamma}:\Obwt_1(\Gamma) \xrightarrow\cong Hom(int(\Gamma),\wt{\U}),
 \end{eq}%
 %
 where $u_1^{-1}(F)=(\Gamma,F)$ and where
@@ -2375,9 +2377,9 @@ $p$. Then the morphisms of Construction \ref{2015.04.04.constr1} are natural in
 $\Gamma$, i.e., for any $f:\Gamma'\sr \Gamma$ one has
 %
 \begin{eq}\label{2015.04.04.eq3}
-f^*(\J_{Jp}(\Gamma,T,P,s0))=\J_{Jp}(\Gamma',f^*(T),f^*(P),f^*(s0))
+f^*(\J_{Jp}(\Gamma,T,P,s0))=\J_{Jp}(\Gamma',f^*(T),f^*(P),f^*(s0)).
 \end{eq}%
-%
+(This is the second condition of the definition \ref{2015.03.27.def3} of a J2-structure on the C-system $\toCC({\C},p)$.)
 \end{lemma}
 %
 \begin{myproof}
@@ -2443,8 +2445,8 @@ $\etaunshriek$. This finishes the proof of Lemma \ref{2015.04.04.l1}.
 %
 \begin{lemma}
 \label{2015.04.04.l5} Let $(Eq,\Omega,Jp)$ be a J-structure on a universe
-$p$. Then the morphisms of Construction \ref{2015.04.04.constr1} satisfy the
-second condition of the definition of a J2-structure, i.e., for all $\Gamma$,
+$p$. Then the morphism of Construction \ref{2015.04.04.constr1} satisfies the
+first condition of the definition \ref{2015.03.27.def3} of a J2-structure on the C-system $\toCC({\C},p)$, i.e., for all $\Gamma$,
 $T$, $P$ and $s0$ as above one has
 %
 $$\rf_T^*(\J_{Jp}(\Gamma,T,P,s0))=s0$$
