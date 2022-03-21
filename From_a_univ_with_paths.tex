@@ -839,7 +839,7 @@ bijections\editorfootnote{Since $\I_p(V)$ is an object over $\U$, one may infer
 %
 $$\gls{etashriek}_{p,X,V}:Hom(X,\I_p(V))\sr \D_p(X,V)$$
 %
-that are natural in $X$ and $V$. We let $\etaunshriek$ denote the inverse bijections
+that are natural in $X$ and $V$; naturality is established in \cite[Problem 3.8]{fromunivwithPi}. We let $\etaunshriek$ denote the inverse bijections
 %
 $$\gls{etaunshriek}_{p,X,V}:\D_p(X,V)\sr Hom(X,\I_p(V)).$$
 For $F:X\sr \U$ and $G : (X;F) \sr V$, we will abbreviate
@@ -2227,10 +2227,10 @@ Ob_1(\Gamma)$, for all $P\in Ob_1(\Idx(T))$, for all $s0\in
 \end{problem} 
 %
 \begin{construction}{2015.04.04.prob1}\rm
-\label{2015.04.04.constr1} Let $X:=int(\Gamma)$, $F:=u_1(T):X\sr \U$. By Lemma
+\label{2015.04.04.constr1} Let $X:=int(\Gamma)$, $F:=u_1(T):X\sr \U$, so $T = (\Gamma,F)$. By Lemma
 \ref{2015.03.27.l1} we have
-$int(\Idx(T))=int(\Idx(\Gamma,F))=(int(\Gamma);F)_{E}$. Therefore we further
-have $G:=u_1(P):(int(\Gamma);F)_{E}\sr \U$ and $\wt{H}:=\wt{u}_1(s0):(X;F)\sr
+$int(\Idx(T))=int(\Idx(\Gamma,F))=(X;F)_{E}$. Therefore we further
+have $G:=u_1(P):(X;F)_{E}\sr \U$ and $\wt{H}:=\wt{u}_1(s0):(X;F)\sr
 \wt{\U}$.
 
 Let us show first that
@@ -2245,7 +2245,7 @@ We show this as follows.
     & = \etaunshriek_p(F,\rf_T\circ G) & \by{Lemma \ref{2015.03.31.l2}}  \\
     & = \etaunshriek_p(F,s0\circ \Q(\rf_T\circ G)\circ p) & \by{commutativity of the canonical square}  \\
     & = \etaunshriek_p(F,\wt{H}\circ p) & \by{\ref{2015.03.31.eq5}}  \\
-    & = \etaunshriek_p(F,\wt{H})\circ \I_p(p) & \by{naturality of $\etaunshriek_{p,X,V}$ in $V$}.
+    & = \etaunshriek_p(F,\wt{H})\circ \I_p(p) & \by{naturality of $\etaunshriek_{p,X,V}$}.
 \end{align*}
 
 Therefore the pair $(\etaunshriek_{pE\wt{\U}}(F,G),\etaunshriek_p(F,\wt{H}))$ gives us a
@@ -2264,15 +2264,23 @@ Consider the element
 $$(F_1,F_2) := \etashriek_{pE\wt{\U}}(\phi(\Gamma,T,P,s0)\circ Jp)\in
 \D_{pE\wt{\U}}(X,\wt{\U})$$
 %
-By \cite[Problem 3.8(1)]{fromunivwithPi} we have
+We have the following computation.
 %
-$$(F_1,F_2\circ
-p)=\D_{pE\wt{\U}}(X,p)(F_1,F_2)=\etashriek_{pE\wt{\U}}(\phi(\Gamma,T,P,s0)\circ
-Jp\circ \I_{pE\wt{\U}}(p))=$$
-%
-$$\etashriek_{pE\wt{\U}}(\etaunshriek_{pE\wt{\U}}(F,G))=(F,G)$$
-%
-Therefore, $F_2$ is of the form $(X;F)_E\sr \wt{\U}$, i.e., of the form
+\begin{align*}
+  (F_1,F_2\circ p)
+  & = \D_{pE\wt{\U}}(X,p)(F_1,F_2)  & \by{def'n of $\D_{pE\wt{\U}}$} \\
+  & = \D_{pE\wt{\U}}(X,p)(\etashriek_{pE\wt{\U}}(\phi(\Gamma,T,P,s0)\circ Jp))  & \by{def'n of $(F_1,F_2)$} \\
+  & = \etashriek_{pE\wt{\U}}(\phi(\Gamma,T,P,s0)\circ Jp\circ \I_{pE\wt{\U}}(p))  & \by{naturality of $\etashriek_{pE\wt{\U}}$} \\
+  & = \etashriek_{pE\wt{\U}}(\phi(\Gamma,T,P,s0)\circ Jp\circ coJ \circ \pr_1)  & \by{def'n of $coJ$} \\
+  & = \etashriek_{pE\wt{\U}}(\phi(\Gamma,T,P,s0)\circ \pr_1)  & \by{\ref{2015.03.27.def6}} \\
+  & = \etashriek_{pE\wt{\U}}(\etaunshriek_{pE\wt{\U}}(F,G)) & \by{def'n of $\phi(\Gamma,T,P,s0)$} \\
+  & =(F,G)
+\end{align*}
+
+(For naturality of $\etashriek_{pE\wt{\U}}$, refer to \cite[Problem 3.8(1)]{fromunivwithPi}.)
+
+Therefore, $F_1 = F$ and $F_2 \circ p = G$.
+Thus, $F_2$ is of the form $(X;F)_E\sr \wt{\U}$, i.e., of the form
 $\wt{u}_{1,\Idx(T)}(\J(\Gamma,T,P,s0)))$ for some $\J(\Gamma,T,P,s0)$ such that $\partial(\J(\Gamma,T,P,s0))=P$.
 \end{construction}
 
