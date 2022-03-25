@@ -101,6 +101,7 @@
 \newoperator{Delta}{\Delta}
 \newoperator{delta}{\delta}
 \newoperator{DpV}{\D_p(-,V)}
+\newoperator{DfXV}{\D^f(X,V)}
 \newoperator{EUtilde}{E\wt{\U}}
 \newoperator{etashriek}{\etashriek}
 \newoperator{etaunshriek}{\etaunshriek}
@@ -889,7 +890,7 @@ $\I_{p'}(V)\sr \I_p(V)$. Then for any $X$ the square
 %
 $$
 \begin{xy}
-          \xymatrix@C=3pc{ \D_p(X,V) \ar[r]^-{\etaunshriek_{p,X,V}} \ar[d]_{D^f(X,V)} &
+          \xymatrix@C=3pc{ \D_p(X,V) \ar[r]^-{\etaunshriek_{p,X,V}} \ar[d]_{\D^f(X,V)} &
             Hom(X, \I_p(V)) \ar[d]^{-\circ \I^f(V)}\\ \D_{p'}(X,V)
             \ar[r]^-{\etaunshriek_{p',X.V}} & Hom (X, \I_{p'}(V)), }
 \end{xy}
@@ -897,7 +898,7 @@ $$
 %
 where the left hand vertical arrow is defined by
 %
-$$D^f(X,V):(F, F')\mapsto (F,F^*(f)\circ F'),$$
+$$\gls{DfXV}:(F, F')\mapsto (F,F^*(f)\circ F'),$$
 %
 commutes.
 \end{lemma}
@@ -2280,8 +2281,8 @@ We have the following computation.
 (For naturality of $\etashriek_{pE\wt{\U}}$, refer to \cite[Problem 3.8(1)]{fromunivwithPi}.)
 
 Therefore, $F_1 = F$ and $F_2 \circ p = G$.
-Thus, $F_2$ is of the form $(X;F)_E\sr \wt{\U}$, i.e., of the form
-$\wt{u}_{1,\Idx(T)}(\J(\Gamma,T,P,s0)))$ for some $\J(\Gamma,T,P,s0)$ such that $\partial(\J(\Gamma,T,P,s0))=P$.
+Thus $F_2$ is of type $(X;F)_E\sr \wt{\U}$, and thus it is of the form
+$F_2 = \wt{u}_{1}(\J(\Gamma,T,P,s0)))$ for some unique $\J(\Gamma,T,P,s0)$ such that $\partial(\J(\Gamma,T,P,s0)) = u_1^{-1}(F_2 \circ p)= u_1^{-1}(G) = P$.
 \end{construction}
 
 \begin{remark}
@@ -2466,21 +2467,22 @@ $$\rf_T^*(\J_{Jp}(\Gamma,T,P,s0))=s0$$
 Let $\J=\J_{Jp}(\Gamma,T,P,s0)$. Then, using the notation of Construction
 \ref{2015.04.04.constr1} we have
 %
-$$\etaunshriek_{E\wt{\U}}(F,\wt{u}_1(\J))=\phi\circ Jp$$
+$$\etaunshriek_{E\wt{\U}}(F,\wt{u}_1(\J)) = \etaunshriek_{E\wt{\U}}(F_1,F_2) =\phi(\Gamma,T,P,s0)\circ Jp$$
 %
-Then
+Observe that
 %
 $$\etaunshriek_{E\wt{\U}}(F,\wt{u}_1(\J))\circ
-\I^{\omega}(\wt{\U})=\etaunshriek_p(F,F^*(\omega)\circ \wt{u}_1(\J))$$
+\I^{\omega}(\wt{\U})=\etaunshriek_p(F,F^*(\omega)\circ \wt{u}_1(\J)),$$
+by naturality of $\etashriek$ with respect to change of universe, established in \ref{2015.04.02.l4}.
 %
 By Lemma \ref{2015.03.31.l2} we have $F^*(\omega)=\rf_T$. Therefore,
 %
 $$\etaunshriek_{E\wt{\U}}(F,\wt{u}_1(\J))\circ \I^{\omega}(\wt{\U})=\etaunshriek_p(F,\rf_T\circ
 \wt{u}_1(\J))=\etaunshriek_p(F,\wt{u}_1(\rf_T^*(\J)))$$
 %
-On the other hand, by \ref{2015.04.04.eq1},\DG{verify this reference -- the equation there has changed}
+On the other hand, by \ref{2015.04.04.eq1},
 %
-$$\phi\circ Jp\circ \I^{\omega}(\wt{\U})=\phi\circ \prI_p(\wt{\U})$$
+$$\phi(\Gamma,T,P,s0) \circ Jp\circ \I^{\omega}(\wt{\U})=\phi(\Gamma,T,P,s0) \circ \pr_2$$
 %
 which equals, by construction,
 $\etaunshriek_p(F,\wt{u}_1(s0))$. Therefore,
