@@ -109,6 +109,7 @@
 \newoperator{fstarXi}{f^*(X,i)}
 \newoperator{fstars}{f^*(s)}
 \newoperator{fstarsi}{f^*(s,i)}
+\newoperator{Fstarf}{F^*(f)}
 \newoperator{Fp}{\Fp}
 \newoperator{ft}{\ft}
 \newoperator{Idx}{\Idx}
@@ -787,12 +788,15 @@ something different when a morphism is not the identity.  The importance
 of this observation (in the context of whether a simplex is degenerate)
 was emphasized by \cite{BCH}.
 \end{remark}
-%
+
+\begin{definition}\label{QfF-defn}
 For $X'\stackrel{f}{\sr}X\stackrel{F}{\sr}\U$ we let $\gls{QfF}$ denote the
 morphism
 %
 $$(\p_{X',f\circ F}\circ f)*\Q(f\circ F):(X';f\circ F)\sr (X;F)$$
 %
+\end{definition}
+
 As shown in \cite[Lemma 2.3]{Cfromauniverse}, the left hand square in the following diagram is a pullback square.
 %
 \begin{eq}
@@ -806,7 +810,6 @@ As shown in \cite[Lemma 2.3]{Cfromauniverse}, the left hand square in the follow
      }
   \end{xy}
 \end{eq}%
-%
 
 Following \cite[2.30]{presheavesOb} we define for any universe $p:\wt{\U}\sr \U$ and
 any $V\in {\C}$ a contravariant functor from $\C$ to the category of sets,
@@ -2517,10 +2520,13 @@ and $\refl_{\Omega}$.
 
 \subsection{A theorem about functors between categories with two universes}
 \label{twouniv}
-%
+
+We will use the notion of \emph{functor of universe categories}, defined in \cite[4.1]{Cfromauniverse}
+and in \cite[\S 5]{fromunivwithPi}.
+
 Before we can formulate the definition of what it means for a universe category
 functor to be compatible with J-structures we need some general results about
-functors between categories with two universes that we will later apply to the
+functors between categories with two universes, which we will later apply to the
 universes $p:\wt{\U}\sr \U$ and $pE\wt{\U}:E\wt{\U}\sr \U$ in a locally cartesian
 closed category $\cal C$.
 
@@ -2539,7 +2545,7 @@ $$
 \end{xy}
 $$
 %
-and $f:\wt{\U}'\sr \wt{\U}$ over $\U$, we let $F^*(f)$ denote the unique morphism
+and $f:\wt{\U}'\sr \wt{\U}$ over $\U$, we let $\gls{Fstarf}$ denote the unique morphism
 $(X;F)'\sr (X;F)$ such that
 %
 \begin{eq}\label{2015.04.08.eq3}
@@ -2556,7 +2562,7 @@ $(X;F)'$ the difference in the choice of some of the morphisms, e.g., $\Q(F)$
 will affect morphisms $F^*(f)$. We will need the following lemma about these
 morphisms.
 
-For $X'\stackrel{f}{\sr}X \stackrel{F}{\sr}\U$ we let $\Q(f,F)$ denote the
+As in \ref{QfF-defn}, for $X'\stackrel{f}{\sr}X \stackrel{F}{\sr}\U$ we let $\Q(f,F)$ denote the
 morphism
 %
 $$(\p_{X',f\circ F}\circ f)*\Q(f\circ F):(X';f\circ F)\sr (X;F)$$
@@ -2611,9 +2617,9 @@ We now need to consider the case when we have the following collection of data:
 \item two universes $p_1$, $p_2$ in $\C$ with the common codomain $\U$
   and a morphism $g:\wt{\U}_1\sr \wt{\U}_2$ over $\U$,
 \item two universes $\p_1'$, $\p_2'$ in $\C'$ with the common codomain
-  $U'$ and a morphism $g':\wt{\U}_1'\sr \wt{\U}_2'$ over $U'$,
+  $\U'$ and a morphism $g':\wt{\U}_1'\sr \wt{\U}_2'$ over $\U'$,
 \item a functor $\Phi:{\C}\sr {\C}'$,
-\item a morphism $\phi:\Phi(\U)\sr U'$,
+\item a morphism $\phi:\Phi(\U)\sr \U'$,
 \item two morphisms $\wt{\phi}_i:\Phi(\wt{\U}_i)\sr \wt{\U}_i'$, $i=1,2$
 \end{enumerate}
 %
@@ -2818,7 +2824,7 @@ Lemma \ref{2015.04.06.l7}.
 
 Consider the morphisms
 %
-$$\zeta_i:\Phi(\I_{\p_i}(\U))\sr \I_{\p_i}(U')$$
+$$\zeta_i:\Phi(\I_{\p_i}(\U))\sr \I_{\p_i}(\U')$$
 %
 given by $\zeta_i=\chi_i(\U)\circ \I_{\p_i}(\phi)$ and
 %
@@ -2856,8 +2862,8 @@ $$
           \xymatrix@C=4pc{
                  \I_{\p_2'}(\wt{\U}_1')   \ar[r]^-{\I^{g'}(\wt{\U}_1')} \ar[d]_{\I_{\p_2'}(\p_2')} & 
                  \I_{\p_1'}(\wt{\U}_1') \ar[d]^{\I_{\p_1'}(\p_2')}\\
-		\I_{\p_2'}(U')   \ar[r]^{\I^{g'}(U')} &
-		\I_{\p_1'}(U')
+		\I_{\p_2'}(\U')   \ar[r]^{\I^{g'}(\U')} &
+		\I_{\p_1'}(\U')
                 }
 \end{xy}
 $$
@@ -2969,7 +2975,7 @@ universes. Recall that for universe categories $({\C},p,pt)$,
 $({\C}',p',pt')$ a functor of universe categories is a triple
 $(\Phi,\phi,\wt{\phi})$, where $\Phi:{\C}\sr {\C}'$ is a functor
 that takes the canonical squares to pullback squares and $pt$ to a final object,
-and $\phi:\Phi(\U)\sr U'$, $\wt{\phi}:\Phi(\wt{\U})\sr \wt{\U}'$ are morphisms
+and $\phi:\Phi(\U)\sr \U'$, $\wt{\phi}:\Phi(\wt{\U})\sr \wt{\U}'$ are morphisms
 such that the square
 %
 \begin{eq}\label{2015.04.06.eq10}
@@ -3094,7 +3100,7 @@ said to be compatible with $Eq$ and $Eq'$ if the square
 \begin{xy}
           \xymatrix@C=3pc{ \Phi((\wt{\U};p)) \ar[r]^-{\Phi(Eq)}
             \ar[d]_{\Phi\wt{\U}p} & \Phi(\U) \ar[d]^{\phi}\\ (\wt{\U}';p')
-            \ar[r]^{Eq'} & U' }
+            \ar[r]^{Eq'} & \U' }
 \end{xy}
 \end{eq}%
 %
@@ -3134,7 +3140,7 @@ Consider the diagram
             \ar[r]^-{\wt{\phi}_{E}}\ar[d]_{\Phi(\p_{(\wt{\U};p),Eq})} & E\wt{\U}'
             \ar[r]^-{\Q(Eq')}\ar[d]_{\p_{(\wt{\U}';p'),Eq'}} & \wt{\U}'
             \ar[d]^{p'}\\ \Phi((\wt{\U};p)) \ar[r]^{\Phi\wt{\U}p} & (\wt{\U}';p')
-            \ar[r]^{Eq'} & U' }
+            \ar[r]^{Eq'} & \U' }
 \end{xy}
 \end{eq}%
 %
@@ -3146,7 +3152,7 @@ The outer square of this diagram is equal to the outer square of the diagram
             \ar[r]^-{\Phi(\Q(Eq))}\ar[d]_{\Phi(\p_{(\wt{\U};p),Eq})} &
             \Phi(\wt{\U}) \ar[r]^-{\wt{\phi}}\ar[d]_{\Phi(p)} & \wt{\U}'
             \ar[d]^{p'}\\ \Phi((\wt{\U};p)) \ar[r]^{\Phi(Eq)} & \Phi(\U)
-            \ar[r]^{\phi} & U', }
+            \ar[r]^{\phi} & \U', }
 \end{xy}
 \end{eq}%
 %
@@ -3169,7 +3175,7 @@ square
 \begin{xy}
           \xymatrix@C=3pc{ \Phi(E\wt{\U}) \ar[r]^-{\wt{\phi}_{E}}
             \ar[d]_{\Phi(pE\wt{\U})} & E\wt{\U}' \ar[d]^{pE\wt{\U}'}\\ \Phi(\U)
-            \ar[r]^-{\phi} & U' }
+            \ar[r]^-{\phi} & \U' }
 \end{xy}
 \end{eq}%
 %
@@ -3252,7 +3258,7 @@ and $\omega'$ satisfy the conditions on morphisms $g$ and $g'$ of Section
 Let
 %
 \begin{align*}
-  \xi_{\bf\Phi}&:\Phi(\I_p(\U))\sr \I_{p'}(U') \\
+  \xi_{\bf\Phi}&:\Phi(\I_p(\U))\sr \I_{p'}(\U') \\
   \wt{\xi}_{\bf\Phi}&:\Phi(\I_p(\wt{\U}))\sr \I_{p'}(\wt{\U}')
 \end{align*}
 %
@@ -3260,7 +3266,7 @@ denote the compositions $\chi_{\bf\Phi}(\U)\circ \I_{p'}(\phi)$ and
 $\chi_{\bf\Phi}(\wt{\U})\circ \I_{p'}(\wt{\phi})$, respectively, and let
 %
 \begin{align*}
-  \zeta_{\bf\Phi}&:\Phi(\I_{pE\wt{\U}}(\U))\sr \I_{pE\wt{\U}'}(U') \\
+  \zeta_{\bf\Phi}&:\Phi(\I_{pE\wt{\U}}(\U))\sr \I_{pE\wt{\U}'}(\U') \\
   \wt{\zeta}_{\bf\Phi}&:\Phi(\I_{pE\wt{\U}}(\wt{\U}))\sr \I_{pE\wt{\U}'}(\wt{\U}')
 \end{align*}
 %
@@ -3292,8 +3298,8 @@ $$
 \begin{xy}
           \xymatrix@C=3pc{ \I_{pE\wt{\U}'}(\wt{\U}')
             \ar[r]^-{\I^{\omega'}(\wt{\U}')} \ar[d]_-{\I_{pE\wt{\U}'}(p')} &
-            \I_{p'}(\wt{\U}')\ar[d]^-{\I_{p'}(p')}\\ \I_{pE\wt{\U}'}(U')
-            \ar[r]^-{\I^{\omega}(U')} & \I_{p'}(U') }
+            \I_{p'}(\wt{\U}')\ar[d]^-{\I_{p'}(p')}\\ \I_{pE\wt{\U}'}(\U')
+            \ar[r]^-{\I^{\omega}(\U')} & \I_{p'}(\U') }
 \end{xy}
 $$
 %
@@ -3304,7 +3310,7 @@ Let $R_{\bf\Phi}$ denote the composite map
 \begin{align*}
   \Phi((\I_{pE\wt{\U}}&(\U), \I^{\omega}(\U))\times_{\I_p(\U)} (\I_p(\wt{\U}), \I_p(p))) \\
       & \sr \Phi(\I_{pE\wt{\U}}(\U), \I^{\omega}(\U))\times_{\Phi(\I_p(\U))}\Phi(\I_p(\wt{\U}), \I_p(p)) \\
-      & \sr (\I_{pE\wt{\U}'}(U'),\I^{\omega'}(U'))\times_{\I_{p'}(U')}(\I_{p'}(\wt{\U}'),\I_{p'}(p')),
+      & \sr (\I_{pE\wt{\U}'}(\U'),\I^{\omega'}(\U'))\times_{\I_{p'}(\U')}(\I_{p'}(\wt{\U}'),\I_{p'}(p')),
 \end{align*}
 %
 where the second arrow is defined by $\xi_{\bf\Phi}, \wt{\xi}_{\bf\Phi}$ and
@@ -3322,8 +3328,8 @@ $$
 \begin{xy}
           \xymatrix@C=3pc{ \I_{pE\wt{\U}'}(\wt{\U}')
             \ar[r]^-{\I^{\omega'}(\wt{\U}')} \ar[d]_-{\I_{pE\wt{\U}'}(p')} &
-            \I_{p'}(\wt{\U}')\ar[d]^-{\I_{p'}(p')}\\ \I_{pE\wt{\U}'}(U')
-            \ar[r]^-{\I^{\omega}(U')} & \I_{p'}(U') }
+            \I_{p'}(\wt{\U}')\ar[d]^-{\I_{p'}(p')}\\ \I_{pE\wt{\U}'}(\U')
+            \ar[r]^-{\I^{\omega}(\U')} & \I_{p'}(\U') }
 \end{xy}
 $$
 commutes, and the square
@@ -3331,7 +3337,7 @@ $$
 \begin{CD}
 \Phi((\I_{pE\wt{\U}}(\U), \I^{\omega}(\U))\times_{\I_p(\U)} (\I_p(\wt{\U}), \I_p(p)))
 @>R_{\bf\Phi}>>
-(\I_{pE\wt{\U}'}(U'),\I^{\omega'}(U'))\times_{\I_{p'}(U')}(\I_{p'}(\wt{\U}'),\I_{p'}(p'))\\ @V\Phi(Jp)
+(\I_{pE\wt{\U}'}(\U'),\I^{\omega'}(\U'))\times_{\I_{p'}(\U')}(\I_{p'}(\wt{\U}'),\I_{p'}(p'))\\ @V\Phi(Jp)
 VV @VVJp' V\\ \Phi(\I_{pE\wt{\U}}(\wt{\U})) @>\wt{\zeta}_{\bf\Phi}>>
 \I_{pE\wt{\U}'}(\wt{\U}')
 \end{CD}
@@ -3636,7 +3642,7 @@ Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and $o\in \Obwt(P)$ one has:
 %
 \begin{enumerate}
 \item $(u'_{1,H(\Gamma)}(H(T)), u_{1,IdxT'(H(T))}'(H(P)))$ is a well defined
-  element of $\D_{pE\wt{\U}'}(\Phi(int(\Gamma)),U')$ and
+  element of $\D_{pE\wt{\U}'}(\Phi(int(\Gamma)),\U')$ and
 %
   \begin{align*}
     (u'_{1,H(\Gamma)}(H(T)), & u_{1,IdxT'(H(T))}'(H(P))) \\
