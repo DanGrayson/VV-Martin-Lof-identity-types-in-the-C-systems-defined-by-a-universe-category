@@ -153,6 +153,7 @@
 \newoperator{utilde1Gamma}{\wt u_{1,\Gamma}}
 \newoperator{multisemicolon}{(X;F_1,\dots,F_n)}
 \newoperator{starfg}{f*g}
+\newoperator{Phi2}{{\bf\Phi}^2}
 
 %% \newoperator{}{\}
 
@@ -2611,12 +2612,16 @@ and any $V\in {\C}$, a morphism
 %
 $$\chi_{\bf\Phi}(V):\Phi(\I_p(V))\sr \I_{p'}(\Phi(V))$$
 %
+
+Moreover, in \cite[Construction 5.2]{fromunivwithPi} we have defined a map
+$\gls{Phi2} : \D_{p}(X,V) \sr \D_p(\Phi(X),\Phi(V))$, which we will use later.
+
 We now need to consider the case when we have the following collection of data:
 %
 \begin{enumerate}
 \item two universes $p_1$, $p_2$ in $\C$ with the common codomain $\U$
   and a morphism $g:\wt{\U}_1\sr \wt{\U}_2$ over $\U$,
-\item two universes $\p_1'$, $\p_2'$ in $\C'$ with the common codomain
+\item two universes $p_1'$, $p_2'$ in $\C'$ with the common codomain
   $\U'$ and a morphism $g':\wt{\U}_1'\sr \wt{\U}_2'$ over $\U'$,
 \item a functor $\Phi:{\C}\sr {\C}'$,
 \item a morphism $\phi:\Phi(\U)\sr \U'$,
@@ -2639,19 +2644,19 @@ $$
 commutes,
 %
 \item the triples ${\bf\Phi}_i:=(\Phi,\phi,\wt{\phi}_i)$, $i=1,2$ are universe
-  category functors, i.e.,  $\Phi$ takes canonical squares of $p_1$ and $p_2$ to
+  category functors, in particular, $\Phi$ takes canonical squares of $p_1$ and $p_2$ to
   pullback squares and the squares
 %
 $$
 \begin{xy}
           \xymatrix@C=4pc{ \Phi(\wt{\U}_1) \ar[r]^-{\wt{\phi}_1}
-            \ar[d]_{\Phi(p_1)} & \wt{\U}_1' \ar[d]^{\p_1'}\\ \Phi(\U)
+            \ar[d]_{\Phi(p_1)} & \wt{\U}_1' \ar[d]^{p_1'}\\ \Phi(\U)
             \ar[r]^{\phi} & \U }
 \end{xy}
 \spc\spc\spc
 \begin{xy}
           \xymatrix@C=4pc{ \Phi(\wt{\U}_2) \ar[r]^-{\wt{\phi}_2}
-            \ar[d]_{\Phi(p_2)} & \wt{\U}_2' \ar[d]^{\p_2'}\\ \Phi(\U)
+            \ar[d]_{\Phi(p_2)} & \wt{\U}_2' \ar[d]^{p_2'}\\ \Phi(\U)
             \ar[r]^{\phi} & \U }
 \end{xy}
 $$
@@ -2659,12 +2664,11 @@ $$
 are pullback squares.
 \end{enumerate}
 %
-Let us denote the exchange morphisms
+Let us denote the morphisms
 %
-$$\chi_{\bf\Phi_i}(V):\Phi(\I_{\p_i}(V))\sr \I_{\p_i}(\Phi(V))$$
+$$\chi_{\bf\Phi_i}(V):\Phi(\I_{p_i}(V))\sr \I_{p_i}(\Phi(V))$$
 %
-by $\chi_i(V)$. The maps ${\bf\Phi}_i^2$ in the following lemma are constructed
-in \cite[Construction 5.2]{fromunivwithPi}.
+by $\chi_i(V)$. The maps ${\bf\Phi}_i^2$ in the following lemma were introduced above.
 %
 \begin{lemma}
 \label{2015.04.08.l1} Under the previous assumptions and notation the squares
@@ -2674,7 +2678,7 @@ $$
           \xymatrix@C=4pc{ \D_{p_2}(X,V) \ar[r]^-{{\bf\Phi}_2^2}
             \ar[d]_{D^g(X,V)} & \D_{p_2}(\Phi(X),\Phi(V))
             \ar[d]^{D^{g'}(\Phi(X),\Phi(V))}\\ \D_{p_1}(X,V)
-            \ar[r]^-{{\bf\Phi}_1^2} & \D_{\p_1'}(\Phi(X),\Phi(V)) }
+            \ar[r]^-{{\bf\Phi}_1^2} & \D_{p_1'}(\Phi(X),\Phi(V)) }
 \end{xy}
 $$
 %
@@ -2739,7 +2743,7 @@ where the first equality is from the definition of $\iota$ in
     & = \Q_1(\Phi(F_1)\circ \phi)\circ g'
 \end{align*}
 %
-This proofs the first equation. For the second equation we have:
+This proves the first equation. For the second equation we have:
 %
 $$(\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ
 \Phi(\p_{X,F_1,2})=(\Phi(F_1)\circ \phi)^*(g')\circ
@@ -2760,9 +2764,9 @@ This finishes the proof of the lemma.
 $$
 \begin{xy}
           \xymatrix@C=4pc{ \Phi(\I_{p_2}(V)) \ar[r]^-{\chi_2(V)}
-            \ar[d]_{\Phi(\I^g(V))} & \I_{\p_2'}(\Phi(V))
+            \ar[d]_{\Phi(\I^g(V))} & \I_{p_2'}(\Phi(V))
             \ar[d]^{\I^{g'}(\Phi(V))}\\ \Phi(\I_{p_1}(V)) \ar[r]^{\chi_1(V)} &
-            \I_{\p_1'}(\Phi(V)) }
+            \I_{p_1'}(\Phi(V)) }
 \end{xy}
 $$
 %
@@ -2802,13 +2806,13 @@ We have
 \begin{align*}
   \Phi(a)\circ & \chi_1(V)
     & = \Phi(a)\circ \eta'({\bf\Phi}^2_1((\etaunshriek)^{-1}(\id_{\I_{p_1}(V)}))) \\
-    & = \eta'(\D_{\p_1'}(\Phi(a),\Phi(V))({\bf\Phi}^2_1((\etaunshriek)^{-1}(\id_{\I_{p_1}(V)}))),
+    & = \eta'(\D_{p_1'}(\Phi(a),\Phi(V))({\bf\Phi}^2_1((\etaunshriek)^{-1}(\id_{\I_{p_1}(V)}))),
 \end{align*}
 %
 where the second equality holds because of naturality of $\etaunshriek$ in the first
 argument. Then
 %
-$$\eta'(\D_{\p_1'}(\Phi(a),\Phi(V))({\bf\Phi}^2_1((\etaunshriek)^{-1}(\id_{\I_{p_1}(V)})))=\eta'({\bf\Phi}^2_1(\D_{p_1}(a,V)((\etaunshriek)^{-1}(\I_{p_1}(V))))$$
+$$\eta'(\D_{p_1'}(\Phi(a),\Phi(V))({\bf\Phi}^2_1((\etaunshriek)^{-1}(\id_{\I_{p_1}(V)})))=\eta'({\bf\Phi}^2_1(\D_{p_1}(a,V)((\etaunshriek)^{-1}(\I_{p_1}(V))))$$
 %
 by \cite[Lemma 5.4]{fromunivwithPi} and
 %
@@ -2824,13 +2828,13 @@ Lemma \ref{2015.04.06.l7}.
 
 Consider the morphisms
 %
-$$\zeta_i:\Phi(\I_{\p_i}(\U))\sr \I_{\p_i}(\U')$$
+$$\zeta_i:\Phi(\I_{p_i}(\U))\sr \I_{p_i}(\U')$$
 %
-given by $\zeta_i=\chi_i(\U)\circ \I_{\p_i}(\phi)$ and
+given by $\zeta_i=\chi_i(\U)\circ \I_{p_i}(\phi)$ and
 %
-$$\wt{\zeta}_i:\Phi(\I_{\p_i}(\wt{\U}_1))\sr \I_{\p_i}(\wt{\U}_1')$$
+$$\wt{\zeta}_i:\Phi(\I_{p_i}(\wt{\U}_1))\sr \I_{p_i}(\wt{\U}_1')$$
 %
-given by $\wt{\zeta}_i=\chi_i(\wt{\U}_1)\circ \I_{\p_i}(\wt{\phi}_1)$. Note that
+given by $\wt{\zeta}_i=\chi_i(\wt{\U}_1)\circ \I_{p_i}(\wt{\phi}_1)$. Note that
 %
 $$\zeta_i=\xi_{(\Phi,\phi,\wt{\phi}_i)},$$
 %
@@ -2860,10 +2864,10 @@ to the square
 $$
 \begin{xy}
           \xymatrix@C=4pc{
-                 \I_{\p_2'}(\wt{\U}_1')   \ar[r]^-{\I^{g'}(\wt{\U}_1')} \ar[d]_{\I_{\p_2'}(\p_2')} & 
-                 \I_{\p_1'}(\wt{\U}_1') \ar[d]^{\I_{\p_1'}(\p_2')}\\
-		\I_{\p_2'}(\U')   \ar[r]^{\I^{g'}(\U')} &
-		\I_{\p_1'}(\U')
+                 \I_{p_2'}(\wt{\U}_1')   \ar[r]^-{\I^{g'}(\wt{\U}_1')} \ar[d]_{\I_{p_2'}(p_2')} & 
+                 \I_{p_1'}(\wt{\U}_1') \ar[d]^{\I_{p_1'}(p_2')}\\
+		\I_{p_2'}(\U')   \ar[r]^{\I^{g'}(\U')} &
+		\I_{p_1'}(\U')
                 }
 \end{xy}
 $$
@@ -2877,11 +2881,11 @@ $$
 \begin{xy}
           \xymatrix@C=4pc@R=4pc{
                  \Phi(\I_{p_2}(\wt{\U}_1))  \ar[r]^-{\chi_2(\wt{\U}_1)} \ar[d]_-{\I^{g'}(\Phi(\wt{\U}_1))} & 
-                 \I_{\p_2'}(\Phi(\wt{\U}_1)) \ar[r]^-{\I_{\p_2'}(\wt{\phi}_1)} \ar[d]^-{\I^{g'}(\Phi(\wt{\U}_1))} &
-		\I_{\p_2'}(\wt{\U}_1') \ar[d]^-{ \I^{g'}(\wt{\U}_1')} \\
+                 \I_{p_2'}(\Phi(\wt{\U}_1)) \ar[r]^-{\I_{p_2'}(\wt{\phi}_1)} \ar[d]^-{\I^{g'}(\Phi(\wt{\U}_1))} &
+		\I_{p_2'}(\wt{\U}_1') \ar[d]^-{ \I^{g'}(\wt{\U}_1')} \\
 		\Phi(\I_{p_1}(\wt{\U}_1))  \ar[r]^-{\chi_1(\wt{\U}_1)} &
-		\I_{\p_1'}(\Phi(\wt{\U}_1)) \ar[r]^-{\I_{\p_1'}(\wt{\phi}_1)} &
-		\I_{\p_1'}(\wt{\U}_1')
+		\I_{p_1'}(\Phi(\wt{\U}_1)) \ar[r]^-{\I_{p_1'}(\wt{\phi}_1)} &
+		\I_{p_1'}(\wt{\U}_1')
                 }
 \end{xy}
 $$
@@ -2889,11 +2893,11 @@ $$
 $$
 \begin{xy}
           \xymatrix@C=4pc@R=4pc{ \Phi(\I_{p_2}(\U_1)) \ar[r]^-{\chi_2(\U_1)}
-            \ar[d]_-{\Phi(\I^g(\U_1))} & \I_{\p_2'}(\Phi(\U_1))
-            \ar[r]^-{\I_{\p_2'}(\wt{\phi}_1)} \ar[d]^-{\I^{g'}(\Phi(\U_1))} &
-            \I_{\p_2'}(\U_1') \ar[d]^-{\I^{g'}(\U_1')} \\ \Phi(\I_{p_1}(\U_1))
-            \ar[r]^-{\chi_1(\U_1)} & \I_{\p_1'}(\Phi(\U_1))
-            \ar[r]^-{\I_{\p_1'}(\wt{\phi}_1)} & \I_{\p_1'}(\U_1') }
+            \ar[d]_-{\Phi(\I^g(\U_1))} & \I_{p_2'}(\Phi(\U_1))
+            \ar[r]^-{\I_{p_2'}(\wt{\phi}_1)} \ar[d]^-{\I^{g'}(\Phi(\U_1))} &
+            \I_{p_2'}(\U_1') \ar[d]^-{\I^{g'}(\U_1')} \\ \Phi(\I_{p_1}(\U_1))
+            \ar[r]^-{\chi_1(\U_1)} & \I_{p_1'}(\Phi(\U_1))
+            \ar[r]^-{\I_{p_1'}(\wt{\phi}_1)} & \I_{p_1'}(\U_1') }
 \end{xy}
 $$
 %
@@ -2901,11 +2905,11 @@ $$
 \begin{xy}
           \xymatrix@C=4pc@R=4pc{ \Phi(\I_{p_2}(\wt{\U}_1))
             \ar[r]^-{\chi_2(\wt{\U}_1)} \ar[d]_-{\Phi(\I_{p_2}(p_1))} &
-            \I_{\p_2'}(\Phi(\wt{\U}_1)) \ar[r]^-{\I_{\p_2'}(\wt{\phi}_1)}
-            \ar[d]^-{\I_{\p_2'}(\Phi(p_1))} & \I_{\p_2'}(\wt{\U}_1')
-            \ar[d]^-{\I_{\p_2'}(\p_1')} \\ \Phi(\I_{p_2}(\U_1))
-            \ar[r]^-{\chi_2(\U_1)} & \I_{\p_2'}(\Phi(\U_1))
-            \ar[r]^-{\I_{\p_2'}(\wt{\phi}_1)} & \I_{\p_2'}(\U_1') }
+            \I_{p_2'}(\Phi(\wt{\U}_1)) \ar[r]^-{\I_{p_2'}(\wt{\phi}_1)}
+            \ar[d]^-{\I_{p_2'}(\Phi(p_1))} & \I_{p_2'}(\wt{\U}_1')
+            \ar[d]^-{\I_{p_2'}(p_1')} \\ \Phi(\I_{p_2}(\U_1))
+            \ar[r]^-{\chi_2(\U_1)} & \I_{p_2'}(\Phi(\U_1))
+            \ar[r]^-{\I_{p_2'}(\wt{\phi}_1)} & \I_{p_2'}(\U_1') }
 \end{xy}
 $$
 %
@@ -2913,11 +2917,11 @@ $$
 \begin{xy}
           \xymatrix@C=4pc@R=4pc{ \Phi(\I_{p_1}(\wt{\U}_1))
             \ar[r]^-{\chi_1(\wt{\U}_1)} \ar[d]_-{\Phi(\I_{p_1}(p_1))} &
-            \I_{\p_1'}(\Phi(\wt{\U}_1)) \ar[r]^-{\I_{\p_1'}(\wt{\phi}_1)}
-            \ar[d]^-{\I_{\p_1'}(\Phi(p_1))} & \I_{\p_2'}(\wt{\U}_1')
-            \ar[d]^-{\I_{\p_1'}(\p_1')} \\ \Phi(\I_{p_1}(\U_1))
-            \ar[r]^-{\chi_1(\U_1)} & \I_{\p_1'}(\Phi(\U_1))
-            \ar[r]^-{\I_{\p_1'}(\wt{\phi}_1)} & \I_{\p_1'}(\U_1') }
+            \I_{p_1'}(\Phi(\wt{\U}_1)) \ar[r]^-{\I_{p_1'}(\wt{\phi}_1)}
+            \ar[d]^-{\I_{p_1'}(\Phi(p_1))} & \I_{p_2'}(\wt{\U}_1')
+            \ar[d]^-{\I_{p_1'}(p_1')} \\ \Phi(\I_{p_1}(\U_1))
+            \ar[r]^-{\chi_1(\U_1)} & \I_{p_1'}(\Phi(\U_1))
+            \ar[r]^-{\I_{p_1'}(\wt{\phi}_1)} & \I_{p_1'}(\U_1') }
 \end{xy}
 $$
 %
@@ -2934,35 +2938,6 @@ The right hand side squares of the third and the fourth diagram commute because
 $\I_{p'_i}$ are functorial and therefore take commutative squares to commutative
 squares.
 \end{myproof}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3345,15 +3320,6 @@ $$
 %
 commutes.
 \end{definition}
-
-
-
-
-
-
-
-
-
 
 
 
