@@ -837,14 +837,12 @@ into the slice category over $\U$; we denote by
 \end{equation}
 the arrow of $\I_p(V)$.
 
-We have constructed in \cite[Construction 2.6.4]{presheavesOb} a family of
-bijections\editorfootnote{Since $\I_p(V)$ is an object over $\U$, one may infer
-  that formation of $Hom(X,\I_p(V))$ involves forgetting the structure map
-  $\I_p(V) \sr \U$.}
+We have constructed in \cite[Construction 2.6.4]{presheavesOb} (originally in \cite[Construction 3.9]{fromunivwithPi}) a family of
+bijections
 %
-$$\gls{etashriek}_{p,X,V}:Hom(X,\I_p(V))\sr \D_p(X,V)$$
+$$\gls{etashriek}_{p,X,V}:Hom(X,\I_p(V))\sr \D_p(X,V),$$
 %
-that are natural in $X$ and $V$; naturality is established in \cite[Problem 3.8]{fromunivwithPi}. We let $\etaunshriek$ denote the inverse bijections
+which are natural in $X$ and $V$.  We let $\etaunshriek$ denote the inverse bijections
 %
 $$\gls{etaunshriek}_{p,X,V}:\D_p(X,V)\sr Hom(X,\I_p(V)).$$
 For $F:X\sr \U$ and $G : (X;F) \sr V$, we will abbreviate
@@ -2663,7 +2661,11 @@ $$
 %
 are pullback squares.
 \end{enumerate}
-%
+
+We will use the notations $(X;F)_1$, $(X;F)_2$, $(X;F)'_1$, and $(X;F)'_2$ for
+the pullback objects that are part of the four universe structures under
+consideration. 
+
 Let us denote the morphisms
 %
 $$\chi_{\bf\Phi_i}(V):\Phi(\I_{p_i}(V))\sr \I_{p_i}(\Phi(V))$$
@@ -2686,30 +2688,32 @@ commute.
 \end{lemma}
 %
 \begin{myproof}
-Let $(F_1,F_2)\in \D_{p_2}(X,F)$ then
+Given $(F_1,F_2)\in \D_{p_2}(X,V)$, we see that:
 %
 \begin{align*}
-  D^{g'}(\Phi(X),\Phi(V))({\bf\Phi}_2^2(F_1,F_2))
-    & = D^{g'}(\Phi(X),\Phi(V))(\Phi(F_1)\circ \phi, \iota_2\circ \Phi(F_2)) \\
-    & = (\Phi(F_1)\circ \phi, (\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ \Phi(F_2))
+  D^{g'}(\Phi(X),&\Phi(V))({\bf\Phi}_2^2(F_1,F_2)) \\
+    & = D^{g'}(\Phi(X),\Phi(V))(\Phi(F_1)\circ \phi, \iota_2\circ \Phi(F_2)) & \by{def'n of ${\bf\Phi}_2^2$} \\
+    & = (\Phi(F_1)\circ \phi, (\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ \Phi(F_2)) & \by{def'n of $D^{g'}$ in \ref{2015.04.02.l4}}
 \end{align*}
-%
+Here (and below) $\iota_i$ is the canonical isomorphism of type $(\Phi(X) ; \Phi(F_1) \circ \phi)'_i \xrightarrow\cong \Phi((X;F_1)_i)$, for $i=1,2$,
+that results from the two objects being pullbacks of the same diagram.
+
 On the other hand
 %
 \begin{align*}
   {\bf\Phi}_1^2(D^g(X,V)(F_1,F_2)) 
-    & = {\bf\Phi}_1^2(F_1,F_1^*(g)\circ F_2) \\
-    & = (\Phi(F_1)\circ\phi,\iota_1\circ \Phi(F_1^*(g)\circ F_2))
+    & = {\bf\Phi}_1^2(F_1,F_1^*(g)\circ F_2)  & \by{def'n of $D^g$ in \ref{2015.04.02.l4}} \\
+    & = (\Phi(F_1)\circ\phi,\iota_1\circ \Phi(F_1^*(g)\circ F_2)) & \by{def'n of ${\bf\Phi}_1^2$} 
 \end{align*}
 %
-It remains to check that
+Thus it remains to check that
 %
 $$(\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ \Phi(F_2)=\iota_1\circ
-\Phi(F_1^*(g)\circ F_2)$$
+\Phi(F_1^*(g)\circ F_2).$$
 %
-For which it is sufficient to check that
+For that it is sufficient to check that
 %
-$$(\Phi(F_1)\circ \phi)^*(g')\circ \iota_2=\iota_1\circ \Phi(F_1^*(g))$$
+$$(\Phi(F_1)\circ \phi)^*(g')\circ \iota_2=\iota_1\circ \Phi(F_1^*(g)).$$
 %
 The codomain of both morphisms is $\Phi((X;F_1)_{p_2})$, and since $\Phi$ takes
 canonical squares based on $p_2$ to pullback squares it is sufficient to check
@@ -2726,13 +2730,14 @@ $$(\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ \Phi(\p_{X,F_1,2})=\iota_1\circ
 %
 For the first equation we have
 %
-$$(\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ
-\Phi(\Q_2(F_1))\circ\wt{\phi}_2=(\Phi(F_1)\circ \phi)^*(g')\circ
-\Q_2(\Phi(F_1)\circ \phi)=\Q_1(\Phi(F_1)\circ\phi)\circ g',$$
-%
-where the first equality is from the definition of $\iota$ in
-\cite[Construction 5.2]{fromunivwithPi} and the second from
-(\ref{2015.04.08.eq3}). On the other hand
+\begin{align*}
+  (\Phi(F_1)\circ \phi)^*(g')\circ & \iota_2\circ   \Phi(\Q_2(F_1))\circ\wt{\phi}_2 \\
+  &  =(\Phi(F_1)\circ \phi)^*(g')\circ \Q_2(\Phi(F_1)\circ \phi) \\
+  &  =\Q_1(\Phi(F_1)\circ\phi)\circ g',
+\end{align*}
+where the first equality follows from the definition of $\iota$ in
+\cite[Construction 5.2]{fromunivwithPi}, and the second follows from
+(\ref{2015.04.08.eq3}). On the other hand,
 %
 \begin{align*}
   \iota_1\circ \Phi(F_1^*(g))\circ \Phi(\Q_2(F_1))\circ\wt{\phi}_2
