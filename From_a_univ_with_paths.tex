@@ -223,15 +223,14 @@ the construction of the univalent model of type theory in simplicial sets.
 
 %
 
-\comment{\begin{minipage}{60mm}
-He that delivereth knowledge desireth to deliver it in such form as may be
-soonest believed and not as may be easiest examined.
+\section{Introduction}
+
+\begin{quote}
+{\sl He that delivereth knowledge desireth to deliver it in such form as may be
+soonest believed and not as may be easiest examined.}
 
 ``On the Impediments of Knowledge'', from Valerius Terminus by Francis Bacon. 
-\end{minipage}}
-
-
-\section{Introduction}
+\end{quote}
 
 The concept of a C-system in its present form was introduced in
 \cite{Csubsystems}. The type of C-systems is constructively equivalent to
@@ -777,7 +776,7 @@ such that
 
 %
 When we need to distinguish canonical squares arising from different universe structures we may
-write $(X;F)_{p}$ and $f*_p g$.  We may also write $(X;F)'$ for $(X;F)_{p'}$.
+write $(X;F)_{p}$ and $f*_p g$.  We may also write $(X;F)'$ for $(X;F)_{p'}$ and $(X;F)'_i$ for $(X;F)_{p'_i}$.
 %
 \begin{remark}\rm
 \label{2015.03.29.rm1} Note that we made no assumption about $\Q(\id_\U)$ being
@@ -2631,13 +2630,13 @@ and this data is such that:
 \begin{enumerate}
 \item the square
 %
-$$
+\begin{eq}\label{two-univ-comm}
 \begin{xy}
           \xymatrix@C=4pc{ \Phi(\wt{\U}_1) \ar[r]^-{\wt{\phi}_1}
             \ar[d]_{\Phi(g)} & \wt{\U}_1' \ar[d]^{g'}\\ \Phi(\wt{\U}_2)
             \ar[r]^{\wt{\phi}_2} & \wt{\U}_2' }
 \end{xy}
-$$
+\end{eq}
 %
 commutes,
 %
@@ -2649,13 +2648,13 @@ $$
 \begin{xy}
           \xymatrix@C=4pc{ \Phi(\wt{\U}_1) \ar[r]^-{\wt{\phi}_1}
             \ar[d]_{\Phi(p_1)} & \wt{\U}_1' \ar[d]^{p_1'}\\ \Phi(\U)
-            \ar[r]^{\phi} & \U }
+            \ar[r]^{\phi} & \U' }
 \end{xy}
 \spc\spc\spc
 \begin{xy}
           \xymatrix@C=4pc{ \Phi(\wt{\U}_2) \ar[r]^-{\wt{\phi}_2}
             \ar[d]_{\Phi(p_2)} & \wt{\U}_2' \ar[d]^{p_2'}\\ \Phi(\U)
-            \ar[r]^{\phi} & \U }
+            \ar[r]^{\phi} & \U' }
 \end{xy}
 $$
 %
@@ -2696,7 +2695,20 @@ Given $(F_1,F_2)\in \D_{p_2}(X,V)$, we see that:
     & = (\Phi(F_1)\circ \phi, (\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ \Phi(F_2)) & \by{def'n of $D^{g'}$ in \ref{2015.04.02.l4}}
 \end{align*}
 Here (and below) $\iota_i$ is the canonical isomorphism of type $(\Phi(X) ; \Phi(F_1) \circ \phi)'_i \xrightarrow\cong \Phi((X;F_1)_i)$, for $i=1,2$,
-that results from the two objects being pullbacks of the same diagram.
+that results from the two objects being pullbacks of the same diagram, as illustrated here:
+\begin{eq}
+  \label{iota-diagram}
+  \begin{xy}
+    \xymatrix@C=6pc{
+      (\Phi(X);\Phi(F_1)\circ\phi)'_i
+      \ar@/^1.5pc/[rrrd]^{\Q(\Phi(F_1)\circ\phi)}
+      \ar@/_1.5pc/[rdd]_{\p'_{i,\Phi(X),\Phi(F_1)\circ\phi}}
+      \ar[rd]^{\iota_i}_{\cong}                 \\
+      & \Phi((X;F_1)_i) \ar[r]_-{\Phi(\Q_i(F_1))} \ar[d]^{\Phi(\p_{i,X,F_1})} & \Phi(\wt\U_i) \ar[r]_{\wt\phi_i} \ar[d]^{\Phi(p_i)} & \wt\U'_i \ar[d]^{p'_i} \\
+      & \Phi(X) \ar[r]_{\Phi(F_1)} & \Phi(U) \ar[r]_{\phi} & \U'
+      }
+    \end{xy}
+\end{eq}
 
 On the other hand
 %
@@ -2715,7 +2727,7 @@ For that it is sufficient to check that
 %
 $$(\Phi(F_1)\circ \phi)^*(g')\circ \iota_2=\iota_1\circ \Phi(F_1^*(g)).$$
 %
-The codomain of both morphisms is $\Phi((X;F_1)_{p_2})$, and since $\Phi$ takes
+The codomain of both morphisms is $\Phi((X;F_1)_2)$, and since $\Phi$ takes
 canonical squares based on $p_2$ to pullback squares it is sufficient to check
 that
 %
@@ -2735,17 +2747,17 @@ For the first equation we have
   &  =(\Phi(F_1)\circ \phi)^*(g')\circ \Q_2(\Phi(F_1)\circ \phi) \\
   &  =\Q_1(\Phi(F_1)\circ\phi)\circ g',
 \end{align*}
-where the first equality follows from the definition of $\iota$ in
+where the first equality follows from the definition of $\iota_2 = \iota$ in
 \cite[Construction 5.2]{fromunivwithPi}, and the second follows from
 (\ref{2015.04.08.eq3}). On the other hand,
 %
 \begin{align*}
-  \iota_1\circ \Phi(F_1^*(g))\circ \Phi(\Q_2(F_1))\circ\wt{\phi}_2
-    & = \iota_1\circ \Phi(F_1^*(g)\circ \Q_2(F_1))\circ \wt{\phi}_2 \\
-    & = \iota_1\circ \Phi(\Q_1(F_1)\circ g)\circ \wt{\phi}_2 \\
-    & = \iota_1\circ \Phi(\Q_1(F_1))\circ \Phi(g)\circ \wt{\phi}_2 \\
-    & = \iota_1\circ \Phi(\Q_1(F_1))\circ \wt{\phi}_1\circ g' \\
-    & = \Q_1(\Phi(F_1)\circ \phi)\circ g'
+  \iota_1\circ & \Phi(F_1^*(g))\circ \Phi(\Q_2(F_1))\circ\wt{\phi}_2 \\
+    & = \iota_1\circ \Phi(F_1^*(g)\circ \Q_2(F_1))\circ \wt{\phi}_2 & \by{$\Phi$ being a functor} \\
+    & = \iota_1\circ \Phi(\Q_1(F_1)\circ g)\circ \wt{\phi}_2 & \by{\ref{2015.04.08.eq3}} \\
+    & = \iota_1\circ \Phi(\Q_1(F_1))\circ \Phi(g)\circ \wt{\phi}_2 & \by{$\Phi$ being a functor} \\
+    & = \iota_1\circ \Phi(\Q_1(F_1))\circ \wt{\phi}_1\circ g' & \by{\ref{two-univ-comm}} \\
+    & = \Q_1(\Phi(F_1)\circ \phi)\circ g' & \by{iota-diagram}
 \end{align*}
 %
 This proves the first equation. For the second equation we have:
