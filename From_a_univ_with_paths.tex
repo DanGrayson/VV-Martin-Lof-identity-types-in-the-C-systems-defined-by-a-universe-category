@@ -776,7 +776,8 @@ such that
 
 %
 When we need to distinguish canonical squares arising from different universe structures we may
-write $(X;F)_{p}$ and $f*_p g$.  We may also write $(X;F)'$ for $(X;F)_{p'}$ and $(X;F)'_i$ for $(X;F)_{p'_i}$.
+write $(X;F)_{p}$, $Q_p(F)$, and $f*_p g$.  We may also write $(X;F)'$ for $(X;F)_{p'}$ and $(X;F)'_i$ for $(X;F)_{p'_i}$,
+and similarly for $Q(F)$.
 %
 \begin{remark}\rm
 \label{2015.03.29.rm1} Note that we made no assumption about $\Q(\id_\U)$ being
@@ -2528,8 +2529,8 @@ functors between categories with two universes, which we will later apply to the
 universes $p:\wt{\U}\sr \U$ and $pE\wt{\U}:E\wt{\U}\sr \U$ in a locally cartesian
 closed category $\cal C$.
 
-Given two universes $(p,\p_{X,F},\Q(F))$ and $(p',\p_{X,F}',\Q(F)')$, where
-$p:\wt{\U}\sr \U$ and $p':\wt{\U}'\sr \U$, and the canonical squares are of the form
+Given two universes 
+$p:\wt{\U}\sr \U$ and $p':\wt{\U}'\sr \U$, with canonical squares of the form
 %
 $$
 \begin{xy}
@@ -2538,16 +2539,16 @@ $$
 \end{xy}
 \spc
 \begin{xy}
-          \xymatrix@C=4pc{ (X;F)' \ar[r]^-{\Q(F)'} \ar[d]_{p'_{X,F}} & \wt{\U}'
+          \xymatrix@C=4pc{ (X;F)' \ar[r]^-{\Q'(F)} \ar[d]_{p'_{X,F}} & \wt{\U}'
             \ar[d]^{p'}\\ X \ar[r]^{F} & \U }
 \end{xy}
 $$
 %
-and $f:\wt{\U}'\sr \wt{\U}$ over $\U$, we let $\gls{Fstarf}$ denote the unique morphism
+and given $f:\wt{\U}'\sr \wt{\U}$ over $\U$, we let $\gls{Fstarf}$ denote the unique morphism
 $(X;F)'\sr (X;F)$ such that
 %
 \begin{eq}\label{2015.04.08.eq3}
-F^*(f)\circ \Q(F)=\Q(F)'\circ f
+F^*(f)\circ \Q(F)=\Q'(F)\circ f
 \end{eq}%
 %
 \begin{eq}\label{2015.04.08.eq4}
@@ -2699,9 +2700,9 @@ that results from the two objects being pullbacks of the same diagram, as illust
 \begin{eq}
   \label{iota-diagram}
   \begin{xy}
-    \xymatrix@C=6pc{
+    \xymatrix@C=5pc{
       (\Phi(X);\Phi(F_1)\circ\phi)'_i
-      \ar@/^1.5pc/[rrrd]^{\Q(\Phi(F_1)\circ\phi)}
+      \ar@/^1.5pc/[rrrd]^{\Q'_i(\Phi(F_1)\circ\phi)}
       \ar@/_1.5pc/[rdd]_{\p'_{i,\Phi(X),\Phi(F_1)\circ\phi}}
       \ar[rd]^{\iota_i}_{\cong}                 \\
       & \Phi((X;F_1)_i) \ar[r]_-{\Phi(\Q_i(F_1))} \ar[d]^{\Phi(\p_{i,X,F_1})} & \Phi(\wt\U_i) \ar[r]_{\wt\phi_i} \ar[d]^{\Phi(p_i)} & \wt\U'_i \ar[d]^{p'_i} \\
@@ -2737,44 +2738,35 @@ $$(\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ
 %
 and
 %
-$$(\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ \Phi(\p_{X,F_1,2})=\iota_1\circ
-\Phi(F_1^*(g))\circ \Phi(\p_{X,F_1,2})$$
+$$(\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ \Phi(\p_{2,X,F_1})=\iota_1\circ
+\Phi(F_1^*(g))\circ \Phi(\p_{2,X,F_1})$$
 %
-For the first equation we have
-%
-\begin{align*}
-  (\Phi(F_1)\circ \phi)^*(g')\circ & \iota_2\circ   \Phi(\Q_2(F_1))\circ\wt{\phi}_2 \\
-  &  =(\Phi(F_1)\circ \phi)^*(g')\circ \Q_2(\Phi(F_1)\circ \phi) \\
-  &  =\Q_1(\Phi(F_1)\circ\phi)\circ g',
-\end{align*}
-where the first equality follows from the definition of $\iota_2 = \iota$ in
-\cite[Construction 5.2]{fromunivwithPi}, and the second follows from
-(\ref{2015.04.08.eq3}). On the other hand,
+
+We prove the first equation as follows.
 %
 \begin{align*}
-  \iota_1\circ & \Phi(F_1^*(g))\circ \Phi(\Q_2(F_1))\circ\wt{\phi}_2 \\
-    & = \iota_1\circ \Phi(F_1^*(g)\circ \Q_2(F_1))\circ \wt{\phi}_2 & \by{$\Phi$ being a functor} \\
-    & = \iota_1\circ \Phi(\Q_1(F_1)\circ g)\circ \wt{\phi}_2 & \by{\ref{2015.04.08.eq3}} \\
-    & = \iota_1\circ \Phi(\Q_1(F_1))\circ \Phi(g)\circ \wt{\phi}_2 & \by{$\Phi$ being a functor} \\
-    & = \iota_1\circ \Phi(\Q_1(F_1))\circ \wt{\phi}_1\circ g' & \by{\ref{two-univ-comm}} \\
-    & = \Q_1(\Phi(F_1)\circ \phi)\circ g' & \by{iota-diagram}
+  (\Phi(F_1)\circ \phi&)^*(g')\circ \iota_2\circ   \Phi(\Q_2(F_1))\circ\wt{\phi}_2 \\
+  & =(\Phi(F_1)\circ \phi)^*(g')\circ \Q'_2(\Phi(F_1)\circ \phi) & \by{commutativity of \ref{iota-diagram}} \\
+  & =\Q'_1(\Phi(F_1)\circ\phi)\circ g' & \by{\ref{2015.04.08.eq3}} \\
+  & = \iota_1\circ \Phi(\Q_1(F_1))\circ \wt{\phi}_1\circ g' & \by{commutativity of \ref{iota-diagram}}  \\
+  & = \iota_1\circ \Phi(\Q_1(F_1))\circ \Phi(g)\circ \wt{\phi}_2 & \by{\ref{two-univ-comm}} \\
+  & = \iota_1\circ \Phi(\Q_1(F_1)\circ g)\circ \wt{\phi}_2  & \by{$\Phi$ being a functor} \\
+  & = \iota_1\circ \Phi(F_1^*(g)\circ \Q_2(F_1))\circ \wt{\phi}_2 & \by{\ref{2015.04.08.eq3}} \\
+  & = \iota_1\circ \Phi(F_1^*(g))\circ \Phi(\Q_2(F_1))\circ\wt{\phi}_2 & \by{$\Phi$ being a functor}
 \end{align*}
+
+The second equation is proved as follows
 %
-This proves the first equation. For the second equation we have:
-%
-$$(\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ
-\Phi(\p_{X,F_1,2})=(\Phi(F_1)\circ \phi)^*(g')\circ
-\p_{\Phi(X),\Phi(F_1)\circ\phi,2}=\p_{\Phi(X),\Phi(F_1)\circ\phi,1}$$
-%
-and
-%
-$$\iota_1\circ \Phi(F_1^*(g))\circ \Phi(\p_{X,F_1,2})=\iota_1\circ
-\Phi(F_1^*(g)\circ \p_{X,F_1,2})=\iota_1\circ
-\Phi(\p_{X,F_1,1})=\p_{\Phi(X),\Phi(F_1)\circ \phi,1}$$
-%
-This finishes the proof of the lemma.
+\begin{align*}
+  (\Phi(F_1)\circ \phi&)^*(g')\circ \iota_2\circ \Phi(\p_{2,X,F_1}) \\
+  & = (\Phi(F_1)\circ \phi)^*(g')\circ \p'_{2,\Phi(X),\Phi(F_1)\circ\phi} & \by{commutativity of \ref{iota-diagram}} \\
+  & = \p'_{1,\Phi(X),\Phi(F_1)\circ\phi} & \by{\ref{2015.04.08.eq4}} \\
+  & = \iota_1\circ \Phi(\p_{1,X,F_1}) & \by{commutativity of \ref{iota-diagram}} \\
+  & = \iota_1\circ \Phi(F_1^*(g)\circ \p_{2,X,F_1}) & \by{\ref{2015.04.08.eq4}} \\
+  & = \iota_1\circ \Phi(F_1^*(g))\circ \Phi(\p_{2,X,F_1}) & \by{$\Phi$ being a functor}
+\end{align*}
 \end{myproof}
-%
+
 \begin{lemma}
 \label{2015.04.06.l7} Under the previous assumptions and notation the squares
 %
