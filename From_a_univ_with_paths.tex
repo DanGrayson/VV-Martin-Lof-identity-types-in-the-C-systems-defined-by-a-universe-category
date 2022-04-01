@@ -2784,14 +2784,11 @@ commute.
 \end{lemma}
 %
 \begin{myproof}
-Let $X=\I_{p_2}(V)$. We have
-%
-$$\chi_2(V)\circ {\I^{g'}(\Phi(V))} = \etaunshriek_{p'_2,\Phi(X),\Phi(V)}({\bf\Phi}_2^2(\etashriek_{p_2,X,V}(\id_{X}))) \circ \I^{g'}(\Phi(V))$$
-%
-by definition of $\chi_2(V)$ in \cite[Construction 5.6]{fromunivwithPi}. Then we have:
+Let $X=\I_{p_2}(V)$.  Then we have:
 %
 \begin{align*}
-  \etaunshriek_{p'_2,\Phi(X),\Phi(V)}&({\bf\Phi}_2^2(\etashriek_{p_2,X,V}(\id_X))) \circ \I^{g'}(\Phi(V)) \\
+  \chi_2(V) \circ \I^{g'}&(\Phi(V)) \\
+  & = \etaunshriek_{p'_2,\Phi(X),\Phi(V)}({\bf\Phi}_2^2(\etashriek_{p_2,X,V}(\id_X))) \circ \I^{g'}(\Phi(V)) & \by{definition of $\chi_2(V)$} \\
   & = \etaunshriek_{p'_1,\Phi(X),\Phi(V)}(D^{g'}(\Phi(X),\Phi(V))({\bf\Phi}_2^2(\etashriek_{p_2,X,V}(\id_X)))) & \by{\ref{2015.04.02.l4}} \\
   & = \etaunshriek_{p'_1,\Phi(X),\Phi(V)}({\bf\Phi}_1^2(D^g(X,V)(\etashriek_{p_2,X,V}(\id_X)))) & \by{\ref{2015.04.08.l1}} \\
   & = \etaunshriek_{p'_1,\Phi(X),\Phi(V)}({\bf\Phi}_1^2(\etashriek_{p_1,X,V}(\id_X \circ \I^g(V)))  & \by{\ref{2015.04.02.l4}} \\
@@ -2800,36 +2797,26 @@ by definition of $\chi_2(V)$ in \cite[Construction 5.6]{fromunivwithPi}. Then we
 
 It remains to show that
 %
-$$\etaunshriek_{p'_1,\Phi(X),\Phi(V)}({\bf\Phi}_1^2(\etashriek_{p_1,X,V}(\I^g(V)))=\Phi(\I^g(V))\circ \chi_1(V)$$
+$$\Phi(\I^g(V))\circ \chi_1(V) = \etaunshriek_{p'_1,\Phi(X),\Phi(V)}({\bf\Phi}_1^2(\etashriek_{p_1,X,V}(\I^g(V)))$$
 %
 Let $a$ be any element of $Hom(\I_{p_2}(V),\I_{p_1}(V))$.  It will suffice to show that
 %
-$$\etaunshriek_{p'_1,\Phi(X),\Phi(V)}({\bf\Phi}_1^2(\etashriek_{p_1,X,V}(a))=\Phi(a)\circ \chi_1(V).$$
+$$\Phi(a)\circ \chi_1(V) = \etaunshriek_{p'_1,\Phi(X),\Phi(V)}({\bf\Phi}_1^2(\etashriek_{p_1,X,V}(a)).$$
 %
 We have
 %
 \begin{align*}
-  \Phi(a)\circ & \chi_1(V)
-    & = \Phi(a)\circ \eta'({\bf\Phi}^2_1((\etaunshriek)^{-1}(\id_{\I_{p_1}(V)}))) \\
-    & = \eta'(\D_{p_1'}(\Phi(a),\Phi(V))({\bf\Phi}^2_1((\etaunshriek)^{-1}(\id_{\I_{p_1}(V)}))),
+  \Phi&(a)\circ \chi_1(V) \\
+    & = \Phi(a) \circ \etaunshriek_{p'_1,\Phi(\I_{p_1}(V)),\Phi(V)}({\bf\Phi}^2_1(\etashriek_{p_1,\I_{p_1}(V),V}(\id_{\I_{p_1}(V)})))              & \by{def'n of $\chi_1(V)$} \\
+    & = \etaunshriek_{p'_1,\Phi(\I_{p_2}(V)),\Phi(V)}(\D_{p'_1}(\Phi(a),\Phi(V))({\bf\Phi}^2_1(\etashriek_{p_1,\I_{p_1}(V),V}(\id_{\I_{p_1}(V)}))) & \by{naturality of $\etaunshriek$}  \\
+    & = \etaunshriek_{p'_1,\Phi(\I_{p_2}(V)),\Phi(V)}({\bf\Phi}^2_1(\D_{p_1}(a,V)(\etashriek_{p_1,\I_{p_1}(V),V}(\id_{\I_{p_1}(V)})))              & \by{\cite[Lemma 5.3]{fromunivwithPi}} \\
+    & = \etaunshriek_{p'_1,\Phi(\I_{p_2}(V)),\Phi(V)}({\bf\Phi}^2_1(\etashriek_{p_1,\I_{p_2}(V),V}(a \circ \id_{\I_{p_1}(V)}))                     & \by{naturality of $\etaunshriek$} \\
+    & = \etaunshriek_{p'_1,\Phi(\I_{p_2}(V)),\Phi(V)}({\bf\Phi}^2_1(\etashriek_{p_1,\I_{p_2}(V),V}(a))                                             & \\
+    & = \etaunshriek_{p'_1,\Phi(X),\Phi(V)}({\bf\Phi}^2_1(\etashriek_{p_1,X,V}(a))                                             & 
 \end{align*}
 %
-where the second equality holds because of naturality of $\etaunshriek$ in the first
-argument. Then
-%
-$$\eta'(\D_{p_1'}(\Phi(a),\Phi(V))({\bf\Phi}^2_1((\etaunshriek)^{-1}(\id_{\I_{p_1}(V)})))=\eta'({\bf\Phi}^2_1(\D_{p_1}(a,V)((\etaunshriek)^{-1}(\I_{p_1}(V))))$$
-%
-by \cite[Lemma 5.4]{fromunivwithPi} and
-%
-$$\eta'({\bf\Phi}^2_1(\D_{p_1}(a,V)((\etaunshriek)^{-1}(\I_{p_1}(V))))=\eta'({\bf\Phi}^2_1((\etaunshriek)^{-1}(a\circ
-\id_{p_1}(V))))=\eta'({\bf\Phi}_1^2((\etaunshriek)^{-1}(a)))$$
-%
-again by naturality of $\etaunshriek$ in the first argument. This finishes the proof of
-Lemma \ref{2015.04.06.l7}.
+This finishes the proof of Lemma \ref{2015.04.06.l7}.
 \end{myproof}
-
-
-
 
 Consider the morphisms
 %
