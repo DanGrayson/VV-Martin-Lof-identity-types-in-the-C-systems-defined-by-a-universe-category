@@ -116,6 +116,7 @@
 \newoperator{IdEq}{\Id_{Eq}}
 \newoperator{Id}{\Id}
 \newoperator{IdGamma}{\Id_\Gamma}
+\newoperator{iotaPhiXF}{\iota_{\Phi,X,F}}
 \newoperator{Ip}{\I_p}
 \newoperator{IhV}{\I^h(V)}
 \newoperator{int}{int}
@@ -154,6 +155,7 @@
 \newoperator{multisemicolon}{(X;F_1,\dots,F_n)}
 \newoperator{starfg}{f*g}
 \newoperator{Phi2}{{\bf\Phi}^2}
+\newoperator{chiPhiV}{\chi_{\bf\Phi}(V)}
 
 %% \newoperator{}{\}
 
@@ -2520,9 +2522,6 @@ and $\refl_{\Omega}$.
 \subsection{A theorem about functors between categories with two universes}
 \label{twouniv}
 
-We will use the notion of \emph{functor of universe categories}, defined in \cite[4.1]{Cfromauniverse}
-and in \cite[\S 5]{fromunivwithPi}.
-
 Before we can formulate the definition of what it means for a universe category
 functor to be compatible with J-structures we need some general results about
 functors between categories with two universes, which we will later apply to the
@@ -2557,7 +2556,7 @@ F^*(f)\circ \p_{X,F}=\p_{X,F}'
 %
 Note that $F^*(f)$ depends on the universe structures on $p$ and $p'$. Even
 when two universe structures give the same choices of the objects $(X;F)$ and
-$(X;F)'$ the difference in the choice of some of the morphisms, e.g., $\Q(F)$
+$(X;F)'$, the difference in the choice of some of the morphisms, e.g., $\Q(F)$
 will affect morphisms $F^*(f)$. We will need the following lemma about these
 morphisms.
 
@@ -2600,21 +2599,52 @@ which easily follows from the defining equations for $\Q(-,-)$ and $(-)^*$.
 
 Let $({\C},p,pt)$, $({\C}',p',pt')$ be two universe categories
 such that $\C$ and $\C'$ are equipped with locally cartesian
-closed structures. In \cite[Construction 5.6]{fromunivwithPi} we have defined,
-for any universe category functor
+closed structures.
+Consider now a \emph{functor of universe categories} $${\bf\Phi}=(\Phi,\phi,\wt{\phi}):({\C},p,pt)\sr ({\mathcal C}',p',pt').$$
+The notion was defined in \cite[4.1]{Cfromauniverse} and in \cite[\S 5]{fromunivwithPi}.  It means that $\Phi : \C \to \C'$ is a functor,
+$\phi : \Phi(\U) \to \U'$ and $\wt\phi : \Phi(\wt\U) \to \wt\U'$ are morphisms,
+that $\Phi$ sends the chosen final object to a final object,
+that $\Phi$ takes canonical squares of $p$ to pullback squares, and that the square
 %
-$${\bf\Phi}=(\Phi,\phi,\wt{\phi}):({\C},p,pt)\sr ({\mathcal
-  C}',p',pt')$$
+$$
+\begin{xy}
+  \xymatrix@C=4pc{
+    \Phi(\wt{\U}) \ar[r]^-{\wt{\phi}} \ar[d]_{\Phi(p)}     & \wt{\U}' \ar[d]^{p'} \\
+    \Phi(\U) \ar[r]^{\phi}                                 & \U' }
+\end{xy}
+$$
 %
-and any $V\in {\C}$, a morphism
+is a pullback square.
 %
-$$\chi_{\bf\Phi}(V):\Phi(\I_p(V))\sr \I_{p'}(\Phi(V))$$
+In \cite[Construction 5.2]{fromunivwithPi} we have constructed, for any map $F : X \to V$ in $\C$, a canonical isomorphism 
+$$\iota = \gls{iotaPhiXF} : (\Phi(X) ; \Phi(F) \circ \phi)' \xrightarrow\cong \Phi((X;F)),$$
+which results from the two objects involved being pullbacks of the same diagram, as illustrated here:
+\begin{eq}
+  \label{iota-diagram}
+  \begin{xy}
+    \xymatrix@C=5pc{
+      (\Phi(X);\Phi(F)\circ\phi)'
+      \ar@/^1.5pc/[rrrd]^{\Q'(\Phi(F)\circ\phi)}
+      \ar@/_1.5pc/[rdd]_{\p'_{\Phi(X),\Phi(F)\circ\phi}}
+      \ar[rd]^{\iota}_{\cong}                 \\
+      & \Phi((X;F)) \ar[r]_-{\Phi(\Q(F))} \ar[d]^{\Phi(\p_{X,F})} & \Phi(\wt\U) \ar[r]_{\wt\phi} \ar[d]^{\Phi(p)} & \wt\U' \ar[d]^{p'} \\
+      & \Phi(X) \ar[r]_{\Phi(F)} & \Phi(U) \ar[r]_{\phi} & \U'
+      }
+    \end{xy}
+\end{eq}
 %
+In \cite[Construction 5.2]{fromunivwithPi} we have defined, for any $X, V\in {\C}$, a map
+$$\gls{Phi2} : \D_{p}(X,V) \sr \D_p(\Phi(X),\Phi(V)),$$
+by setting
+$${\bf\Phi}^2(F,G) := (\Phi(F) \circ \phi, \iota_{{\bf\Phi},X,F} \circ \Phi(G)).$$
+In \cite[Construction 5.6]{fromunivwithPi} we have also defined
+a morphism
+$$\gls{chiPhiV} : \Phi(\I_p(V))\sr \I_{p'}(\Phi(V)),$$
+by setting
+$$\chi_{\bf\Phi}(V) := \etaunshriek_{p',\Phi(\I_p(V)),\Phi(V)} \big(  {\bf\Phi}^2  \big( \etashriek_{p,\I_p(V),V} ( 1_{\I_p(V)} ) \big)\big).$$
+These constructions will be used later.
 
-Moreover, in \cite[Construction 5.2]{fromunivwithPi} we have defined a map
-$\gls{Phi2} : \D_{p}(X,V) \sr \D_p(\Phi(X),\Phi(V))$, which we will use later.
-
-We now need to consider the case when we have the following collection of data:
+We now need to consider the situation where we have the following collection of data:
 %
 \begin{enumerate}
 \item two universes $p_1$, $p_2$ in $\C$ with the common codomain $\U$
@@ -2639,27 +2669,10 @@ and this data is such that:
 \end{xy}
 \end{eq}
 %
-commutes,
+commutes, and
 %
-\item the triples ${\bf\Phi}_i:=(\Phi,\phi,\wt{\phi}_i)$, $i=1,2$ are universe
-  category functors, in particular, $\Phi$ takes canonical squares of $p_1$ and $p_2$ to
-  pullback squares and the squares
-%
-$$
-\begin{xy}
-          \xymatrix@C=4pc{ \Phi(\wt{\U}_1) \ar[r]^-{\wt{\phi}_1}
-            \ar[d]_{\Phi(p_1)} & \wt{\U}_1' \ar[d]^{p_1'}\\ \Phi(\U)
-            \ar[r]^{\phi} & \U' }
-\end{xy}
-\spc\spc\spc
-\begin{xy}
-          \xymatrix@C=4pc{ \Phi(\wt{\U}_2) \ar[r]^-{\wt{\phi}_2}
-            \ar[d]_{\Phi(p_2)} & \wt{\U}_2' \ar[d]^{p_2'}\\ \Phi(\U)
-            \ar[r]^{\phi} & \U' }
-\end{xy}
-$$
-%
-are pullback squares.
+\item the triples ${\bf\Phi}_i:=(\Phi,\phi,\wt{\phi}_i)$, for $i=1,2$, are universe
+  category functors.
 \end{enumerate}
 
 We will use the notations $(X;F)_1$, $(X;F)_2$, $(X;F)'_1$, and $(X;F)'_2$ for
@@ -2688,6 +2701,7 @@ commute.
 \end{lemma}
 %
 \begin{myproof}
+We will use $\iota_i$ as an abbreviation for an isomorphism $\iota$ derived from ${\bf\Phi}_i$.
 Given $(F_1,F_2)\in \D_{p_2}(X,V)$, we see that:
 %
 \begin{align*}
@@ -2695,21 +2709,6 @@ Given $(F_1,F_2)\in \D_{p_2}(X,V)$, we see that:
     & = D^{g'}(\Phi(X),\Phi(V))(\Phi(F_1)\circ \phi, \iota_2\circ \Phi(F_2)) & \by{def'n of ${\bf\Phi}_2^2$} \\
     & = (\Phi(F_1)\circ \phi, (\Phi(F_1)\circ \phi)^*(g')\circ \iota_2\circ \Phi(F_2)) & \by{def'n of $D^{g'}$ in \ref{2015.04.02.l4}}
 \end{align*}
-Here (and below) $\iota_i$ is the canonical isomorphism of type $(\Phi(X) ; \Phi(F_1) \circ \phi)'_i \xrightarrow\cong \Phi((X;F_1)_i)$, for $i=1,2$,
-that results from the two objects being pullbacks of the same diagram, as illustrated here:
-\begin{eq}
-  \label{iota-diagram}
-  \begin{xy}
-    \xymatrix@C=5pc{
-      (\Phi(X);\Phi(F_1)\circ\phi)'_i
-      \ar@/^1.5pc/[rrrd]^{\Q'_i(\Phi(F_1)\circ\phi)}
-      \ar@/_1.5pc/[rdd]_{\p'_{i,\Phi(X),\Phi(F_1)\circ\phi}}
-      \ar[rd]^{\iota_i}_{\cong}                 \\
-      & \Phi((X;F_1)_i) \ar[r]_-{\Phi(\Q_i(F_1))} \ar[d]^{\Phi(\p_{i,X,F_1})} & \Phi(\wt\U_i) \ar[r]_{\wt\phi_i} \ar[d]^{\Phi(p_i)} & \wt\U'_i \ar[d]^{p'_i} \\
-      & \Phi(X) \ar[r]_{\Phi(F_1)} & \Phi(U) \ar[r]_{\phi} & \U'
-      }
-    \end{xy}
-\end{eq}
 
 On the other hand
 %
@@ -2765,6 +2764,8 @@ The second equation is proved as follows.
   & = \iota_1\circ \Phi(F_1^*(g)\circ \p_{2,X,F_1}) & \by{\ref{2015.04.08.eq4}} \\
   & = \iota_1\circ \Phi(F_1^*(g))\circ \Phi(\p_{2,X,F_1}) & \by{functoriality of $\Phi$}
 \end{align*}
+
+This finishes the proof of Lemma \ref{2015.04.08.l1}.
 \end{myproof}
 
 \begin{lemma}
@@ -2783,32 +2784,27 @@ commute.
 \end{lemma}
 %
 \begin{myproof}
-Let $X=\I_{p_2}(V)$. We have\editorfootnote{$\eta'$ below is undefined}
+Let $X=\I_{p_2}(V)$. We have
 %
-$$\chi_2(V)\circ {\I^{g'}(\Phi(V))}=\eta'({\bf\Phi}_2^2((\etaunshriek)^{-1}(\id_{X})))\circ
-\I^{g'}(\Phi(V))$$
+$$\chi_2(V)\circ {\I^{g'}(\Phi(V))} = \etaunshriek_{p'_2,\Phi(X),\Phi(V)}({\bf\Phi}_2^2(\etashriek_{p_2,X,V}(\id_{X}))) \circ \I^{g'}(\Phi(V))$$
 %
-by definition of $\chi$ in \cite[Construction 5.6]{fromunivwithPi}. Then by
-Lemma \ref{2015.04.02.l4} and Lemma \ref{2015.04.08.l1} we have:
+by definition of $\chi_2(V)$ in \cite[Construction 5.6]{fromunivwithPi}. Then we have:
 %
 \begin{align*}
-  \eta'({\bf\Phi}_2^2&((\etaunshriek)^{-1}(\id_{X})))\circ \I^{g'}(\Phi(V)) \\
-    & = \etaunshriek(D^{g'}(\Phi(X),\Phi(V))({\bf\Phi}_2^2((\etaunshriek)^{-1}(\id_X)))) \\
-    & = \etaunshriek({\bf\Phi}_1^2(D^g(X,V)((\etaunshriek)^{-1}(\id_X))))
+  \etaunshriek_{p'_2,\Phi(X),\Phi(V)}&({\bf\Phi}_2^2(\etashriek_{p_2,X,V}(\id_X))) \circ \I^{g'}(\Phi(V)) \\
+  & = \etaunshriek_{p'_1,\Phi(X),\Phi(V)}(D^{g'}(\Phi(X),\Phi(V))({\bf\Phi}_2^2(\etashriek_{p_2,X,V}(\id_X)))) & \by{\ref{2015.04.02.l4}} \\
+  & = \etaunshriek_{p'_1,\Phi(X),\Phi(V)}({\bf\Phi}_1^2(D^g(X,V)(\etashriek_{p_2,X,V}(\id_X)))) & \by{\ref{2015.04.08.l1}} \\
+  & = \etaunshriek_{p'_1,\Phi(X),\Phi(V)}({\bf\Phi}_1^2(\etashriek_{p_1,X,V}(\id_X \circ \I^g(V)))  & \by{\ref{2015.04.02.l4}} \\
+  & = \etaunshriek_{p'_1,\Phi(X),\Phi(V)}({\bf\Phi}_1^2(\etashriek_{p_1,X,V}(\I^g(V)))
 \end{align*}
-%
-Then, again by Lemma \ref{2015.04.02.l4}, we have
-%
-$$\etaunshriek({\bf\Phi}_1^2(D^g(X,V)((\etaunshriek)^{-1}(\id_X))))=\etaunshriek({\bf\Phi}_1^2((\etaunshriek)^{-1}(\id_X\circ
-\I^g(V)))=\etaunshriek({\bf\Phi}_1^2((\etaunshriek)^{-1}(\I^g(V))))$$
-%
+
 It remains to show that
 %
-$$\etaunshriek({\bf\Phi}_1^2((\etaunshriek)^{-1}(\I^g(V))))=\Phi(\I^g(V))\circ \chi_1(V)$$
+$$\etaunshriek_{p'_1,\Phi(X),\Phi(V)}({\bf\Phi}_1^2(\etashriek_{p_1,X,V}(\I^g(V)))=\Phi(\I^g(V))\circ \chi_1(V)$$
 %
-Let $a$ be any element of $Hom(\I_{p_2}(V),\I_{p_1}(V))$. Let us show that
+Let $a$ be any element of $Hom(\I_{p_2}(V),\I_{p_1}(V))$.  It will suffice to show that
 %
-$$\etaunshriek({\bf\Phi}_1^2((\etaunshriek)^{-1}(a)))=\Phi(a)\circ \chi_1(V)$$
+$$\etaunshriek_{p'_1,\Phi(X),\Phi(V)}({\bf\Phi}_1^2(\etashriek_{p_1,X,V}(a))=\Phi(a)\circ \chi_1(V).$$
 %
 We have
 %
