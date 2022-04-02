@@ -154,6 +154,7 @@
 \newoperator{utilde1Gamma}{\wt u_{1,\Gamma}}
 \newoperator{multisemicolon}{(X;F_1,\dots,F_n)}
 \newoperator{starfg}{f*g}
+\newoperator{PhiXF}{\Phi_{X,F}}
 \newoperator{Phi2}{{\bf\Phi}^2}
 \newoperator{chiPhiV}{\chi_{\bf\Phi}(V)}
 
@@ -2938,34 +2939,22 @@ squares.
 
 Let us define now conditions on functors of universe categories that reflect
 the idea of compatibility with the J0- J1- and J2-structures on the
-universes. Recall that for universe categories $({\C},p,pt)$,
-$({\C}',p',pt')$ a functor of universe categories is a triple
-$(\Phi,\phi,\wt{\phi})$, where $\Phi:{\C}\sr {\C}'$ is a functor
-that takes the canonical squares to pullback squares and $pt$ to a final object,
-and $\phi:\Phi(\U)\sr \U'$, $\wt{\phi}:\Phi(\wt{\U})\sr \wt{\U}'$ are morphisms
-such that the square
-%
-\begin{eq}\label{2015.04.06.eq10}
-\begin{xy}
-          \xymatrix@C=3pc{ \Phi(\wt{\U}) \ar[r]^-{\wt{\phi}} \ar[d]_{\Phi(p)} &
-            \wt{\U}' \ar[d]^{p'}\\ \Phi(\U) \ar[r]^{\phi} & \U }
-\end{xy}
-\end{eq}%
-%
-is a pullback square. For any functor of universe categories and $X\in{\mathcal
-  C}$, $F:X\sr \U$ the morphism
+universes. 
+For any functor ${\bf\Phi} = (\Phi,\phi,\wt{\phi}) : ({\C},p,pt) \to ({\C}',p',pt') $ of universe categories (the notion
+was recalled in the previous section), for any $X\in \C$, and for any $F:X\sr \U$, the morphism
 %
 $$\Phi(\p_{X,F})*(\Phi(\Q(F))\circ\wt{\phi}):\Phi((X;F))\sr
 (\Phi(X);\Phi(F)\circ\phi)$$
 %
-is an isomorphism, and it will be denoted by $\Phi_{X,F}$. Let $\Phi\wt{\U}p$ be the
-composition
+is an isomorphism, and it will be denoted by $\gls{PhiXF}$.
+(This isomorphism appeared above, as the inverse $\Phi_{X,F} = \iota_{{\bf\Phi},X,F}^{-1}.)$
+Let $\Phi\wt{\U}p$ be the composition
 %
 $$\Phi((\wt{\U};p)) \stackrel{\Phi_{\wt{\U},p}}{\lr} (\Phi(\wt{\U});\Phi(p)\circ
 \phi)=(\Phi(\wt{\U});\wt{\phi}\circ p')\stackrel{\Q'(\wt{\phi},p')}{\lr}
 (\wt{\U}';p')$$
 %
-We also have another description of this morphism given by the following lemma.
+We have another description of this morphism given by the following lemma.
 %
 \begin{lemma}
 \label{2015.04.10.l5} One has:
@@ -2985,7 +2974,7 @@ where the second equality is by definition of $\Q'(-,-)$ and the third equality
 is by definition of $\Phi_{\wt{\U},p}$. Then
 %
 \begin{align*}
-  \Phi\wt{\U}p\circ & \Q'(p')
+  \Phi\wt{\U}p\circ \Q'(p')
     & = \Phi_{\wt{\U},p}\circ \Q'(\wt{\phi},p')\circ \Q'(p') \\
     & = \Phi_{\wt{\U},p}\circ \Q(\wt{\phi}\circ p') \\
     & = \Phi_{\wt{\U},p}\circ \Q(\Phi(p)\circ \phi) \\
@@ -3075,12 +3064,13 @@ commutes.
 \end{definition}
 %
 Let $Eq$, $Eq'$ be as above. Let $(\Phi,\phi,\wt{\phi})$ be a universe functor
-compatible with $Eq$, and $Eq'$. Define a morphism
+compatible with $Eq$ and $Eq'$. Define a morphism
 %
 $$\wt{\phi}_{E}:\Phi(E\wt{\U})\sr E\wt{\U}'=((\wt{\U}';p'),Eq')$$
 %
-as $(\Phi(\p_{(\wt{\U};p),Eq})\circ \Phi\wt{\U}p)*(\Phi(\Q(Eq))\circ \wt{\phi})$.
-%
+as
+$$\wt{\phi}_{E} := (\Phi(\p_{(\wt{\U};p),Eq})\circ \Phi\wt{\U}p)*(\Phi(\Q(Eq))\circ \wt{\phi}).$$
+
 \begin{lemma}
 \label{2015.04.06.l4} Let $Eq$, $Eq'$ be as above. Let $(\Phi,\phi,\wt{\phi})$
 be a universe functor compatible with $Eq$, and $Eq'$. Then the square
@@ -3326,7 +3316,7 @@ commutes.
 \label{2015.04.06.def1} Let $H:\CC\sr \CC'$ be a homomorphism of C-systems.
 %
 \begin{enumerate}
-\item Let $\Id$, $\Id'$ are J0-structures on $\CC$ and $\CC'$ respectively.  Then
+\item Let $\Id$ and $\Id'$ be J0-structures on $\CC$ and $\CC'$ respectively.  Then
   $H$ is called a homomorphism of C-systems with J0-structures $(\CC,\Id)\sr
   (\CC,\Id')$ if for each $\Gamma\in Ob(\CC)$ and $o,o'\in\Obwt_1(\Gamma)$ such
   that $\partial(o)=\partial(o')$, one has
@@ -3512,7 +3502,7 @@ $$\psi_{\Gamma}\circ\Phi(\wt{u}_1(o)*\wt{u}_1(o'))\circ \Phi\wt{\U}p\circ
 Eq'=\psi_{\Gamma}\circ((\Phi(\wt{u}_1(o))\circ\wt{\phi})*(\Phi(\wt{u}_1(o'))\circ\wt{\phi}))\circ
 Eq'$$
 %
-and \cite[Lemma 6.1(2)]{fromunivwithPi}
+and by \cite[Lemma 6.1(2)]{fromunivwithPi} we have
 %
 \begin{align*}
   \psi_{\Gamma}\circ((\Phi&(\wt{u}_1(o))\circ\wt{\phi})*(\Phi(\wt{u}_1(o'))\circ\wt{\phi}))\circ Eq' \\
