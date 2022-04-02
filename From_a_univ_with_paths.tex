@@ -156,7 +156,10 @@
 \newoperator{starfg}{f*g}
 \newoperator{PhiXF}{\Phi_{X,F}}
 \newoperator{Phi2}{{\bf\Phi}^2}
+\newoperator{PhiwtUp}{\Phi\wt{\U}p}
 \newoperator{chiPhiV}{\chi_{\bf\Phi}(V)}
+\newoperator{zetai}{\zeta_i}
+\newoperator{wtzetai}{\wt{\zeta}_i}
 
 %% \newoperator{}{\}
 
@@ -2654,7 +2657,8 @@ We now need to consider the situation where we have the following collection of 
   $\U'$ and a morphism $g':\wt{\U}_1'\sr \wt{\U}_2'$ over $\U'$,
 \item a functor $\Phi:{\C}\sr {\C}'$,
 \item a morphism $\phi:\Phi(\U)\sr \U'$,
-\item two morphisms $\wt{\phi}_i:\Phi(\wt{\U}_i)\sr \wt{\U}_i'$, $i=1,2$
+\item two morphisms $\wt{\phi}_i:\Phi(\wt{\U}_i)\sr \wt{\U}_i'$, $i=1,2$, and
+\item final objects $pt$ of $\C$ and $pt'$ of $\C'$,
 \end{enumerate}
 %
 and this data is such that:
@@ -2673,7 +2677,7 @@ and this data is such that:
 commutes, and
 %
 \item the triples ${\bf\Phi}_i:=(\Phi,\phi,\wt{\phi}_i)$, for $i=1,2$, are universe
-  category functors from $(\C,p_i)$ to $(\C',p'_i)$.
+  category functors from $(\C,p_i,pt)$ to $(\C',p'_i,pt')$.
 \end{enumerate}
 
 We will use the notations $(X;F)_1$, $(X;F)_2$, $(X;F)'_1$, and $(X;F)'_2$ for
@@ -2821,11 +2825,11 @@ This finishes the proof of Lemma \ref{2015.04.06.l7}.
 
 Consider the morphisms
 %
-$$\zeta_i:\Phi(\I_{p_i}(\U))\sr \I_{p'_i}(\U')$$
+$$\gls{zetai}:\Phi(\I_{p_i}(\U))\sr \I_{p'_i}(\U')$$
 %
 given by $\zeta_i=\chi_i(\U)\circ \I_{p'_i}(\phi)$ and
 %
-$$\wt{\zeta}_i:\Phi(\I_{p_i}(\wt{\U}_1))\sr \I_{p'_i}(\wt\U'_1)$$
+$$\gls{wtzetai}:\Phi(\I_{p_i}(\wt{\U}_1))\sr \I_{p'_i}(\wt\U'_1)$$
 %
 given by $\wt{\zeta}_i=\chi_i(\wt{\U}_1)\circ \I_{p'_i}(\wt\phi_1)$. Note that
 $\zeta_i=\xi_{(\Phi,\phi,\wt{\phi}_i)}$ and $\wt{\zeta}_1=\wt\xi_{(\Phi,\phi,\wt{\phi}_1)}$,
@@ -2940,11 +2944,11 @@ For any functor ${\bf\Phi} = (\Phi,\phi,\wt{\phi}) : ({\C},p,pt) \to ({\C}',p',p
 was recalled in the previous section), for any $X\in \C$, and for any $F:X\sr \U$, the morphism
 %
 $$\Phi(\p_{X,F})*(\Phi(\Q(F))\circ\wt{\phi}):\Phi((X;F))\sr
-(\Phi(X);\Phi(F)\circ\phi)$$
+(\Phi(X);\Phi(F)\circ\phi)'$$
 %
 is an isomorphism, and it will be denoted by $\gls{PhiXF}$.
-(This isomorphism appeared above, as the inverse $\Phi_{X,F} = \iota_{{\bf\Phi},X,F}^{-1}.)$
-Let $\Phi\wt{\U}p$ be the composition
+(This isomorphism appears in \ref{iota-diagram} above, as the inverse $\Phi_{X,F} = \iota_{{\bf\Phi},X,F}^{-1}$.)
+Let $\gls{PhiwtUp}$ be the composition
 %
 $$\Phi((\wt{\U};p)) \stackrel{\Phi_{\wt{\U},p}}{\lr} (\Phi(\wt{\U});\Phi(p)\circ
 \phi)=(\Phi(\wt{\U});\wt{\phi}\circ p')\stackrel{\Q'(\wt{\phi},p')}{\lr}
