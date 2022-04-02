@@ -1951,9 +1951,11 @@ $$\refl:\Obwt_1(\Gamma)\sr \Obwt_1(\Gamma)$$
 %
 by the formula
 %
-$$\refl(s)=\wt{u}_1^{-1}(\wt{u}_1(s)\circ \Omega)$$
-%
-that are natural in $\Gamma$. The equation (\ref{2015.03.27.eq8}) follows from
+\begin{eq}
+  \label{refl-defn}
+  \refl(s)=\wt{u}_1^{-1}(\wt{u}_1(s)\circ \Omega),
+\end{eq}%
+which are natural in $\Gamma$. The equation (\ref{2015.03.27.eq8}) follows from
 the commutativity of the square (\ref{2015.03.27.sq1}).
 \end{construction}
 %
@@ -3525,23 +3527,26 @@ $(\Id_{Eq'},\refl_{\Omega'})$.
 Let $\refl=\refl_{\Omega}$ and $\refl'=\refl_{\Omega'}$. The compatibility
 condition is
 %
-$$\Phi(\Omega)\circ\wt{\phi}=\wt{\phi}\circ\Omega'$$
+\begin{eq}
+  \label{Omega-compat}
+  \Phi(\Omega)\circ\wt{\phi}=\wt{\phi}\circ\Omega'
+\end{eq}
 %
 We need to check that for $\Gamma\in Ob(\toCC({\C},p))$ and $s\in
 \Obwt_1(\Gamma)$ one has
 %
 $$H(\refl(s))=\refl'(H(s))$$
 %
-By \cite[Lemma 6.1(2)]{fromunivwithPi} we have
+We have
 %
 \begin{align*}
   H(\refl(s))
-    & = H(\wt{u}_1^{-1}(\wt{u}_1(s)\circ\Omega)) \\
-    & = \wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s)\circ\Omega)\circ\wt{\phi}) \\
-    & = \wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s))\circ\Phi(\Omega)\circ \wt{\phi}) \\
-    & = \wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s))\circ\wt{\phi}\circ\Omega') \\
-    & = \wt{u}_1^{-1}(\wt{u}_1(H(s))\circ\Omega') \\
-    & = \refl'(H(s)).
+    & = H(\wt{u}_1^{-1}(\wt{u}_1(s)\circ\Omega)) & \by{\ref{refl-defn}} \\
+    & = \wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s)\circ\Omega)\circ\wt{\phi}) & \by{\cite[Lemma 6.1(2)]{fromunivwithPi}} \\
+    & = \wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s))\circ\Phi(\Omega)\circ \wt{\phi}) & \by{functoriality of $\Phi$} \\
+    & = \wt{u}_1^{-1}(\psi_{\Gamma}\circ\Phi(\wt{u}_1(s))\circ\wt{\phi}\circ\Omega') & \by{\ref{Omega-compat}} \\
+    & = \wt{u}_1^{-1}(\wt{u}_1(H(s))\circ\Omega') & \by{\cite[Lemma 6.1(2)]{fromunivwithPi}} \\
+    & = \refl'(H(s)) & \by{\ref{refl-defn}}
 \end{align*}
 \end{myproof}
 %
