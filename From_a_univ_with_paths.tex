@@ -2673,7 +2673,7 @@ and this data is such that:
 commutes, and
 %
 \item the triples ${\bf\Phi}_i:=(\Phi,\phi,\wt{\phi}_i)$, for $i=1,2$, are universe
-  category functors.
+  category functors from $(\C,p_i)$ to $(\C',p'_i)$.
 \end{enumerate}
 
 We will use the notations $(X;F)_1$, $(X;F)_2$, $(X;F)'_1$, and $(X;F)'_2$ for
@@ -2682,7 +2682,7 @@ consideration.
 
 Let us denote the morphisms
 %
-$$\chi_{\bf\Phi_i}(V):\Phi(\I_{p_i}(V))\sr \I_{p_i}(\Phi(V))$$
+$$\chi_{\bf\Phi_i}(V):\Phi(\I_{p_i}(V))\sr \I_{p'_i}(\Phi(V))$$
 %
 by $\chi_i(V)$. The maps ${\bf\Phi}_i^2$ in the following lemma were introduced above.
 %
@@ -2821,20 +2821,16 @@ This finishes the proof of Lemma \ref{2015.04.06.l7}.
 
 Consider the morphisms
 %
-$$\zeta_i:\Phi(\I_{p_i}(\U))\sr \I_{p_i}(\U')$$
+$$\zeta_i:\Phi(\I_{p_i}(\U))\sr \I_{p'_i}(\U')$$
 %
-given by $\zeta_i=\chi_i(\U)\circ \I_{p_i}(\phi)$ and
+given by $\zeta_i=\chi_i(\U)\circ \I_{p'_i}(\phi)$ and
 %
-$$\wt{\zeta}_i:\Phi(\I_{p_i}(\wt{\U}_1))\sr \I_{p_i}(\wt{\U}_1')$$
+$$\wt{\zeta}_i:\Phi(\I_{p_i}(\wt{\U}_1))\sr \I_{p'_i}(\wt\U'_1)$$
 %
-given by $\wt{\zeta}_i=\chi_i(\wt{\U}_1)\circ \I_{p_i}(\wt{\phi}_1)$. Note that
-%
-$$\zeta_i=\xi_{(\Phi,\phi,\wt{\phi}_i)},$$
-%
-where $\xi$ are the morphisms introduced in \cite{fromunivwithPi} and
-$\wt{\zeta}_1=\xi_{(\Phi,\phi,\wt{\phi}_1)}$ but $\wt{\zeta}_2\ne
-\xi_{(\Phi,\phi,\wt{\phi}_2)}$.
-
+given by $\wt{\zeta}_i=\chi_i(\wt{\U}_1)\circ \I_{p'_i}(\wt\phi_1)$. Note that
+$\zeta_i=\xi_{(\Phi,\phi,\wt{\phi}_i)}$ and $\wt{\zeta}_1=\wt\xi_{(\Phi,\phi,\wt{\phi}_1)}$,
+where $\xi$ and $\wt\xi$ are the morphisms introduced in \cite[\S 6]{fromunivwithPi},
+but $\wt{\zeta}_2\ne \wt\xi_{(\Phi,\phi,\wt{\phi}_2)}$.
 
 %
 \begin{theorem}
