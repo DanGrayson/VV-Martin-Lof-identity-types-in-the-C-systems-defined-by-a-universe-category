@@ -779,6 +779,12 @@ such that
   (f*g)\circ \p_{X,F} & =f \label{star-eq1} \\
   (f*g)\circ \Q(F) & =g \label{star-eq2}
 \end{align}
+Observe that if $h : W' \to W$ is a map, then
+\begin{align}
+  \label{star-functoriality}
+  h \circ ( f * g ) & = (h \circ f) * (h \circ g)
+\end{align}
+
 
 %
 When we need to distinguish canonical squares arising from different universe structures we may
@@ -1863,7 +1869,7 @@ Hom(int(\Gamma),(\wt{\U};p)),$$
 %
 where $\wt{uu}(o,o')=\wt{u}_1(o)*\wt{u}_1(o')$. We set:
 %
-$$\Id(o,o')=u_1^{-1}(\wt{uu}(o,o')\circ Eq).$$
+$$\Id(o,o') := u_1^{-1}(\wt{uu}(o,o')\circ Eq).$$
 %
 \end{construction}
 %
@@ -1874,6 +1880,12 @@ from $Eq$ in Construction \ref{2015.03.27.constr3}. Note that
 \label{2015.03.31.eq1}
 int(\Id(o,o'))=(int(\Gamma);(\wt{u}_1(o)*\wt{u}_1(o'))\circ Eq).
 \end{eq}%
+and
+\begin{eq}
+  \label{IdEq-eqn}
+  u_1(\Id(o,o')) = ( \wt{u}_1(o) * \wt{u}_1(o') ) \circ Eq
+\end{eq}
+
 %
 Recall that in \cite{Csubsystems} we let $\gls{pGamman}:\Gamma\sr \ft^n(\Gamma)$
 denote the composition of $n$ canonical projections $\p_{\Gamma}\circ \dots\circ
@@ -2677,7 +2689,7 @@ and this data is such that:
 commutes, and
 %
 \item the triples ${\bf\Phi}_i:=(\Phi,\phi,\wt{\phi}_i)$, for $i=1,2$, are universe
-  category functors from $(\C,p_i,pt)$ to $(\C',p'_i,pt')$.
+  category functors from $(\C,p_i,ptk)$ to $(\C',p'_i,pt')$.
 \end{enumerate}
 
 We will use the notations $(X;F)_1$, $(X;F)_2$, $(X;F)'_1$, and $(X;F)'_2$ for
@@ -3425,7 +3437,7 @@ where the right hand side of the equation makes sense by Lemma
 \label{2015.04.12.sec1}
 %
 Let us first recall that by \cite[Construction 3.3]{Cfromauniverse} any
-universe category functor ${\bf \Phi}=(\Phi,\phi,\wt{\phi})$ defines a
+universe category functor $${\bf \Phi}=(\Phi,\phi,\wt{\phi}) : (\C,p,pt) \to (\C',p',pt')$$ defines a
 homomorphism of C-systems
 %
 $$H:\toCC({\C},p)\sr \toCC({\C}',p')$$
@@ -3434,7 +3446,7 @@ To define $H$ on objects, one defines by induction on $n$, for all $\Gamma\in
 Ob_n(\toCC({\C},p))$, pairs $(H(\Gamma),\psi_{\Gamma})$, where
 $H(\Gamma)\in Ob(\toCC({\C}',p'))$ and $\psi_{\Gamma}$ is a morphism
 %
-$$\psi_{\Gamma}:int'(H(\Gamma))\sr \Phi(int(\Gamma))$$
+$$\psi_{\Gamma}:int'(H(\Gamma))\sr \Phi(int(\Gamma)),$$
 %
 as follows. For $n=0$ one has $H(())=()$ and $\psi_{()}:pt'\sr \Phi(pt)$ is the
 unique morphism to a final object $\Phi(pt)$. For $(\Gamma,F)\in Ob_{n+1}$ one
@@ -3479,36 +3491,24 @@ $$H(\Id(o,o'))=\Id'(H(o),H(o'))$$
 %
 Since
 %
-$$\partial(H(\Id(o,o'))=H(\Gamma)$$
+$$\partial(H(\Id(o,o'))=H(\Gamma)=H(\ft(\partial(o)))=\ft(\partial(H(o)))=\partial(\Id'(H(o),H(o')))$$
 %
-$$\partial(\Id'(H(o),H(o')))=\ft(\partial(H(o)))=H(\ft(\partial(o)))=H(\Gamma)$$
+it suffices to check that
 %
-this is equivalent to
+$$u_1(H(\Id(o,o')))=u_1(\Id'(H(o),H(o'))).$$
 %
-$$u_1(H(\Id(o,o')))=u_1(\Id'(H(o),H(o')))$$
-%
-By \cite[Lemma 6.1(1)]{fromunivwithPi} we have
-%
-$$u_1(H(\Id(o,o')))=\psi_{\Gamma}\circ\Phi(u_1(\Id(o,o')))\circ\phi=\psi_{\Gamma}\circ\Phi((\wt{u}_1(o)*\wt{u}_1(o'))\circ
-Eq)\circ\phi=$$
-%
-$$\psi_{\Gamma}\circ\Phi(\wt{u}_1(o)*\wt{u}_1(o'))\circ
-\Phi(Eq)\circ\phi=\psi_{\Gamma}\circ\Phi(\wt{u}_1(o)*\wt{u}_1(o'))\circ
-\Phi\wt{\U}p\circ Eq'$$
-%
-By Lemma \ref{2015.04.10.l6} we have
-%
-$$\psi_{\Gamma}\circ\Phi(\wt{u}_1(o)*\wt{u}_1(o'))\circ \Phi\wt{\U}p\circ
-Eq'=\psi_{\Gamma}\circ((\Phi(\wt{u}_1(o))\circ\wt{\phi})*(\Phi(\wt{u}_1(o'))\circ\wt{\phi}))\circ
-Eq'$$
-%
-and by \cite[Lemma 6.1(2)]{fromunivwithPi} we have
+We have:
 %
 \begin{align*}
-  \psi_{\Gamma}\circ((\Phi&(\wt{u}_1(o))\circ\wt{\phi})*(\Phi(\wt{u}_1(o'))\circ\wt{\phi}))\circ Eq' \\
-    & = ((\psi_{\Gamma}\circ\Phi(\wt{u}_1(o))\circ\wt{\phi})*(\psi_{\Gamma}\circ\Phi(\wt{u}_1(o'))\circ\wt{\phi}))\circ Eq' \\
-    & = (\wt{u}_1(H(o))*\wt{u}_1(H(o')))\circ Eq' \\
-    & = \Id'(H(o),H(o))
+  u_1(H&(\Id(o,o'))) \\
+  & = \psi_{\Gamma}\circ\Phi(u_1(\Id(o,o')))\circ\phi & \by{\cite[Lemma 6.1(1)]{fromunivwithPi}} \\
+  & = \psi_{\Gamma}\circ\Phi((\wt{u}_1(o)*\wt{u}_1(o'))\circ Eq)\circ\phi & \by{\ref{IdEq-eqn}} \\
+  & = \psi_{\Gamma}\circ\Phi(\wt{u}_1(o)*\wt{u}_1(o'))\circ \Phi(Eq)\circ\phi & \by{functoriality of $\Phi$} \\
+  & = \psi_{\Gamma}\circ\Phi(\wt{u}_1(o)*\wt{u}_1(o'))\circ \Phi\wt{\U}p\circ Eq' & \by{\ref{2015.04.06.eq6}} \\
+  & = \psi_{\Gamma}\circ((\Phi(\wt{u}_1(o))\circ\wt{\phi})*(\Phi(\wt{u}_1(o'))\circ\wt{\phi}))\circ Eq' & \by{Lemma \ref{2015.04.10.l6}} \\
+  & = ((\psi_{\Gamma}\circ\Phi(\wt{u}_1(o))\circ\wt{\phi})*(\psi_{\Gamma}\circ\Phi(\wt{u}_1(o'))\circ\wt{\phi}))\circ Eq' & \by{\ref{star-functoriality}} \\
+  & = (\wt{u}_1(H(o))*\wt{u}_1(H(o')))\circ Eq' & \by{\cite[Lemma 6.1(2)]{fromunivwithPi}} \\
+  & = u_1(\Id'(H(o),H(o))) & \by{\ref{IdEq-eqn}}
 \end{align*}
 \end{myproof}
 
