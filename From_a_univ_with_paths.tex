@@ -151,6 +151,8 @@
 \newoperator{u1}{u_1}
 \newoperator{u1Gamma}{u_{1,\Gamma}}
 \newoperator{utilde1}{\wt u_1}
+\newoperator{u2}{u_2}
+\newoperator{wtu2}{\wt{u}_2}
 \newoperator{utilde1Gamma}{\wt u_{1,\Gamma}}
 \newoperator{multisemicolon}{(X;F_1,\dots,F_n)}
 \newoperator{starfg}{f*g}
@@ -3555,8 +3557,7 @@ To prove the functoriality of the full J-structures we will need some lemmas
 first.
 
 Recall that in \cite{Csubsystems} we let $\p_{\Gamma,n}:\Gamma\sr \ft^n(\Gamma)$
-denote the composition of $n$ canonical projections $\p_{\Gamma}\circ \dots\circ
-\p_{\ft^{n-1}(\Gamma)}$.
+denote the composition $\p_{\Gamma}\circ \dots\circ \p_{\ft^{n-1}(\Gamma)}$ of $n$ canonical projections.
 %
 \begin{lemma}
 \label{2015.05.10.l1} Let ${\bf\Phi}$ be a universe category functor and
@@ -3612,31 +3613,36 @@ Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and $o\in \Obwt(P)$ one has:
 \end{lemma}
 %
 \begin{remark}\rm
-Since $u_2(T)=(u_1(\ft(T)),u_1(T))$ and
-$\wt{u}_2(s)=(u_1(\ft(\partial(s))),\wt{u}_1(s))$ , this lemma is very similar
-to \cite[Lemma 6.1(3,4)]{fromunivwithPi}, but its proof is much more involved
-because of the interaction of the two different universe functors.
+  Since
+  \begin{align*}
+    \gls{u2}(T)      & := (u_1(\ft(T)),u_1(T)) \in \D_p(int(\Gamma),\U) \\
+    \gls{wtu2}(s)    & := (u_1(\ft(\partial(s))),\wt{u}_1(s)) \in \D_p(int(\Gamma),\wt\U),
+  \end{align*}
+this lemma is very similar
+to \cite[Lemma 6.1(3,4)]{fromunivwithPi}, but its proof is more involved
+because of the interaction of the two universe functors.  (For the introduction of $u_2$ and $\wt u_2$ see
+\cite[Problem 3.5]{fromunivwithPi}.)
 \end{remark}
 %
 \begin{myproof}
-We will only consider the second assertion. The proof of the first one is
+We will consider only the second assertion; the proof of the first one is
 similar and simpler.
 
 To prove that the pair $(u'_{1,H(\Gamma)}(H(T)),
 \wt{u}_{1,IdxT'(H(T))}'(H(o)))$ is a well defined element of
 $\D_{pE\wt{\U}'}(\Phi(int(\Gamma)),\wt{\U}')$ we need to show that
 $\ft(\partial(H(o)))=IdxT'(H(T))$ and that the source of
-$\wt{u}_{1,IdxT'(H(T))}'(H(o)))$ equals to $(int(H(\Gamma)); u'_1(H(T)))_{E}$,
+$\wt{u}_{1,IdxT'(H(T))}'(H(o)))$ equals $(int(H(\Gamma)); u'_1(H(T)))_{E}$,
 i.e., that
 %
 $$int'(IdxT'(H(T)))=(int(H(\Gamma)); u'_1(H(T)))_{E}$$
 %
-The former is a corollary of our assumptions and Lemma \ref{2015.04.12.l1} and
+The former is a corollary of our assumptions and Lemma \ref{2015.04.12.l1}, and
 the latter is a corollary of \cite[Problem 3.3(1)]{fromunivwithPi} and the
 first equation of Lemma \ref{2015.03.27.l1}.
 
-Let $X=int(\Gamma)$, $F=u_{1,\Gamma}(T)$ and $\wt{G}=\wt{u}_{1,Idx(T)}(o)$. By
-definitions we have
+Let $X=int(\Gamma)$, $F=u_{1,\Gamma}(T)$, and $\wt{G}=\wt{u}_{1,Idx(T)}(o)$. By
+the definitions we have
 %
 \begin{align*}
   \D_{pE\wt{\U}'}&(\psi_{\Gamma},\_)(\D_{pE\wt{\U}'}(\_,\wt{\phi})({\bf\Phi}_{E}^2(F,\wt{G}))) \\
@@ -3655,7 +3661,7 @@ $$\iota\circ \Phi(\p^E_{X,F})=p^{E'}_{\Phi(X),\Phi(F)\circ\phi}$$
 and
 $$\iota\circ \Phi(\Q(F)_E)\circ \wt{\phi}_E=\Q(\Phi(F)\circ\phi)_{E'}.$$
 
-On the other hand,
+On the other hand, by \cite[Lemma 6.1(1)]{fromunivwithPi},
 %
 $$u_{1,H(\Gamma)}(H(T))=\psi_{\Gamma}\circ \Phi(u_{1,\Gamma}(T))\circ \phi$$
 and
@@ -3717,129 +3723,108 @@ $$\wt{\phi}_E=(\Phi(\p_{(\wt{\U};p),Eq})\circ
 %
 Therefore (\ref{2015.05.10.eq2.0}) is equivalent to two equations:
 %
-$$\psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ
-\Phi\wt{\U}p=$$
-\begin{eq}
-\label{2015.05.10.eq2a}
-\Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \p_{(\wt{\U}';p'),Eq'}
-\end{eq}%
-%
-and
-%
-$$\psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\Q(Eq))\circ\wt{\phi}=$$
-\begin{eq}
-\label{2015.05.10.eq2b}
-\Q'(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \Q(Eq')
-\end{eq}%
+\begin{align}
+  \psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ \Phi\wt{\U}p
+  & = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \p_{(\wt{\U}';p'),Eq'} \label{2015.05.10.eq2a} \\
+  \psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\Q(Eq))\circ\wt{\phi}
+  & = \Q'(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \Q(Eq'). \label{2015.05.10.eq2b}
+\end{align}
 %
 The first equality we will have to decompose further into two using the fact
 that by Lemma \ref{2015.04.10.l5} we have
 %
 $$\Phi\wt{\U}p=(\Phi(\p_{\wt{\U},p})\circ\wt{\phi})*(\Phi(\Q(p))\circ \wt{\phi})$$
 %
-Therefore (\ref{2015.05.10.eq2a}) is equivalent to two equations
+Therefore (\ref{2015.05.10.eq2a}) is equivalent to two equations:
 %
-$$\psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ
-\Phi(\p_{\wt{\U},p})\circ\wt{\phi}=$$
-\begin{eq}
-\label{2015.05.10.eq2aa} \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ
-\p_{(\wt{\U}';p'),Eq'}\circ \p_{\wt{\U}',p'}
-\end{eq}%
-%
-and
-%
-$$\psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ
-\Phi(\Q(p))\circ\wt{\phi}=$$
-\begin{eq}
-\label{2015.05.10.eq2ab} \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ
-\p_{(\wt{\U}';p'),Eq'}\circ \Q(p')
-\end{eq}%
+\begin{align}
+  \psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ \Phi(\p_{\wt{\U},p})\circ\wt{\phi}
+  & = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ \p_{\wt{\U}',p'} \label{2015.05.10.eq2aa} \\
+  \psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ \Phi(\Q(p))\circ\wt{\phi}
+  & = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ \Q(p'). \label{2015.05.10.eq2ab}
+\end{align}
 %
 To prove (\ref{2015.05.10.eq2b}) observe first two useful equalities:
 %
-\begin{align*}
-  u_1(\Idx(T))&=\Q(\Q(F),p)\circ Eq \\
-  \Q(u_1(\Idx(T)))&=\Q(F)_{E}\circ \Q(Eq),
-\end{align*}
+\begin{align}
+  u_1(\Idx(T))&=\Q(\Q(F),p)\circ Eq \label{usefulequal1} \\
+  \Q(u_1(\Idx(T)))&=\Q(F)_{E}\circ \Q(Eq), \label{usefulequal2}
+\end{align}
 %
-where the first follows from the proof of Lemma \ref{2015.03.27.l1} and the
+where the first follows from the proof of Lemma \ref{2015.03.27.l1}, and the
 second is the combination of the first with the third equality of the same
 lemma.
 
 Now we have:
 %
 \begin{align*}
-  \psi_{\Idx(T)}\circ & \Phi(\Q(F)_E)\circ \Phi(\Q(Eq))\circ\wt{\phi} \\
-    & = \psi_{\Idx(T)}\circ \Phi(\Q(F)_E\circ \Q(Eq))\circ\wt{\phi} \\
-    & = \psi_{\Idx(T)}\circ \Phi(\Q(u_1(\Idx(T))))\circ \wt{\phi} \\
+        \psi_{\Idx(T)}\circ \Phi&(\Q(F)_E) \circ \Phi(\Q(Eq))\circ\wt{\phi} \\
+    & = \psi_{\Idx(T)}\circ \Phi (\Q(F)_E  \circ \Q(Eq))     \circ\wt{\phi} \\
+    & = \psi_{\Idx(T)}\circ \Phi (\Q(u_1(\Idx(T))))          \circ\wt{\phi} & \by{\ref{usefulequal2}} \\
     & = \Q'(\psi_{\Idx(T)}\circ \Phi(u_1(\Idx(T)))\circ \phi) \\
     & = \Q(u_1(H(\Idx(T))))
 \end{align*}
 %
 and
 %
-$$\Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ
-\Q(Eq')=\Q'(u_1(H(T)))_{E'}\circ \Q(Eq')=\Q'(u_1(H(\Idx(T))))$$
+\begin{align*}
+  \Q(\psi_{\Gamma}\circ \Phi&(F)\circ \phi)_{E'}\circ \Q(Eq') \\
+  & =\Q'(u_1(H(T)))_{E'}\circ \Q(Eq') \\
+  & =\Q'(u_1(H(\Idx(T)))).
+\end{align*}
 %
 The equality (\ref{2015.05.10.eq2b}) is proved.
 
 To prove (\ref{2015.05.10.eq2aa}) observe two equalities:
+\begin{align}
+  \Q(F)_E\circ \p_{(\wt{\U};p),Eq} & =\p_{\Idx(T)}\circ \Q(\Q(F),p) \label{usefulequal3} \\
+  \Q(\Q(F),p)\circ \p_{\wt{\U},p} & =\p_{\ft(\Idx(T)}\circ \Q(F).  \label{usefulequal4}
+\end{align}
 %
-$$\Q(F)_E\circ \p_{(\wt{\U};p),Eq}=\p_{\Idx(T)}\circ \Q(\Q(F),p)$$
-%
-$$\Q(\Q(F),p)\circ \p_{\wt{\U},p}=\p_{\ft(\Idx(T)}\circ \Q(F)$$
-%
-The same equalities hold for $F'=\psi_{\Gamma}\circ\Phi(F)\circ
-\phi=u_1'(H(T))$ and the equation (\ref{2015.05.10.eq2aa}) becomes
+The same equalities hold for $F' := \psi_{\Gamma}\circ\Phi(F)\circ
+\phi=u_1'(H(T))$, and the equation (\ref{2015.05.10.eq2aa}) becomes
 %
 $$\psi_{\Idx(T)}\circ \Phi(\p_{\Idx(T)})\circ \Phi(\p_{\ft(\Idx(T))})\circ
 \Phi(\Q(F))\circ \wt{\phi}=\p_{IdxT'(H(T))}\circ \p_{\ft(IdxT'(H(T)))}\circ \Q(F')$$
 %
-Using the defining equations for $\psi$ we rewrite the left hand side as
+Using the defining equations for $\psi$ we rewrite the left hand side as follows:
 %
 $$\psi_{\Idx(T)}\circ \Phi(\p_{\Idx(T)})\circ \Phi(\p_{\ft(\Idx(T))})\circ
 \Phi(\Q(F))\circ \wt{\phi}=\p_{H(Idx(T))}\circ \p_{\ft(H(\Idx(T)))}\circ
-\psi_{T}\circ \Phi(\Q(F))\circ \wt{\phi}$$
+\psi_{T}\circ \Phi(\Q(F))\circ \wt{\phi}.$$
 %
 It remains to show that
 %
-$$\Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)=\psi_{(\Gamma,F)}\circ
-\Phi(\Q(F))\circ \wt{\phi}$$
-%
+\begin{eq}
+  \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)=\psi_{(\Gamma,F)}\circ \Phi(\Q(F))\circ \wt{\phi},  \label{eqn13}
+\end{eq}%
 which is the defining equation of $\psi_{(G,F)}$.
 
-To prove (\ref{2015.05.10.eq2ab}) let us rewrite the left hand side first
+To prove (\ref{2015.05.10.eq2ab}) let us rewrite the left hand side first as follows:
 %
 \begin{align*}
-  \psi_{\Idx(T)}\circ & \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ \Phi(\Q(p))\circ \wt{\phi} \\
-    & = \psi_{\Idx(T)}\circ \Phi(\p_{\Idx(T)}\circ \Q(\Q(F),p))\circ \Phi(\Q(p))\circ\wt{\phi} \\
-    & = \p_{H(\Idx(T))}\circ \psi_{\ft(\Idx(T))}\circ \Phi(\Q(\Q(F)\circ p))\circ \wt{\phi} \\
-    & = \p_{H(\Idx(T))}\circ \psi_{(\Gamma,F,\Q(F)\circ p)}\circ \Phi(\Q(\Q(F)\circ p))\circ \wt{\phi} \\
-    & = \p_{H(\Idx(T))}\circ   \Q(u_1(H(\ft(\Idx(T)))))
+  \psi_{\Idx(T)}\circ \Phi&(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ \Phi(\Q(p))\circ \wt{\phi} \\
+    & = \psi_{\Idx(T)}\circ \Phi(\Q(F)_E \circ \p_{(\wt{\U};p),Eq})\circ \Phi(\Q(p))\circ \wt{\phi} & \by{functoriality of $\Phi$} \\
+    & = \psi_{\Idx(T)}\circ \Phi(\p_{\Idx(T)}\circ \Q(\Q(F),p))\circ \Phi(\Q(p))\circ\wt{\phi} & \by{commutativity of \ref{pEU-diagram}} \\
+    & = \p_{H(\Idx(T))}\circ \psi_{\ft(\Idx(T))}\circ \Phi(\Q(\Q(F)\circ p))\circ \wt{\phi} & \by{def'n of $\phi$} \\
+    & = \p_{H(\Idx(T))}\circ \psi_{(\Gamma,F,\Q(F)\circ p)}\circ \Phi(\Q(\Q(F)\circ p))\circ \wt{\phi} & \by{\cite[Lemma 3.2]{fromunivwithPi}} \\
+    & = \p_{H(\Idx(T))}\circ \Q(u_1(H(\ft(\Idx(T))))).
 \end{align*}
-%
-Where the first equality holds in view of the upper square of Construction
-\ref{2015.05.08.constr1}, the second one is one of the defining equalities of
-$\phi$ and the third one is from \cite[Lemma 3.2]{fromunivwithPi}.
 
-Let $F'=u_1(H(T))$. Rewriting the right hand side we get
+Let $F'=u_1(H(T))$. Rewriting the right hand side of \ref{eqn13} we get
 %
 \begin{align*}
-  \Q(\psi_{\Gamma}\circ & \Phi(F)\circ \phi)_{E'}\circ \circ \p_{(\wt{\U}';p'),Eq'}\circ \Q(p') \\
+  \Q(\psi_{\Gamma}\circ \Phi&(F)\circ \phi)_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ \Q(p') \\
     & = \Q(F')_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ \Q(p') \\
     & = \p_{IdxT'(H(T)}\circ \Q(\Q(F'),p')\circ \Q(p') \\
     & = \p_{IdxT'(H(T)}\circ \Q(\Q(F')\circ p') \\
-    & = \p_{IdxT'(H(T)}\circ \Q(u_1(\ft(\Idx(H(T)))))
+    & = \p_{IdxT'(H(T)}\circ \Q(u_1(\ft(\Idx(H(T))))),
 \end{align*}
-%
-Where the second equality is from the upper square of Construction
+where the second equality is from the upper square of Construction
 \ref{2015.05.08.constr1} in $\C'$, the third equality is from
 \cite[Lemma 3.2]{fromunivwithPi}, and the fourth from the middle square of
 Construction \ref{2015.05.08.constr1} in $\C'$.
 \end{myproof}
-
-
-
 
 \begin{lemma}
 \label{2015.04.12.l3} Let ${\bf\Phi}$ be a universe category functor as above
