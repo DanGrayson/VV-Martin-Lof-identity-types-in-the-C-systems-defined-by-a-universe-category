@@ -1914,7 +1914,7 @@ and $F:int(\Gamma)\sr \U$. Then one has:
 It will be helpful for the reader to refer to diagram \ref{pEU-diagram}.
 Let $T=(\Gamma,F)$, and set
 \begin{align*}
-  o &:=\p_{\p_T^*(T)}^*(\delta(T)) \in \Obwt_1(\Gamma) \text{ and}\\
+  o &:=\p_{\p_T^*(T)}^*(\delta(T)) \in \Obwt_1(\Gamma) & \text{and}\\
   o'&:=\delta(\p_T^*(T)) \in \Obwt_1(\Gamma) .
 \end{align*}
 We then have
@@ -2100,12 +2100,12 @@ We have
   & = \refl_\Omega(\delta(T))\circ \Q(\delta(T),\Q(\Q(F),p)      \circ Eq) \circ \Q(\Q(\Q(F),p)\circ Eq) & \by{\ref{defnh}} \\
   & = \refl_\Omega(\delta(T))\circ \Q(\delta(T)\circ \Q(\Q(F),p) \circ Eq) & \by{\ref{2015.04.06.l0.sq}}\\
   & = \refl_\Omega(\delta(T))\circ \Q(\Q(F)\circ \Delta          \circ Eq) & \by{\ref{diag3}}\\
-  & = \refl_\Omega(\delta(T))\circ \Q(\Q(F)\circ \Omega          \circ p) & \by{\ref{2015.03.27.sq1}},
+  & = \refl_\Omega(\delta(T))\circ \Q(\Q(F)\circ \Omega          \circ p), & \by{\ref{2015.03.27.sq1}}
 \end{align*}
 and thus we deduce that
 \begin{eq}
   \label{eqnrfth}
-  \rf_T \circ h = \refl_\Omega(\delta(T))\circ \Q(\Q(F)\circ \Omega \circ p)
+  \rf_T \circ h = \refl_\Omega(\delta(T))\circ \Q(\Q(F)\circ \Omega \circ p).
 \end{eq}
 
 %
@@ -2119,7 +2119,7 @@ We have
     & = \delta(T) \circ \Q(\p_{X,F} \circ F)         & \by{\ref{univstrdiag}} \\
     & = \delta(T) \circ \Q(\p_{X,F},F) \circ \Q(F)   & \by{\ref{2015.04.06.l0.sq}} \\
     & = \id_{int(T)} \circ \Q(F)                     & \by{def'n of $\delta(T)$} \\
-    & = \Q(F)                                        &
+    & = \Q(F).                                       &
 \end{align*}
 %
 
@@ -2351,8 +2351,8 @@ Let $X:=int(\Gamma)$ and $X':=int(\Gamma')$. By definition, $\Q(f,F)_{E}$ is the
 unique morphism such that
 %
 \begin{align*}
-  \Q(f,F)_{E}\circ \Q(F)_{E}&=\Q(f\circ F)_{E} \\
-  \Q(f,F)_{E}\circ p^{E}_{X,F}&=p^{E}_{X',f\circ F}\circ f
+  \Q(f,F)_{E}\circ \Q(F)_{E}&=\Q(f\circ F)_{E} & \text{and} \\
+  \Q(f,F)_{E}\circ p^{E}_{X,F}&=p^{E}_{X',f\circ F}\circ f.
 \end{align*}
 %
 We will be building the proof using the following diagram.
@@ -3461,7 +3461,7 @@ has
 %
 $$H((\Gamma,F))=(H(\Gamma),\psi_{\Gamma}\circ\Phi(F)\circ \phi)$$
 %
-and $\psi_{(\Gamma,F)}$ is the unique morphisms $int'(H(\Gamma,F))\sr
+and $\psi_{(\Gamma,F)}$ is the unique morphism $int'(H(\Gamma,F))\sr
 \Phi(int(\Gamma,F))$ such that
 %
 $$\psi_{(\Gamma,F)}\circ
@@ -3678,7 +3678,7 @@ and
 by \cite[Lemma 6.1(1,2)]{fromunivwithPi}. Therefore, to prove the lemma it is
 sufficient to show that
 %
-$$\psi_{\Idx(T)}=\Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota$$
+$$\psi_{\Idx(T)}=\Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota.$$
 %
 Both sides are morphisms with codomain
 %
@@ -3692,7 +3692,7 @@ $\Phi(\Q(F)_E)\circ \wt{\phi}_E$ are the same.  Since
         \Q(\psi_{\Gamma},&\Phi(F)\circ\phi)_{E'} \circ \iota\circ \Phi(\p^E_{X,F}) \\
     & = \Q(\psi_{\Gamma}, \Phi(F)\circ\phi)_{E'} \circ p^{E'}_{\Phi(X),\Phi(F)\circ\phi} & \by{\ref{iota1}} \\
     & = p^{E'}_{int'(H(\Gamma)),\psi_{\Gamma} \circ \Phi(F)\circ\phi} \circ \psi_\Gamma  \\
-    & = p^{E'}_{int'(H(T))}\circ\psi_{\Gamma}
+    & = p^{E'}_{int'(H(T))}\circ\psi_{\Gamma},
 \end{align*}
 %
 the first equation reduces to
@@ -3737,7 +3737,7 @@ Therefore (\ref{2015.05.10.eq2.0}) is equivalent to two equations:
 The first equality we will have to decompose further into two using the fact
 that by Lemma \ref{2015.04.10.l5} we have
 %
-$$\Phi\wt{\U}p=(\Phi(\p_{\wt{\U},p})\circ\wt{\phi})*(\Phi(\Q(p))\circ \wt{\phi})$$
+$$\Phi\wt{\U}p=(\Phi(\p_{\wt{\U},p})\circ\wt{\phi})*(\Phi(\Q(p))\circ \wt{\phi}).$$
 %
 Therefore (\ref{2015.05.10.eq2a}) is equivalent to two equations:
 %
@@ -3802,7 +3802,7 @@ It remains to show that
 \begin{eq}
   \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)=\psi_{(\Gamma,F)}\circ \Phi(\Q(F))\circ \wt{\phi},  \label{eqn13}
 \end{eq}%
-which is the defining equation of $\psi_{(G,F)}$.
+which is the defining equation of $\psi_{(\Gamma,F)}$.
 
 To prove (\ref{2015.05.10.eq2ab}) let us rewrite the left hand side first as follows:
 %
@@ -3820,14 +3820,10 @@ Let $F'=u_1(H(T))$. Rewriting the right hand side of \ref{eqn13} we get
 \begin{align*}
   \Q(\psi_{\Gamma}\circ \Phi&(F)\circ \phi)_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ \Q(p') \\
     & = \Q(F')_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ \Q(p') \\
-    & = \p_{IdxT'(H(T)}\circ \Q(\Q(F'),p')\circ \Q(p') \\
-    & = \p_{IdxT'(H(T)}\circ \Q(\Q(F')\circ p') \\
-    & = \p_{IdxT'(H(T)}\circ \Q(u_1(\ft(\Idx(H(T))))),
+    & = \p_{IdxT'(H(T))}\circ \Q(\Q(F'),p')\circ \Q(p') & \by{commutativity of \ref{2015.05.08.constr1}} \\
+    & = \p_{IdxT'(H(T))}\circ \Q(\Q(F')\circ p') & \by{commutativity of \ref{2015.04.06.l0.sq}} \\
+    & = \p_{IdxT'(H(T))}\circ \Q(u_1(\ft(\Idx(H(T))))).
 \end{align*}
-where the second equality is from the upper square of Construction
-\ref{2015.05.08.constr1} in $\C'$, the third equality is from
-\cite[Lemma 3.2]{fromunivwithPi}, and the fourth from the middle square of
-Construction \ref{2015.05.08.constr1} in $\C'$.
 \end{myproof}
 
 \begin{lemma}
@@ -3851,9 +3847,10 @@ $$H(\J(\Gamma,T,P,s0))=\J'(H(\Gamma),H(T),H(P),H(s0))$$
 
 The defining equation for $\J'$ is
 %
-$$\etaunshriek_{pE\wt{\U}'}(u'_1(H(T)),\wt{u}'_{1,{IdxT'(H(T)}}(\J')))=\phi(H(\Gamma),H(T),H(P),H(s0))\circ
-Jp'$$
-%
+\begin{eq}
+  \label{def-eqn-J'}
+  \etaunshriek_{pE\wt{\U}'}(u'_1(H(T)),\wt{u}'_{1,{IdxT'(H(T)}}(\J')))=\phi(H(\Gamma),H(T),H(P),H(s0)) \circ Jp' 
+\end{eq}
 and to prove the lemma we need to show that $H(\J)$ satisfies this equation.
 
 Using Lemma \ref{2015.05.06.l3} we have
@@ -3864,14 +3861,13 @@ Using Lemma \ref{2015.05.06.l3} we have
     & = \psi_{\Gamma}\circ \etaunshriek_{pE\wt{\U}'}(\Phi_E^2(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ \I_{pE\wt{\U}'}(\wt{\phi})
 \end{align*}
 %
-By \cite[Lemma 5.8]{fromunivwithPi} and by the defining equation for $\J$ we
-further have
+We further have:
 %
 \begin{align*}
   \psi_{\Gamma}\circ \etaunshriek_{pE\wt{\U}'}&(\Phi_E^2(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ \I_{pE\wt{\U}'}(\wt{\phi}) \\
-    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_{pE\wt{\U}}(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ \chi_{{\bf\Phi}_E}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi}) \\
-    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ Jp)\circ \chi_{{\bf\Phi}_E}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi}) \\
-    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ Jp)\circ \wt{\zeta}_{\bf\Phi}
+    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_{pE\wt{\U}}(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ \chi_{{\bf\Phi}_E}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi}) & \by{\cite[Lemma 5.8]{fromunivwithPi}} \\
+    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ Jp)\circ \chi_{{\bf\Phi}_E}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi}) & \by{def'n of $\J$ -- VERIFY} \\
+    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ Jp)\circ \wt{\zeta}_{\bf\Phi}.
 \end{align*}
 %
 
