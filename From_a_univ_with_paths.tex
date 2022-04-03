@@ -1061,8 +1061,11 @@ Explicitly we have
   \p_{X,F}^E&=\p_{(X;F,\Q(F)\circ p),\Q(\Q(F),p)\circ Eq}\circ \p_{(X;F),\Q(F)\circ p}\circ \p_{X,F}
 \end{align}
 %
-For any map $f:X' \sr X$, we will write $\gls{QfFE}$ for the canonical morphism from $(X;f\circ
-F)_{E}$ to $(X;F)_{E}$.
+\begin{definition}
+  \label{QfFE-defn}
+  For any map $f:X' \sr X$, we will write $\gls{QfFE}$ for the canonical morphism from
+  $(X;f\circ F)_{E}$ to $(X;F)_{E}$, defined analogously to \ref{QfF-defn}.
+\end{definition}
 %
 \begin{definition}
 \label{2015.03.27.def5} Let $p:\wt{\U}\sr \U$ be a universe in $\C$ and $Eq$ be a
@@ -3655,11 +3658,12 @@ where
 %
 $$\iota:(\Phi(X);\Phi(F)\circ \phi)_{E'}\sr \Phi((X;F)_{E})$$
 %
-is the unique morphism such that
+is the unique morphism such that the following two equations are satisfied.
 %
-$$\iota\circ \Phi(\p^E_{X,F})=p^{E'}_{\Phi(X),\Phi(F)\circ\phi}$$
-and
-$$\iota\circ \Phi(\Q(F)_E)\circ \wt{\phi}_E=\Q(\Phi(F)\circ\phi)_{E'}.$$
+\begin{align}
+  \iota \circ \Phi(\p^E_{X,F})               & = p^{E'}_{\Phi(X),\Phi(F)\circ\phi}         \label{iota1} \\
+  \iota \circ \Phi(\Q(F)_E)\circ \wt{\phi}_E & = \Q(\Phi(F)\circ\phi)_{E'}                 \label{iota2}
+\end{align}
 
 On the other hand, by \cite[Lemma 6.1(1)]{fromunivwithPi},
 %
@@ -3682,35 +3686,35 @@ $$\Phi(int(\Idx(T)))=\Phi((X;F)_E),$$
 %
 and since ${\bf\Phi}_E$ is a universe category functor it is sufficient to show
 that the compositions of the two sides with $\Phi(\p^E_{X,F})$ and
-$\Phi(\Q(F)_E)\circ \wt{\phi}_E$ are the same. Since
+$\Phi(\Q(F)_E)\circ \wt{\phi}_E$ are the same.  Since
 %
 \begin{align*}
-  \Q(\psi_{\Gamma},&\Phi(F)\circ\phi)_{E'}\circ\iota\circ \Phi(\p^E_{X,F}) \\
-    & = \Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ p^{E'}_{\Phi(X),\Phi(F)\circ\phi} \\
-    & = p^{E'}_{int'(H(\Gamma)),\psi_{\Gamma}\circ \Phi(F)\circ\phi}\circ\psi_{\Gamma} \\
+        \Q(\psi_{\Gamma},&\Phi(F)\circ\phi)_{E'} \circ \iota\circ \Phi(\p^E_{X,F}) \\
+    & = \Q(\psi_{\Gamma}, \Phi(F)\circ\phi)_{E'} \circ p^{E'}_{\Phi(X),\Phi(F)\circ\phi} & \by{\ref{iota1}} \\
+    & = p^{E'}_{int'(H(\Gamma)),\psi_{\Gamma} \circ \Phi(F)\circ\phi} \circ \psi_\Gamma  \\
     & = p^{E'}_{int'(H(T))}\circ\psi_{\Gamma}
 \end{align*}
 %
 the first equation reduces to
 %
 \begin{eq}
-\label{2015.05.10.eq1} \psi_{\Idx(T)}\circ
-\Phi(\p^E_{T})=p^{E'}_{int'(H(T))}\circ\psi_{\Gamma},
+  \label{2015.05.10.eq1}
+  \psi_{\Idx(T)}\circ \Phi(\p^E_{T}) = p^{E'}_{int'(H(T))}\circ\psi_{\Gamma},
 \end{eq}%
 %
 and since
 %
 \begin{align*}
-  \Q(\psi_{\Gamma},\Phi(F)&\circ\phi)_{E'}\circ\iota\circ \Phi(\Q(F)_E)\circ \wt{\phi}_E \\
-    & = \Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ \Q(\Phi(F)\circ\phi)_{E'} \\
-    & = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}
+        \Q(\psi_{\Gamma},\Phi(F)&\circ\phi)_{E'}\circ \iota\circ \Phi(\Q(F)_E)\circ \wt{\phi}_E \\
+    & = \Q(\psi_{\Gamma},\Phi(F) \circ\phi)_{E'}\circ \Q(\Phi(F)\circ\phi)_{E'}                 & \by{\ref{iota2}} \\
+    & = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'},                                           & \by{\ref{QfFE-defn}}
 \end{align*}
 %
 the second equation reduces to
 %
 \begin{eq}
-\label{2015.05.10.eq2.0} \psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ
-\wt{\phi}_E=\Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}
+  \label{2015.05.10.eq2.0}
+  \psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \wt{\phi}_E = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}.
 \end{eq}%
 %
 Equation (\ref{2015.05.10.eq1}) follows immediately from Lemma
@@ -3719,7 +3723,7 @@ Equation (\ref{2015.05.10.eq1}) follows immediately from Lemma
 We have
 %
 $$\wt{\phi}_E=(\Phi(\p_{(\wt{\U};p),Eq})\circ
-\Phi\wt{\U}p)*(\Phi(\Q(Eq))\circ\wt{\phi})$$
+\Phi\wt{\U}p)*(\Phi(\Q(Eq))\circ\wt{\phi}).$$
 %
 Therefore (\ref{2015.05.10.eq2.0}) is equivalent to two equations:
 %
