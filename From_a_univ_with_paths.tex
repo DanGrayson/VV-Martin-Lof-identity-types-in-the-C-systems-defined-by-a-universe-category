@@ -113,6 +113,7 @@
 \newoperator{Fstarf}{F^*(f)}
 \newoperator{Fp}{\Fp}
 \newoperator{ft}{\ft}
+\newoperator{HPhi}{H({\bf\Phi})}
 \newoperator{Idx}{\Idx}
 \newoperator{IdEq}{\Id_{Eq}}
 \newoperator{Id}{\Id}
@@ -462,6 +463,7 @@ will allow the files to be located.
 
   As in \cite[Def.~2.1 and Prop.~2.4]{Csubsystems}, except for the use of a sans-serif font, we use
   \begin{eq}
+    \label{qfX-diag}
     \xymatrix@C=5pc{
       \gls{fstarX} \ar[r]^{\gls{qfX}} \ar[d]_{\p_{f^*(X)}}  & X \ar[d]^{\gls{pX}} \\
       Y \ar[r]_f & \gls{ft}(X)
@@ -1066,7 +1068,20 @@ Explicitly we have
 \begin{definition}
   \label{QfFE-defn}
   For any map $f:X' \sr X$, we will write $\gls{QfFE}$ for the canonical morphism from
-  $(X;f\circ F)_{E}$ to $(X;F)_{E}$, defined analogously to \ref{QfF-defn}.
+  $(X;f\circ F)_{E}$ to $(X;F)_{E}$, defined analogously to \ref{QfF-defn}.  It fits into
+  the following diagram.
+  \begin{eq}
+  \label{QfFE-diag}
+    \begin{xy}
+       \xymatrix@C=4pc{
+         (X';f\circ F)_E \ar[r]_{\Q(f,F)_E}
+                       \ar@/^1.5pc/[rr]^{\Q(f \circ F)_E}
+                       \ar[d]_{\p^E_{X',f\circ F}}          & (X;F)_E \ar[d]^{\p^E_{X,F}} \ar[r]_{\Q(F)_E} & E\wt\U \ar[d]_{pE\wt\U} \\
+         X' \ar[r]^{f} \ar@/_1.5pc/[rr]_{f \circ F}         & X \ar[r]^F                                   & \U
+       }
+    \end{xy}
+  \end{eq}%
+  
 \end{definition}
 %
 \begin{definition}
@@ -2661,7 +2676,10 @@ which results from the two objects involved being pullbacks of the same diagram,
 In \cite[Construction 5.2]{fromunivwithPi} we have defined, for any $X, V\in {\C}$, a map
 $$\gls{Phi2} : \D_{p}(X,V) \sr \D_p(\Phi(X),\Phi(V)),$$
 by setting
-$${\bf\Phi}^2(F,G) := (\Phi(F) \circ \phi, \iota_{{\bf\Phi},X,F} \circ \Phi(G)).$$
+\begin{eq}
+  \label{defn-Phi2}
+        {\bf\Phi}^2(F,G) := (\Phi(F) \circ \phi, \iota_{{\bf\Phi},X,F} \circ \Phi(G)).
+\end{eq}
 In \cite[Construction 5.6]{fromunivwithPi} we have also defined
 a morphism
 $$\gls{chiPhiV} : \Phi(\I_p(V))\sr \I_{p'}(\Phi(V)),$$
@@ -3449,7 +3467,7 @@ Let us first recall that by \cite[Construction 3.3]{Cfromauniverse} any
 universe category functor $${\bf \Phi}=(\Phi,\phi,\wt{\phi}) : (\C,p,pt) \to (\C',p',pt')$$ defines a
 homomorphism of C-systems
 %
-$$H:\toCC({\C},p)\sr \toCC({\C}',p')$$
+$$H = \gls{HPhi} :\toCC({\C},p)\sr \toCC({\C}',p').$$
 %
 To define $H$ on objects, one defines by induction on $n$, for all $\Gamma\in
 Ob_n(\toCC({\C},p))$, pairs $(H(\Gamma),\psi_{\Gamma})$, where
@@ -3594,19 +3612,22 @@ of $\psi_{\Gamma}$.
 
 
 \begin{lemma}
-\label{2015.05.06.l3} Let $Eq, Eq'$ be J0-structures on $({\C},p)$ and
-$({\C}',p')$ and ${\bf\Phi}$ be a universe category functor compatible
-with $Eq$ and $Eq'$ (as defined in \ref{2015.04.06.def4}). Then for all $\Gamma\in Ob(\toCC({\C},p))$, 
+\label{2015.05.06.l3} Let $Eq$ and $Eq'$ be J0-structures on $({\C},p)$ and
+$({\C}',p')$ respectively; let ${\bf\Phi} : ({\C},p,pt) \to ({\C'},p',pt')$ be a universe category functor compatible
+with $Eq$ and $Eq'$ (as defined in \ref{2015.04.06.def4});
+let $\Idx'$ be the analogue, for the category $\C'$, of $\Idx$;
+let ${\bf\Phi}_{E}^2$ be the analogue, for the universe $pE\wt\U$, of ${\bf\Phi}^2$ (as defined in \ref{defn-Phi2});
+and let $H = H({\bf\Phi})$. Then for all $\Gamma\in Ob(\toCC({\C},p))$, 
 $T \in Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$, and $o\in \Obwt(P)$, one has:
 %
 \begin{enumerate}
 \item $(u'_{1,H(\Gamma)}(H(T)), u_{1,\Idx'(H(T))}'(H(P)))$ is a well defined
   element of $\D_{pE\wt{\U}'}(\Phi(int(\Gamma)),\U')$, and it is equal to 
-  $ \D_{pE\wt{\U}'}(\psi_{\Gamma},\wt{\U}')(\D_{pE\wt{\U}'}(int(H(\Gamma)),\phi)({\bf\Phi}_{E}^2(u_{1,\Gamma}(T),u_{1,\Idx(T)}(P)))); $
+  $ \D_{pE\wt{\U}'}(\psi_{\Gamma},\wt{\U}')(\D_{pE\wt{\U}'}(int'(H(\Gamma)),\phi)({\bf\Phi}_{E}^2(u_{1,\Gamma}(T),u_{1,\Idx(T)}(P)))); $
   and
 \item $(u'_{1,H(\Gamma)}(H(T)), \wt{u}_{1,\Idx'(H(T))}'(H(o)))$ is a well
   defined element of $\D_{pE\wt{\U}'}(\Phi(int(\Gamma)),\wt{\U}')$, and it is equal to 
-  $ \D_{pE\wt{\U}'}(\psi_{\Gamma},\wt{\U}')(\D_{pE\wt{\U}'}(int(H(\Gamma)),\wt{\phi})({\bf\Phi}_{E}^2(u_{1,\Gamma}(T),\wt{u}_{1,\Idx(T)}(o)))). $
+  $ \D_{pE\wt{\U}'}(\psi_{\Gamma},\wt{\U}')(\D_{pE\wt{\U}'}(int'(H(\Gamma)),\wt{\phi})({\bf\Phi}_{E}^2(u_{1,\Gamma}(T),\wt{u}_{1,\Idx(T)}(o)))). $
 \end{enumerate}
 \end{lemma}
 %
@@ -3626,27 +3647,29 @@ because of the interaction of the two universe functors.  (For the introduction 
 We will consider only the second assertion; the proof of the first one is
 similar and simpler.
 
-To prove that the pair $(u'_{1,H(\Gamma)}(H(T)),
-\wt{u}_{1,\Idx'(H(T))}'(H(o)))$ is a well defined element of
+To prove that the pair
+$$(u'_{1,H(\Gamma)}(H(T)), \wt{u}_{1,\Idx'(H(T))}'(H(o)))$$
+is a well defined element of
 $\D_{pE\wt{\U}'}(\Phi(int(\Gamma)),\wt{\U}')$ we need to show that
 $\ft(\partial(H(o)))=\Idx'(H(T))$ and that the source of
-$\wt{u}_{1,\Idx'(H(T))}'(H(o)))$ equals $(int(H(\Gamma)); u'_1(H(T)))_{E}$,
+$\wt{u}_{1,\Idx'(H(T))}'(H(o)))$ equals $(int'(H(\Gamma)); u'_1(H(T)))_{E}$,
 i.e., that
 %
-$$int'(\Idx'(H(T)))=(int(H(\Gamma)); u'_1(H(T)))_{E}$$
+$$int'(\Idx'(H(T)))=(int'(H(\Gamma)); u'_1(H(T)))_{E}$$
 %
 The former is a corollary of our assumptions and Lemma \ref{2015.04.12.l1}, and
 the latter is a corollary of \cite[Problem 3.3(1)]{fromunivwithPi} and the
 first equation of Lemma \ref{2015.03.27.l1}.
 
-Let $X=int(\Gamma)$, $F=u_{1,\Gamma}(T)$, and $\wt{G}=\wt{u}_{1,\Idx(T)}(o)$. By
-the definitions we have
+Let $X=int(\Gamma)$, $F=u_{1,\Gamma}(T)$, and $\wt{G}=\wt{u}_{1,\Idx(T)}(o)$, so that
+$(F,\wt G) \in \D_{pE\wt{\U}}(X,\wt\U)$.
+By the definitions we have
 %
 \begin{align*}
   \D_{pE\wt{\U}'}&(\psi_{\Gamma},\_)(\D_{pE\wt{\U}'}(\_,\wt{\phi})({\bf\Phi}_{E}^2(F,\wt{G}))) \\
-    & = \D_{pE\wt{\U}'}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}'}(\_,\wt{\phi})(\Phi(F)\circ \phi, \iota\circ \Phi(\wt{G}))) \\
-    & = \D_{pE\wt{\U}'}(\psi_{\Gamma},\_)(\Phi(F)\circ \phi, \iota\circ \Phi(\wt{G})\circ\wt{\phi}) \\
-    & = (\psi_{\Gamma}\circ\Phi(F)\circ \phi, \Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota\circ \Phi(\wt{G})\circ\wt{\phi}),
+    & = \D_{pE\wt{\U}'}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}'}(\_,\wt{\phi})(\Phi(F)\circ \phi, \iota\circ \Phi(\wt{G}))) & \by{def'n of ${\bf\Phi}_{E}^2$; cf.{} \ref{defn-Phi2}} \\
+    & = \D_{pE\wt{\U}'}(\psi_{\Gamma},\_)(\Phi(F)\circ \phi, \iota\circ \Phi(\wt{G})\circ\wt{\phi}) & \by{def'n of $\D_{pE\wt{\U}'}$ on morphisms} \\
+    & = (\psi_{\Gamma}\circ\Phi(F)\circ \phi, \Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota\circ \Phi(\wt{G})\circ\wt{\phi}), & \by{def'n of $\D_{pE\wt{\U}'}$ on morphisms}
 \end{align*}
 %
 where
@@ -3685,10 +3708,10 @@ that the compositions of the two sides with $\Phi(\p^E_{X,F})$ and
 $\Phi(\Q(F)_E)\circ \wt{\phi}_E$ are the same.  Since
 %
 \begin{align*}
-        \Q(\psi_{\Gamma},&\Phi(F)\circ\phi)_{E'} \circ \iota\circ \Phi(\p^E_{X,F}) \\
-    & = \Q(\psi_{\Gamma}, \Phi(F)\circ\phi)_{E'} \circ p^{E'}_{\Phi(X),\Phi(F)\circ\phi} & \by{\ref{iota1}} \\
-    & = p^{E'}_{int'(H(\Gamma)),\psi_{\Gamma} \circ \Phi(F)\circ\phi} \circ \psi_\Gamma  \\
-    & = p^{E'}_{int'(H(T))}\circ\psi_{\Gamma},
+        \Q(\psi_{\Gamma},&\Phi(F)\circ\phi)_{E'} \circ \iota \circ \Phi(\p^E_{X,F}) \\
+    & = \Q(\psi_{\Gamma}, \Phi(F)\circ\phi)_{E'} \circ \p^{E'}_{\Phi(X),\Phi(F)\circ\phi} & \by{\ref{iota1}} \\
+    & = \p^{E'}_{int'(H(\Gamma)),\psi_{\Gamma} \circ \Phi(F)\circ\phi} \circ \psi_\Gamma & \by{commutativity of \ref{QfFE-diag}}  \\
+    & = \p^{E'}_{int'(H(T))} \circ \psi_{\Gamma}, & \text{$\p^{E'}_{int'(H(T))}$ is undefined (?)} % TO DO
 \end{align*}
 %
 the first equation reduces to
