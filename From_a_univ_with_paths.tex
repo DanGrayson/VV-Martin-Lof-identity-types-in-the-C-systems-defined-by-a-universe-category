@@ -66,7 +66,8 @@
 
 % notations for the structures making up a J-system
 \newcommand{\Id}{\mathsf{Id}} % originally was "IdT"
-\newcommand{\Idx}{\mathsf{Id_3}} % originally was "IdxT"
+\newcommand{\Idx}{\mathsf{Id}_3} % originally was "IdxT"
+
 \newcommand{\refl}{\mathsf{refl}}
 \newcommand{\J}{\mathsf{J}}
 
@@ -3403,7 +3404,7 @@ also have $\partial(H(s0))=H(\partial(s0))=H(\rf_T^*(P))$. By Lemma
 %
 $$H(\rf_T^*(P))=H(\rf_T)^*(H(P))$$
 %
-It remains to show that $H(\Idx(T))=IdxT'(H(T))$ and $H(\rf_T)=\rf_{H(T)}'$. This
+It remains to show that $H(\Idx(T))=\Idx'(H(T))$ and $H(\rf_T)=\rf_{H(T)}'$. This
 follows by a lengthy computation from the defining
 equations (\ref{2015.04.06.eq1}) and (\ref{2015.04.02.eq1}), which we omit.
 \end{myproof}
@@ -3484,7 +3485,7 @@ $$H(f)=\psi_{\Gamma}\circ\Phi(f)\circ\psi_{\Gamma'}^{-1}$$
 
 \begin{lemma}
 \label{2015.04.12.l1} Let ${\bf\Phi}$ be a universe category functor as above
-that is compatible with the J0-structures $Eq$ and $Eq'$ on $p$ and $p'$
+that is compatible (as defined in \ref{2015.04.06.def4}) with the J0-structures $Eq$ and $Eq'$ on $p$ and $p'$
 respectively. Then the homomorphism of C-systems $H=H({\bf\Phi})$ is a
 homomorphism of C-systems with J0-structures relative to $\Id_{Eq}$ and
 $\Id_{Eq'}$.
@@ -3594,25 +3595,18 @@ of $\psi_{\Gamma}$.
 
 \begin{lemma}
 \label{2015.05.06.l3} Let $Eq, Eq'$ be J0-structures on $({\C},p)$ and
-$({\C}',p')$ and $\bf\Phi$ be a universe category functor compatible
-with $Eq$ and $Eq'$. The for all $\Gamma\in Ob(\toCC({\C},p))$, $T\in
-Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$ and $o\in \Obwt(P)$ one has:
+$({\C}',p')$ and ${\bf\Phi}$ be a universe category functor compatible
+with $Eq$ and $Eq'$ (as defined in \ref{2015.04.06.def4}). Then for all $\Gamma\in Ob(\toCC({\C},p))$, 
+$T \in Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$, and $o\in \Obwt(P)$, one has:
 %
 \begin{enumerate}
-\item $(u'_{1,H(\Gamma)}(H(T)), u_{1,IdxT'(H(T))}'(H(P)))$ is a well defined
-  element of $\D_{pE\wt{\U}'}(\Phi(int(\Gamma)),\U')$ and
-%
-  \begin{align*}
-    (u'_{1,H(\Gamma)}(H(T)), & u_{1,IdxT'(H(T))}'(H(P))) \\
-    & = \D_{pE\wt{\U}'}(\psi_{\Gamma},\wt{\U}')(\D_{pE\wt{\U}'}(int(H(\Gamma)),\phi)({\bf\Phi}_{E}^2(u_{1,\Gamma}(T),u_{1,Idx(T)}(P))))
-  \end{align*}
-\item $(u'_{1,H(\Gamma)}(H(T)), \wt{u}_{1,IdxT'(H(T))}'(H(o)))$ is a well
-  defined element of $\D_{pE\wt{\U}'}(\Phi(int(\Gamma)),\wt{\U}')$ and
-%
-  \begin{align*}
-    (u'_{1,H(\Gamma)}(H(T)), & \wt{u}_{1,IdxT'(H(T))}'(H(o))) \\
-    & = \D_{pE\wt{\U}'}(\psi_{\Gamma},\wt{\U}')(\D_{pE\wt{\U}'}(int(H(\Gamma)),\wt{\phi})({\bf\Phi}_{E}^2(u_{1,\Gamma}(T),\wt{u}_{1,Idx(T)}(o))))
-  \end{align*}
+\item $(u'_{1,H(\Gamma)}(H(T)), u_{1,\Idx'(H(T))}'(H(P)))$ is a well defined
+  element of $\D_{pE\wt{\U}'}(\Phi(int(\Gamma)),\U')$, and it is equal to 
+  $ \D_{pE\wt{\U}'}(\psi_{\Gamma},\wt{\U}')(\D_{pE\wt{\U}'}(int(H(\Gamma)),\phi)({\bf\Phi}_{E}^2(u_{1,\Gamma}(T),u_{1,\Idx(T)}(P)))); $
+  and
+\item $(u'_{1,H(\Gamma)}(H(T)), \wt{u}_{1,\Idx'(H(T))}'(H(o)))$ is a well
+  defined element of $\D_{pE\wt{\U}'}(\Phi(int(\Gamma)),\wt{\U}')$, and it is equal to 
+  $ \D_{pE\wt{\U}'}(\psi_{\Gamma},\wt{\U}')(\D_{pE\wt{\U}'}(int(H(\Gamma)),\wt{\phi})({\bf\Phi}_{E}^2(u_{1,\Gamma}(T),\wt{u}_{1,\Idx(T)}(o)))). $
 \end{enumerate}
 \end{lemma}
 %
@@ -3633,19 +3627,19 @@ We will consider only the second assertion; the proof of the first one is
 similar and simpler.
 
 To prove that the pair $(u'_{1,H(\Gamma)}(H(T)),
-\wt{u}_{1,IdxT'(H(T))}'(H(o)))$ is a well defined element of
+\wt{u}_{1,\Idx'(H(T))}'(H(o)))$ is a well defined element of
 $\D_{pE\wt{\U}'}(\Phi(int(\Gamma)),\wt{\U}')$ we need to show that
-$\ft(\partial(H(o)))=IdxT'(H(T))$ and that the source of
-$\wt{u}_{1,IdxT'(H(T))}'(H(o)))$ equals $(int(H(\Gamma)); u'_1(H(T)))_{E}$,
+$\ft(\partial(H(o)))=\Idx'(H(T))$ and that the source of
+$\wt{u}_{1,\Idx'(H(T))}'(H(o)))$ equals $(int(H(\Gamma)); u'_1(H(T)))_{E}$,
 i.e., that
 %
-$$int'(IdxT'(H(T)))=(int(H(\Gamma)); u'_1(H(T)))_{E}$$
+$$int'(\Idx'(H(T)))=(int(H(\Gamma)); u'_1(H(T)))_{E}$$
 %
 The former is a corollary of our assumptions and Lemma \ref{2015.04.12.l1}, and
 the latter is a corollary of \cite[Problem 3.3(1)]{fromunivwithPi} and the
 first equation of Lemma \ref{2015.03.27.l1}.
 
-Let $X=int(\Gamma)$, $F=u_{1,\Gamma}(T)$, and $\wt{G}=\wt{u}_{1,Idx(T)}(o)$. By
+Let $X=int(\Gamma)$, $F=u_{1,\Gamma}(T)$, and $\wt{G}=\wt{u}_{1,\Idx(T)}(o)$. By
 the definitions we have
 %
 \begin{align*}
@@ -3665,13 +3659,14 @@ is the unique morphism such that the following two equations are satisfied.
   \iota \circ \Phi(\p^E_{X,F})               & = p^{E'}_{\Phi(X),\Phi(F)\circ\phi}         \label{iota1} \\
   \iota \circ \Phi(\Q(F)_E)\circ \wt{\phi}_E & = \Q(\Phi(F)\circ\phi)_{E'}                 \label{iota2}
 \end{align}
+(This map $\iota$ is analogous to the one defined in \ref{iota-diagram}.)
 
 On the other hand, by \cite[Lemma 6.1(1)]{fromunivwithPi},
 %
 $$u_{1,H(\Gamma)}(H(T))=\psi_{\Gamma}\circ \Phi(u_{1,\Gamma}(T))\circ \phi$$
 and
 \begin{align*}
-  \wt{u}_{1,IdxT'(H(T))}(H(o))
+  \wt{u}_{1,\Idx'(H(T))}(H(o))
     & = \wt{u}_{1,H(\Idx(T))}(H(o)) \\
     & = \psi_{H(\Idx(T))}\circ \Phi(\wt{u}_{1,\Idx(T)}(o))\circ \wt{\phi}
 \end{align*}
@@ -3790,12 +3785,12 @@ The same equalities hold for $F' := \psi_{\Gamma}\circ\Phi(F)\circ
 \phi=u_1'(H(T))$, and the equation (\ref{2015.05.10.eq2aa}) becomes
 %
 $$\psi_{\Idx(T)}\circ \Phi(\p_{\Idx(T)})\circ \Phi(\p_{\ft(\Idx(T))})\circ
-\Phi(\Q(F))\circ \wt{\phi}=\p_{IdxT'(H(T))}\circ \p_{\ft(IdxT'(H(T)))}\circ \Q(F')$$
+\Phi(\Q(F))\circ \wt{\phi}=\p_{\Idx'(H(T))}\circ \p_{\ft(\Idx'(H(T)))}\circ \Q(F')$$
 %
 Using the defining equations for $\psi$ we rewrite the left hand side as follows:
 %
 $$\psi_{\Idx(T)}\circ \Phi(\p_{\Idx(T)})\circ \Phi(\p_{\ft(\Idx(T))})\circ
-\Phi(\Q(F))\circ \wt{\phi}=\p_{H(Idx(T))}\circ \p_{\ft(H(\Idx(T)))}\circ
+\Phi(\Q(F))\circ \wt{\phi}=\p_{H(\Idx(T))}\circ \p_{\ft(H(\Idx(T)))}\circ
 \psi_{T}\circ \Phi(\Q(F))\circ \wt{\phi}.$$
 %
 It remains to show that
@@ -3821,9 +3816,9 @@ Let $F'=u_1(H(T))$. Rewriting the right hand side of \ref{eqn13} we get
 \begin{align*}
   \Q(\psi_{\Gamma}\circ \Phi&(F)\circ \phi)_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ \Q(p') \\
     & = \Q(F')_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ \Q(p') \\
-    & = \p_{IdxT'(H(T))}\circ \Q(\Q(F'),p')\circ \Q(p') & \by{commutativity of \ref{2015.05.08.constr1}} \\
-    & = \p_{IdxT'(H(T))}\circ \Q(\Q(F')\circ p') & \by{commutativity of \ref{2015.04.06.l0.sq}} \\
-    & = \p_{IdxT'(H(T))}\circ \Q(u_1(\ft(\Idx(H(T))))).
+    & = \p_{\Idx'(H(T))}\circ \Q(\Q(F'),p')\circ \Q(p') & \by{commutativity of \ref{2015.05.08.constr1}} \\
+    & = \p_{\Idx'(H(T))}\circ \Q(\Q(F')\circ p') & \by{commutativity of \ref{2015.04.06.l0.sq}} \\
+    & = \p_{\Idx'(H(T))}\circ \Q(u_1(\ft(\Idx(H(T))))).
 \end{align*}
 \end{myproof}
 
@@ -3850,14 +3845,14 @@ The defining equation for $\J'$ is
 %
 \begin{eq}
   \label{def-eqn-J'}
-  \etaunshriek_{pE\wt{\U}'}(u'_1(H(T)),\wt{u}'_{1,{IdxT'(H(T)}}(\J')))=\phi(H(\Gamma),H(T),H(P),H(s0)) \circ Jp' 
+  \etaunshriek_{pE\wt{\U}'}(u'_1(H(T)),\wt{u}'_{1,{\Idx'(H(T)}}(\J')))=\phi(H(\Gamma),H(T),H(P),H(s0)) \circ Jp' 
 \end{eq}
 and to prove the lemma we need to show that $H(\J)$ satisfies this equation.
 
 Using Lemma \ref{2015.05.06.l3} we have
 %
 \begin{align*}
-  \etaunshriek_{pE\wt{\U}}(&u'_1(H(T)),\wt{u}'_{1,{IdxT'(H(T)}}(H(\J)))) \\
+  \etaunshriek_{pE\wt{\U}}(&u'_1(H(T)),\wt{u}'_{1,{\Idx'(H(T)}}(H(\J)))) \\
     & = \etaunshriek_{pE\wt{\U}'}(\D_{pE\wt{\U}'}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}'}(\_,\wt{\phi})(\Phi_E^2(u_1(T),\wt{u}_{1,\Idx(T)}(\J))))) \\
     & = \psi_{\Gamma}\circ \etaunshriek_{pE\wt{\U}'}(\Phi_E^2(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ \I_{pE\wt{\U}'}(\wt{\phi})
 \end{align*}
@@ -3951,7 +3946,7 @@ $X=int(\Gamma)$, $V=\U$ and ${\bf\Phi}={\bf\Phi}_E$. Continuing further we get
 \begin{align*}
   \psi_{\Gamma}\circ \etaunshriek_{pE\wt{\U}'}&({\bf\Phi}^2_E(F,G))\circ \I_{pE\wt{\U}'}(\phi) \\
     & = \etaunshriek_{pE\wt{\U}'}(\D_{pE\wt{\U}}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}}(\_,\phi)({\bf\Phi}^2(F,G)))) \\
-    & = \etaunshriek_{pE\wt{\U}'}((u_{1,H(\Gamma)}'(H(T)),u_{1,IdxT'(H(T))}(H(P)))),
+    & = \etaunshriek_{pE\wt{\U}'}((u_{1,H(\Gamma)}'(H(T)),u_{1,\Idx'(H(T))}(H(P)))),
 \end{align*}
 %
 where the last equality holds by Lemma \ref{2015.05.06.l3}(1).
@@ -3960,7 +3955,7 @@ Rewriting the right hand side we get
 %
 $$\phi(H(\Gamma),H(T),H(P),H(s0))\circ \pr_1'=\etaunshriek_{pE\wt{\U}'}(F',G'),$$
 %
-where $F'=u_{1,H(\Gamma)}(H(T))$ and $G'=u_{1,IdxT'(H(\Gamma))}(H(P))$.  This
+where $F'=u_{1,H(\Gamma)}(H(T))$ and $G'=u_{1,\Idx'(H(\Gamma))}(H(P))$.  This
 shows that the first equality holds.
 
 For (\ref{2015.05.10.eq3b}), rewriting the left hand side we get
