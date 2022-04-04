@@ -156,6 +156,7 @@
 \newoperator{utilde1Gamma}{\wt u_{1,\Gamma}}
 \newoperator{multisemicolon}{(X;F_1,\dots,F_n)}
 \newoperator{starfg}{f*g}
+\newoperator{phiGammaTPs0}{\phi(\Gamma,T,P,s0)}
 \newoperator{PhiXF}{\Phi_{X,F}}
 \newoperator{Phi2}{{\bf\Phi}^2}
 \newoperator{PhiwtUp}{\Phi\wt{\U}p}
@@ -2268,7 +2269,7 @@ $$\etaunshriek_{pE\wt{\U}}(F,G)\circ \I^{\omega}(\U)=\etaunshriek_p(F,\wt{H})\ci
 We show this as follows.
 %
 \begin{align*}
-  \etaunshriek_{pE\wt{\U}}(F,G) & \circ \I^{\omega}(\U) \\
+  \etaunshriek_{pE\wt{\U}}(F,&G) \circ \I^{\omega}(\U) \\
     & = \etaunshriek_p(F,G\circ F^*(\omega)) & \by{Lemma \ref{2015.04.02.l4}} \\
     & = \etaunshriek_p(F,\rf_T\circ G) & \by{Lemma \ref{2015.03.31.l2}}  \\
     & = \etaunshriek_p(F,s0\circ \Q(\rf_T\circ G)\circ p) & \by{commutativity of the canonical square}  \\
@@ -2279,7 +2280,7 @@ We show this as follows.
 Therefore the pair $(\etaunshriek_{pE\wt{\U}}(F,G),\etaunshriek_p(F,\wt{H}))$ gives us a
 morphism
 %
-$$\phi(\Gamma,T,P,s0):X\sr (\I_{pE\wt{\U}}(\U), \I^{\omega}(\U)) \times_{\I_p(\U)}
+$$\gls{phiGammaTPs0} : X \sr (\I_{pE\wt{\U}}(\U), \I^{\omega}(\U)) \times_{\I_p(\U)}
 (\I_p(\wt{\U}),\I_p(p))$$
 %
 and composing it with $Jp$ (cf. Definition \ref{2015.03.27.def6}) we obtain a
@@ -3705,7 +3706,7 @@ the first equation reduces to
 and since
 %
 \begin{align*}
-        \Q(\psi_{\Gamma},\Phi(F)&\circ\phi)_{E'}\circ \iota\circ \Phi(\Q(F)_E)\circ \wt{\phi}_E \\
+        \Q(\psi_{\Gamma},\Phi(F)\circ\phi&)_{E'}\circ \iota\circ \Phi(\Q(F)_E)\circ \wt{\phi}_E \\
     & = \Q(\psi_{\Gamma},\Phi(F) \circ\phi)_{E'}\circ \Q(\Phi(F)\circ\phi)_{E'}                 & \by{\ref{iota2}} \\
     & = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'},                                           & \by{\ref{QfFE-defn}}
 \end{align*}
@@ -3866,7 +3867,7 @@ We further have:
 \begin{align*}
   \psi_{\Gamma}\circ \etaunshriek_{pE\wt{\U}'}&(\Phi_E^2(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ \I_{pE\wt{\U}'}(\wt{\phi}) \\
     & = \psi_{\Gamma}\circ \Phi(\etaunshriek_{pE\wt{\U}}(u_1(T),\wt{u}_{1,\Idx(T)}(\J)))\circ \chi_{{\bf\Phi}_E}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi}) & \by{\cite[Lemma 5.8]{fromunivwithPi}} \\
-    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ Jp)\circ \chi_{{\bf\Phi}_E}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi}) & \by{def'n of $\J$ -- VERIFY} \\
+    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ Jp)\circ \chi_{{\bf\Phi}_E}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi}) & \by{\ref{2015.05.08.rem1}} \\
     & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ Jp)\circ \wt{\zeta}_{\bf\Phi}.
 \end{align*}
 %
@@ -3939,7 +3940,7 @@ For (\ref{2015.05.10.eq3a}), rewriting the left hand side we get
 Continuing we get
 %
 \begin{align*}
-  \psi_{\Gamma}\circ & \Phi(\etaunshriek_{pE\wt{\U}}(F,G))\circ \zeta_{\Phi} \\
+  \psi_{\Gamma}\circ \Phi&(\etaunshriek_{pE\wt{\U}}(F,G))\circ \zeta_{\Phi} \\
     & = \psi_{\Gamma}\circ \Phi(\etaunshriek_{pE\wt{\U}}(F,G))\circ \xi_{{\bf \Phi}_E}\circ \I_{pE\wt{\U}'}(\phi) \\
     & = \psi_{\Gamma}\circ\etaunshriek_{pE\wt{\U}'}({\bf\Phi}^2_E(F,G))\circ \I_{pE\wt{\U}'}(\phi),
 \end{align*}
@@ -3948,7 +3949,7 @@ where the last equality holds by \cite[Lemma 5.8]{fromunivwithPi} applied to
 $X=int(\Gamma)$, $V=\U$ and ${\bf\Phi}={\bf\Phi}_E$. Continuing further we get
 %
 \begin{align*}
-  \psi_{\Gamma}\circ&\etaunshriek_{pE\wt{\U}'}({\bf\Phi}^2_E(F,G))\circ \I_{pE\wt{\U}'}(\phi) \\
+  \psi_{\Gamma}\circ \etaunshriek_{pE\wt{\U}'}&({\bf\Phi}^2_E(F,G))\circ \I_{pE\wt{\U}'}(\phi) \\
     & = \etaunshriek_{pE\wt{\U}'}(\D_{pE\wt{\U}}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}}(\_,\phi)({\bf\Phi}^2(F,G)))) \\
     & = \etaunshriek_{pE\wt{\U}'}((u_{1,H(\Gamma)}'(H(T)),u_{1,IdxT'(H(T))}(H(P)))),
 \end{align*}
@@ -3965,7 +3966,7 @@ shows that the first equality holds.
 For (\ref{2015.05.10.eq3b}), rewriting the left hand side we get
 %
 \begin{align*}
-  \psi_{\Gamma}\circ & \Phi(\phi(\Gamma,T,P,s0))\circ R_{\Phi}\circ \pr_2'  \\
+  \psi_{\Gamma}\circ \Phi&(\phi(\Gamma,T,P,s0))\circ R_{\Phi}\circ \pr_2'  \\
     & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ \Phi(\pr_2)\circ \wt{\xi}_{\Phi} \\
     & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ \pr_2)\circ \wt{\xi}_{\Phi} \\
     & = \psi_{\Gamma}\circ \Phi(\etaunshriek_p(F,\wt{H}))\circ \wt{\xi}_{\Phi} \\
