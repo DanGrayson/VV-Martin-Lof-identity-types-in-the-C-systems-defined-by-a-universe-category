@@ -3590,7 +3590,7 @@ square
 $$
 \begin{CD}
 int'(H(\Gamma)) @>\psi_{\Gamma}>> \Phi(int(\Gamma))\\ @Vp_{H(\Gamma),n} VV
-@VV\Phi(\p_{\Gamma,n})V\\ int'(\ft^n(\Gamma)) @>\psi_{\ft^n(\Gamma)}>>
+@VV\Phi(\p_{\Gamma,n})V\\ int'(H(\ft^n(\Gamma))) @>\psi_{\ft^n(\Gamma)}>>
 \Phi(int(\ft^n(\Gamma)))
 \end{CD}
 $$
@@ -3705,7 +3705,12 @@ $$\Phi(int(\Idx(T)))=\Phi((X;F)_E),$$
 %
 and since ${\bf\Phi}_E$ is a universe category functor it is sufficient to show
 that the compositions of the two sides with $\Phi(\p^E_{X,F})$ and
-$\Phi(\Q(F)_E)\circ \wt{\phi}_E$ are the same.  Since
+$\Phi(\Q(F)_E)\circ \wt{\phi}_E$ are the same, i.e., that the following two equations hold.
+\begin{align}
+  \psi_{\Idx(T)} \circ \Phi(\p^E_{X,F})               & =\Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota \circ \Phi(\p^E_{X,F})                \label{eqn-11a} \\
+  \psi_{\Idx(T)} \circ \Phi(\Q(F)_E)\circ \wt{\phi}_E & = \Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota \circ \Phi(\Q(F)_E)\circ \wt{\phi}_E \label{eqn-11b}
+\end{align}
+Since
 %
 \begin{align*}
         \Q(\psi_{\Gamma},&\Phi(F)\circ\phi)_{E'} \circ \iota \circ \Phi(\p^E_{X,F}) \\
@@ -3714,14 +3719,17 @@ $\Phi(\Q(F)_E)\circ \wt{\phi}_E$ are the same.  Since
     & = \p^{E'}_{int'(H(T))} \circ \psi_{\Gamma}, & \text{$\p^{E'}_{int'(H(T))}$ is undefined (?)} % TO DO
 \end{align*}
 %
-the first equation reduces to
+equation \ref{eqn-11a} reduces to
 %
 \begin{eq}
   \label{2015.05.10.eq1}
   \psi_{\Idx(T)}\circ \Phi(\p^E_{T}) = p^{E'}_{int'(H(T))}\circ\psi_{\Gamma},
 \end{eq}%
 %
-and since
+Equation (\ref{2015.05.10.eq1}) follows immediately from Lemma
+\ref{2015.05.10.l1} and the second equation of Lemma \ref{2015.03.27.l1}.
+
+Since
 %
 \begin{align*}
         \Q(\psi_{\Gamma},\Phi(F)\circ\phi&)_{E'}\circ \iota\circ \Phi(\Q(F)_E)\circ \wt{\phi}_E \\
@@ -3729,15 +3737,13 @@ and since
     & = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'},                                           & \by{\ref{QfFE-defn}}
 \end{align*}
 %
-the second equation reduces to
+equation \ref{eqn-11b} reduces to
 %
 \begin{eq}
   \label{2015.05.10.eq2.0}
   \psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \wt{\phi}_E = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}.
 \end{eq}%
 %
-Equation (\ref{2015.05.10.eq1}) follows immediately from Lemma
-\ref{2015.05.10.l1} and the second equation of Lemma \ref{2015.03.27.l1}.
 
 We have
 %
