@@ -1919,8 +1919,8 @@ and $F:int(\Gamma)\sr \U$. Then one has:
 %
 \begin{align}
   \Idx(\Gamma,F) &= (((X,F),\Q(F)\circ p), \Q(\Q(F),p)\circ Eq) \label{2015.03.27.l1-IDx} \\
-  int(\Idx(\Gamma,F))&=(int(\Gamma);F)_{E} \\
-  int(\p_{\Idx((\Gamma,F)),3}) &= \p^E_{\Gamma,F} \\
+  int(\Idx(\Gamma,F))&=(int(\Gamma);F)_{E} \label{2015.03.27.l1-eqn2} \\
+  int(\p_{\Idx((\Gamma,F)),3}) &= \p^E_{\Gamma,F} \label{2015.03.27.l1-eqn3}  \\
   \Q(F)_{E}\circ \Q(Eq)&=\Q(\Q(\Q(F)\circ p)\circ Eq)
 \end{align}
 %
@@ -3710,24 +3710,18 @@ $\Phi(\Q(F)_E)\circ \wt{\phi}_E$ are the same, i.e., that the following two equa
   \psi_{\Idx(T)} \circ \Phi(\p^E_{X,F})               & =\Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota \circ \Phi(\p^E_{X,F})                \label{eqn-11a} \\
   \psi_{\Idx(T)} \circ \Phi(\Q(F)_E)\circ \wt{\phi}_E & = \Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota \circ \Phi(\Q(F)_E)\circ \wt{\phi}_E \label{eqn-11b}
 \end{align}
-Since
+We establish equation \ref{eqn-11a} as follows.
 %
 \begin{align*}
         \Q(\psi_{\Gamma},&\Phi(F)\circ\phi)_{E'} \circ \iota \circ \Phi(\p^E_{X,F}) \\
-    & = \Q(\psi_{\Gamma}, \Phi(F)\circ\phi)_{E'} \circ \p^{E'}_{\Phi(X),\Phi(F)\circ\phi} & \by{\ref{iota1}} \\
-    & = \p^{E'}_{int'(H(\Gamma)),\psi_{\Gamma} \circ \Phi(F)\circ\phi} \circ \psi_\Gamma & \by{commutativity of \ref{QfFE-diag}}  \\
-    & = \p^{E'}_{int'(H(T))} \circ \psi_{\Gamma}, & \text{$\p^{E'}_{int'(H(T))}$ is undefined (?)} % TO DO
+    & = \Q(\psi_{\Gamma}, \Phi(F)\circ\phi)_{E'} \circ \p^{E'}_{\Phi(X),\Phi(F)\circ\phi}   & \by{\ref{iota1}} \\
+    & = \p^{E'}_{int'(H(\Gamma)),\psi_{\Gamma} \circ \Phi(F)\circ\phi} \circ \psi_\Gamma    & \by{commutativity of \ref{QfFE-diag}} \\
+    & = \p_{H(\Idx(X,F)),3} \circ \psi_\Gamma                                               & \by{\ref{2015.03.27.l1-eqn2}} \\
+    & = \p_{H(\Idx(T)),3} \circ \psi_\Gamma                                                 & \by{def'n of $X$ and $F$} \\
+    & = \psi_{\Idx(T)} \circ \Phi(\p_{\Idx(T),3})                                           & \by{\ref{2015.05.10.l1}} \\
+    & = \psi_{\Idx(T)} \circ \Phi(\p_{\Idx(X,F),3})                                         & \by{def'n of $X$ and $F$} \\
+    & = \psi_{\Idx(T)} \circ \Phi(\p^E_{X,F}).                                              & \by{\ref{2015.03.27.l1-eqn3}}
 \end{align*}
-%
-equation \ref{eqn-11a} reduces to
-%
-\begin{eq}
-  \label{2015.05.10.eq1}
-  \psi_{\Idx(T)}\circ \Phi(\p^E_{T}) = p^{E'}_{int'(H(T))}\circ\psi_{\Gamma},
-\end{eq}%
-%
-Equation (\ref{2015.05.10.eq1}) follows immediately from Lemma
-\ref{2015.05.10.l1} and the second equation of Lemma \ref{2015.03.27.l1}.
 
 Since
 %
