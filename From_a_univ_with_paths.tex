@@ -3479,13 +3479,19 @@ as follows. For $n=0$ one has $H(())=()$ and $\psi_{()}:pt'\sr \Phi(pt)$ is the
 unique morphism to a final object $\Phi(pt)$. For $(\Gamma,F)\in Ob_{n+1}$ one
 has
 %
-$$H((\Gamma,F))=(H(\Gamma),\psi_{\Gamma}\circ\Phi(F)\circ \phi)$$
+$$H((\Gamma,F))=(H(\Gamma),\psi_{\Gamma}\circ\Phi(F)\circ \phi),$$
 %
-and $\psi_{(\Gamma,F)}$ is the unique morphism $int'(H(\Gamma,F))\sr
-\Phi(int(\Gamma,F))$ such that
+in other words, that
+\begin{eq}
+  \label{u1-H-eqn}
+  u_1(H((\Gamma,F))) = \psi_{\Gamma} \circ \Phi(F) \circ \phi.
+\end{eq}%
+Moreover, $\psi_{(\Gamma,F)}$ is the unique morphism $int'(H(\Gamma,F))\sr \Phi(int(\Gamma,F))$ such that
 %
-$$\psi_{(\Gamma,F)}\circ
-\Phi(\Q(F))\circ\wt{\phi}=\Q'(\psi_{\Gamma}\circ\Phi(F)\circ\phi)$$
+\begin{eq}
+  \label{psi-Q-compat}
+  \psi_{(\Gamma,F)}\circ \Phi(\Q(F))\circ\wt{\phi}=\Q'(\psi_{\Gamma}\circ\Phi(F)\circ\phi)
+\end{eq}
 %
 and
 %
@@ -3750,7 +3756,7 @@ Therefore (\ref{2015.05.10.eq2.0}) is equivalent to two equations:
   \psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ \Phi\wt{\U}p
   & = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \p_{(\wt{\U}';p'),Eq'} \label{2015.05.10.eq2a} \\
   \psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\Q(Eq))\circ\wt{\phi}
-  & = \Q'(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \Q(Eq'). \label{2015.05.10.eq2b}
+  & = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \Q'(Eq'). \label{2015.05.10.eq2b}
 \end{align}
 %
 The first equality we will have to decompose further into two using the fact
@@ -3764,7 +3770,7 @@ Therefore (\ref{2015.05.10.eq2a}) is equivalent to two equations:
   \psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ \Phi(\p_{\wt{\U},p})\circ\wt{\phi}
   & = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ \p_{\wt{\U}',p'} \label{2015.05.10.eq2aa} \\
   \psi_{\Idx(T)}\circ \Phi(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ \Phi(\Q(p))\circ\wt{\phi}
-  & = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ \Q(p'). \label{2015.05.10.eq2ab}
+  & = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ \Q'(p'). \label{2015.05.10.eq2ab}
 \end{align}
 %
 To prove (\ref{2015.05.10.eq2b}) observe first two useful equalities:
@@ -3782,20 +3788,13 @@ Now we have:
 %
 \begin{align*}
         \psi_{\Idx(T)}\circ \Phi&(\Q(F)_E) \circ \Phi(\Q(Eq))\circ\wt{\phi} \\
-    & = \psi_{\Idx(T)}\circ \Phi (\Q(F)_E  \circ \Q(Eq))     \circ\wt{\phi} \\
+    & = \psi_{\Idx(T)}\circ \Phi (\Q(F)_E  \circ \Q(Eq))     \circ\wt{\phi} & \by{functoriality of $\Phi$} \\
     & = \psi_{\Idx(T)}\circ \Phi (\Q(u_1(\Idx(T))))          \circ\wt{\phi} & \by{\ref{usefulequal2}} \\
-    & = \Q'(\psi_{\Idx(T)}\circ \Phi(u_1(\Idx(T)))\circ \phi) \\
-    & = \Q(u_1(H(\Idx(T))))
+    & = \Q'(\psi_{\Gamma}\circ \Phi(u_1(\Idx(T)))\circ \phi) & \by {\ref{psi-Q-compat}} \\
+    & = \Q'(u_1(H(\Idx(T)))) & \by{\ref{u1-H-eqn}} \\
+    & = \Q(u_1(H(T)))_{E'}\circ \Q'(Eq') \\
+    & = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'} \circ \Q'(Eq'). \\
 \end{align*}
-%
-and
-%
-\begin{align*}
-  \Q(\psi_{\Gamma}\circ \Phi&(F)\circ \phi)_{E'}\circ \Q(Eq') \\
-  & =\Q'(u_1(H(T)))_{E'}\circ \Q(Eq') \\
-  & =\Q'(u_1(H(\Idx(T)))).
-\end{align*}
-%
 The equality (\ref{2015.05.10.eq2b}) is proved.
 
 To prove (\ref{2015.05.10.eq2aa}) observe two equalities:
