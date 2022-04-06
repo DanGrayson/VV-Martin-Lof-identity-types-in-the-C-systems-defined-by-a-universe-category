@@ -146,6 +146,7 @@
 \newoperator{reflOmega}{\refl_\Omega}
 \newoperator{rf}{\rf}
 \newoperator{rfT}{\rf_T}
+\newoperator{RPhi}{R_{\bf\Phi}}
 \newoperator{sg}{\s_g}
 \newoperator{st}{\st}
 \newoperator{XFE}{(X;F)_{E}}
@@ -2866,13 +2867,13 @@ Consider the morphisms
 %
 $$\gls{zetai}:\Phi(\I_{p_i}(\U))\sr \I_{p'_i}(\U')$$
 %
-given by $\zeta_i=\chi_i(\U)\circ \I_{p'_i}(\phi)$ and
+given by $\zeta_i:=\chi_i(\U)\circ \I_{p'_i}(\phi)$ and
 %
 $$\gls{wtzetai}:\Phi(\I_{p_i}(\wt{\U}_1))\sr \I_{p'_i}(\wt\U'_1)$$
 %
-given by $\wt{\zeta}_i=\chi_i(\wt{\U}_1)\circ \I_{p'_i}(\wt\phi_1)$. Note that
+given by $\wt{\zeta}_i:=\chi_i(\wt{\U}_1)\circ \I_{p'_i}(\wt\phi_1)$. Note that
 $\zeta_i=\xi_{(\Phi,\phi,\wt{\phi}_i)}$ and $\wt{\zeta}_1=\wt\xi_{(\Phi,\phi,\wt{\phi}_1)}$,
-where $\xi$ and $\wt\xi$ are the morphisms introduced in \cite[\S 6]{fromunivwithPi},
+(where $\xi$ and $\wt\xi$ are the morphisms introduced in \cite[\S 6]{fromunivwithPi}),
 but $\wt{\zeta}_2\ne \wt\xi_{(\Phi,\phi,\wt{\phi}_2)}$.
 
 %
@@ -3301,13 +3302,14 @@ $$
 %
 \end{theorem}
 %
-Let $R_{\bf\Phi}$ denote the composite map
+Let $\gls{RPhi}$ denote the composite map
 %
-\begin{align*}
+\begin{align}
+  \label{RPhi-defn}
   \Phi((\I_{pE\wt{\U}}&(\U), \I^{\omega}(\U))\times_{\I_p(\U)} (\I_p(\wt{\U}), \I_p(p))) \\
       & \sr \Phi(\I_{pE\wt{\U}}(\U), \I^{\omega}(\U))\times_{\Phi(\I_p(\U))}\Phi(\I_p(\wt{\U}), \I_p(p)) \\
       & \sr (\I_{pE\wt{\U}'}(\U'),\I^{\omega'}(\U'))\times_{\I_{p'}(\U')}(\I_{p'}(\wt{\U}'),\I_{p'}(p')),
-\end{align*}
+\end{align}
 %
 where the second arrow is defined by $\xi_{\bf\Phi}, \wt{\xi}_{\bf\Phi}$ and
 $\zeta_{\bf\Phi}$ in view of Theorem \ref{2015.04.10.th1}.
@@ -3647,10 +3649,10 @@ $T \in Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$, and $o\in \Obwt(P)$, one has:
 %
 \begin{remark}\rm
   Since
-  \begin{align*}
-    \gls{u2}(T)      & := (u_1(\ft(T)),u_1(T)) \in \D_p(int(\Gamma),\U) \\
+  \begin{align}
+    \gls{u2}  (T)    & := (u_1(\ft(T)),u_1(T))                \in \D_p(int(\Gamma),   \U) \label{u2-defn} & \text{and} \\
     \gls{wtu2}(s)    & := (u_1(\ft(\partial(s))),\wt{u}_1(s)) \in \D_p(int(\Gamma),\wt\U),
-  \end{align*}
+  \end{align}
 this lemma is very similar
 to \cite[Lemma 6.1(3,4)]{fromunivwithPi}, but its proof is more involved
 because of the interaction of the two universe functors.  (For the introduction of $u_2$ and $\wt u_2$ see
@@ -3918,27 +3920,34 @@ Let
 \end{align*}
 %
 be the projections and let $\pr_1'$, $\pr_2'$ be their analogues in $\mathcal
-C'$. Then one has
+C'$. Then one has the following two equations.
 %
-$$R_{\Phi}\circ \pr_1'=\Phi(\pr_1)\circ \zeta_{\Phi}$$
-and
-$$R_{\Phi}\circ \pr_2'=\Phi(\pr_2)\circ \wt{\xi}_{\Phi}.$$
+\begin{align}
+  R_{\Phi}\circ \pr_1' & =\Phi(\pr_1)\circ \zeta_{\Phi}      \label{RPhi-eqn1} \\
+  R_{\Phi}\circ \pr_2' & =\Phi(\pr_2)\circ \wt{\xi}_{\Phi}.  \label{RPhi-eqn2}
+\end{align}
 %
-On the other hand the defining relations of $\phi(\Gamma,T,P,s0)$ are
+On the other hand, the defining relations of $\phi(\Gamma,T,P,s0)$ are
 %
-$$\phi(\Gamma,T,P,s0)\circ \pr_1=\etaunshriek_{pE\wt{\U}}(F,G)$$
-and
-$$\phi(\Gamma,T,P,s0)\circ \pr_2=\etaunshriek_p(F,\wt{H}),$$
+\begin{align}
+  \phi(\Gamma,T,P,s0)\circ \pr_1&=\etaunshriek_{pE\wt{\U}}(F,G) \label{phiGTPs-defn1} \\
+  \phi(\Gamma,T,P,s0)\circ \pr_2&=\etaunshriek_p(F,\wt{H}),     \label{phiGTPs-defn2}
+\end{align}
+and the defining relations of $\phi(H(\Gamma),H(T),H(P),H(s0))$ are
+%
+\begin{align}
+  \phi(H(\Gamma),H(T),H(P),H(s0)) \circ \pr_1 &=\etaunshriek_{pE\wt{\U}'}(F',G')          \label{phiGTPs-defn1'} \\
+  \phi(H(\Gamma),H(T),H(P),H(s0)) \circ \pr_2 &=\etaunshriek_{p'}        (F',\wt H'),     \label{phiGTPs-defn2'}
+\end{align}
 %
 where
 %
 \begin{align*}
-  F&=u_{1,\Gamma}(T) \\
-  G&=u_{1,\Idx(T)}(P)\\
-  \wt{H}&=\wt{u}_{1,T}(s0),
+  F&=u_{1,\Gamma}(T)           & F'&=u_{1,H(\Gamma)}(H(T))         \\
+  G&=u_{1,\Idx(T)}(P)          & G'&=u_{1,\Idx'(H(T))}(H(P))       \\
+  \wt{H}&=\wt{u}_{1,T}(s0),    & \wt H' &=\wt u'_{1,H(T)}(H(s0))
 \end{align*}
 %
-and similarly for $F',G'$ and $\wt{H}'$.
 
 We need to prove
 %
@@ -3955,60 +3964,34 @@ and
 R_{\Phi}\circ \pr_2' = \phi(H(\Gamma),H(T),H(P),H(s0))\circ \pr_2'
 \end{eq}%
 %
-For (\ref{2015.05.10.eq3a}), rewriting the left hand side we get
+We establish (\ref{2015.05.10.eq3a}) as follows.
 %
 \begin{align*}
-  \psi_{\Gamma}\circ \Phi&(\phi(\Gamma,T,P,s0))\circ R_{\Phi}\circ \pr_1'  \\
-    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ\Phi(\pr_1)\circ \zeta_{\Phi} \\
-    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ \pr_1)\circ \zeta_{\Phi} \\
-    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_{pE\wt{\U}}(F,G))\circ \zeta_{\Phi}
+        \psi_{\Gamma}\circ \Phi&(\phi(\Gamma,T,P,s0))\circ R_{\Phi}\circ \pr_1'                                         \\
+    & = \psi_{\Gamma}\circ \Phi (\phi(\Gamma,T,P,s0))\circ \Phi(\pr_1)\circ \zeta_{\Phi} & \by{\ref{RPhi-eqn1}}         \\
+    & = \psi_{\Gamma}\circ \Phi (\phi(\Gamma,T,P,s0) \circ      \pr_1)\circ \zeta_{\Phi} & \by{functoriality of $\Phi$} \\
+    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_{pE\wt{\U}}(F,G))\circ \zeta_{\Phi}         & \by{\ref{phiGTPs-defn1}}     \\
+    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_{pE\wt{\U}}(F,G))\circ \xi_{{\bf \Phi}_E}\circ \I_{pE\wt{\U}'}(\phi)       \\
+    & = \psi_{\Gamma}\circ\etaunshriek_{pE\wt{\U}'}({\bf\Phi}^2_E(F,G))\circ \I_{pE\wt{\U}'}(\phi),                 & \by{\cite[Lemma 5.8]{fromunivwithPi}} \\
+    & = \etaunshriek_{pE\wt{\U}'}(\D_{pE\wt{\U}}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}}(\_,\phi)({\bf\Phi}^2(F,G))))          \\
+    & = \etaunshriek_{pE\wt{\U}'} (u_{1,H(\Gamma)}'(H(T)),u_{1,\Idx'(H(T))}     (H(P))),                            & \by{Lemma \ref{2015.05.06.l3}(1)} \\
+    & = \etaunshriek_{pE\wt{\U}'} ((F',G'))                                                                         &  \\
+    & = \phi(H(\Gamma),H(T),H(P),H(s0)) \circ \pr_1'                                                                & \by{\ref{phiGTPs-defn1'}}
 \end{align*}
-%
-Continuing we get
-%
-\begin{align*}
-  \psi_{\Gamma}\circ \Phi&(\etaunshriek_{pE\wt{\U}}(F,G))\circ \zeta_{\Phi} \\
-    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_{pE\wt{\U}}(F,G))\circ \xi_{{\bf \Phi}_E}\circ \I_{pE\wt{\U}'}(\phi) \\
-    & = \psi_{\Gamma}\circ\etaunshriek_{pE\wt{\U}'}({\bf\Phi}^2_E(F,G))\circ \I_{pE\wt{\U}'}(\phi),
-\end{align*}
-%
-where the last equality holds by \cite[Lemma 5.8]{fromunivwithPi} applied to
-$X=int(\Gamma)$, $V=\U$ and ${\bf\Phi}={\bf\Phi}_E$. Continuing further we get
-%
-\begin{align*}
-  \psi_{\Gamma}\circ \etaunshriek_{pE\wt{\U}'}&({\bf\Phi}^2_E(F,G))\circ \I_{pE\wt{\U}'}(\phi) \\
-    & = \etaunshriek_{pE\wt{\U}'}(\D_{pE\wt{\U}}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}}(\_,\phi)({\bf\Phi}^2(F,G)))) \\
-    & = \etaunshriek_{pE\wt{\U}'}((u_{1,H(\Gamma)}'(H(T)),u_{1,\Idx'(H(T))}(H(P)))),
-\end{align*}
-%
-where the last equality holds by Lemma \ref{2015.05.06.l3}(1).
 
-Rewriting the right hand side we get
-%
-$$\phi(H(\Gamma),H(T),H(P),H(s0))\circ \pr_1'=\etaunshriek_{pE\wt{\U}'}(F',G'),$$
-%
-where $F'=u_{1,H(\Gamma)}(H(T))$ and $G'=u_{1,\Idx'(H(\Gamma))}(H(P))$.  This
-shows that the first equality holds.
-
-For (\ref{2015.05.10.eq3b}), rewriting the left hand side we get
+For (\ref{2015.05.10.eq3b}), we proceed as follows.
 %
 \begin{align*}
   \psi_{\Gamma}\circ \Phi&(\phi(\Gamma,T,P,s0))\circ R_{\Phi}\circ \pr_2'  \\
-    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ \Phi(\pr_2)\circ \wt{\xi}_{\Phi} \\
-    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ \pr_2)\circ \wt{\xi}_{\Phi} \\
-    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_p(F,\wt{H}))\circ \wt{\xi}_{\Phi} \\
-    & = \etaunshriek_{p'}(\wt{u}_{2,H(\Gamma)}'(H(s0))),
+    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ \Phi(\pr_2)\circ \wt{\xi}_{\Phi}  & \by{\ref{RPhi-eqn2}} \\
+    & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ \pr_2)\circ \wt{\xi}_{\Phi}        & \by{functoriality of $\Phi$} \\
+    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_p((F,\wt{H})      ))\circ \wt{\xi}_{\Phi}      & \by{\ref{phiGTPs-defn2}} \\
+    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_p(u_{2,\Gamma}(s0)))\circ \wt{\xi}_{\Phi} \\
+    & = \etaunshriek_{p'}(\wt{u}_{2,H(\Gamma)}'(H(s0)))                                     & \by{\cite[Lemma 6.2(2)]{fromunivwithPi}} \\
+    & = \etaunshriek_{p'}((F',\wt H'))                                                      &  \\
+    & = \phi(H(\Gamma),H(T),H(P),H(s0))\circ \pr_2'                                         & \by{\ref{phiGTPs-defn2'}}
 \end{align*}
-%
-where the last equality holds by \cite[Lemma 6.2(2)]{fromunivwithPi}, since
-$(F,\wt{H})=u_{2,\Gamma}(s0)$.
-
-Rewriting the right hand side we get
-%
-$$\phi(H(\Gamma),H(T),H(P),H(s0))\circ \pr_2'=\etaunshriek_{p'}(F',\wt{H}'),$$
-%
-which proves the second equality, since
-$(F',\wt{H}')=\wt{u}_{2,H(\Gamma)}'(H(s0))$.
+This finishes the proof of \ref{2015.04.12.l3}.
 \end{myproof}
 
 \section{Index of symbols}
