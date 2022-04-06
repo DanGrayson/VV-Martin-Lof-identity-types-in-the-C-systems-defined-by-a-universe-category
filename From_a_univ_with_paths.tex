@@ -3427,7 +3427,7 @@ It remains to show that the following two equations.
   H(\Idx(T)) & = \Idx'(H(T))   \label{HIdxT-eqn} \\
   H(\rf_T)   & = \rf_{H(T)}'   \label{HrfT-eqn}
 \end{align}
-This follows by a lengthy computation from the defining
+They follow by a lengthy computation from the defining
 equations (\ref{2015.04.06.eq1}) and (\ref{2015.04.02.eq1}), which we omit.
 \end{myproof}
 %
@@ -3480,15 +3480,20 @@ $H(\Gamma)\in Ob(\toCC({\C}',p'))$ and $\psi_{\Gamma}$ is a morphism
 $$\psi_{\Gamma}:int'(H(\Gamma))\sr \Phi(int(\Gamma)),$$
 %
 as follows. For $n=0$ one has $H(())=()$ and $\psi_{()}:pt'\sr \Phi(pt)$ is the
-unique morphism to a final object $\Phi(pt)$. For $(\Gamma,F)\in Ob_{n+1}$ one
+unique morphism to a final object $\Phi(pt)$. For $T = (\Gamma,F)\in Ob_{n+1}$ one
 has
 %
-$$H((\Gamma,F))=(H(\Gamma),\psi_{\Gamma}\circ\Phi(F)\circ \phi),$$
+$$H(T)=(H(\Gamma),\psi_{\Gamma}\circ\Phi(F)\circ \phi),$$
 %
 in other words, that
 \begin{eq}
   \label{u1-H-eqn}
-  u_1(H((\Gamma,F))) = \psi_{\Gamma} \circ \Phi(F) \circ \phi.
+  u_1(H(T)) = \psi_{\ft(T)} \circ \Phi(u_1(T)) \circ \phi.
+\end{eq}%
+and
+\begin{eq}
+  \label{ft-H-eqn}
+  \ft(H(T)) = H(\ft(T)).
 \end{eq}%
 Moreover, $\psi_{(\Gamma,F)}$ is the unique morphism $int'(H(\Gamma,F))\sr \Phi(int(\Gamma,F))$ such that
 %
@@ -3703,8 +3708,8 @@ and
     & = \psi_{H(\Idx(T))}\circ \Phi(\wt{u}_{1,\Idx(T)}(o))\circ \wt{\phi}
 \end{align*}
 %
-by \cite[Lemma 6.1(1,2)]{fromunivwithPi}. Therefore, to prove the lemma it is
-sufficient to show that
+by \cite[Lemma 6.1(1,2)]{fromunivwithPi}.  Applying that and \ref{u1-H-eqn},
+we see that to prove the lemma it is sufficient to show that
 %
 $$\psi_{\Idx(T)}=\Q(\psi_{\Gamma},\Phi(F)\circ\phi)_{E'}\circ\iota.$$
 %
@@ -3826,7 +3831,7 @@ It remains to show that
 \end{eq}%
 which is the defining equation of $\psi_{(\Gamma,F)}$.
 
-To prove (\ref{2015.05.10.eq2ab}) let us rewrite the left hand side first as follows:
+We prove \ref{2015.05.10.eq2ab} as follows.
 %
 \begin{align*}
   \psi_{\Idx(T)}\circ \Phi&(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ \Phi(\Q(p))\circ \wt{\phi} \\
@@ -3835,20 +3840,18 @@ To prove (\ref{2015.05.10.eq2ab}) let us rewrite the left hand side first as fol
     & = \psi_{\Idx(T)} \circ \Phi(\p_{\Idx(T)}) \circ \Phi(\Q(\Q(F),p) \circ \Q(p))\circ \wt\phi        & \by{functoriality of $\Phi$} \\
     & = \psi_{\Idx(T)} \circ \Phi(\p_{\Idx(T)}) \circ \Phi(\Q(\Q(F) \circ p)) \circ \wt\phi             & \by{commutativity of \ref{2015.04.06.l0.sq}} \\
     & = \p_{H(\Idx(T))}\circ \psi_{\ft(\Idx(T))}\circ \Phi(\Q(\Q(F) \circ p)) \circ \wt\phi             & \by{\ref{psi-p-compat}} \\
-    & = \p_{H(\Idx(T))}\circ \psi_{((\Gamma,F),\Q(F) \circ p)}\circ \Phi(\Q(\Q(F)\circ p))\circ \wt{\phi}  & \by{\cite[Lemma 3.2]{fromunivwithPi}} \\
+    & = \p_{H(\Idx(T))}\circ \psi_{((\Gamma,F),\Q(F)\circ p)}\circ\Phi(\Q(\Q(F)\circ p))\circ\wt{\phi}  & \by{\cite[Lemma 3.2]{fromunivwithPi}} \\
     & = \p_{H(\Idx(T))}\circ \Q'(\psi_{(\Gamma,F)} \circ \Phi(Q(F)\circ p) \circ \phi)                  & \by{\ref{psi-Q-compat}} \\
-    & = \p_{H(\Idx(T))}\circ \Q'(u_1(H(\ft(\Idx(T))))).                                                 & \by{\ref{u1-H-eqn}}
+    & = \p_{H(\Idx(T))}\circ \Q'(u_1(H(\ft(\Idx(T)))))                                                  & \by{\ref{u1-H-eqn}} \\
+    & = \p_{\Idx'(H(T))}\circ \Q'(u_1(H(\ft(\Idx(T)))))                                                 & \by{\ref{HIdxT-eqn}} \\
+    & = \p_{\Idx'(H(T))}\circ \Q'(u_1(\ft(H(\Idx(T)))))                                                 & \by{\ref{ft-H-eqn}} \\
+    & = \p_{\Idx'(H(T))}\circ \Q'(u_1(\ft(\Idx'(H(T)))))                                                & \by{\ref{HIdxT-eqn}} \\
+    & = \p_{\Idx'(H(T))}\circ \Q'(\Q'(u_1(H(T)))\circ p')                                               & \by{xxx} \\
+    & = \p_{\Idx'(H(T))}\circ \Q'(\Q'(u_1(H(T))),p')\circ \Q'(p')                                       & \by{commutativity of \ref{2015.04.06.l0.sq}} \\
+    & = \Q(u_1(H(T)))_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ \Q'(p')                                     & \by{commutativity of \ref{2015.05.08.constr1}} \\
+    & = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ \Q'(p')          & \by{\ref{u1-H-eqn}} 
 \end{align*}
-
-Let $F'=u_1(H(T))$. Rewriting the right hand side of \ref{eqn13} we get
-%
-\begin{align*}
-  \Q(\psi_{\Gamma}\circ \Phi&(F)\circ \phi)_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ \Q(p') \\
-    & = \Q(F')_{E'}\circ \p_{(\wt{\U}';p'),Eq'}\circ \Q(p') \\
-    & = \p_{\Idx'(H(T))}\circ \Q(\Q(F'),p')\circ \Q(p') & \by{commutativity of \ref{2015.05.08.constr1}} \\
-    & = \p_{\Idx'(H(T))}\circ \Q(\Q(F')\circ p') & \by{commutativity of \ref{2015.04.06.l0.sq}} \\
-    & = \p_{\Idx'(H(T))}\circ \Q(u_1(\ft(\Idx(H(T))))).
-\end{align*}
+That finishes the proof of \ref{2015.05.06.l3}.
 \end{myproof}
 
 \begin{lemma}
