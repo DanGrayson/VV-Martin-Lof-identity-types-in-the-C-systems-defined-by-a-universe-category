@@ -3495,13 +3495,12 @@ Moreover, $\psi_{(\Gamma,F)}$ is the unique morphism $int'(H(\Gamma,F))\sr \Phi(
 \begin{eq}
   \label{psi-Q-compat}
   \psi_{(\Gamma,F)}\circ \Phi(\Q(F))\circ\wt{\phi}=\Q'(\psi_{\Gamma}\circ\Phi(F)\circ\phi)
-\end{eq}
-%
+\end{eq}%
 and
-%
-$$\psi_{(\Gamma,F)}\circ \Phi(\p_{\Gamma,F})=\p_{H((\Gamma,F))}\circ
-\psi_{\Gamma}$$
-%
+\begin{eq}
+  \label{psi-p-compat}
+  \psi_{(\Gamma,F)}\circ \Phi(\p_{\Gamma,F})=\p_{H((\Gamma,F))}\circ \psi_{\Gamma}
+\end{eq}%
 %%
 Observe that $\psi_{\Gamma}$ is automatically an isomorphism. The action of $H$
 on morphisms is given, for $f:\Gamma\sr\Gamma'$, by
@@ -3831,11 +3830,14 @@ To prove (\ref{2015.05.10.eq2ab}) let us rewrite the left hand side first as fol
 %
 \begin{align*}
   \psi_{\Idx(T)}\circ \Phi&(\Q(F)_E)\circ \Phi(\p_{(\wt{\U};p),Eq})\circ \Phi(\Q(p))\circ \wt{\phi} \\
-    & = \psi_{\Idx(T)}\circ \Phi(\Q(F)_E \circ \p_{(\wt{\U};p),Eq})\circ \Phi(\Q(p))\circ \wt{\phi} & \by{functoriality of $\Phi$} \\
-    & = \psi_{\Idx(T)}\circ \Phi(\p_{\Idx(T)}\circ \Q(\Q(F),p))\circ \Phi(\Q(p))\circ\wt{\phi} & \by{commutativity of \ref{pEU-diagram}} \\
-    & = \p_{H(\Idx(T))}\circ \psi_{\ft(\Idx(T))}\circ \Phi(\Q(\Q(F)\circ p))\circ \wt{\phi} & \by{def'n of $\phi$} \\
-    & = \p_{H(\Idx(T))}\circ \psi_{(\Gamma,F,\Q(F)\circ p)}\circ \Phi(\Q(\Q(F)\circ p))\circ \wt{\phi} & \by{\cite[Lemma 3.2]{fromunivwithPi}} \\
-    & = \p_{H(\Idx(T))}\circ \Q(u_1(H(\ft(\Idx(T))))).
+    & = \psi_{\Idx(T)} \circ \Phi(\Q(F)_E \circ \p_{(\wt{\U};p),Eq})\circ \Phi(\Q(p))\circ \wt{\phi}    & \by{functoriality of $\Phi$} \\
+    & = \psi_{\Idx(T)} \circ \Phi(\p_{\Idx(T)}\circ \Q(\Q(F),p))\circ \Phi(\Q(p))\circ\wt{\phi}         & \by{commutativity of \ref{pEU-diagram}} \\
+    & = \psi_{\Idx(T)} \circ \Phi(\p_{\Idx(T)}) \circ \Phi(\Q(\Q(F),p) \circ \Q(p))\circ \wt\phi        & \by{functoriality of $\Phi$} \\
+    & = \psi_{\Idx(T)} \circ \Phi(\p_{\Idx(T)}) \circ \Phi(\Q(\Q(F) \circ p)) \circ \wt\phi             & \by{commutativity of \ref{2015.04.06.l0.sq}} \\
+    & = \p_{H(\Idx(T))}\circ \psi_{\ft(\Idx(T))}\circ \Phi(\Q(\Q(F) \circ p)) \circ \wt\phi             & \by{\ref{psi-p-compat}} \\
+    & = \p_{H(\Idx(T))}\circ \psi_{((\Gamma,F),\Q(F) \circ p)}\circ \Phi(\Q(\Q(F)\circ p))\circ \wt{\phi}  & \by{\cite[Lemma 3.2]{fromunivwithPi}} \\
+    & = \p_{H(\Idx(T))}\circ \Q'(\psi_{(\Gamma,F)} \circ \Phi(Q(F)\circ p) \circ \phi)                  & \by{\ref{psi-Q-compat}} \\
+    & = \p_{H(\Idx(T))}\circ \Q'(u_1(H(\ft(\Idx(T))))).                                                 & \by{\ref{u1-H-eqn}}
 \end{align*}
 
 Let $F'=u_1(H(T))$. Rewriting the right hand side of \ref{eqn13} we get
