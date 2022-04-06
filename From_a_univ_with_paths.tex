@@ -3422,8 +3422,12 @@ also have $\partial(H(s0))=H(\partial(s0))=H(\rf_T^*(P))$. By Lemma
 %
 $$H(\rf_T^*(P))=H(\rf_T)^*(H(P))$$
 %
-It remains to show that $H(\Idx(T))=\Idx'(H(T))$ and $H(\rf_T)=\rf_{H(T)}'$. This
-follows by a lengthy computation from the defining
+It remains to show that the following two equations.
+\begin{align}
+  H(\Idx(T)) & = \Idx'(H(T))   \label{HIdxT-eqn} \\
+  H(\rf_T)   & = \rf_{H(T)}'   \label{HrfT-eqn}
+\end{align}
+This follows by a lengthy computation from the defining
 equations (\ref{2015.04.06.eq1}) and (\ref{2015.04.02.eq1}), which we omit.
 \end{myproof}
 %
@@ -3621,7 +3625,7 @@ of $\psi_{\Gamma}$.
 \label{2015.05.06.l3} Let $Eq$ and $Eq'$ be J0-structures on $({\C},p)$ and
 $({\C}',p')$ respectively; let ${\bf\Phi} : ({\C},p,pt) \to ({\C'},p',pt')$ be a universe category functor compatible
 with $Eq$ and $Eq'$ (as defined in \ref{2015.04.06.def4});
-let $\Idx'$ be the analogue, for the category $\C'$, of $\Idx$;
+let $\Idx'$ be the analogue, for the category $\toCC(\C',p')$, of $\Idx$;
 let ${\bf\Phi}_{E}^2$ be the analogue, for the universe $pE\wt\U$, of ${\bf\Phi}^2$ (as defined in \ref{defn-Phi2});
 and let $H = H({\bf\Phi})$. Then for all $\Gamma\in Ob(\toCC({\C},p))$, 
 $T \in Ob_1(\Gamma)$, $P\in Ob_1(\Idx(T))$, and $o\in \Obwt(P)$, one has:
@@ -3790,10 +3794,11 @@ Now we have:
         \psi_{\Idx(T)}\circ \Phi&(\Q(F)_E) \circ \Phi(\Q(Eq))\circ\wt{\phi} \\
     & = \psi_{\Idx(T)}\circ \Phi (\Q(F)_E  \circ \Q(Eq))     \circ\wt{\phi} & \by{functoriality of $\Phi$} \\
     & = \psi_{\Idx(T)}\circ \Phi (\Q(u_1(\Idx(T))))          \circ\wt{\phi} & \by{\ref{usefulequal2}} \\
-    & = \Q'(\psi_{\Gamma}\circ \Phi(u_1(\Idx(T)))\circ \phi) & \by {\ref{psi-Q-compat}} \\
-    & = \Q'(u_1(H(\Idx(T)))) & \by{\ref{u1-H-eqn}} \\
-    & = \Q(u_1(H(T)))_{E'}\circ \Q'(Eq') \\
-    & = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'} \circ \Q'(Eq'). \\
+    & = \Q'(\psi_{\Gamma}\circ \Phi(u_1(\Idx(T)))\circ \phi)                & \by {\ref{psi-Q-compat}} \\
+    & = \Q'(u_1(H(\Idx(T))))                                                & \by{\ref{u1-H-eqn}} \\
+    & = \Q'(u_1(\Idx'(H(T))))                                               & \by{\ref{HIdxT-eqn}} \\
+    & = \Q(u_1(H(T)))_{E'}\circ \Q'(Eq')                                    & \by{\ref{usefulequal2}} \\
+    & = \Q(\psi_{\Gamma}\circ \Phi(F)\circ \phi)_{E'} \circ \Q'(Eq').       & \by{\ref{u1-H-eqn}} \\
 \end{align*}
 The equality (\ref{2015.05.10.eq2b}) is proved.
 
