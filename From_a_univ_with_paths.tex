@@ -3959,8 +3959,8 @@ and the defining relations of $\phi(H(\Gamma),H(T),H(P),H(s0))$ are
 where
 %
 \begin{align*}
-  F&=u_{1,\Gamma}(T)           & F'&=u_{1,H(\Gamma)}(H(T))         \\
-  G&=u_{1,\Idx(T)}(P)          & G'&=u_{1,\Idx'(H(T))}(H(P))       \\
+  F&=u_{1,\Gamma}(T)           & F'&=u'_{1,H(\Gamma)}(H(T))         \\
+  G&=u_{1,\Idx(T)}(P)          & G'&=u'_{1,\Idx'(H(T))}(H(P))       \\
   \wt{H}&=\wt{u}_{1,T}(s0),    & \wt H' &=\wt u'_{1,H(T)}(H(s0))
 \end{align*}
 %
@@ -4001,11 +4001,17 @@ For (\ref{2015.05.10.eq3b}), we proceed as follows.
   \psi_{\Gamma}\circ \Phi&(\phi(\Gamma,T,P,s0))\circ R_{\Phi}\circ \pr_2'  \\
     & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0))\circ \Phi(\pr_2)\circ \wt{\xi}_{\Phi}  & \by{\ref{RPhi-eqn2}} \\
     & = \psi_{\Gamma}\circ \Phi(\phi(\Gamma,T,P,s0)\circ \pr_2)\circ \wt{\xi}_{\Phi}        & \by{functoriality of $\Phi$} \\
-    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_p((F,\wt{H})      ))\circ \wt{\xi}_{\Phi}      & \by{\ref{phiGTPs-defn2}} \\
-    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_p(u_{2,\Gamma}(s0)))\circ \wt{\xi}_{\Phi} \\
+    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_p((F,\wt{H})          ))\circ \wt{\xi}_{\Phi}  & \by{\ref{phiGTPs-defn2}} \\
+    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_p((u_1(T),\wt{u}_1(s0)))\circ \wt{\xi}_{\Phi}  & \by{def'n of $F$ and $\wt H$} \\
+    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_p((u_1(\ft(\partial(s0))),\wt{u}_1(s0)))\circ \wt{\xi}_{\Phi} & \by{the type of $s0$} \\
+    & = \psi_{\Gamma}\circ \Phi(\etaunshriek_p(\wt u_{2,\Gamma}(s0)))\circ \wt{\xi}_{\Phi}  & \by{def'n of $\wt u_2$ in \ref{wt-u2-defn}} \\
     & = \etaunshriek_{p'}(\wt{u}_{2,H(\Gamma)}'(H(s0)))                                     & \by{\cite[Lemma 6.2(2)]{fromunivwithPi}} \\
     & = \etaunshriek_{p'}((u'_1(\ft(\partial(H(s0)))),\wt{u}'_1(H(s0))))                    & \by{def'n of $\wt u_2$ in \ref{wt-u2-defn}} \\
-    & = \etaunshriek_{p'}((F',\wt H'))                                                      &  \\
+    & = \etaunshriek_{p'}((u'_1(\ft(\partial(H(s0)))),\wt H'))                              & \by{def'n of $\wt H'$} \\
+    & = \etaunshriek_{p'}((u'_1(\ft(H(\partial(s0)))),\wt H'))                              & \by{functoriality of $H$} \\
+    & = \etaunshriek_{p'}((u'_1(H(\ft(\partial(s0)))),\wt H'))                              & \by{\ref{ft-H-eqn}} \\
+    & = \etaunshriek_{p'}((u'_1(H(T))),\wt H'))                                             & \by{the type of $s0$} \\
+    & = \etaunshriek_{p'}((F',\wt H'))                                                      & \by{def'n of $F'$} \\
     & = \phi(H(\Gamma),H(T),H(P),H(s0))\circ \pr_2'                                         & \by{\ref{phiGTPs-defn2'}}
 \end{align*}
 This finishes the proof of \ref{2015.04.12.l3}.
