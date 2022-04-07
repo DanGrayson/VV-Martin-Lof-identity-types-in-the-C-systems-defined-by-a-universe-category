@@ -97,15 +97,9 @@
 \newoperator{adj}{\adj}
 \newoperator{CCCp}{\toCC({\C},p)}
 \newoperator{coJ}{coJ}
-\newoperator{partial}{\partial}
-\newoperator{parto}{\partial(o)}
-\newoperator{Delta}{\Delta}
-\newoperator{delta}{\delta}
 \newoperator{DpV}{\D_p(-,V)}
 \newoperator{DfXV}{\D^f(X,V)}
 \newoperator{EUtilde}{E\wt{\U}}
-\newoperator{etashriek}{\etashriek}
-\newoperator{etaunshriek}{\etaunshriek}
 \newoperator{fstarX}{f^*(X)}
 \newoperator{fstarXi}{f^*(X,i)}
 \newoperator{fstars}{f^*(s)}
@@ -154,18 +148,29 @@
 \newoperator{u1}{u_1}
 \newoperator{u1Gamma}{u_{1,\Gamma}}
 \newoperator{utilde1}{\wt u_1}
+\newoperator{utilde1Gamma}{\wt u_{1,\Gamma}}
 \newoperator{u2}{u_2}
 \newoperator{wtu2}{\wt{u}_2}
-\newoperator{utilde1Gamma}{\wt u_{1,\Gamma}}
 \newoperator{multisemicolon}{(X;F_1,\dots,F_n)}
 \newoperator{starfg}{f*g}
+\newoperator{partial}{\partial}
+\newoperator{parto}{\partial(o)}
+\newoperator{delta}{\delta}
+\newoperator{Delta}{\Delta}
+\newoperator{zetai}{\zeta_i}
+\newoperator{wtzetai}{\wt{\zeta}_i}
+\newoperator{zetaPhi}{\zeta_{\bf\Phi}}
+\newoperator{wtzetaPhi}{\wt{\zeta}_{\bf\Phi}}
+\newoperator{etashriek}{\etashriek}
+\newoperator{etaunshriek}{\etaunshriek}
+\newoperator{wtphiE}{\wt{\phi}_{E}}
 \newoperator{phiGammaTPs0}{\phi(\Gamma,T,P,s0)}
 \newoperator{PhiXF}{\Phi_{X,F}}
 \newoperator{Phi2}{{\bf\Phi}^2}
 \newoperator{PhiwtUp}{\Phi\wt{\U}p}
+\newoperator{xiPhi}{\xi_{{\bf\Phi}}}
+\newoperator{wtxiPhi}{\wt\xi_{{\bf\Phi}}}
 \newoperator{chiPhiV}{\chi_{\bf\Phi}(V)}
-\newoperator{zetai}{\zeta_i}
-\newoperator{wtzetai}{\wt{\zeta}_i}
 
 %% \newoperator{}{\}
 
@@ -2726,7 +2731,7 @@ consideration.
 
 Let us denote the morphisms
 %
-$$\chi_{\bf\Phi_i}(V):\Phi(\I_{p_i}(V))\sr \I_{p'_i}(\Phi(V))$$
+$$\chi_{{\bf\Phi}_i}(V):\Phi(\I_{p_i}(V))\sr \I_{p'_i}(\Phi(V))$$
 %
 by $\chi_i(V)$. The maps ${\bf\Phi}_i^2$ in the following lemma were introduced above.
 %
@@ -2871,12 +2876,14 @@ given by $\zeta_i:=\chi_i(\U)\circ \I_{p'_i}(\phi)$ and
 %
 $$\gls{wtzetai}:\Phi(\I_{p_i}(\wt{\U}_1))\sr \I_{p'_i}(\wt\U'_1)$$
 %
-given by $\wt{\zeta}_i:=\chi_i(\wt{\U}_1)\circ \I_{p'_i}(\wt\phi_1)$. Note that
-$\zeta_i=\xi_{(\Phi,\phi,\wt{\phi}_i)}$ and $\wt{\zeta}_1=\wt\xi_{(\Phi,\phi,\wt{\phi}_1)}$,
-(where $\xi$ and $\wt\xi$ are the morphisms introduced in \cite[\S 6]{fromunivwithPi}),
-but $\wt{\zeta}_2\ne \wt\xi_{(\Phi,\phi,\wt{\phi}_2)}$.
-
+given by $\wt{\zeta}_i:=\chi_i(\wt{\U}_1)\circ \I_{p'_i}(\wt\phi_1)$.
 %
+(Recall from \cite[\S 6]{fromunivwithPi} the morphisms $\xi_{{\bf\Phi}} : \Phi(\I_{p}(\U)) \to \I_{p'})(\U')$ and
+$\wt\xi_{{\bf\Phi}} : \Phi(\I_{p}(\wt\U)) \to \I_{p'}(\wt\U')$ introduced, for a universe category functor ${\bf\Phi} = (\Phi,\phi,\wt\phi)$, by defining
+$\gls{xiPhi} := \chi_{{\bf\Phi}}(\U) \circ \I_{p'}(\phi)$ and
+$\gls{wtxiPhi} := \chi_{{\bf\Phi}}(\wt\U) \circ \I_{p'}(\wt\phi)$.
+Note that $\zeta_i=\xi_{{\bf\Phi}_i}$ and $\wt{\zeta}_1=\wt\xi_{{\bf\Phi}_1}$, but $\wt{\zeta}_2 \ne \wt\xi_{{\bf\Phi}_2}$.)
+
 \begin{theorem}
 \label{2015.04.10.th3} Under the previous assumptions and notation the
 morphisms $\zeta_1,\zeta_2,\wt{\zeta}_1,\wt{\zeta}_2$ form a morphism from the
@@ -3109,7 +3116,7 @@ compatible with $Eq$ and $Eq'$. Define a morphism
 $$\wt{\phi}_{E}:\Phi(E\wt{\U})\sr E\wt{\U}'=((\wt{\U}';p'),Eq')$$
 %
 as
-$$\wt{\phi}_{E} := (\Phi(\p_{(\wt{\U};p),Eq})\circ \Phi\wt{\U}p)*(\Phi(\Q(Eq))\circ \wt{\phi}).$$
+$$\gls{wtphiE} := (\Phi(\p_{(\wt{\U};p),Eq})\circ \Phi\wt{\U}p)*(\Phi(\Q(Eq))\circ \wt{\phi}).$$
 
 \begin{lemma}
 \label{2015.04.06.l4} Let $Eq$, $Eq'$ be as above. Let $(\Phi,\phi,\wt{\phi})$
@@ -3183,7 +3190,7 @@ is a pullback square.
 \begin{myproof}
 It follows from the fact that the square (\ref{2015.04.06.eq9}) is equal to the
 vertical composition of the squares of Lemmas \ref{2015.04.06.l4} and
-\ref{2015.04.06.l5} with the square (\ref{2015.04.06.eq10}).
+\ref{2015.04.06.l5} with the square (\ref{2015.04.06.eq10-bis}).
 \end{myproof}
 %
 
@@ -3244,11 +3251,11 @@ To formulate the condition of compatibility of a universe functor with full
 J-structures on $\C$ and $\C'$ we will use Theorem
 \ref{2015.04.10.th3}.
 
-Let ${\bf\Phi}=(\Phi,\phi,\wt{\phi})$ be a functor of universe categories. In
+Let ${\bf\Phi}=(\Phi,\phi,\wt{\phi}) : (\C,p,pt) \to (\C',p',pt')$ be a functor of universe categories. In
 view of Lemma \ref{2015.04.06.l6}, if $\Phi$ is compatible with $Eq$ and $Eq'$
 then the triple ${\bf\Phi}_{E}:=(\Phi,\phi,\wt{\phi}_{E})$ is a functor of
-universe categories as well. If, in addition, ${\bf\Phi}$ is compatible with
-$\Omega$ and $\Omega'$ then, by Lemma \ref{2015.04.10.l7}, morphisms $\omega$
+universe categories as well, from $(\C,pE\wt{\U},pt)$ to $(\C',pE\wt{\U}',pt')$.  If, in addition, ${\bf\Phi}$ is compatible with
+$\Omega$ and $\Omega'$ then, by Lemma \ref{2015.04.10.l7}, the morphisms $\omega$
 and $\omega'$ satisfy the conditions on morphisms $g$ and $g'$ of Section
 \ref{twouniv}.
 
@@ -3260,15 +3267,16 @@ Let
 \end{align*}
 %
 denote the compositions $\chi_{\bf\Phi}(\U)\circ \I_{p'}(\phi)$ and
-$\chi_{\bf\Phi}(\wt{\U})\circ \I_{p'}(\wt{\phi})$, respectively, and let
+$\chi_{\bf\Phi}(\wt{\U})\circ \I_{p'}(\wt{\phi})$, respectively\footnote{These maps were introduced in \cite[\S 6]{fromunivwithPi}, and were recalled above.}, and let
 %
 \begin{align*}
-  \zeta_{\bf\Phi}&:\Phi(\I_{pE\wt{\U}}(\U))\sr \I_{pE\wt{\U}'}(\U') \\
-  \wt{\zeta}_{\bf\Phi}&:\Phi(\I_{pE\wt{\U}}(\wt{\U}))\sr \I_{pE\wt{\U}'}(\wt{\U}')
+  \gls{zetaPhi}   &: \Phi(\I_{pE\wt{\U}}(\U))\sr \I_{pE\wt{\U}'}(\U') \\
+  \gls{wtzetaPhi} &: \Phi(\I_{pE\wt{\U}}(\wt{\U}))\sr \I_{pE\wt{\U}'}(\wt{\U}')
 \end{align*}
 %
-be given by the compositions $\chi_{{\bf\Phi}_{E}}(\U)\circ \I_{pE\wt{\U}'}(\phi)$
-and $\chi_{{\bf\Phi}_{E}}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi})$. Note that
+be given by the compositions $\zeta_{\bf\Phi} := \chi_{{\bf\Phi}_{E}}(\U)\circ \I_{pE\wt{\U}'}(\phi)$
+and $\wt{\zeta}_{\bf\Phi} := \chi_{{\bf\Phi}_{E}}(\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi})$; don't confuse these maps
+with $\zeta_i$ and $\wt\zeta_i$, which were introduced above. Note that
 $\zeta_{\bf\Phi}=\xi_{{\bf\Phi}_{E}}$, but $\wt{\zeta}_{\bf\Phi}$ is different
 from $\wt{\xi}_{{\bf\Phi}_{E}}$, since the latter is equal to the composition
 $\chi_{{\bf\Phi}_{E}}(E\wt{\U})\circ \I_{pE\wt{\U}'}(\wt{\phi}_{E})$. Applying
@@ -3845,8 +3853,7 @@ We prove \ref{2015.05.10.eq2ab} as follows.
     & = \p_{H(\Idx(T))}\circ \psi_{((\Gamma,F),\Q(F)\circ p)}\circ\Phi(\Q(\Q(F)\circ p))\circ\wt{\phi}  & \by{\cite[Lemma 3.2]{fromunivwithPi}} \\
     & = \p_{H(\Idx(T))}\circ \Q'(\psi_{(\Gamma,F)} \circ \Phi(Q(F)\circ p) \circ \phi)                  & \by{\ref{psi-Q-compat}} \\
     & = \p_{H(\Idx(T))}\circ \Q'(u_1(H(\ft(\Idx(T)))))                                                  & \by{\ref{u1-H-eqn}} \\
-    & = \p_{\Idx'(H(T))}\circ \Q'(u_1(H(\ft(\Idx(T)))))                                                 & \by{\ref{HIdxT-eqn}} \\
-    & = \p_{\Idx'(H(T))}\circ \Q'(u_1(\ft(H(\Idx(T)))))                                                 & \by{\ref{ft-H-eqn}} \\
+    & = \p_{H(\Idx(T))}\circ \Q'(u_1(\ft(H(\Idx(T)))))                                                  & \by{\ref{ft-H-eqn}} \\
     & = \p_{\Idx'(H(T))}\circ \Q'(u_1(\ft(\Idx'(H(T)))))                                                & \by{\ref{HIdxT-eqn}} \\
     & = \p_{\Idx'(H(T))}\circ \Q'(\Q'(u_1(H(T)))\circ p')                                               & \by{\ref{2015.03.27.l1-IDx}} \\
     & = \p_{\Idx'(H(T))}\circ \Q'(\Q'(u_1(H(T))),p')\circ \Q'(p')                                       & \by{commutativity of \ref{2015.04.06.l0.sq}} \\
@@ -3936,8 +3943,8 @@ On the other hand, the defining relations of $\phi(\Gamma,T,P,s0)$ are
 and the defining relations of $\phi(H(\Gamma),H(T),H(P),H(s0))$ are
 %
 \begin{align}
-  \phi(H(\Gamma),H(T),H(P),H(s0)) \circ \pr_1 &=\etaunshriek_{pE\wt{\U}'}(F',G')          \label{phiGTPs-defn1'} \\
-  \phi(H(\Gamma),H(T),H(P),H(s0)) \circ \pr_2 &=\etaunshriek_{p'}        (F',\wt H'),     \label{phiGTPs-defn2'}
+  \phi(H(\Gamma),H(T),H(P),H(s0)) \circ \pr'_1 &=\etaunshriek_{pE\wt{\U}'}(F',G')          \label{phiGTPs-defn1'} \\
+  \phi(H(\Gamma),H(T),H(P),H(s0)) \circ \pr'_2 &=\etaunshriek_{p'}        (F',\wt H'),     \label{phiGTPs-defn2'}
 \end{align}
 %
 where
@@ -3972,7 +3979,7 @@ We establish (\ref{2015.05.10.eq3a}) as follows.
     & = \psi_{\Gamma}\circ \Phi (\phi(\Gamma,T,P,s0) \circ      \pr_1)\circ \zeta_{\Phi} & \by{functoriality of $\Phi$} \\
     & = \psi_{\Gamma}\circ \Phi(\etaunshriek_{pE\wt{\U}}(F,G))\circ \zeta_{\Phi}         & \by{\ref{phiGTPs-defn1}}     \\
     & = \psi_{\Gamma}\circ \Phi(\etaunshriek_{pE\wt{\U}}(F,G))\circ \xi_{{\bf \Phi}_E}\circ \I_{pE\wt{\U}'}(\phi)       \\
-    & = \psi_{\Gamma}\circ\etaunshriek_{pE\wt{\U}'}({\bf\Phi}^2_E(F,G))\circ \I_{pE\wt{\U}'}(\phi),                 & \by{\cite[Lemma 5.8]{fromunivwithPi}} \\
+    & = \psi_{\Gamma}\circ\etaunshriek_{pE\wt{\U}'}({\bf\Phi}^2_E(F,G))\circ \I_{pE\wt{\U}'}(\phi),                 & \by{\cite[Lemma 5.8]{fromunivwithPi} -- VERIFY} \\
     & = \etaunshriek_{pE\wt{\U}'}(\D_{pE\wt{\U}}(\psi_{\Gamma},\_)(\D_{pE\wt{\U}}(\_,\phi)({\bf\Phi}^2(F,G))))          \\
     & = \etaunshriek_{pE\wt{\U}'} (u_{1,H(\Gamma)}'(H(T)),u_{1,\Idx'(H(T))}     (H(P))),                            & \by{Lemma \ref{2015.05.06.l3}(1)} \\
     & = \etaunshriek_{pE\wt{\U}'} ((F',G'))                                                                         &  \\
