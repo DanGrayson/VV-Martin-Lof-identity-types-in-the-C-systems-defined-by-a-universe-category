@@ -140,7 +140,7 @@
 \newoperator{rf}{\rf}
 \newoperator{rfT}{\rf_T}
 \newoperator{RPhi}{R_{\bf\Phi}}
-\newoperator{sg}{\s_g}
+\newoperator{sf}{\s_f}
 \newoperator{st}{\st}
 \newoperator{XFE}{(X;F)_{E}}
 \newoperator{semicolon}{(X;F)}
@@ -152,7 +152,7 @@
 \newoperator{wtu2}{\wt{u}_2}
 \newoperator{multisemicolon}{(X;F_1,\dots,F_n)}
 \newoperator{starfg}{f*g}
-\newoperator{partial}{\partial}
+\newoperator{deltaX}{\delta(X)}
 \newoperator{parto}{\partial(o)}
 \newoperator{delta}{\delta}
 \newoperator{Delta}{\Delta}
@@ -369,7 +369,7 @@ groupoids.
 The construction of Hofmann and Streicher was substantially extended and
 generalized in the Ph.D.{} thesis of Michael Warren
 \cite{WarrenThesisProsp,WarrenThesis} and his subsequent papers such as
-\cite{Warreninfty}.
+\cite{Warreninfty} and \cite{WarrenAwodey}.
 
 Further important advances were achieved in the work of Benno van den Berg and Richard Garner \cite{BergandGarner}.
 
@@ -432,9 +432,9 @@ Engineering of the University of Gothenburg and Chalmers University of
 Technology for its hospitality during the work on this paper.
 
 
-\subsection{A note from the editor}
+\subsection{A note from the academic executor}
 
-\newcommand{\editorfootnote}[1]{\footnote{Note from the editor: #1}}
+\newcommand{\editorfootnote}[1]{\footnote{Note from the academic executor: #1}}
 
 After the death of Vladimir Voevodsky in September, 2017, Daniel Grayson was
 appointed as the {\em academic executor}, in order to help arrange for the
@@ -443,7 +443,7 @@ comments had been received twice from the referee, and Voevodsky had started
 rewriting the paper.
 Grayson has edited the paper, following the advice of the referee, and has made
 additional changes.  Where anything substantively mathematical is
-involved, a footnote from the editor has been inserted.\editorfootnote{... such
+involved, a footnote from the academic executor has been inserted.\editorfootnote{... such
   as this one.}
 In order to make it possible and convenient for readers to review Grayson's
 changes, all existing versions of the paper have been entered into a {\em github}
@@ -460,62 +460,105 @@ If those links are ever broken, perhaps a search for the randomly chosen string
 \hfill\break\centerline{{\tt 864338b2cec01ffb32fdaaa6bd8fafb803c070e7}}
 will allow the files to be located.
 
-The editor thanks Benedikt Ahrens for many useful contributions to the editing
+The academic executor thanks Benedikt Ahrens for many useful contributions to the editing
 process.
 
 \section{J-structures on C-systems and on universe categories}
 
+We begin by recalling the definition of ``C-system'' from \cite{Csubsystems}.
+C-systems were introduced by John Cartmell (\cite{Cartmell0},
+\cite[p.\ 237]{Cartmell1}) and studied further by Thomas Streicher (see
+\cite[Def. 1.2, p.\ 47]{Streicher}).  Both authors used the name ``contextual
+categories'' for these structures.
+
+By a pre-category $C$ we mean a pair of sets $Mor(C)$ and $Ob(C)$ with four maps
+%
+$$\partial_0,\partial_1:Mor(C)\sr Ob(C)$$
+$$Id:Ob(C)\sr Mor(C)$$
+%
+and 
+%
+$$\circ:Mor(C)_{\partial_1}\times_{\partial_0} Mor(C)\sr Mor(C)$$
+%
+which satisfy the well known conditions of unity and associativity (note that we write composition of morphisms in the form $f\circ g$ or $fg$ where $f:X\sr Y$ and $g:Y\sr Z$). These objects would usually be called categories but we reserve the name ``category'' for those uses of these objects that are invariant under equivalence.  
+%
+\begin{definition}
+A C0-system is a pre-category $CC$ with additional structure of the form
+%
+\begin{enumerate}
+\item a function $\gls{l} : Ob(CC) \sr \nn$,
+\item an object $pt$,
+\item a map $\gls{ft}: Ob(CC)\sr Ob(CC)$, 
+\item for each $X\in Ob(CC)$ a morphism $\gls{pX} : X \sr \ft(X)$,
+\item for each $X\in Ob(CC)$ such that $l(X)>0$ and each morphism $f:Y\sr \ft(X)$ 
+an object $\gls{fstarX}$  and a morphism $\gls{qfX} : f^*X \sr X$,
+\end{enumerate}
+%
+which satisfies the following conditions:
+%
+\begin{enumerate}
+\item $l^{-1}(0)=\{pt\}$
+\item for $X$ such that $l(X)>0$ one has $l(\ft(X))=l(X)-1$
+\item $\ft(pt)=pt$
+\item $pt$ is a final object,
+\item for $X\in Ob(CC)$ such that $l(X)>0$ and $f:Y\sr \ft(X)$ one has $l(f^*(X))>0$, $\ft(f^*X)=Y$ and the square
+%
+\begin{eq}\label{pb-square-C}
+\begin{CD}
+f^*X @>\q(f,X)>> X\\
+@V\p_{f^*X}VV @VV\p_XV\\
+Y @>f>> \ft(X)
+\end{CD}
+\end{eq}
+%
+commutes,
+\item for $X\in Ob(CC)$ such that $l(X)>0$ one has $id_{\ft(X)}^*(X)=X$ and $\q(id_{\ft(X)},X)=id_X$,
+\item for $X\in Ob(CC)$ such that $l(X)>0$, $g:Z\sr Y$ and $f:Y\sr \ft(X)$ one has $(gf)^*(X)=g^*(f^*(X))$ and $\q(gf,X)=\q(g,f^*X)\q(f,X)$.
+\end{enumerate}
+\end{definition}
+%
+\begin{remark}\rm
+  In this definition $pt$ stands for ``point'' and serves as our notation for a final object of a category.
+  The name ``ft'' stands for ``father'' which is the name given to this map in \cite[Def. 1.1]{Streicher}.
+\end{remark}
+%
+
+
+
+
+For $f:Y\sr X$ in $CC$ we let $\ft(f):Y\sr \ft(X)$ denote the composition $f\circ \p_X$.
+%
+\begin{definition}
+  A C-system is a C0-system together with an operation $f\mapsto \gls{sf}$ defined for all $f:Y\sr X$ such that $l(X)>0$ and such that the
+  following properties hold.
+%
+\begin{enumerate}
+\item $\s_f:Y\sr (\ft(f))^*(X)$,
+\item $\s_f\circ \p_{(\ft(f))^*(X)} = \id_Y$,
+\item $\s_f\circ \q(\ft(f),X) = f$,
+\item if $X=g^*(U)$ where $g:\ft(X)\sr \ft(U)$ then $\s_f=\s_{f\circ \q(g,U)}$.
+\end{enumerate}
+\end{definition}
+
+From \cite[Prop.~2.4]{Csubsystems} it follows that, in a C-system, the squares \ref{pb-square-C} are pullback squares,
+and the maps $\s_f$ are obtainable using the universal property of those pullback squares.
 \begin{remark}
-  We recall some notation for use with a C-system $\CC$ and record some identities for later reference.
+  We record some identities for later reference.
 
-  Recall the length function $\gls{l} : \Ob(\CC) \to \NN$, which is part of the data forming a C-system.
-
-%%  We may let $\Ob$ denote the set $\Ob(\CC)$ of objects of $\CC$ when there is no danger of confusion.
-
-  As in \cite[Def.~2.1 and Prop.~2.4]{Csubsystems}, except for the use of a sans-serif font, we use
-  \begin{eq}
-    \label{qfX-diag}
-    \xymatrix@C=5pc{
-      \gls{fstarX} \ar[r]^{\gls{qfX}} \ar[d]_{\p_{f^*(X)}}  & X \ar[d]^{\gls{pX}} \\
-      Y \ar[r]_f & \gls{ft}(X)
-    }
-  \end{eq}%
-  as notation for the parts of the pull-back square that is part of the
-  structure of a C-system; here $l(X) > 0$.
-  Further, if $s : \ft(X) \sr X$ is a section of $\p_X$, then $\gls{fstars}$ denotes
-  the unique section of $\p_{f^*(X)}$ such that $f^*(X) \circ \q(f,X) = f \circ
-  s$, as in the following diagram.
-  \begin{eq}
-    \xymatrix@C=5pc{
-      f^*(X) \ar[r]^{\q(f,X)} \ar@<3pt>[d]^{\p_{f^*(X)}}  & X \ar@<3pt>[d]^{\p_X} \\
-      Y \ar[r]_f \ar@<4pt>[u]^{f^*(s)} & \ft(X) \ar@<4pt>[u]^s
-    }
-  \end{eq}%
-
-  As in \cite[Def.~2.3 and Prop.~2.4]{Csubsystems}, for a map $g : Y \sr X$
-  such that $g \circ p_X = f$, one may regard
-  $\gls{sg} : Y \sr f^*(X)$ as part of the structure of a C-system, or
-  as the unique section of $p_{f^*(X)}$ such that $\s_g \circ q(f,X) = g$.
-  \begin{eq}
-    \xymatrix@C=5pc{
-      f^*(X) \ar[r]^{\q(f,X)} \ar@<-3pt>[d]_{\p_{f^*(X)}} & X \ar[d]^{\p_X} \\
-      Y \ar[ru]_g \ar[r]_f \ar@<-4pt>[u]_{\s_g} & \ft(X)
-    }
-  \end{eq}%
-  In the case where $Y = \ft(X)$ and $f = 1_X$, and thus $g$ is a section of $\p_X$,
+  In the case where $Y = \ft(X)$ and $\ft(f) = 1_X$, and thus $f$ is a section of $\p_X$,
   one has the following identity.
   \begin{eq}
     \label{section-section}
-    \s_g = g
+    \s_f = f
   \end{eq}%
-  The formation of the section $\s_g$ is natural in the sense that, for a map
+  The formation of the section $\s_f$ is natural in the sense that, for a map
   $h : Z \to Y$, one has the following identity.
   \begin{eq}
     \label{s-naturality}
-    h^* (\s_g) = \s_{h \circ g}
+    h^* (\s_f) = \s_{h \circ f}
   \end{eq}%
 
-  In the case where one takes $Y=X$, $f=p_X$, and $g = 1_X$, we let $\gls{delta}(X)$ denote
+  In the case where one takes $Y=X$, and $f = \id_X$, we let $\gls{deltaX}$ denote
   the diagonal morphism $\delta(X) := \s_{\id_X} : X\sr \p_X^*(X)$.
   \begin{eq}
     \xymatrix@C=5pc{
@@ -523,15 +566,15 @@ process.
       X \ar[ru]_{1_X} \ar[r]_{\p_X} \ar@<-4pt>[u]_{\delta(X)} & \ft(X)
     }
   \end{eq}%
-  Using \eqref{s-naturality}, one shows, for a map $g : Y \to X$, the following identity.
+  Using \eqref{s-naturality}, one shows, for a map $f : Y \to X$, the following identity.
   \begin{eq}
     \label{delta-pullback}
-    g^* (\delta(X)) = \s_g
+    f^* (\delta(X)) = \s_f
   \end{eq}%
 
   Now we also recall the notations ${{Ob}}_n(\Gamma)$ and
   $Obwt_n(\Gamma)$ from \cite[\S 3]{fromunivwithPiI}, as well as the
-  notation ${partial}(o)$ from \cite[\S 3]{Csubsystems}.
+  notation $\gls{parto}$ from \cite[\S 3]{Csubsystems}.
 
   Let $\Gamma$ be an object in $\CC$.  The set $\gls{Obn}$ is the set of
   objects $\Delta$ of $\CC$ such that $l(\Delta)-n = l(\Gamma)$ and
@@ -545,7 +588,7 @@ process.
   Similarly, for an object $\Delta$ with $l(\Delta) > 0$, we let
   $\gls{ObwtD}$ denote the set of sections of $\p_\Delta$.
 
-  Observe that $\s_g$ above is an element of $\Obwt_1(Y)$, and $\delta(X)$ above
+  Observe that $\s_f$ above is an element of $\Obwt_1(Y)$, and $\delta(X)$ above
   is an element of $\Obwt_1(X)$.
 \end{remark}
 
