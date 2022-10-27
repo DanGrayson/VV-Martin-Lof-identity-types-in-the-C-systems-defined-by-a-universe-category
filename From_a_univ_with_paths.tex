@@ -189,14 +189,14 @@
 \usepackage[draft]{optional}
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}%to do list and comments
 
-\newcommand{\plan}[1]{}
-\newcommand{\BA}[1]{}
-\newcommand{\DG}[1]{}
-\opt{draft}{
-   \renewcommand{\plan}[1]{\todo[color=blue!30]{Plan: #1}\PackageWarning{TODO}{Plan: #1}}
-   \renewcommand{\BA}[1]{\todo[color=orange!30]{BA: #1} \PackageWarning{TODO}{BA: #1}}
-   \renewcommand{\DG}[1]{\todo[color=green!30]{DG: #1}\PackageWarning{TODO}{DG: #1}}
-}
+%% \newcommand{\plan}[1]{}
+%% \newcommand{\BA}[1]{}
+%% \newcommand{\DG}[1]{}
+%% \opt{draft}{
+%%    \renewcommand{\plan}[1]{\todo[color=blue!30]{Plan: #1}\PackageWarning{TODO}{Plan: #1}}
+%%    \renewcommand{\BA}[1]{\todo[color=orange!30]{BA: #1} \PackageWarning{TODO}{BA: #1}}
+%%    \renewcommand{\DG}[1]{\todo[color=green!30]{DG: #1}\PackageWarning{TODO}{DG: #1}}
+%% }
 
 \newcommand{\issue}[1]{\href{https://github.com/DanGrayson/VV-paths-C-systems-univ/issues/#1}{Issue #1}}
 
@@ -772,7 +772,7 @@ $$\Obwt(\Idx(o,o'))=\left\{
 \emptyset&\mbox{\rm if $o\ne o'$}\\ pt&\mbox{\rm if $o=o'$}
 \end{array}
 \right.
-$$\DG{We should replace $pt$ by the one element set containing $\refl$.}
+$$ %% \DG{We should replace $pt$ by the one element set containing $\refl$.}
 %
 One can easily see that any two extensional J0-structures are equal and that
 any extensional J0-structure has a unique extension to a full J-structure that
@@ -1362,9 +1362,10 @@ This completes the construction.
 \label{2015.05.24.rem2} It is likely to be relatively easy to generalize the
 constructions of this paper to the extended J-structures $eJ_n$ (see Remark
 \ref{2015.05.24.rem1}). The key to such a generalization is \cite[Remark
-  3.13]{fromunivwithPi}\DG{The cited remark does not appear to have been
-  published -- search more carefully for it in the three published papers that
-  this preprint evolved into.}.
+  3.13]{fromunivwithPi}
+%%                        \DG{The cited remark does not appear to have been
+%%   published -- search more carefully for it in the three published papers that
+%%   this preprint evolved into.}.
 The structures $eJp_n$ can be defined in the same way
 as $Jp$ but with the square (\ref{2010.sq1}) replaced by the square
 %
