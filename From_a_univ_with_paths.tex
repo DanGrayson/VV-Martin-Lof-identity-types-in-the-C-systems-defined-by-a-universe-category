@@ -400,7 +400,7 @@ Combined, they provide a method of constructing a J-structure on
 $\toCC({\cal C},p)$ from a J1-structure on $p$.
 
 We also discuss two sets of conditions on a pair of classes of morphisms $TC$
-and $FB$ in a locally cartesian closed category that can be used in combination
+and $FB$ in a locally Cartesian closed category that can be used in combination
 with Construction \ref{2015.05.22.constr1} to construct J-structures. These
 conditions often hold for the classes of trivial cofibrations and fibrations in
 model categories (or categories with weak factorization systems) providing a
@@ -896,14 +896,18 @@ The action of the functor on a morphism $f : X' \to X$ is given by
 %
 $$\D_p(f,V):(F,G)\mapsto (f\circ F, \Q(f,F)\circ G).$$
 
-When $\C$ is a locally cartesian closed category, any morphism
-$p:\wt{\U}\sr \U$ defines a functor\editorfootnote{Here $(\wt{\U},p)$ and
-  $(\U\times V,\pr_1)$ are objects in the category of objects over $\U$, and
-  $\iHom$ denotes the internal Hom in that category.}
-%
-$$\gls{Ip}:V\mapsto \iHom((\wt{\U},p),(\U\times V,\pr_1)),$$
-%
-into the slice category over $\U$; we denote by
+Recall that for an object $X$ of $\C$, the \emph{slice} category $\C/X$ is the
+category whose objects are morphisms $p : Y \to X$ of $\C$, and whose morphisms
+from $p : Y \to X$ to $p' : Y' \to X$ are those morphisms $f : Y \to Y'$ that make the
+evident triangle commute.  When $\C$ is locally Cartesian closed, then the
+slice categories are Cartesian closed, and we use $\iHom((Y,p), (Y',p'))$ to
+denote the internal Hom in the slice category.
+
+When $\C$ is a locally Cartesian closed category, any morphism
+$p:\wt{\U}\sr \U$ defines a functor
+$$\gls{Ip} : \C \to \C/\U$$ which sends an object $V$ to 
+$$\I_p(V) := \iHom((\wt{\U},p),(\U\times V,\pr_1)).$$
+We denote by
 \begin{equation}\label{eq:def-prI}
   \gls{prI}_p(V) :\I_p(V)\sr \U
 \end{equation}
@@ -1060,7 +1064,7 @@ To obtain the upper right square one sets $b=\id_{\wt{\U}'}$ and $a=\I^f(V)$.
 To obtain the upper left square one sets $b=f$ and $a=\id_{\I_p(V)}$.
 The lower square is a particular case of \cite[Lemma 4.1.6]{presheavesOb}.
 %
-% This is a lengthy but straightforward computation that applies to any locally cartesian closed category.
+% This is a lengthy but straightforward computation that applies to any locally Cartesian closed category.
 \end{myproof}
 %
 \begin{definition}
@@ -1170,16 +1174,16 @@ will be denoted by $\gls{omega}$, as in the following diagram.
 \end{definition}
 
 To define a J2-structure on a universe we will need to assume that $\C$
-is a locally cartesian closed category.  Recall that a locally cartesian closed
+is a locally Cartesian closed category.  Recall that a locally Cartesian closed
 category is a category with the choice of fiber squares based on all pairs of
 morphisms with a common codomain as well as the choice of relative internal
 Hom-objects and co-evaluation morphisms for all such pairs. For our notation
-related to the locally cartesian closed categories as well as for some other
+related to the locally Cartesian closed categories as well as for some other
 notations used below see \cite{fromunivwithPiI,presheavesOb,fromunivwithPiII}.
 
-When a universe is considered in a locally cartesian closed category we make no
+When a universe is considered in a locally Cartesian closed category we make no
 assumption about the compatibility of choices of the pullback squares of the
-universe structure on $p$ and pullback squares of the locally cartesian closed
+universe structure on $p$ and pullback squares of the locally Cartesian closed
 structure.
 
 Consider the functors $\I_{p}$ and $\I_{pE\wt{\U}}$. We have the following
@@ -1237,7 +1241,7 @@ Note that we have the following two equations.
 \end{eq}
 
 \begin{definition}
-  Let $\C$ be a cartesian closed category.  For any objects $X$, $Y$, $Z$ of $\C$, we let
+  Let $\C$ be a Cartesian closed category.  For any objects $X$, $Y$, $Z$ of $\C$, we let
   $$ \gls{adj} : Hom (X, \iHom(Y,Z) ) \xrightarrow \cong Hom(X \times Y, Z) $$
   denote the corresponding adjunction bijection.
 \end{definition}
@@ -1259,7 +1263,7 @@ J-structures over a given J1-structure in categories with weak factorization
 systems, particularly in Quillen model categories.
 
 \begin{problem}
-\label{2015.05.12.l1} Let $\C$ be a category with a locally cartesian
+\label{2015.05.12.l1} Let $\C$ be a category with a locally Cartesian
 closed structure and $Eq,\Omega$ be a J1-structure on $({\C},p)$. To
 construct a bijection between the set of J-structures on $p$ over $(Eq,\Omega)$
 and the set of morphisms $(\Fp,\pFp)\times_\U(E\wt{\U},pE\wt{\U})\sr \wt{\U}$ that
@@ -1448,7 +1452,7 @@ is in $TC$.
 %
 \begin{theorem}
 \label{2015.05.22.th1} Let $FB$ and $TC$ be two classes of morphisms in a
-locally cartesian closed category $\cal C$ that satisfy Conditions
+locally Cartesian closed category $\cal C$ that satisfy Conditions
 \ref{2015.05.22.cond2}. Let $p:\wt{\U}\sr \U$ be a universe in $\cal C$, let 
 $Eq$ be a J0-structure on $p$, and let $\Omega$ be a J1-structure over $Eq$.
 Assume further that:
@@ -1671,7 +1675,7 @@ We can now prove the second main theorem of this section.
 %
 \begin{theorem}
 \label{2015.05.16.th1} Let $({\C},p,pt)$ be a universe category, let
-$\C$ be given a locally cartesian closed structure and let $TC$ and
+$\C$ be given a locally Cartesian closed structure and let $TC$ and
 $FB$ be two collections of morphisms in $\C$ that satisfy Conditions
 \ref{2015.05.22.cond1}. Let further $Eq:(\wt{\U};p)\sr \U$ be a J0-structure on $p$,
 and let $\Omega:\wt{\U}\sr \wt{\U}$ be a J1-structure over $Eq$.
@@ -1732,7 +1736,7 @@ in $FB$ which finishes the proof of the theorem.
 \end{myproof}
 %
 \begin{cor}
-\label{2015.05.18.cor1} Let $\cal C$ be a locally cartesian closed category
+\label{2015.05.18.cor1} Let $\cal C$ be a locally Cartesian closed category
 with a Quillen model structure, $p$ a universe in $\cal C$ and $(Eq,\Omega)$ a
 J1-structure on $p$. Assume further that $p$ is a fibration and $\omega : \wt{\U}\sr E\wt{\U}$ is a
 trivial cofibration and that in addition one of the following two conditions
@@ -1759,7 +1763,7 @@ The following result can be used to produce many examples of (non-univalent) uni
 J-structures.
 
 Let $\cal C$ be a locally
-cartesian closed category with coproducts $\amalg_{n\in\nn}X_n$ of sequences of objects.
+Cartesian closed category with coproducts $\amalg_{n\in\nn}X_n$ of sequences of objects.
 We let $in_n:X_n\sr \amalg_n X_n$ the canonical inclusion.
 Given a sequence of maps $f_n : X_n \sr Y$, we let
 $\langle f_n \rangle_{n} : \amalg_n X_n\sr Y$ denote the associated morphism.
@@ -2620,7 +2624,7 @@ and $\refl_{\Omega}$.
 Before we can formulate the definition of what it means for a universe category
 functor to be compatible with J-structures we need some general results about
 functors between categories with two universes, which we will later apply to the
-universes $p:\wt{\U}\sr \U$ and $pE\wt{\U}:E\wt{\U}\sr \U$ in a locally cartesian
+universes $p:\wt{\U}\sr \U$ and $pE\wt{\U}:E\wt{\U}\sr \U$ in a locally Cartesian
 closed category $\cal C$.
 
 Given two universes 
@@ -2693,7 +2697,7 @@ which easily follows from the defining equations for $\Q(-,-)$ and $(-)^*$.
 \end{myproof}
 
 Let $({\C},p,pt)$, $({\C}',p',pt')$ be two universe categories
-such that $\C$ and $\C'$ are equipped with locally cartesian
+such that $\C$ and $\C'$ are equipped with locally Cartesian
 closed structures.
 Consider now a \emph{functor of universe categories} $${\bf\Phi}=(\Phi,\phi,\wt{\phi}):({\C},p,pt)\sr ({\mathcal C}',p',pt').$$
 The notion was defined in \cite[4.1]{Cfromauniverse} and in \cite[\S 5]{fromunivwithPi}.  It means that $\Phi : \C \to \C'$ is a functor,
